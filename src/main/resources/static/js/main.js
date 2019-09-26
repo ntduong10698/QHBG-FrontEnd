@@ -1,3 +1,5 @@
+const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
+
 $(document).ready(function () {
 
     // Click Account Header
