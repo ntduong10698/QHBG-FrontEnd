@@ -23,6 +23,32 @@ require([
 
     //function handling
 
+    //get url web
+    function getUrlMap() {
+        let rs = "http://103.9.86.47:6080/arcgis/rest/services/";
+        let pathName = window.location.href;
+        let arrSplit = [];
+        let indexHuyen;
+        let year;
+        if (pathName.search("quy-hoach") > -1) {
+            arrSplit = pathName.split("map=");
+            if (arrSplit[1] !== "0") {
+                indexHuyen = arrSplit[1] - 1; // url tinh map =0, cac huyen 1-10
+                rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
+            } else {
+                rs += "Quy_Hoach_Bac_Giang_2015_2019"
+            }
+        } else if (pathName.search("ke-hoach") > -1) {
+            arrSplit = pathName.split("map=");
+            indexHuyen = arrSplit[1].split("&")[0] - 1; // url tinh map =0, cac huyen 1-10
+            year = pathName.split("nam=")[1];
+            rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
+        }
+        console.log(rs+"/MapServer")
+        return rs + "/MapServer";
+    }
+    //end get url web
+
     //set upper in inputSearch
     $('#inputSearch').keyup(function () {
         this.value = this.value.toUpperCase();
@@ -45,8 +71,8 @@ require([
     //end function handling
 
     //render map and handling map
-
-    let urlApiMap = "http://103.9.86.47:6080/arcgis/rest/services/Quy_Hoach_Hiep_Hoa_2015_2019/MapServer";
+    // let urlApiMap = "http://103.9.86.47:6080/arcgis/rest/services/Quy_Hoach_Hiep_Hoa_2015_2019/MapServer";
+    let urlApiMap = getUrlMap();
     ajaxCall(urlApiMap+"?f=pjson").then(dataRs => {
 
         //pretreatment (tien xu ly)
