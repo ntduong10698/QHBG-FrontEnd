@@ -202,7 +202,7 @@ html, body {
     opacity: 0;
     display: flex;
     position: absolute;
-    left: -195%;
+    left: -140px;
     border-radius: 5px;
     top: 0;
     padding: 5px;
@@ -226,7 +226,7 @@ html, body {
 }
 
 .layer-2-qh>ul:first-child {
-    border-right: 2px dashed black;
+    /* border-right: 2px dashed black; */
 }
 
 .layer-2-qh>ul>li {
@@ -284,9 +284,9 @@ html, body {
 }
 
 .layer-3-qh>ul>li {
-    padding: 10px 5px;
+    padding: 6px 5px;
     text-align: left;
-    font-size: var(--font13);
+    font-size: 14px;
 }
 
 .layer-3-qh>ul>li:hover {
@@ -629,7 +629,7 @@ html, body {
 .esri-popup .esri-popup-header .esri-title {
     font-size: 18px;
     font-weight: bolder;
-    font-family: sans-serif
+    font-family: sans-serif;
 }
 
 .esri-popup .esri-popup-body .esri-popup-content {

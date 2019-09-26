@@ -68,6 +68,25 @@ require([
         });
     }
 
+    //find chu thich dat
+    function findSoild(chuThichDat) {
+        setTimeout(function () {
+            let textSearch = $(".search-chuthich input").val().toUpperCase();
+            let contentSearch = '';
+            let arrSearch = chuThichDat.filter(function find(data) {
+                return (data.label.toUpperCase().search(textSearch) > -1);
+            })
+            if (arrSearch.length !== 0) {
+                arrSearch.map(data => {
+                    contentSearch += `<li><img src='data:image/png;base64,${data.imageData}'/> ${data.label}</li>`
+                })
+            } else {
+                contentSearch = "Không có dữ liệu tương ứng."
+            }
+            $("#hienthi-chuthich").html(contentSearch);
+        },100)
+    }
+
     //end function handling
 
     //render map and handling map
@@ -91,10 +110,10 @@ require([
             sublayers: [{
                 id: sublayersCall[1].id,
                 visible: true
-            },
+                },
                 {
-                    id: sublayersCall[0].id,
-                    visible: true
+                id: sublayersCall[0].id,
+                visible: true
                 }
             ]
         });
@@ -157,8 +176,22 @@ require([
                 })
                 layerNotices.sort(function(a, b){return a-b});  //get all MaDat and sort for id
                 //set view notice
-                //------------------ToDo
-                console.log(layerNotices);
+                let content = '';
+                let chuThichDat = []; //lua view html de tim kiem
+                layerNotices.map(data => {
+                    let chuThich = {
+                        imageData : data.imageData,
+                        label: mucDich(data.label)
+                    }
+                    content += `<li><img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                    chuThichDat.push(chuThich);
+                })
+                $("#hienthi-chuthich").html(content);
+                //set tim kiem chu thich dat //on input su kien thay doi gia tri trong input
+                $(".search-chuthich input").on('input',function (event) {
+                    //get value delay 100 get value
+                    findSoild(chuThichDat);
+                })
                 // dom.byId("legend").innerHTML = content; dom set view for api arcgis
                 //end set view notice
 
@@ -261,14 +294,15 @@ require([
         })
         //end set event, notice in view
 
-        // //on of layer with id checkQuyHoach end checkHienTrang in view
-        // on(dom.byId("checkQuyHoach"), "change", function (ev) {
-        //     layer.findSublayerById(0).visible = ev.target.checked; //on of KeHoach or QuyHoach all id 0
-        // });
-        // on(dom.byId("checkHienTrang"), "change", function (ev) {
-        //     layer.findSublayerById(sublayersCall[1]).visible = ev.target.checked; //on of HienTrang all index 1
-        // });
-        // //end on of layer
+        //on of layer with id checkQuyHoach end checkHienTrang in view
+        on(dom.byId("checkQuyHoach"), "change", function (ev) {
+            layer.findSublayerById(0).visible = ev.target.checked; //on of KeHoach or QuyHoach all id 0
+        });
+        on(dom.byId("checkHienTrang"), "change", function (ev) {
+            console.log(layer);
+            layer.findSublayerById(sublayersCall[1].id).visible = ev.target.checked; //on of HienTrang all index 1
+        });
+        //end on of layer
         //
         // //search map with id btnSearch
         // on(dom.byId("btnSearch"), "click", executeQueryTask);
@@ -498,6 +532,7 @@ require([
         //end search map
     }).catch(err => {
         console.log(err);
+        alert("Chưa có dữ liệu bản đồ");
     });
 
     //end render map and handling map
