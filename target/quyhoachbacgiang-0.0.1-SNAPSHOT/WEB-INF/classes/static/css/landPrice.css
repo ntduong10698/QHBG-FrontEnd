@@ -1,0 +1,247 @@
+/* LAND PRICE */
+html{
+    overflow-x: hidden
+}
+
+.landprice {
+    background-image: url(../img/bglandprice.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 100px 0;
+    position: relative;
+}
+.landprice::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.411);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    visibility: hidden;
+}
+.landprice.show::before {
+    visibility: visible;
+}
+ul.nav.nav-tabs {
+    padding: 10px 0;
+    border: none;
+}
+
+.nav-item {
+    margin: 10px 0 10px 0 !important;
+    width: 100%;
+    clip-path: polygon(0% 0%, 90% 0, 100% 50%, 90% 100%, 0% 100%);
+}
+
+.nav-item:hover .nav-link{
+    background-color: #3797dd !important;
+}
+.nav-item:hover .nav-link.active{
+    background-color: white !important;
+}
+.nav-link {
+    border: none !important;
+    border-radius: 0 !important;
+    height: 50px;
+    padding: 10px;
+    background-color: white  !important;
+    transition: .4s all;
+}
+.nav-link.active{
+    background-color: white !important;
+}
+.nav-link.active .ni-text span{
+    color: var(--color-blue) !important;
+}
+.nav-link.noactive{
+    background-color: #8298a0 !important;
+}
+.ni-wp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ni-text {
+    padding-left: 5px;
+}
+
+.ni-text span {
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+}
+
+
+
+.ni-img img {
+    height: 31px;
+}
+
+.ver {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    visibility: hidden;
+}
+.ver.show{
+    visibility: visible;
+}
+.ver span {
+    width: 5px;
+    height: 50px;
+    background-color: white;
+    display: block;
+    margin: 10px 0 10px 0 !important;
+    box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 1);
+}
+
+.ver span:nth-child(1) {
+    margin-top: 0 !important;
+}
+
+.tab-pane{
+    width: 100%;
+}
+
+.tab-item{
+    padding: 8px 0;
+}
+.ti-ele1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ti-ele1 .ele1-left{
+    width: 23%;
+    height: 45px;
+    background-color: white;
+    padding-left: 20px;
+    border: 1px solid var(--color-gray);
+    position: relative;
+}
+.mnver{
+    position: absolute;
+    right: -9px;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.mnver span{
+    display: block;
+    width: 1px;
+    height: 9px;
+    background-color: white;
+}
+.ti-ele1 .ele1-left span{
+    line-height: 45px;
+    color: black;
+    font-weight: 600;
+    font-size: var(--font13);
+}
+.ti-ele1 .ele1-right{
+    width: 75%;
+}
+.mselect{
+
+}
+.select2-container{
+    width: 100% !important;
+}
+.select2-container--default .select2-selection--single{
+    height: 45px;
+    border-radius: 0;
+    border: 1px solid var(--color-gray);
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    height: 45px;
+    line-height: 45px;
+    padding-left: 20px;
+    font-size: var(--font13);
+    font-weight: 600;
+}
+.select2-container--default .select2-results__option {
+    padding: 13px 0 13px 20px;
+    font-size: var(--font13);
+    font-weight: 600;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected]{
+    background-color: #dde8f5;
+    color: black;
+}
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: var(--color-blue);
+    color: white;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    line-height: 45px;
+}
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    line-height: 45px;
+    padding-right: 15px;
+    transform: scale(1.2);
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: rgba(0, 0, 0, 0.836) transparent transparent transparent;
+    border-width: 9px 8px 0 8px;
+    margin-left: -17px;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent rgba(0, 0, 0, 0.836) transparent;
+    border-width: 0 8px 9px 8px;
+}
+
+.select2-results__options::-webkit-scrollbar{
+    width: 10px;
+    background: #ADA996;
+}
+.select2-results__options::-webkit-scrollbar-thumb {
+    background: #22465c;
+}
+.select2-results__options::-webkit-scrollbar-track {
+    box-shadow: inset 2px 2px 4px #22465c;
+    background-color: #F5F5F5;
+}
+.tab-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.ts-wp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-blue);
+    display: inline-block;
+    padding: 20px 55px;
+    text-decoration: none;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.ts-wp:hover{
+    text-decoration: none;
+}
+.ts-wp i{
+    color: white;
+    font-size: 18px;
+}
+.ts-wp span{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: var(--font13);
+}
+/* END LAND PRICE */

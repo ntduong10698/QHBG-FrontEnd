@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="quyhoachbacgiang:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>quyhoachbacgiang</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="quyhoachbacgiang-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="quyhoachbacgiang:war exploded" />
+    </root>
+  </artifact>
+</component>

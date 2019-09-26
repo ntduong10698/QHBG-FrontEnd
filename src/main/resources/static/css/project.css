@@ -1,0 +1,116 @@
+.p-project .dpfc-item.dpcf-fitem{
+    width: 21%;
+    padding-top: 5px;
+}
+.p-project .dpfc-item.dpcf-fitem>span{
+    padding-bottom: 10px;
+}
+.p-project .dpfc-item.dpcf-fitem .pp-select{
+    width: 100%;
+}
+.p-project .dpfc-item.dpcf-fitem .pp-select select{
+    width: 100%;
+    outline: none;
+    font-weight: 600;
+    font-size: 13px;
+}
+.p-project .pp-select select option{
+    font-weight: 600;
+    font-size: 13px;
+}
+.p-project .select2-selection__rendered{
+    text-align: center;
+    color: black;
+
+}
+.p-project .select2-selection__placeholder{
+    color: black !important;
+}
+.pp-table{
+    padding: 25px;
+}
+.pp-table table thead tr th{
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.pp-table table thead tr{
+    background-color: #ededed;
+}
+.pp-table table tbody tr:hover{
+    font-style: italic !important;
+}
+
+.pp-table table tbody tr td:nth-child(4),.pp-table table tbody tr td:nth-child(6){
+    text-align: center;
+    white-space: nowrap;
+}
+.pp-table table tbody tr td:nth-child(8){
+    padding: 0;
+    vertical-align: middle;
+}
+.pp-table table tbody tr td:nth-child(8)>span{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.pp-table table tbody tr td:nth-child(8)>span>span{
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pp-table table tbody tr td:nth-child(8):hover>span>span{
+    background-color: black;
+    color: white;
+}
+.pp-table table tbody tr td{
+    font-size: 15px;
+}
+.tablep-cap{
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #22465c;
+    user-select: none;
+}
+.tablep-cap span{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+    padding: 15px;
+    color: white;
+}
+.pp-pagi{
+    padding-top: 20px;
+    width: 100%;
+}
+.ppgai-wp{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.ppgai-wp>span{
+    font-size: 13px;
+    font-weight: 600;
+    font-style: italic;
+}
+.pagi-c{
+    padding-left: 30px;
+    display: flex;
+}
+.pagi-c span{
+    padding: 5px;
+    display: block;
+    border: 1px solid #ededed;
+}

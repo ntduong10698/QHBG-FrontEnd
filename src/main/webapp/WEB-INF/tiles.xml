@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Base Define -->
+    <definition name="base.definition"
+                template="/WEB-INF/layouts/index.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/basefragments/header.jsp" />
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />
+    </definition>
+
+    <!-- Home Page  -->
+    <definition name="home" extends="base.definition">
+        <put-attribute name="title" value="Trang Chủ"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/home.jsp"/>
+    </definition>
+
+    <!-- LandPrice Page  -->
+    <definition name="landPrice" extends="base.definition">
+        <put-attribute name="title" value="Giá Đất"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/landPrice.jsp"/>
+    </definition>
+
+    <!-- Project Page  -->
+    <definition name="project" extends="base.definition">
+        <put-attribute name="title" value="Dự Án"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/project.jsp"/>
+    </definition>
+
+    <!-- Decision Page  -->
+    <definition name="decision" extends="base.definition">
+        <put-attribute name="title" value="Quyết Định"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/decision.jsp"/>
+    </definition>
+
+    <!-- Decision Page  -->
+    <definition name="map" extends="base.definition">
+        <put-attribute name="title" value="Bản Đồ"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/map.jsp"/>
+    </definition>
+
+</tiles-definitions>
