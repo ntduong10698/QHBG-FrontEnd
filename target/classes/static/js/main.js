@@ -18,8 +18,12 @@ $(document).ready(function () {
     $(".sibcl").click(function (e) {
         $(".d-login").addClass("show")
         $(".d-signin").removeClass("show")
-
     });
+    $(".icon.iconlogout").click(function(){
+        $(this).removeClass("show");
+        $(".user-name").removeClass("show");
+        $(".icon.iconacc").removeClass("hide");
+    })
     // Scroll Fixtop header
     $(window).scroll(function () {
         var scroll = $(this).scrollTop();
