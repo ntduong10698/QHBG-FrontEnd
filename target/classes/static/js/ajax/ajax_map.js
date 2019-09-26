@@ -21,6 +21,8 @@ require([
 ], function (Map, MapView, MapImageLayer, Legend, Extent, SpatialReference, IdentifyTask,
              IdentifyParameters, SimpleFillSymbol, Graphic, QueryTask, Query, on, dom, Sublayer, arrayUtils, esriRequest, Point) {
 
+    var checkMap = 0; // truong phan biet cac huyen va tinh
+
     //function handling
 
     //get url web
@@ -33,14 +35,16 @@ require([
         if (pathName.search("quy-hoach") > -1) {
             arrSplit = pathName.split("map=");
             if (arrSplit[1] !== "0") {
-                indexHuyen = arrSplit[1] - 1; // url tinh map =0, cac huyen 1-10
+                checkMap = arrSplit[1] - 0; // set truong phan biet huyen va tinh// convert ve so
+                indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
                 rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
             } else {
-                rs += "Quy_Hoach_Bac_Giang_2015_2019"
+                rs += "Quy_Hoach_Bac_Giang_2015_2019";
             }
         } else if (pathName.search("ke-hoach") > -1) {
             arrSplit = pathName.split("map=");
-            indexHuyen = arrSplit[1].split("&")[0] - 1; // url tinh map =0, cac huyen 1-10
+            checkMap = arrSplit[1].split("&")[0] - 0; //convert ve so
+            indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10
             year = pathName.split("nam=")[1];
             rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
         }
@@ -65,6 +69,14 @@ require([
     function filterSublayersClick(layersCall) {
         return layersCall.filter(function findGroupLayer(data){
             return (data.name.search(/(QH_|KH_)(HienTrang|KeHoach|QuyHoach)/) > -1);
+        });
+    }
+    
+    //get layer KhoiXa hoac KhoiHuyen, -1 quy dinh la tim Khoi Huyen, > -1 quy dinh la tim Khoi Xa
+    function filterKhoiXaHuyen(layersCall, check) {
+        let textFind = check > 0 ? 'KhoiXa' : 'KhoiHuyen';
+        return layersCall.filter(function findGroupLayer(data){
+            return (data.name.search(textFind) > -1);
         });
     }
 
@@ -100,6 +112,8 @@ require([
         console.log(sublayersCall);
         let sublayersClick = filterSublayersClick(layersCall); // get Layer QuyHoach, HienTrang
         console.log(sublayersClick);
+        let layerKhoiXaHuyen = filterKhoiXaHuyen(layersCall, checkMap);
+        console.log(layerKhoiXaHuyen);
         //end pretreatment
 
         //code map here
@@ -176,8 +190,9 @@ require([
                 })
                 layerNotices.sort(function(a, b){return a-b});  //get all MaDat and sort for id
                 //set view notice
-                let content = '';
-                let chuThichDat = [];
+                let content = ''; // chua html view chu thich loại dat
+                let chuThichDat = []; //lua view html de tim kiem
+                // handling set chu thich dat trong map
                 layerNotices.map(data => {
                     let chuThich = {
                         imageData : data.imageData,
@@ -186,14 +201,53 @@ require([
                     content += `<li><img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
                     chuThichDat.push(chuThich);
                 })
-                $("#hienthi-chuthich").html(content);
-                //set tim kiem chu thich dat
+                $("#hienthi-chuthich").html(content); //set chu thich in map
+                //set tim kiem chu thich dat //on input su kien thay doi gia tri trong input
                 $(".search-chuthich input").on('input',function (event) {
                     //get value delay 100 get value
                     findSoild(chuThichDat);
                 })
-                // dom.byId("legend").innerHTML = content; dom set view for api arcgis
+
+                //handling set tim kiem cac loai dat view
+                let timKiemDatView = '';
+                layerNotices.map(data => {
+                    timKiemDatView += `<li><input type="checkbox" value=${data.label}> <img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                })
+                $("#viewTimKiemDat").html(timKiemDatView);
                 //end set view notice
+
+                //set huyen so do viewDanhSachXaHuyen
+                let viewDanhSachXaHuyen = '';
+                let queryViewXaHuyen = '';
+                if (checkMap > 0 ) {
+                    $(".view-qh-v1 .title-qh span").html(`<i class="fas fa-building"></i> Xã/ Phường`);
+                    queryViewXaHuyen = 'Xa IS NOT NULL';
+                } else {
+                    $(".view-qh-v1 .title-qh span").html(`<i class="fas fa-building"></i> Huyện/ Thành Phố`);
+                    queryViewXaHuyen = 'Huyen IS NOT NULL';
+                }
+                let queryTaskXaHuyen = new QueryTask({
+                    url: urlApiMap + "/"+layerKhoiXaHuyen[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
+                });
+                let queryXaHuyen = new Query();
+                queryXaHuyen.returnGeometry = true;
+                queryXaHuyen.outFields = ["*"];
+                queryXaHuyen.where = queryViewXaHuyen;
+                queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
+                    let arrXaHuyen = results.features;
+                    arrXaHuyen.map(data => {
+                        let item = data.attributes;
+                        if (checkMap > 0) {
+                            viewDanhSachXaHuyen += `<li>- ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                        } else {
+                            viewDanhSachXaHuyen += `<li>- ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                        }
+                    })
+                    $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
+                }).catch(err => {
+                    console.log(err);
+                })
+                //end set huyen so do
 
             }).catch(err => {
                 console.log(err);
