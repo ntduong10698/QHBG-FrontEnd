@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f94da25-68ea-4e0c-89ee-d72689d787ab" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bksoftwarevn/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bksoftwarevn/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/map.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="375" column="44" selection-start-line="375" selection-start-column="44" selection-end-line="375" selection-end-column="44" />
+            <state relative-caret-position="157">
+              <caret line="370" column="37" lean-forward="true" selection-start-line="370" selection-start-column="37" selection-end-line="370" selection-end-column="37" />
               <folding>
                 <element signature="e#3172#3869#0" />
                 <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
@@ -112,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="541" column="1" selection-start-line="541" selection-start-column="1" selection-end-line="541" selection-end-column="1" />
+              <caret line="546" column="1" selection-start-line="546" selection-start-column="1" selection-end-line="546" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -126,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state>
+              <caret column="44" selection-start-column="44" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -206,7 +201,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/decision.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/project.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/landPrice.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/main.js" />
@@ -216,6 +210,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/map.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" />
       </list>
     </option>
   </component>
@@ -528,13 +523,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76312000" />
+    <option name="totallyTimeSpent" value="76965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2579425" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -720,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bksoftwarevn/QuyHoachBacGiangApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -737,7 +725,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="541" column="1" selection-start-line="541" selection-start-column="1" selection-end-line="541" selection-end-column="1" />
+          <caret line="546" column="1" selection-start-line="546" selection-start-column="1" selection-end-line="546" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -796,8 +784,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="375" column="44" selection-start-line="375" selection-start-column="44" selection-end-line="375" selection-end-column="44" />
+        <state relative-caret-position="157">
+          <caret line="370" column="37" lean-forward="true" selection-start-line="370" selection-start-column="37" selection-end-line="370" selection-end-column="37" />
           <folding>
             <element signature="e#3172#3869#0" />
             <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
@@ -812,6 +800,13 @@
             <element signature="e#24464#26763#0" />
             <element signature="e#26865#27861#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="44" selection-start-column="44" selection-end-column="44" />
         </state>
       </provider>
     </entry>
