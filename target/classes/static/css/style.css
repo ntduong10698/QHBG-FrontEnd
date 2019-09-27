@@ -542,7 +542,7 @@ span.rt-contet i{
     visibility: hidden;
 }
 .m-loginsignin.show{
-    z-index: 200 ;
+    z-index: 1000 ;
     visibility: visible;
 }
 .login-bg{
@@ -639,7 +639,7 @@ span.rt-contet i{
     align-items: center;
     width: 100%;
 }
-.litext-wp input[type="text"]{
+.litext-wp input[type="text"],.litext-wp input[type="password"],.litext-wp input[type="email"]{
     display: block;
     outline: none;
     color: #22465c;

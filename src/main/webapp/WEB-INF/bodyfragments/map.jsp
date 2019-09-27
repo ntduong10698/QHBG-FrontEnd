@@ -12,86 +12,16 @@
             </div>
             <div class="view-qh view-qh-v1">
                 <div class="title-qh">
-                    <span><i class="fas fa-city"></i> Huyện/ Thành Phố</span>
+                    <span><i class="fas fa-city"></i> Huyện/ Xã</span>
                 </div>
-                <ul>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
-                    <li>
-                        <a href="">- Thành phố Bắc Giang</a>
-                    </li>
+                <ul id="viewDanhSachXaHuyen">
                 </ul>
             </div>
             <div class="view-qh view-qh-v2">
                 <div class="title-qh">
                     <span><i class="fa fa-calendar" aria-hidden="true"></i> Mục đích sử dụng đất</span>
                 </div>
-                <ul>
-                    <li>
-                        <input type="checkbox">
-                        <a href="">LUC - đất trồng lúa</a>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <a href="">LUC - đất trồng lúa</a>
-                    </li>
-                    <li>
-                        <input type="checkbox">
-                        <a href="">LUC - đất trồng lúa</a>
-                    </li>
-
+                <ul id="viewTimKiemDat">
                 </ul>
             </div>
         </div>
@@ -110,38 +40,14 @@
                     <li>
                         <i class="fas fa-map-marked-alt    "></i><span> Lớp hiển thị</span>
                         <div class="layer-2-qh">
-
-                            <ul>
-                                <li>Năm dữ liệu</li>
-                                <li>
-                                    <input type="radio" name="" id="">
-                                    2015
-                                </li>
-                                <li>
-                                    <input type="radio" name="" id="">
-                                    2016
-                                </li>
-                                <li>
-                                    <input type="radio" name="" id="">
-                                    2017
-                                </li>
-                                <li>
-                                    <input type="radio" name="" id="">
-                                    2018
-                                </li>
-                                <li>
-                                    <input type="radio" name="" id="">
-                                    2019
-                                </li>
-                            </ul>
                             <ul>
                                 <li>Vùng Dữ Liệu</li>
                                 <li>
-                                    <input type="radio" name="" id="">
+                                    <input type="checkbox" name="" id="checkHienTrang" checked>
                                     Hiện trạng
                                 </li>
                                 <li>
-                                    <input type="radio" name="" id="">
+                                    <input type="checkbox" name="" id="checkQuyHoach" checked>
                                     Quy hoạch
                                 </li>
                             </ul>
@@ -150,13 +56,13 @@
                 </ul>
                 <ul>
                     <li>
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chú thích
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Chú thích đất
                         <div class="layer-3-qh">
                             <div class="search-chuthich">
                                 <input type="text" placeholder="Tìm kiếm">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
-                            <ul>
+                            <ul id="hienthi-chuthich">
                                 <li>
                                     <span>NNP</span>
                                     Đất nông nghiệp

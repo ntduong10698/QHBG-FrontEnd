@@ -21,7 +21,37 @@ require([
 ], function (Map, MapView, MapImageLayer, Legend, Extent, SpatialReference, IdentifyTask,
              IdentifyParameters, SimpleFillSymbol, Graphic, QueryTask, Query, on, dom, Sublayer, arrayUtils, esriRequest, Point) {
 
+    var checkMap = 0; // truong phan biet cac huyen va tinh
+
     //function handling
+
+    //get url web
+    function getUrlMap() {
+        let rs = "http://103.9.86.47:6080/arcgis/rest/services/";
+        let pathName = window.location.href;
+        let arrSplit = [];
+        let indexHuyen;
+        let year;
+        if (pathName.search("quy-hoach") > -1) {
+            arrSplit = pathName.split("map=");
+            if (arrSplit[1] !== "0") {
+                checkMap = arrSplit[1] - 0; // set truong phan biet huyen va tinh// convert ve so
+                indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
+                rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
+            } else {
+                rs += "Quy_Hoach_Bac_Giang_2015_2019";
+            }
+        } else if (pathName.search("ke-hoach") > -1) {
+            arrSplit = pathName.split("map=");
+            checkMap = arrSplit[1].split("&")[0] - 0; //convert ve so
+            indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10
+            year = pathName.split("nam=")[1];
+            rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
+        }
+        console.log(rs+"/MapServer")
+        return rs + "/MapServer";
+    }
+    //end get url web
 
     //set upper in inputSearch
     $('#inputSearch').keyup(function () {
@@ -41,12 +71,39 @@ require([
             return (data.name.search(/(QH_|KH_)(HienTrang|KeHoach|QuyHoach)/) > -1);
         });
     }
+    
+    //get layer KhoiXa hoac KhoiHuyen, -1 quy dinh la tim Khoi Huyen, > -1 quy dinh la tim Khoi Xa
+    function filterKhoiXaHuyen(layersCall, check) {
+        let textFind = check > 0 ? 'KhoiXa' : 'KhoiHuyen';
+        return layersCall.filter(function findGroupLayer(data){
+            return (data.name.search(textFind) > -1);
+        });
+    }
+
+    //find chu thich dat
+    function findSoild(chuThichDat) {
+        setTimeout(function () {
+            let textSearch = $(".search-chuthich input").val().toUpperCase();
+            let contentSearch = '';
+            let arrSearch = chuThichDat.filter(function find(data) {
+                return (data.label.toUpperCase().search(textSearch) > -1);
+            })
+            if (arrSearch.length !== 0) {
+                arrSearch.map(data => {
+                    contentSearch += `<li><img src='data:image/png;base64,${data.imageData}'/> ${data.label}</li>`
+                })
+            } else {
+                contentSearch = "Không có dữ liệu tương ứng."
+            }
+            $("#hienthi-chuthich").html(contentSearch);
+        },100)
+    }
 
     //end function handling
 
     //render map and handling map
-
-    let urlApiMap = "http://103.9.86.47:6080/arcgis/rest/services/Quy_Hoach_Hiep_Hoa_2015_2019/MapServer";
+    // let urlApiMap = "http://103.9.86.47:6080/arcgis/rest/services/Quy_Hoach_Hiep_Hoa_2015_2019/MapServer";
+    let urlApiMap = getUrlMap();
     ajaxCall(urlApiMap+"?f=pjson").then(dataRs => {
 
         //pretreatment (tien xu ly)
@@ -55,6 +112,8 @@ require([
         console.log(sublayersCall);
         let sublayersClick = filterSublayersClick(layersCall); // get Layer QuyHoach, HienTrang
         console.log(sublayersClick);
+        let layerKhoiXaHuyen = filterKhoiXaHuyen(layersCall, checkMap);
+        console.log(layerKhoiXaHuyen);
         //end pretreatment
 
         //code map here
@@ -65,10 +124,10 @@ require([
             sublayers: [{
                 id: sublayersCall[1].id,
                 visible: true
-            },
+                },
                 {
-                    id: sublayersCall[0].id,
-                    visible: true
+                id: sublayersCall[0].id,
+                visible: true
                 }
             ]
         });
@@ -131,10 +190,64 @@ require([
                 })
                 layerNotices.sort(function(a, b){return a-b});  //get all MaDat and sort for id
                 //set view notice
-                //------------------ToDo
-                console.log(layerNotices);
-                // dom.byId("legend").innerHTML = content; dom set view for api arcgis
+                let content = ''; // chua html view chu thich loại dat
+                let chuThichDat = []; //lua view html de tim kiem
+                // handling set chu thich dat trong map
+                layerNotices.map(data => {
+                    let chuThich = {
+                        imageData : data.imageData,
+                        label: mucDich(data.label)
+                    }
+                    content += `<li><img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                    chuThichDat.push(chuThich);
+                })
+                $("#hienthi-chuthich").html(content); //set chu thich in map
+                //set tim kiem chu thich dat //on input su kien thay doi gia tri trong input
+                $(".search-chuthich input").on('input',function (event) {
+                    //get value delay 100 get value
+                    findSoild(chuThichDat);
+                })
+
+                //handling set tim kiem cac loai dat view
+                let timKiemDatView = '';
+                layerNotices.map(data => {
+                    timKiemDatView += `<li><input type="checkbox" value=${data.label}> <img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                })
+                $("#viewTimKiemDat").html(timKiemDatView);
                 //end set view notice
+
+                //set huyen so do viewDanhSachXaHuyen
+                let viewDanhSachXaHuyen = '';
+                let queryViewXaHuyen = '';
+                if (checkMap > 0 ) {
+                    $(".view-qh-v1 .title-qh span").html(`<i class="fas fa-building"></i> Xã/ Phường`);
+                    queryViewXaHuyen = 'Xa IS NOT NULL';
+                } else {
+                    $(".view-qh-v1 .title-qh span").html(`<i class="fas fa-building"></i> Huyện/ Thành Phố`);
+                    queryViewXaHuyen = 'Huyen IS NOT NULL';
+                }
+                let queryTaskXaHuyen = new QueryTask({
+                    url: urlApiMap + "/"+layerKhoiXaHuyen[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
+                });
+                let queryXaHuyen = new Query();
+                queryXaHuyen.returnGeometry = true;
+                queryXaHuyen.outFields = ["*"];
+                queryXaHuyen.where = queryViewXaHuyen;
+                queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
+                    let arrXaHuyen = results.features;
+                    arrXaHuyen.map(data => {
+                        let item = data.attributes;
+                        if (checkMap > 0) {
+                            viewDanhSachXaHuyen += `<li>- ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                        } else {
+                            viewDanhSachXaHuyen += `<li>- ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                        }
+                    })
+                    $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
+                }).catch(err => {
+                    console.log(err);
+                })
+                //end set huyen so do
 
             }).catch(err => {
                 console.log(err);
@@ -235,14 +348,15 @@ require([
         })
         //end set event, notice in view
 
-        // //on of layer with id checkQuyHoach end checkHienTrang in view
-        // on(dom.byId("checkQuyHoach"), "change", function (ev) {
-        //     layer.findSublayerById(0).visible = ev.target.checked; //on of KeHoach or QuyHoach all id 0
-        // });
-        // on(dom.byId("checkHienTrang"), "change", function (ev) {
-        //     layer.findSublayerById(sublayersCall[1]).visible = ev.target.checked; //on of HienTrang all index 1
-        // });
-        // //end on of layer
+        //on of layer with id checkQuyHoach end checkHienTrang in view
+        on(dom.byId("checkQuyHoach"), "change", function (ev) {
+            layer.findSublayerById(0).visible = ev.target.checked; //on of KeHoach or QuyHoach all id 0
+        });
+        on(dom.byId("checkHienTrang"), "change", function (ev) {
+            console.log(layer);
+            layer.findSublayerById(sublayersCall[1].id).visible = ev.target.checked; //on of HienTrang all index 1
+        });
+        //end on of layer
         //
         // //search map with id btnSearch
         // on(dom.byId("btnSearch"), "click", executeQueryTask);
@@ -472,6 +586,7 @@ require([
         //end search map
     }).catch(err => {
         console.log(err);
+        alert("Chưa có dữ liệu bản đồ");
     });
 
     //end render map and handling map
