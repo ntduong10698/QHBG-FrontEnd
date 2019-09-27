@@ -3,6 +3,11 @@
     --color-gray: #999;
     --color-while: #ededed;
     --font13: 13px;
+    --bg-blue-price: #2ea0f2;
+    --font-16: 16px;
+    --font-20: 20px;
+    --font-26: 26px;
+    --font-40: 40px;
 }
 
 * {
