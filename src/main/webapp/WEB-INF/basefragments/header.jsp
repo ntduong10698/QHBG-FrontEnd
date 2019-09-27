@@ -37,11 +37,11 @@
                 </div>
                 <div class="sicitem-wp">
                     <span>Mật khẩu: <span>(*)</span></span>
-                    <input type="text">
+                    <input type="password">
                 </div>
                 <div class="sicitem-wp">
                     <span>Nhập lại mật khẩu: <span>(*)</span></span>
-                    <input type="text">
+                    <input type="password">
                 </div>
                 <div class="sicitem-wp">
                     <span>Họ và tên: <span>(*)</span></span>
