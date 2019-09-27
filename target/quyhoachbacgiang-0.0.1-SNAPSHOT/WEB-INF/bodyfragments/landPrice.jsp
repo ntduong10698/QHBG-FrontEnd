@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="resources/css/select2.min.css">
 <link rel="stylesheet" href="resources/css/landPrice.css">
 <!-- MAIN -->
 <main>

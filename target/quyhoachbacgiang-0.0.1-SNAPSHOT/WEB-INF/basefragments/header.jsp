@@ -9,7 +9,7 @@
             <div class="litext-wp">
                 <span class="lit-cap">Tài khoản</span>
                 <div class="liinput"><input type="text" placeholder="Email"></div>
-                <div class="liinput"><input type="text" placeholder="Mật khẩu"></div>
+                <div class="liinput"><input type="password" placeholder="Mật khẩu"></div>
                 <div class="rpw">
                     <input type="checkbox">
                     <span>Nhớ tài khoản và mật khẩu</span>
@@ -37,11 +37,11 @@
                 </div>
                 <div class="sicitem-wp">
                     <span>Mật khẩu: <span>(*)</span></span>
-                    <input type="text">
+                    <input type="password">
                 </div>
                 <div class="sicitem-wp">
                     <span>Nhập lại mật khẩu: <span>(*)</span></span>
-                    <input type="text">
+                    <input type="password">
                 </div>
                 <div class="sicitem-wp">
                     <span>Họ và tên: <span>(*)</span></span>
@@ -180,7 +180,7 @@
             <div class="navigation">
                 <ul class="header__menu">
                     <li class="menu-item">
-                        <a href="/home" class="active" title="Home">
+                        <a href="home" class="active" title="Home">
                             <span>Trang chủ</span>
                         </a>
                     </li>
@@ -217,63 +217,383 @@
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="quy hoạch & kế hoạch">
-                            <span>Quy hoạch & Kế hoạch</span>
+                        <a href="#" title="quy hoạch">
+                            <span>Quy hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
                             <li>
-                                <a href="#">
+                                <a href="quy-hoach?map=0">
                                     <i class="fas fa-angle-double-right"></i>
-                                    <span>Quy hoạch sử dụng đất</span>
-                                    <i class="fas fa-caret-right"></i>
+                                    <span>Quy hoạch sử dụng đất tỉnh Bắc Giang</span>
                                 </a>
-                                <ul class="submenu-lv2">
-                                    <li><a href="#">
-                                        <i class="fas fa-angle-double-right"></i>
-                                        <span>Tỉnh Bắc Giang</span>
-                                    </a>
-                                    <li><a href="#">
-                                        <i class="fas fa-angle-double-right"></i>
-                                        <span>Thành Phố Bắc Giang</span>
-                                    </a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fas fa-angle-double-right"></i>
-                                    <span>Kế hoạch sử dụng đất</span>
+                                    <span>Quy hoạch sử dụng đất các huyện, thành phố</span>
                                     <i class="fas fa-caret-right"></i>
                                 </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#">
+                                    <li><a href="quy-hoach?map=1">
                                         <i class="fas fa-angle-double-right"></i>
-                                        <span>Tỉnh Bắc Giang</span>
+                                        <span>Thành phố Bắc Giang</span>
                                     </a>
-                                    <li><a href="#">
+                                    <li><a href="quy-hoach?map=2">
                                         <i class="fas fa-angle-double-right"></i>
-                                        <span>Thành Phố Bắc Giang</span>
+                                        <span>Huyện Hiêp Hòa</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=3">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Yên Dũng</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=4">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lục Nam</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=5">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Sơn Động</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=6">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lạng Giang</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=7">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Việt Yên</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=8">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Tân Yên</span>
+                                    </a>
+                                    </li>
+                                    <li><a href="quy-hoach?map=9">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lục Ngạn</span>
+                                    </a>
+                                    </li>
+
+                                    <li><a href="quy-hoach?map=10">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Yên Thế</span>
                                     </a>
                                     </li>
                                 </ul>
                             </li>
                             <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu quy hoạch sử dụng đất</span></a></li>
+                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu điều chỉnh quy hoạch</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" title="kế hoạch">
+                            <span>Kế hoạch</span>
+                        </a>
+                        <ul class="submenu-lv1 sml1v2">
                             <li>
                                 <a href="#">
                                     <i class="fas fa-angle-double-right"></i>
-                                    <span>Tra cứu điều chỉnh quy hoạch</span>
+                                    <span>Kế hoạch sử dụng đất các huyện, thành phố</span>
+                                    <i class="fas fa-caret-right"></i>
                                 </a>
+                                <ul class="submenu-lv2">
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Thành phố Bắc Giang</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=1&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=1&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=1&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=1&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=1&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Hiệp Hòa</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=2&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=2&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=2&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=2&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=2&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Yên Dũng</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=3&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=3&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=3&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=3&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=2&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lục Nam</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=4&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=4&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=4&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=4&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=4&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Sơn Động</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=5&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=5&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=5&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=5&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=5&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lạng Giang</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=6&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=6&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=6&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=6&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=6&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Việt Yên</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=7&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=7&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=7&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=7&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=7&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Tân Yên</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=8&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=8&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=8&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=8&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=8&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Lục Ngạn</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=9&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=9&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=9&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=9&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=9&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">
+                                        <i class="fas fa-angle-double-right"></i>
+                                        <span>Huyện Yên Thế</span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </a>
+                                        <ul class="submenu-lv3">
+                                            <li><a href="ke-hoach?map=10&nam=2015">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2015</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=10&nam=2016">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2016</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=10&nam=2017">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2017</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=10&nam=2018">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2018</span>
+                                            </a></li>
+                                            <li><a href="ke-hoach?map=10&nam=2019">
+                                                <i class="fas fa-angle-double-right"></i>
+                                                <span>2019</span>
+                                            </a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </li>
                             <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu kế hoạch sử dụng đất</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="công trình & dự án">
+                        <a href="du-an" title="công trình & dự án">
                             <span>Công trình & Dự án</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="quyết định">
+                        <a href="quyet-dinh" title="quyết định">
                             <span>Quyết định</span>
                         </a>
                     </li>
