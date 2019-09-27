@@ -1,638 +1,271 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="resources/css/landPrice.css">
+<link rel="stylesheet" href="resources/css/project.css">
+<link rel="stylesheet" href="resources/css/decision.css">
 <!-- MAIN -->
 <main>
-    <section class="landprice">
-        <div class="container">
-            <div class="row">
-                <div class="col-3 p-lg-0">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link " data-toggle="tab" href="#menu0">
-                                <div class="ni-wp">
-                                    <div class="ni-img">
-                                        <img src="resources/img/coin$.png" alt="">
-                                    </div>
-                                    <div class="ni-text">
-                                        <span>Bảng giá đất nông nghiệp</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#menu1" data-toggle="tab">
-                                <div class="ni-wp">
-                                    <div class="ni-img">
-                                        <img src="resources/img/coin$.png" alt="">
-                                    </div>
-                                    <div class="ni-text">
-                                        <span>Bảng giá đất phi nông nghiệp</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#menu2" data-toggle="tab">
-                                <div class="ni-wp">
-                                    <div class="ni-img">
-                                        <img src="resources/img/search.png" alt="">
-                                    </div>
-                                    <div class="ni-text">
-                                        <span>Tra cứu hệ số điều chỉnh</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#menu3" data-toggle="tab">
-                                <div class="ni-wp">
-                                    <div class="ni-img">
-                                        <img src="resources/img/decistion.png" alt="">
-                                    </div>
-                                    <div class="ni-text">
-                                        <span>Quyết định giá đất cụ thể</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-1">
-                    <div class="ver">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+
+    <main>
+        <section class="dp-filter p-project">
+            <div class="dpfilter-wp">
+                <div class="dpfilter-ct">
+                    <div class="bl-sea d-flex" style="">
+                        <div class="search-1">
+                            <select name="" id="">
+                                <option value="">Bảng giá đất nông nghiệp</option>
+                                <option value="">Bảng giá đất công nghiệp</option>
+                            </select>
+                        </div>
+                        <div class="search-2 " style="width:8%">
+                            <p>Năm / Giai đoạn:</p>
+                            <select name="" id="">
+                                <option value="">2015-2019</option>
+                                <option value="">2019-2030</option>
+                            </select>
+                        </div>
+                        <div class="search-2" style="width:32%">
+                            <p>Bảng giá đất:</p>
+                            <select name="" id="">
+                                <option value="">Trồng lúa nước và cây hàng năm</option>
+                                <option value="">Trồng rừng</option>
+                            </select>
+                        </div>
+                        <div class="search-2">
+                            <p>Vị trí:</p>
+                            <input type="text">
+                        </div>
+                        <div class="search-2">
+                            <p class="d-flex  "><span>Giá đất:</span><span>(đồng/m2)</span></p>
+                            <div class="d-flex ">
+                                <input class="ip-1" type="text">
+                                <input class="ip-1" type="text">
+                            </div>
+
+                        </div>
+                    <div class="dpfc-item dpcf-bt">
+                        <a href="#"><img src="resources/img/searchbt.png" alt=""></a>
+                    </div>
+                    <div class="dpfc-item dpcf-bt">
+                        <a href="#"><img src="resources/img/xls.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-8">
-                    <div class="tab-content">
-                        <div class="tab-pane fade" id="menu0">
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Năm / Giai đoạn:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-stage" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+            </div>
+        </section>
+        <section class="container">
+            <div class="block-table-price2">
+
+                <table class="table-dat table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Bảng Giá Đất</th>
+                        <th>STT</th>
+                        <th>Vị Trí</th>
+                        <th>Giá Đất</th>
+                        <th>Chi Tiết</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Tại Thành Phố Bắc Giang</td>
+
+                        <td>60.000</td>
+                        <td><i class="fa fa-plus-circle class-int" aria-hidden="true"></i></td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+
+        <section class="block-price-bottom " id="block-price-bottom">
+            <div class="fa-pr-bt ">
+                <div class="pr-bt-left">
+                    <a href="">
+                        <img src="resources/img/bando.png" alt="">
+                    </a>
+                </div>
+                <div class="pr-bt-right">
+                    <i id="click-qd" class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    <div class="pr-top">
+                        <span>Thông tin quyết định</span>
+                    </div>
+                    <div class="pr-bottom ">
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Số quyết định</span>
                             </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Bảng giá đất:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-landprice" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Huyện / Thành phố:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-city" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Tên đường, đoạn</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-street" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-search">
-                                <a class="ts-wp" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>Tìm kiếm</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="menu1">
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Năm / Giai đoạn:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-01" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Bảng giá đất:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-02" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Huyện / Thành phố:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-03" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Tên đường, Alalala</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="agriland-04" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-search">
-                                <a class="ts-wp" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>Tìm kiếm</span>
-                                </a>
+                            <div class="pr-infor-right col-9">
+                                <span>861/QĐ-UBND</span>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="menu2">
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Năm / Giai đoạn:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="adjustment-01" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Trích yếu:</span>
                             </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Bảng giá đất:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="adjustment-02" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Huyện / Thành phố:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="adjustment-03" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Tên đường, Ahihihi</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="adjustment-04" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-search">
-                                <a class="ts-wp" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>Tìm kiếm</span>
-                                </a>
+                            <div class="pr-infor-right col-9">
+                                <span>Ban hành bảng giá đất giai đoạn 2015-2019 tỉnh Bắc Giang</span>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="menu3">
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Năm / Giai đoạn:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="decision-01" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Cơ quan ban hành</span>
                             </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Bảng giá đất:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="decision-02" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="pr-infor-right col-9">
+                                <span>Ủy ban Nhân Dân Tỉnh Bắc Giang</span>
                             </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Huyện / Thành phố:</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="decision-03" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Cơ quan ban hành</span>
                             </div>
-                            <div class="tab-item">
-                                <div class="ti-ele1">
-                                    <div class="ele1-left">
-                                        <span>Tên đường, Akakaka</span>
-                                        <div class="mnver">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="ele1-right">
-                                        <select id="decision-04" class="mselect">
-                                            <option value="">--- Gõ để tìm kiếm ---</option>
-                                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                                            </option>
-                                            <option value="6">ha</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div class="pr-infor-right col-3">
+                                <span>30/12/2014</span>
                             </div>
-                            <div class="tab-search">
-                                <a class="ts-wp" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>Tìm kiếm</span>
-                                </a>
+                            <div class="pr-infor-right col-3" style="background: #cccccc;">
+                                <span>Thời gian hiệu lực</span>
+                            </div>
+                            <div class="pr-infor-right col-3">
+                                <span>2015-2019</span>
+                            </div>
+                        </div>
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Cơ quan ban hành</span>
+                            </div>
+                            <div class="pr-infor-right col-3">
+                                <span>30/12/2014</span>
+                            </div>
+                            <div class="pr-infor-right col-3" style="background: #cccccc;">
+                                <span>Thời gian hiệu lực</span>
+                            </div>
+                            <div class="pr-infor-right col-3">
+                                <span>2015-2019</span>
+                            </div>
+                        </div>
+                        <div class="pr-info row">
+                            <div class="pr-infor-left col-3">
+                                <span>Cơ quan ban hành</span>
+                            </div>
+                            <div class="pr-infor-right col-9">
+                                <span><a href="">bacgiang.gov.vn</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
-<!-- END MAIN -->
-<script src="resources/js/select2.min.js"></script>
-<script src="resources/js/landPrice.js"></script>
+        </section>
+    </main>
+    <!-- END MAIN -->
+    <script src="resources/js/select2.min.js"></script>
+    <script src="resources/js/landPrice.js"></script>
