@@ -20,7 +20,6 @@ async function ajaxCall(url) {
     return rs;
 }
 
-
 function checkLogin() {
     $("#submit-log").click(function () {
         if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
@@ -79,7 +78,7 @@ function checkpass() {
 
     })
 }
-=======
+
 async function ajaxCallGet(url) {
     let rs = null;
     await $.ajax({

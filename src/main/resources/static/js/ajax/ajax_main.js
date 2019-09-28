@@ -78,7 +78,7 @@ function checkpass() {
 
     })
 }
-=======
+
 async function ajaxCallGet(url) {
     let rs = null;
     await $.ajax({
