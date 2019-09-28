@@ -19,17 +19,17 @@ public class MainController {
     }
 
     @RequestMapping(value = {"/du-an"}, method = RequestMethod.GET)
-    public String Project(Model model) {
+    public String project(Model model) {
         return "project";
     }
 
     @RequestMapping(value = {"/quyet-dinh"}, method = RequestMethod.GET)
-    public String Decision(Model model) {
+    public String decision(Model model) {
         return "decision";
     }
 
     @RequestMapping(value = {"/quy-hoach", "/ke-hoach"}, method = RequestMethod.GET)
-    public String Map(Model model) {
+    public String map(Model model) {
         return "map";
     }
 

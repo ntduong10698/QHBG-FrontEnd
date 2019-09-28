@@ -26,4 +26,22 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/landPrice.jsp"/>
     </definition>
 
+    <!-- Project Page  -->
+    <definition name="project" extends="base.definition">
+        <put-attribute name="title" value="Dự Án"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/project.jsp"/>
+    </definition>
+
+    <!-- Decision Page  -->
+    <definition name="decision" extends="base.definition">
+        <put-attribute name="title" value="Quyết Định"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/decision.jsp"/>
+    </definition>
+
+    <!-- Decision Page  -->
+    <definition name="map" extends="base.definition">
+        <put-attribute name="title" value="Bản Đồ"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/map.jsp"/>
+    </definition>
+
 </tiles-definitions>

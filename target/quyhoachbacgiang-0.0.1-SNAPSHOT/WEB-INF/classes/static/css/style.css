@@ -3,6 +3,11 @@
     --color-gray: #999;
     --color-while: #ededed;
     --font13: 13px;
+    --bg-blue-price: #2ea0f2;
+    --font-16: 16px;
+    --font-20: 20px;
+    --font-26: 26px;
+    --font-40: 40px;
 }
 
 * {
@@ -268,6 +273,7 @@ header .hwapper>.container{
 nav{
     background-color: #fff;
     /* padding-top: 3px; */
+    z-index: 1002;
 }
 .navigation{
     display: flex;
@@ -278,6 +284,7 @@ nav{
     list-style: none;
     display: flex;
     margin-bottom: 0;
+    z-index: 1003;
 }
 .header__menu li.menu-item{
     transition: .4s all;
@@ -308,7 +315,7 @@ ul.submenu-lv1{
     background-color: white;
     list-style: none;
     width: 250px;
-    z-index: 100;
+    z-index: 1001;
     border: 1px solid rgba(0, 0, 0, 0.616);
     display: none;
 }
@@ -356,16 +363,34 @@ ul.submenu-lv1 li a:hover i{
 }
 .submenu-lv1.sml1v2 li .submenu-lv2{
     position: absolute;
-    right: -360px;
+    right: -250px;
     top: -1px;
     background-color: white;
     list-style: none;
-    width: 360px;
+    width: 250px;
     z-index: 100;
     border: 1px solid rgba(0, 0, 0, 0.616);
     display: none;
 }
 .submenu-lv1.sml1v2 li:hover .submenu-lv2{
+    display: block;
+}
+
+.submenu-lv2 .submenu-lv3 {
+    position: absolute;
+    right: -100px;
+    top: -1px;
+    background-color: white;
+    list-style: none;
+    width: 100px;
+    z-index: 101;
+    border: 1px solid rgba(0, 0, 0, 0.616);
+    display: none;
+}
+
+.submenu-lv3 li{}
+
+.submenu-lv2 li:hover .submenu-lv3{
     display: block;
 }
 /* END NAV */
@@ -518,7 +543,7 @@ span.rt-contet i{
     visibility: hidden;
 }
 .m-loginsignin.show{
-    z-index: 200 ;
+    z-index: 1000 ;
     visibility: visible;
 }
 .login-bg{
@@ -615,7 +640,7 @@ span.rt-contet i{
     align-items: center;
     width: 100%;
 }
-.litext-wp input[type="text"]{
+.litext-wp input[type="text"],.litext-wp input[type="password"],.litext-wp input[type="email"]{
     display: block;
     outline: none;
     color: #22465c;

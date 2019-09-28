@@ -1,3 +1,23 @@
+var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
+
+// xy ly click chi tiet khoi trong map
+// tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
+function fnView(indexPopUp) {
+    $(".block-main-l2").toggle();
+    viewInfoSoild(arrPopUpMap[indexPopUp]);
+}
+
+// set view infoSoild chi tiet
+function viewInfoSoild(data) {
+    $("#infoSoild ul li:nth-child(1)").html(`<span>${ data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaHienTrang+'/'+data.MaQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(2)").html(`<span>${ data.MucDichSuDung }</span>`);
+    $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '...' : data.MucDichQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(4)").html(`<span>${ data.Tinh }</span>`);
+    $("#infoSoild ul li:nth-child(5)").html(`<span>${ data.Huyen }</span>`);
+    $("#infoSoild ul li:nth-child(6)").html(`<span>${ data.Xa }</span>`);
+}
+//end xy ly click chi tiet khoi trong map
+
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -116,6 +136,12 @@ require([
         console.log(layerKhoiXaHuyen);
         //end pretreatment
 
+        //set Option search map
+        if(checkMap === 0 ) {
+            // neu la tinh thi them tuy chon tim khoi huyen
+            $("#tieuChiSearchMap").append(`<option value="huyen">Huyện</option>`);
+        }
+
         //code map here
         let identifyTask, params;
         //sublayersCall[0] is QuyHoach and sublayersCall[1] is HienTrang or NenDiaLy
@@ -211,9 +237,12 @@ require([
                 //handling set tim kiem cac loai dat view
                 let timKiemDatView = '';
                 layerNotices.map(data => {
-                    timKiemDatView += `<li><input type="checkbox" value=${data.label}> <img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                    timKiemDatView += `<li><input type="checkbox" value=${data.label}><div class='muc-dich-dat'><img src='data:image/png;base64,${data.imageData}'/>  ${mucDich(data.label)}</div></li>`
                 })
                 $("#viewTimKiemDat").html(timKiemDatView);
+                $("#viewTimKiemDat input").change(function () {
+                    searchMapCheckBox();
+                }) //set change in checkbox search
                 //end set view notice
 
                 //set huyen so do viewDanhSachXaHuyen
@@ -238,9 +267,9 @@ require([
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
-                            viewDanhSachXaHuyen += `<li>- ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
                         } else {
-                            viewDanhSachXaHuyen += `<li>- ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
                         }
                     })
                     $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
@@ -268,36 +297,35 @@ require([
                     identifyTask.execute(params).then(function (response) {
 
                         let results = response.results;
-
-                        return arrayUtils.map(results, function (result) {
-
-                            var feature = result.feature;
-                            var layerName = result.layerName;
-
+                        arrPopUpMap = []; // moi lan click reset lai mang chua popUp
+                        return arrayUtils.map(results, function (result, indexPopUp) {
+                            let feature = result.feature;
+                            arrPopUpMap.push(feature.attributes); // them tung khoi duoc click
+                            let layerName = result.layerName;
                             feature.attributes.layerName = layerName;
                             if (layerName.search(/(QH_|KH_)(QuyHoach|KeHoach)/) > -1) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin quy hoạch",
                                     content: "<b>Mã sử dụng đất:</b> {MaHienTrang}/{MaQuyHoach} " +
-                                        "<br><b>Mục Đích sử dụng đất: </b> {MucDichSuDung}" +
+                                        "<br><b>Mục đích sử dụng đất: </b> {MucDichSuDung}" +
                                         "<br><b>Mục đích quy hoạch: </b> {MucDichQuyHoach}" +
                                         "<br><b>Diện tích: </b> {DienTich} (ha)" +
                                         "<br><b>Số Quyết Định :</b> {MaQuyetDinh}" +
-                                        "<br><b>Xã :</b> <span class ='XemChiTiet' >{Xa}</span> " +
-                                        "<b> Huyện :</b> <span class ='XemChiTiet' >{Huyen}</span> " +
-                                        "<b> Tỉnh :</b> <span class ='XemChiTiet' >{Tinh}</span> " +
-                                        "<br><b><div class='XemChiTiet' onclick=fnView() >Thống kê</div></b>"
+                                        "<br><b>Xã :</b> <span>{Xa}</span> " +
+                                        "<b> Huyện :</b> <span>{Huyen}</span> " +
+                                        "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             } else if (layerName.search(/(QH_|KH_)HienTrang/) > -1) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin sử dụng đất",
                                     content: "<b>Mã sử dụng đất: </b> {MaHienTrang} " +
-                                        "<br><b>Mục Đích sử dụng: </b> {MucDichSuDung}" +
+                                        "<br><b>Mục đích sử dụng: </b> {MucDichSuDung}" +
                                         "<br><b>Diện tích: </b> {DienTich} (ha)" +
-                                        "<br><b>Xã :</b> <span class ='XemChiTiet' >{Xa}</span> " +
-                                        "<b> Huyện :</b> <span class ='XemChiTiet' >{Huyen}</span> " +
-                                        "<b> Tỉnh :</b> <span class ='XemChiTiet' >{Tinh}</span> " +
-                                        "<br><b><div class='XemChiTiet' onclick=fnView() >Thống kê</div></b>"
+                                        "<br><b>Xã :</b> <span>{Xa}</span> " +
+                                        "<b> Huyện :</b> <span>{Huyen}</span> " +
+                                        "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             }
 
@@ -307,44 +335,38 @@ require([
 
                     }).then(showPopup); // Send the array of features to showPopup()
                 }
+                //show popUp when click
+                function showPopup(response) {
+                    if (response.length > 0) {
+                        view.popup.open({
+                            features: response,
+                            location: event.mapPoint
+                        });
+                        //debugger;
+                        var graphics = arrayUtils.map(response, function (item) {
+                            //debugger;
+                            var symbol = new SimpleFillSymbol({
+                                color: [0, 51, 204, 1],
+                                style: "none",
+                                outline: { // autocasts as esri/symbols/SimpleLineSymbol
+                                    color: [0, 51, 204, 1],
+                                    width: 2
+                                }
+                            });
+                            var polygonGraphic = new Graphic({
+                                geometry: item.geometry,
+                                symbol: symbol
+                            });
+                            return polygonGraphic;
+                        });
+                        view.graphics.removeAll();
+                        view.graphics.addMany(graphics);
+                    }
+                    dom.byId("mapView").style.cursor = "auto";
+                }
+                //end show popUp when click
             }
             //end function click
-            //show popUp when click
-            function showPopup(response) {
-                if (response.length > 0) {
-                    view.popup.open({
-                        features: response,
-                        location: event.mapPoint
-                    });
-                    //debugger;
-                    var graphics = arrayUtils.map(response, function (item) {
-                        //debugger;
-                        var symbol = new SimpleFillSymbol({
-                            color: [0, 51, 204, 1],
-                            style: "none",
-                            outline: { // autocasts as esri/symbols/SimpleLineSymbol
-                                color: [0, 51, 204, 1],
-                                width: 2
-                            }
-                        });
-                        var polygonGraphic = new Graphic({
-                            geometry: item.geometry,
-                            symbol: symbol
-
-                        });
-                        return polygonGraphic;
-                    });
-                    view.graphics.removeAll();
-                    view.graphics.addMany(graphics);
-                }
-                dom.byId("mapView").style.cursor = "auto";
-            }
-            //end show popUp when click
-            //click statistical
-            function fnView() {
-
-            }
-            //end click statistical
         })
         //end set event, notice in view
 
@@ -358,114 +380,31 @@ require([
         });
         //end on of layer
         //
-        // //search map with id btnSearch
-        // on(dom.byId("btnSearch"), "click", executeQueryTask);
+        //search map with id btnSearch
+        on(dom.byId("btnSearchMap"), "click", executeQueryTask);
         var searchResults;
         // handling search
         function executeQueryTask() {
-            var inputSearch = dom.byId("inputSearch").value; //get text in input Search with id inputSearch
+            let inputSearch = dom.byId("inputSearchMap").value; //get text in input Search with id inputSearch
             $(document.body).css({
                 'cursor': 'wait' //when load change icon cursor
             });
-            let tieuChi = dom.byId("tieuChi").value; //get tieuChi search
+            let tieuChi = dom.byId("tieuChiSearchMap").value; //get tieuChi search
             //-----------------QuyHoach && KeHoach -- bo link huyen xa
-            if (tieuChi === 'quyHoach' || tieuChi === 'keHoach') {
-                var queryTask = new QueryTask({
-                    url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
-                });
-                var query = new Query();
-                query.returnGeometry = true;
-                query.outFields = ["*"];
-                query.where = `MaQuyHoach = '${inputSearch}'`;
-                // When resolved, returns features and graphics that satisfy the query.
-                queryTask.execute(query).then(function (results) {
-                    searchResults = results;
-                    if (searchResults.features.length > 0) {
-                        let content = "<table class='grid'>";
-                        content += " <thead><tr><th>STT</th><th>Mã quy hoạch</th><th>Mục đích quy hoạch</th><th>Diện tích</th>" +
-                            "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
-                        // let ma = searchResults.features[0].attributes.MaQuyHoach;
-                        let features = searchResults.features;
-                        features.map((data, index) => {
-                            let item = data.attributes;
-                            let uid = data.uid;
-                            content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>&nbsp;&nbsp;${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                            content += `<td><a href='#'>${item.Xa}</a></td><td><a href='#'>${item.Huyen}<a/></td><td><a id='idVitri${uid}'  href='#ViTri' '>Vị trí</a></td>`;
-                        })
-                        content += "</table>";
-                        dom.byId("tableSearch").innerHTML = content;
-                        features.map(data => {
-                            let uid = data.uid;
-                            $(`#idVitri${uid}`).click(() => {
-                                zoomTo(uid);
-                            });
-                        })
-                    } else alert("Không tìm thấy kết quả phù hợp");
-                    $(document.body).css({
-                        'cursor': 'default'
-                    });
-                }).catch(err => {
-                    console.log(err);
-                });
-
-                queryTask.executeForCount(query).then(function (searchResults) {
-                    console.log(searchResults);
-                }).catch(err => {
-                    console.log(err);
-                });
+            if (tieuChi === 'quyHoach') {
+                searchMapQuyHoach(`'${inputSearch}'`); // query text can 'ma'
             }
             //-----------------HienTrang -- bo link huyen xa
             if (tieuChi == 'hienTrang') {
-                var queryTask = new QueryTask({
-                    url: urlApiMap + "/"+sublayersClick[1].id // index 1 is KhoiQuyHoach
-                });
-                var query = new Query();
-                query.returnGeometry = true;
-                query.outFields = ["*"];
-                query.where = `MaHienTrang = '${inputSearch}'`;
-                // When resolved, returns features and graphics that satisfy the query.
-                queryTask.execute(query).then(function (results) {
-                    searchResults = results;
-                    if (searchResults.features.length > 0) {
-                        let content = "<table class='grid'>";
-                        content += " <thead><tr><th>STT</th><th>Mã hiện trạng</th><th>Mục đích sử dụng</th><th>Diện tích</th>" +
-                            "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
-                        let features = searchResults.features;
-                        features.map((data, index) => {
-                            let item = data.attributes;
-                            let uid = data.uid;
-                            content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>&nbsp;&nbsp;${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                            content += `<td><a href='#'>${item.Xa}</a></td><td><a href='#'>${item.Huyen}<a/></td><td><a id='idVitri${uid}'  href='#ViTri' '>Vị trí</a></td>`
-                        })
-                        content += "</table>";
-                        dom.byId("tableSearch").innerHTML = content;
-                        features.map(data => {
-                            let uid = data.uid;
-                            $(`#idVitri${uid}`).click(() => {
-                                zoomTo(uid);
-                            });
-                        })
-                    } else alert("Không tìm thấy kết quả phù hợp");
-                    $(document.body).css({
-                        'cursor': 'default'
-                    });
-                }).catch(err => {
-                    console.log(err);
-                });
-
-                queryTask.executeForCount(query).then(function (searchResults) {
-                    console.log(searchResults);
-                }).catch(err => {
-                    console.log(err);
-                });
+                searchMapHienTrang(`'${inputSearch}'`); // query text can 'ma'
             }
             //------------------Xa-Phuong
             if (tieuChi == 'xa') {
                 let khoiXa = layersCall.find(data => data.name.search("KhoiXa") > -1);
-                var queryTask = new QueryTask({
+                let queryTask = new QueryTask({
                     url: urlApiMap + "/" + khoiXa.id
                 });
-                var query = new Query();
+                let query = new Query();
                 query.returnGeometry = true;
                 query.outFields = ["*"];
                 query.where = `Upper(Xa) like N'%${inputSearch}%'`;
@@ -473,26 +412,31 @@ require([
                 queryTask.execute(query).then(function (results) {
                     searchResults = results;
                     if (searchResults.features.length > 0) {
-                        let content = "<table class='grid'>";
+                        let content = "";
                         content += " <thead><tr><th>STT</th><th>Xã</th><th>Huyện</th><th>Tỉnh</td><th>Diện tích</th>" +
                             "<th>Vị trí</th></tr></thead>";
                         let features = searchResults.features;
                         features.map((data,index) => {
                             let item = data.attributes;
                             let uid = data.uid;
-                            content += `<tr><td>  ${index + 1} </td><td>${item.Xa}</td> <td>${item.Huyen}</td><td>Bắc Giang</td><td>&nbsp;&nbsp;${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                            content += `</td><td><a id='idVitriXa${uid}'  href='#ViTri' >Vị trí</a></td>`;
+                            content += `<tr><td>  ${index + 1} </td><td>${item.Xa}</td> <td>${item.Huyen}</td><td>Bắc Giang</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
+                            content += `</td><td><a id='idVitriXa${uid}'  href='' >Vị trí</a></td>`;
                         })
-                        content += "</table>";
-                        dom.byId("tableSearch").innerHTML = content;
+                        dom.byId("tableSearchMap").innerHTML = content;
                         features.map(data => {
                             let uid = data.uid;
                             $(`#idVitriXa${uid}`).click(() => {
                                 zoomTo(uid);
                             });
                         })
-
-                    } else alert("Không tìm thấy kết quả phù hợp");
+                        $(".form-search-toado").css("display","block");
+                        $("#tableSearchMap a").click(function () {
+                            return false;
+                        });
+                    } else {
+                        $(".form-search-toado").css("display","none");
+                        alert("Không tìm thấy kết quả phù hợp");
+                    }
                     $(document.body).css({
                         'cursor': 'default'
                     });
@@ -509,10 +453,10 @@ require([
             //------------------Huyen--chua test
             if (tieuChi == 'huyen') {
                 let khoiHuyen = layersCall.find(data => data.name.search("KhoiHuyen") > -1);
-                var queryTask = new QueryTask({
+                let queryTask = new QueryTask({
                     url: urlApiMap+ "/" + khoiHuyen.id
                 });
-                var query = new Query();
+                let query = new Query();
                 query.returnGeometry = true;
                 query.outFields = ["*"];
                 query.where = `Upper(Huyen) like N'%${inputSearch}%'`;
@@ -520,26 +464,31 @@ require([
                 queryTask.execute(query).then(function (results) {
                     searchResults = results;
                     if (searchResults.features.length > 0) {
-                        let content = "<table class='grid'>";
+                        let content = "";
                         content += " <thead><tr><th>STT</th><th>Huyện</th><th>Tỉnh</th><th>Diện tích</th>" +
                             "<th>Vị trí</th></tr></thead>";
                         let features = searchResults.features;
                         features.map((data,index) => {
                             let item = data.attributes;
                             let uid = data.uid;
-                            content += `<tr><td>  ${index + 1} </td><td>${item.Huyen}</td> <td>Bắc Giang</td><td>&nbsp;${item.DienTich} (ha)</td>`;
-                            content += `<td><a id='idVitriHuyen${uid}'  href='#ViTri' '>Vị trí</a></td>`
+                            content += `<tr><td>  ${index + 1} </td><td>${item.Huyen}</td> <td>Bắc Giang</td><td>${item.DienTich} (ha)</td>`;
+                            content += `<td><a id='idVitriHuyen${uid}'  href='' '>Vị trí</a></td>`
                         })
-                        content += "</table>";
-                        dom.byId("tableSearch").innerHTML = content;
+                        dom.byId("tableSearchMap").innerHTML = content;
                         features.map(data => {
                             let uid = data.uid;
                             $(`#idVitriHuyen${uid}`).click(() => {
                                 zoomTo(uid);
                             });
                         })
-
-                    } else alert("Không tìm thấy kết quả phù hợp");
+                        $("#tableSearchMap a").click(function () {
+                            return false;
+                        });
+                        $(".form-search-toado").css("display","block");
+                    } else {
+                        $(".form-search-toado").css("display","none");
+                        alert("Không tìm thấy kết quả phù hợp");
+                    }
                     $(document.body).css({
                         'cursor': 'default'
                     });
@@ -553,6 +502,115 @@ require([
                     console.log(err);
                 });
             }
+        }
+        
+        function searchMapQuyHoach(inputSearch) {
+            let queryTask = new QueryTask({
+                url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
+            });
+            let query = new Query();
+            query.returnGeometry = true;
+            query.outFields = ["*"];
+            query.where = `MaQuyHoach = ${inputSearch}`;
+            // When resolved, returns features and graphics that satisfy the query.
+            $(document.body).css({
+                'cursor': 'wait'
+            });
+            queryTask.execute(query).then(function (results) {
+                searchResults = results;
+                if (searchResults.features.length > 0) {
+                    let content = "";
+                    content += " <thead><tr><th>STT</th><th>Mã quy hoạch</th><th>Mục đích quy hoạch</th><th>Diện tích</th>" +
+                        "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
+                    // let ma = searchResults.features[0].attributes.MaQuyHoach;
+                    let features = searchResults.features;
+                    features.map((data, index) => {
+                        let item = data.attributes;
+                        let uid = data.uid;
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
+                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`;
+                    })
+                    dom.byId("tableSearchMap").innerHTML = content;
+                    features.map(data => {
+                        let uid = data.uid;
+                        $(`#idVitri${uid}`).click(() => {
+                            zoomTo(uid);
+                        });
+                    })
+                    $(".form-search-toado").css("display","block");
+                    $("#tableSearchMap a").click(function () {
+                        return false;
+                    });
+                } else {
+                    $(".form-search-toado").css("display","none");
+                    alert("Không tìm thấy kết quả phù hợp");
+                }
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            }).catch(err => {
+                console.log(err);
+            });
+
+            queryTask.executeForCount(query).then(function (searchResults) {
+                console.log(searchResults);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        
+        function searchMapHienTrang(inputSearch) {
+            let queryTask = new QueryTask({
+                url: urlApiMap + "/"+sublayersClick[1].id // index 1 is KhoiQuyHoach
+            });
+            let query = new Query();
+            query.returnGeometry = true;
+            query.outFields = ["*"];
+            query.where = `MaHienTrang = ${inputSearch}`;
+            // When resolved, returns features and graphics that satisfy the query.
+            $(document.body).css({
+                'cursor': 'wait'
+            });
+            queryTask.execute(query).then(function (results) {
+                searchResults = results;
+                if (searchResults.features.length > 0) {
+                    let content = "";
+                    content += " <thead><tr><th>STT</th><th>Mã hiện trạng</th><th>Mục đích sử dụng</th><th>Diện tích</th>" +
+                        "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
+                    let features = searchResults.features;
+                    features.map((data, index) => {
+                        let item = data.attributes;
+                        let uid = data.uid;
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
+                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`
+                    })
+                    dom.byId("tableSearchMap").innerHTML = content;
+                    features.map(data => {
+                        let uid = data.uid;
+                        $(`#idVitri${uid}`).click(() => {
+                            zoomTo(uid);
+                        });
+                    })
+                    $(".form-search-toado").css("display","block");
+                    $("#tableSearchMap a").click(function () {
+                        return false;
+                    });
+                } else {
+                    $(".form-search-toado").css("display","none");
+                    alert("Không tìm thấy kết quả phù hợp");
+                }
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            }).catch(err => {
+                console.log(err);
+            });
+
+            queryTask.executeForCount(query).then(function (searchResults) {
+                console.log(searchResults);
+            }).catch(err => {
+                console.log(err);
+            });
         }
         // end handling search
         //click zoom in search
@@ -584,6 +642,49 @@ require([
         }
         //end zoom in search
         //end search map
+
+        //search checkbox
+        function searchMapCheckBox() {
+            let tieuChi = dom.byId("tieuChiSearchMap").value; //get tieuChi search
+            let queryRs;
+            if (tieuChi === 'quyHoach') {
+                queryRs = getInputSearchCheckBox(true);
+                // neu '' tuc la ko co checkbox click khong query va tat bang find
+                if (queryRs !== '') {
+                    searchMapQuyHoach(queryRs);
+                } else {
+                    $(".form-search-toado").css("display","none");
+                }
+            } else {
+                queryRs = getInputSearchCheckBox(false);
+                // neu '' tuc la ko co checkbox click khong query va tat bang find
+                if (queryRs !== '') {
+                    searchMapHienTrang(queryRs);
+                } else {
+                    $(".form-search-toado").css("display","none");
+                }
+            }
+        }
+        //test true la quy hoach, false la hien trang
+        //create query add
+        function getInputSearchCheckBox(test) {
+            let rs = '';
+            $("#viewTimKiemDat input").map((index, data) => {
+                let check = $(data).is(":checked");
+                if (check) {
+                    let arrSplit = mucDich($(data).val()).split(":");
+                    if (rs === '') {
+                        rs += `'${arrSplit[0]}'`; // '' thi chi can ma
+                    } else {
+                        rs += test ? ` OR MaQuyHoach = '${arrSplit[0]}'` : ` OR MaHienTrang = '${arrSplit[0]}'`; //kiem tra == 'ma'
+                    }
+                }
+            })
+            return rs;
+        }
+        //search checkbox
+
+        //end search check box
     }).catch(err => {
         console.log(err);
         alert("Chưa có dữ liệu bản đồ");

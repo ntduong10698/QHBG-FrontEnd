@@ -1,0 +1,209 @@
+.dp-filter{
+    width: 100%;
+    background-image: url(../img/bgqueytdinh.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    padding: 10px 0;
+    background-size: cover;
+}
+.dpfilter-wp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dpfilter-ct{
+    width: 1215px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dpfc-item{
+    background-color: white !important;
+    color: black;
+}
+.dpcf-fitem{
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+    height: 68px;
+}
+.dpcf-fitem>input{
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #93a6b0;
+    padding:  3px;
+    font-size: 13px;
+    font-style: italic;
+    background-color: #dde8f5;
+}
+.dpcf-fitem>input::placeholder{
+    font-size: 13px;
+    font-style: italic;
+}
+.dpcf-select{
+    width: 24%;
+    height: 68px;
+    padding: 10px 5px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.dpcf-select select{
+    width: 100%;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #93a6b0;
+    padding:  3px;
+    font-size: 13px !important;
+    font-style: italic  !important;
+}
+.dpcf-select select::placeholder{
+    font-size: 13px !important;
+    font-style: italic  !important;
+}
+.select2-results .select2-results__option{
+    font-size: 13px;
+}
+.select2-results__options::-webkit-scrollbar{
+    width: 5px;
+    background: #ADA996;
+}
+.select2-results__options::-webkit-scrollbar-thumb {
+    background: #22465c;
+}
+.select2-results__options::-webkit-scrollbar-track {
+    box-shadow: inset 2px 2px 4px #22465c;
+    background-color: #F5F5F5;
+}
+.select2-selection__placeholder{
+    font-size: 12px;
+    font-style: italic;
+}
+.select2-selection__rendered{
+    outline: none;
+    border: none;
+    font-size: 12px;
+    height: 26px;
+    font-style: italic;
+    background-color: #dde8f5;
+}
+.dpcf-bt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 68px;
+    height: 68px;
+    background: transparent;
+    border-radius: 1px;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+.dpcf-bt img, .dpcf-bt>a{
+    width: 100%;
+    height: 100%;
+}
+.dpfc-item>span{
+    font-size: 13px;
+    font-weight: 600;
+}
+.dpfc-item>span{
+
+}
+.dpcf-cb{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 11%;
+    padding: 10px 5px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+    max-height: 68px;
+}
+.dpcf-cb>span{
+    position: relative;
+}
+.mnverv2{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 2px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mnverv2 span{
+    height: 10px;
+    width: 2px;
+    background-color: #99c3fb;
+    margin: 1px 0;
+}
+.icbra-item>input[type="checkbox"]{
+    border-radius: 50%;
+}
+.icbra-item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.icbra-wp {
+    display: flex;
+    flex-direction: column;
+}
+.icbra-item label{
+    white-space: nowrap;
+    margin: 0 !important;
+    font-size: 13px;
+    padding-left: 3px;
+    font-weight: 500;
+}
+.dp-table{
+    padding: 25px;
+}
+.dp-table table thead tr{
+    background-color: #ededed;
+}
+.dp-table table thead tr th{
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
+.dp-table table thead tr th:nth-child(1){
+    white-space: nowrap;
+}
+.dp-table table thead tr th:nth-child(1), .dp-table table thead tr th:nth-child(5){
+    white-space: nowrap;
+}
+.dp-table table tbody tr:hover td{
+    font-style: italic !important;
+}
+.dp-table table tbody tr td{
+    font-size: 15px;
+    text-align: left;
+}
+.dp-table table tbody tr td span:nth-child(1){
+    display: block;
+    text-transform: capitalize;
+}
+.dp-table table tbody tr td span:nth-child(2){
+    font-style: italic;
+    color: #666666;
+    white-space: nowrap;
+}
+.dp-table table tbody tr td:nth-child(3),.dp-table table tbody tr td:nth-child(1){
+    white-space: nowrap;
+}
+.dp-table table tbody tr td:nth-child(5){
+    padding: 0;
+    vertical-align: middle;
+}
+.dp-table table tbody tr td:nth-child(5)>a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.dp-table table thead tr th{
+    white-space: nowrap;
+}
