@@ -1,3 +1,23 @@
+var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
+
+// xy ly click chi tiet khoi trong map
+// tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
+function fnView(indexPopUp) {
+    $(".block-main-l2").toggle();
+    viewInfoSoild(arrPopUpMap[indexPopUp]);
+}
+
+// set view infoSoild chi tiet
+function viewInfoSoild(data) {
+    $("#infoSoild ul li:nth-child(1)").html(`<span>${ data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaHienTrang+'/'+data.MaQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(2)").html(`<span>${ data.MucDichSuDung }</span>`);
+    $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '...' : data.MucDichQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(4)").html(`<span>${ data.Tinh }</span>`);
+    $("#infoSoild ul li:nth-child(5)").html(`<span>${ data.Huyen }</span>`);
+    $("#infoSoild ul li:nth-child(6)").html(`<span>${ data.Xa }</span>`);
+}
+//end xy ly click chi tiet khoi trong map
+
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -217,7 +237,7 @@ require([
                 //handling set tim kiem cac loai dat view
                 let timKiemDatView = '';
                 layerNotices.map(data => {
-                    timKiemDatView += `<li><input type="checkbox" value=${data.label}> <img src='data:image/png;base64,${data.imageData}'/> ${mucDich(data.label)}</li>`
+                    timKiemDatView += `<li><input type="checkbox" value=${data.label}><div class='muc-dich-dat'><img src='data:image/png;base64,${data.imageData}'/>  ${mucDich(data.label)}</div></li>`
                 })
                 $("#viewTimKiemDat").html(timKiemDatView);
                 $("#viewTimKiemDat input").change(function () {
@@ -247,9 +267,9 @@ require([
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
-                            viewDanhSachXaHuyen += `<li>- ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
                         } else {
-                            viewDanhSachXaHuyen += `<li>- ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
                         }
                     })
                     $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
@@ -277,36 +297,35 @@ require([
                     identifyTask.execute(params).then(function (response) {
 
                         let results = response.results;
-
-                        return arrayUtils.map(results, function (result) {
-
-                            var feature = result.feature;
-                            var layerName = result.layerName;
-
+                        arrPopUpMap = []; // moi lan click reset lai mang chua popUp
+                        return arrayUtils.map(results, function (result, indexPopUp) {
+                            let feature = result.feature;
+                            arrPopUpMap.push(feature.attributes); // them tung khoi duoc click
+                            let layerName = result.layerName;
                             feature.attributes.layerName = layerName;
                             if (layerName.search(/(QH_|KH_)(QuyHoach|KeHoach)/) > -1) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin quy hoạch",
                                     content: "<b>Mã sử dụng đất:</b> {MaHienTrang}/{MaQuyHoach} " +
-                                        "<br><b>Mục Đích sử dụng đất: </b> {MucDichSuDung}" +
+                                        "<br><b>Mục đích sử dụng đất: </b> {MucDichSuDung}" +
                                         "<br><b>Mục đích quy hoạch: </b> {MucDichQuyHoach}" +
                                         "<br><b>Diện tích: </b> {DienTich} (ha)" +
                                         "<br><b>Số Quyết Định :</b> {MaQuyetDinh}" +
-                                        "<br><b>Xã :</b> <span class ='XemChiTiet' >{Xa}</span> " +
-                                        "<b> Huyện :</b> <span class ='XemChiTiet' >{Huyen}</span> " +
-                                        "<b> Tỉnh :</b> <span class ='XemChiTiet' >{Tinh}</span> " +
-                                        "<br><b><div class='XemChiTiet' onclick=fnView() >Thống kê</div></b>"
+                                        "<br><b>Xã :</b> <span>{Xa}</span> " +
+                                        "<b> Huyện :</b> <span>{Huyen}</span> " +
+                                        "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             } else if (layerName.search(/(QH_|KH_)HienTrang/) > -1) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin sử dụng đất",
                                     content: "<b>Mã sử dụng đất: </b> {MaHienTrang} " +
-                                        "<br><b>Mục Đích sử dụng: </b> {MucDichSuDung}" +
+                                        "<br><b>Mục đích sử dụng: </b> {MucDichSuDung}" +
                                         "<br><b>Diện tích: </b> {DienTich} (ha)" +
-                                        "<br><b>Xã :</b> <span class ='XemChiTiet' >{Xa}</span> " +
-                                        "<b> Huyện :</b> <span class ='XemChiTiet' >{Huyen}</span> " +
-                                        "<b> Tỉnh :</b> <span class ='XemChiTiet' >{Tinh}</span> " +
-                                        "<br><b><div class='XemChiTiet' onclick=fnView() >Thống kê</div></b>"
+                                        "<br><b>Xã :</b> <span>{Xa}</span> " +
+                                        "<b> Huyện :</b> <span>{Huyen}</span> " +
+                                        "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             }
 
@@ -316,44 +335,38 @@ require([
 
                     }).then(showPopup); // Send the array of features to showPopup()
                 }
+                //show popUp when click
+                function showPopup(response) {
+                    if (response.length > 0) {
+                        view.popup.open({
+                            features: response,
+                            location: event.mapPoint
+                        });
+                        //debugger;
+                        var graphics = arrayUtils.map(response, function (item) {
+                            //debugger;
+                            var symbol = new SimpleFillSymbol({
+                                color: [0, 51, 204, 1],
+                                style: "none",
+                                outline: { // autocasts as esri/symbols/SimpleLineSymbol
+                                    color: [0, 51, 204, 1],
+                                    width: 2
+                                }
+                            });
+                            var polygonGraphic = new Graphic({
+                                geometry: item.geometry,
+                                symbol: symbol
+                            });
+                            return polygonGraphic;
+                        });
+                        view.graphics.removeAll();
+                        view.graphics.addMany(graphics);
+                    }
+                    dom.byId("mapView").style.cursor = "auto";
+                }
+                //end show popUp when click
             }
             //end function click
-            //show popUp when click
-            function showPopup(response) {
-                if (response.length > 0) {
-                    view.popup.open({
-                        features: response,
-                        location: event.mapPoint
-                    });
-                    //debugger;
-                    var graphics = arrayUtils.map(response, function (item) {
-                        //debugger;
-                        var symbol = new SimpleFillSymbol({
-                            color: [0, 51, 204, 1],
-                            style: "none",
-                            outline: { // autocasts as esri/symbols/SimpleLineSymbol
-                                color: [0, 51, 204, 1],
-                                width: 2
-                            }
-                        });
-                        var polygonGraphic = new Graphic({
-                            geometry: item.geometry,
-                            symbol: symbol
-
-                        });
-                        return polygonGraphic;
-                    });
-                    view.graphics.removeAll();
-                    view.graphics.addMany(graphics);
-                }
-                dom.byId("mapView").style.cursor = "auto";
-            }
-            //end show popUp when click
-            //click statistical
-            function fnView() {
-
-            }
-            //end click statistical
         })
         //end set event, notice in view
 
