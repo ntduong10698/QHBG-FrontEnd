@@ -1,0 +1,50 @@
+main{
+    min-height: 100%;
+}
+.lu-landuseplan .dpfc-item.dpcf-select{
+    width: 43.5% !important;
+    padding: 5px;
+}
+.lu-landuseplan .dpfc-item .dpcft-drop{
+    padding-top: 6px;
+}
+.dp-table.lu-landuseplan table {
+    background-color: white;
+}
+.dp-table.lu-landuseplan .table-wp{
+    width: 100%;
+    overflow:auto;
+    margin-bottom: 30px;
+}
+.dp-table.lu-landuseplan table thead tr th{
+    font-size: var(--font13);
+    white-space: unset;
+    vertical-align: middle;
+    padding: 4px;
+    text-align: center;
+}
+.dp-table.lu-landuseplan table tbody tr td{
+    text-align: center;
+    font-size: 12px ;
+    white-space: unset;
+    vertical-align: middle;
+    padding: 4px;
+}
+.dp-table.lu-landuseplan table tbody tr:hover td{
+    font-style: normal !important;
+}
+.tablep-cap{
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #22465c;
+    user-select: none;
+}
+.tablep-cap span{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 18px;
+    display: block;
+    padding: 15px;
+    color: white;
+}

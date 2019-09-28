@@ -192,36 +192,36 @@
                     <%--                        </a>--%>
                     <%--                    </li>--%>
                     <li class="menu-item">
-                        <a href="gia-dat" title="giá đất">
+                        <a href="gia-dat-nong-nghiep" title="giá đất">
                             <span>Giá đất</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
+                            <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>
                             </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i>
+                                    <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i>
                                         <span>Giai đoạn 2015-2019</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất phi nông
+                            <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất phi nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>
                             </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i>
+                                    <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i>
                                         <span>Giai đoạn 2015-2019</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
+                            <li><a href="quyet-dinh?nhomQuyetDinh=1"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
                                             thể</span></a></li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Hệ số điều
+                            <li><a href="he-so-dieu-chinh"><i class="fas fa-angle-double-right"></i> <span>Hệ số điều
                                             chỉnh</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="quy hoạch">
+                        <a href="quy-hoach?map=0" title="quy hoạch">
                             <span>Quy hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
@@ -232,7 +232,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="quy-hoach?map=1">
                                     <i class="fas fa-angle-double-right"></i>
                                     <span>Quy hoạch sử dụng đất các huyện, thành phố</span>
                                     <i class="fas fa-caret-right"></i>
@@ -290,25 +290,25 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu quy hoạch sử dụng đất</span></a>
+                            <li><a href="tra-cuu-quy-hoach"><i class="fas fa-angle-double-right"></i> <span>Tra cứu quy hoạch sử dụng đất</span></a>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i>
+                            <li><a href="tra-cuu-dieu-chinh-quy-hoach"><i class="fas fa-angle-double-right"></i>
                                 <span>Tra cứu điều chỉnh quy hoạch</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="kế hoạch">
+                        <a href="ke-hoach?map=1&nam=2015" title="kế hoạch">
                             <span>Kế hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
                             <li>
-                                <a href="#">
+                                <a href="ke-hoach?map=1&nam=2015">
                                     <i class="fas fa-angle-double-right"></i>
                                     <span>Kế hoạch sử dụng đất các huyện, thành phố</span>
                                     <i class="fas fa-caret-right"></i>
                                 </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=1&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Thành phố Bắc Giang</span>
                                         <i class="fas fa-caret-right"></i>
@@ -336,7 +336,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=2&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Hiệp Hòa</span>
                                         <i class="fas fa-caret-right"></i>
@@ -364,7 +364,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=3&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Yên Dũng</span>
                                         <i class="fas fa-caret-right"></i>
@@ -392,7 +392,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=4&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lục Nam</span>
                                         <i class="fas fa-caret-right"></i>
@@ -420,7 +420,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=5&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Sơn Động</span>
                                         <i class="fas fa-caret-right"></i>
@@ -448,7 +448,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=6&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lạng Giang</span>
                                         <i class="fas fa-caret-right"></i>
@@ -476,7 +476,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=7&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Việt Yên</span>
                                         <i class="fas fa-caret-right"></i>
@@ -504,7 +504,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=8&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Tân Yên</span>
                                         <i class="fas fa-caret-right"></i>
@@ -532,7 +532,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=9&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lục Ngạn</span>
                                         <i class="fas fa-caret-right"></i>
@@ -560,7 +560,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=10&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Yên Thế</span>
                                         <i class="fas fa-caret-right"></i>
@@ -590,7 +590,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i>
+                            <li><a href="tra-cuu-ke-hoach"><i class="fas fa-angle-double-right"></i>
                                 <span>Tra cứu kế hoạch sử dụng đất</span></a></li>
                         </ul>
                     </li>

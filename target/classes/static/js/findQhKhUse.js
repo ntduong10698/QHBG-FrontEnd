@@ -1,13 +1,14 @@
 $(document).ready(function () {
-    $("#dp-drop3.pp-drop").select2( {
-        placeholder: "--- Tất cả ---",
+    // Select 2 Plugin Jquery in landprice.html
+    $("#dp-drop5").select2( {
+        placeholder: "--- Chọn chức năng đất ---",
         allowClear: true
     } );
-    $("#dp-drop4.pp-drop").select2( {
-        placeholder: "Dự án trong quy hoạch",
+    $("#dp-drop6").select2( {
+        placeholder: "--- Chọn đơn vị ---",
         allowClear: true
     } );
-
+    // Scroll Fix Filter
     $(window).scroll(function () {
         var scroll = $(this).scrollTop();
         if(scroll > 60){

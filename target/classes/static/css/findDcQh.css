@@ -1,0 +1,68 @@
+main{
+    min-height: 100%;
+}
+.lu-adjplan{
+
+}
+.lu-adjplan .dpfc-item.dpcf-select, .lu-adjplan .dpfc-item.dpcf-fitem{
+    width: 29% !important;
+    padding: 5px;
+}
+.lu-adjplan .dpfc-item{
+    justify-content: flex-start !important;
+    display: flex;
+    flex-direction: column;
+}
+.lu-adjplan .dpfc-item>span{
+    padding-bottom: 6px;
+}
+
+.dp-table.lu-adjplan table {
+    background-color: white;
+    width: 100%;
+}
+.dp-table.lu-adjplan table>thead>tr>th{
+    font-size: var(--font13);
+    white-space:  normal;
+    vertical-align: middle;
+    padding: 4px;
+    text-align: center;
+
+}
+.dp-table.lu-adjplan table>tbody>tr>td:nth-child(5),.dp-table.lu-adjplan table>tbody>tr>td:nth-child(6){
+    white-space: nowrap;
+    text-align: center;
+}
+.dp-table.lu-adjplan table>tbody>tr>td{
+    text-align: left;
+    font-size: var(--font13) ;
+    white-space: unset;
+    vertical-align: middle;
+    padding: 5px;
+}
+.dp-table.lu-adjplan table tbody tr:hover td{
+    font-style: normal !important;
+}
+.pp-pagi{
+    padding-top: 20px;
+    width: 100%;
+}
+.ppgai-wp{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.ppgai-wp>span{
+    font-size: 13px;
+    font-weight: 600;
+    font-style: italic;
+}
+.pagi-c{
+    padding-left: 30px;
+    display: flex;
+}
+.pagi-c span{
+    padding: 5px;
+    display: block;
+    border: 1px solid #ededed;
+}

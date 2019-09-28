@@ -13,7 +13,7 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping(value = {"/gia-dat"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/gia-dat-nong-nghiep", "/gia-dat-phi-nong-nghiep"}, method = RequestMethod.GET)
     public String landPrice(Model model) {
         return "landPrice";
     }
@@ -33,4 +33,18 @@ public class MainController {
         return "map";
     }
 
+    @RequestMapping(value = {"/tra-cuu-quy-hoach", "/tra-cuu-ke-hoach"}, method = RequestMethod.GET)
+    public String findQhKhUse(Model model) {
+        return "findQhKhUse";
+    }
+
+    @RequestMapping(value = {"/tra-cuu-dieu-chinh-quy-hoach"}, method = RequestMethod.GET)
+    public String findDcQh(Model model) {
+        return "findDcQh";
+    }
+
+    @RequestMapping(value = {"/he-so-dieu-chinh"}, method = RequestMethod.GET)
+    public String hsDc(Model model) {
+        return "hsDc";
+    }
 }
