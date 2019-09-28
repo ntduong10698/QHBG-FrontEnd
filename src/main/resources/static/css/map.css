@@ -633,6 +633,110 @@ html, body {
 
 /* END BLOCK MAIN L2 */
 
+/* TABLE DETAIL FULL */
+.tbdetailf{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    visibility: hidden;
+}
+.tbdf-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.466);
+}
+
+.tbdetailf.show{
+    visibility: visible;
+    opacity: 1;
+    z-index: 1005;
+}
+.tbdf-wp{
+    position: absolute;
+    top: 35px;
+    z-index: 1000;
+    background-color: rgb(225, 255, 255);
+    padding: 13px;
+    height: 90%;
+    width: 1215px;
+    border-radius: 4px;
+    min-width: 1175px;
+}
+.tbbwp{
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
+
+.tbdfimg{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+    z-index: 1001;
+}
+.tbdetailf table {
+    background-color: white;
+    z-index: 1000;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.tbdetailf .table-wp{
+    width: 100%;
+    overflow:auto;
+    margin-bottom: 10px;
+}
+.tbdetailf table thead tr{
+    background-color: #ededed;
+}
+.tbdetailf table thead tr th{
+    font-size: var(--font13);
+    white-space: unset;
+    vertical-align: middle;
+    padding: 4px;
+    text-align: center;
+}
+.tbdetailf table tbody tr:hover{
+    background-color:#cce2fd;
+}
+.tbdetailf table tbody tr td{
+    text-align: center;
+    font-size: 12px ;
+    white-space: unset;
+    vertical-align: middle;
+    padding: 4px;
+}
+.tbdetailf table tbody tr:hover td{
+    font-style: normal !important;
+}
+.tablep-cap{
+    display: block;
+    text-align: center;
+    width: 100%;
+    background-color: #22465c;
+    user-select: none;
+}
+.tablep-cap span{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+    padding: 5px;
+    color: white;
+}
+/* END TABLE DETAIL FULL */
+
 /*Map Arcgis*/
 #mapView {
     height: 100%;
@@ -665,10 +769,11 @@ html, body {
     text-overflow: ellipsis;
     max-width: 85%;
 }
-/*END Map Arcgis*/
 
 /*MAIN*/
 main {
     position: relative;
 }
 /*END_MAIN*/
+
+/*END Map Arcgis*/

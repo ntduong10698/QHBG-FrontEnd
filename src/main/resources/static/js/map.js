@@ -45,4 +45,11 @@ $(document).ready(function () {
         }
     })
     //end set high map
+
+    //close table full
+    $(".tbdetailf .tbdfimg img").click(function () {
+        $(".tbdetailf").removeClass("show");
+    })
+
+    //end close table full
 });

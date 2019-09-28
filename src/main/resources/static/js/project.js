@@ -15,7 +15,7 @@ $(document).ready(function () {
                 'position': 'fixed',
                 'top': '35px',
                 'left': '0',
-                'z-index': '500',
+                'z-index': '1004',
             });
         }else{
             $(".dp-filter").css({
