@@ -14,7 +14,7 @@ function mucDich(color) {
         case 12: return 'BHK: Đất trồng cây hằng năm khác';
         case 13: return 'NHK: Đất nương rẫy trồng cây hằng năm khác';
         case 14: return 'CLN: Đất trồng cây lâu năm';
-        case 15: return 'LNC:Đất trồng cây công nghiệp lâu năm';
+        case 15: return 'LNC: Đất trồng cây công nghiệp lâu năm';
         case 16: return 'LNQ: Đất trồng cây ăn quả lâu năm';
         case 17: return 'LNK: Đất trồng cây lâu năm khác';
         case 18: return 'LNP: Đất lâm nghiệp';
@@ -82,7 +82,7 @@ function mucDich(color) {
         case 93: return 'PNK: Đất phi nông nghiệp khác';
         case 98: return 'CSD: Đất bằng chưa sử dụng';
         case 99: return 'BCS: Đất đôi núi chưa sử dụng';
-        case 100: return 'NCS Núi đá không có rừng cây';
+        case 100: return 'NCS: Núi đá không có rừng cây';
         case 101: return 'MVB: Đất có mặt nước ver biển';
         case 102: return 'MVT: Đất mặt nước ven biển nuôi trồng thủy sản';
         case 103: return 'MVR: Đất mặt nước ven biển có rừng ngập mặn';
@@ -124,7 +124,7 @@ $(document).ready(function () {
                 'position': 'fixed',
                 'top': '0',
                 'left': '0',
-                'z-index': '1002',
+                'z-index': '1004',
                 'box-shadow':'0px 0px 5px 0px rgba(0,0,0,0.75)'
             });
         }else{

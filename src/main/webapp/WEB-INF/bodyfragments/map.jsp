@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
 <script src="https://js.arcgis.com/4.6/"></script>
 <link rel="stylesheet" href="resources/css/map.css">
+<script src="resources/js/ajax/ajax_map_backend.js"></script>
 <script src="resources/js/ajax/ajax_map.js"></script>
 <main>
     <!-- LỚP 1 -->
