@@ -245,3 +245,280 @@ ul.nav.nav-tabs {
     font-size: var(--font13);
 }
 /* END LAND PRICE */
+/*GIA DAT*/
+p {
+    margin-bottom: 0;
+}
+
+select {
+    width: 100%;
+}
+
+option {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* BLOCK TABLE  */
+
+.block-table-price2 {
+    padding: 20px 10px;
+}
+
+.block-table-price2 .table-dat {}
+
+.table-dat thead {}
+
+.table-dat thead tr {}
+
+.table-dat thead tr th {
+    border: 1px solid #666666;
+    text-align: center;
+}
+
+.table-dat thead tr th:first-child {
+    max-width: 400px;
+    min-width: 200px;
+    width: 20%;
+}
+
+.table-dat tbody {}
+
+.table-dat tbody tr {}
+
+.table-dat tbody tr td {
+    border: 1px solid #666666;
+    text-align: center;
+}
+
+.table-dat tbody tr td:nth-child(2) {
+    text-align: left!important;
+}
+
+.table-dat tbody tr td:last-child {
+    width: 80px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* END BLOCK TABLE   */
+
+/* BLOCK SEARCH */
+
+
+
+.bl-sea {
+    max-width: 1200px;
+    margin: auto;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.search-1 {
+    background: var(--bg-blue-price);
+    display: flex;
+    align-items: center;
+    width: 22%;
+    height: 68px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+
+.ip-1 {
+    height: 20px;
+}
+
+.search-1 select {
+    background: var(--bg-blue-price);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px;
+}
+
+select {}
+
+.search-1>select>option {
+    padding: 5px 5px;
+    display: inline;
+    background: white;
+    color: black;
+    margin: 5px 5px;
+}
+
+.search-2 {
+    padding: 5px;
+    min-width: 150px;
+    max-width: 290px;
+    background: white;
+    width: 13.5%;
+    display: inline;
+    border-radius: 3px;
+    align-items: center;
+    box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);
+}
+
+.search-2 select {
+    width: 100%;
+    font-size: 12px;
+}
+
+.search-2 p {
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.search-2 input {
+    width: 100%;
+    padding: 1px 5px;
+    font-size: 12px;
+}
+
+.search-2 div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+}
+
+.search-2 div input {
+    width: 48%;
+}
+
+.search-3 {
+    background: var(--bg-blue-price);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9px;
+}
+
+.search-3>i {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+/* END BLOCK SEARCH */
+
+/* BLOCK PRICE  BOTTOM */
+
+.block-price-bottom {
+    background: #063141;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    bottom: 0;
+}
+
+.block-price-bottom .fa-pr-bt {
+    display: flex;
+    padding: 1rem 10rem;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
+
+.fa-pr-bt .pr-bt-left {
+    padding: 7px;
+    width: 30%;
+    background-size: cover;
+    height: 100%;
+}
+
+.fa-pr-bt .pr-bt-left img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.pr-bt-right {
+    padding: 10px;
+    width: 70%;
+    max-width: 1000px;
+    min-width: 200px;
+    height: 100%;
+}
+.pr-bt-right>i{
+    position: absolute;
+    color: white;
+    top: 5px;
+    font-size: 30px;
+    right: 5px;
+}
+.pr-top{
+    border-bottom: 5px solid var(--bg-blue-price);
+}
+.pr-top span{
+    background: var(--bg-blue-price);
+    color: white;
+    padding: 6px 20px 3px 20px;
+}
+.pr-bottom{
+    background: white;
+}
+.pr-info {
+    display: flex;
+    border-top: 1px solid #abb3b6;
+    margin: 0!important;
+}
+
+.pr-info .pr-infor-left {
+    width: 28%;
+    background: #cccccc;
+    border-left: 1px solid #abb3b6;
+    padding: 5px;
+    border-right: 1px solid #abb3b6;
+}
+
+.pr-infor-left {}
+
+.pr-info .pr-infor-left span {
+    font-weight: 700;
+}
+
+.pr-info .pr-infor-right {padding: 5px;}
+
+.pr-info .pr-infor-right span {}
+.class-int{
+    z-index: 900;
+    bottom: 5px;
+    font-size: 20px;
+    left: 5px;
+}
+.u-range-slider-indicator .irs-slider{
+    top: 3.6rem!important;
+}
+.u-range-slider .irs-slider{
+    width: 0.7rem!important;
+    height: 0.7rem!important;
+    background: #666666!important;
+}
+/* END BLOCK PRICE BOTTOM */
+/* CSS CUSSTOM INPUT RANGE */
+.u-range-slider-indicator{
+    height: 1rem!important;
+}
+.u-range-slider-indicator .irs{
+    height: 1rem!important;
+    position: relative;
+}
+.u-range-slider .irs-line{
+    position: absolute!important;
+    width: 100%;
+    top: 0!important;
+}
+.u-range-slider .irs-from, .u-range-slider .irs-to, .u-range-slider .irs-single{
+    position: absolute;
+    background: var(--bg-blue-price)!important;
+    padding: 3px!important;
+    top: -280%!important;
+    color: white!important;
+}
+.u-range-slider-indicator .irs-bar{
+    top: 0!important;
+}
+.u-range-slider-indicator .irs-slider{
+    top:-20%!important;
+}
+/* END  CSS CUSSTOM INPUT RANGE */
