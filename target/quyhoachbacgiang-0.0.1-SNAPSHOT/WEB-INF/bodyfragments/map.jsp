@@ -27,12 +27,13 @@
         </div>
         <div class="block-right-qh">
             <div class="block-search-qh-bd">
-                <input type="text">
-                <select name="" id="">
-                    <option value="">Huyện/TP</option>
-
+                <input type="text" id="inputSearchMap">
+                <select name="" id="tieuChiSearchMap">
+                    <option value="quyHoach">Quy Hoạch/ Kế Hoạch</option>
+                    <option value="hienTrang">Hiện Trạng</option>
+                    <option value="xa">Xã</option>
                 </select>
-                <button class="btn btn-info text-uppercase"><i class="fa fa-search" aria-hidden="true"></i>Tìm
+                <button class="btn btn-info text-uppercase" id="btnSearchMap"><i class="fa fa-search" aria-hidden="true"></i>Tìm
                     kiếm</button>
             </div>
             <div class="block-hienthi">
@@ -63,82 +64,10 @@
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </div>
                             <ul id="hienthi-chuthich">
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
-                                <li>
-                                    <span>NNP</span>
-                                    Đất nông nghiệp
-                                </li>
+<%--                                <li>--%>
+<%--                                    <span>NNP</span>--%>
+<%--                                    Đất nông nghiệp--%>
+<%--                                </li>--%>
                             </ul>
                         </div>
                     </li>
@@ -147,11 +76,11 @@
 
             </div>
             <!-- FORM SEARCH -->
-            <div class="form-search-toado">
+            <div class="form-search-toado" style="display: none;">
 
                 <div class="content-form-search">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
-                    <table class="table table-hover">
+                    <table class="table table-hover" id="tableSearchMap">
                         <thead>
                         <tr>
                             <th>STT</th>

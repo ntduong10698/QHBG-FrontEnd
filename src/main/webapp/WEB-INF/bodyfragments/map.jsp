@@ -295,7 +295,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="chitiet-qh-left">
+                                    <div class="chitiet-qh-left" id="infoSoild">
                                         <ul>
                                             <li>
                                                 <span>CQP</span>
@@ -379,44 +379,40 @@
                     <li>
                         <span>Các dự án trên vùng đất</span>
                         <div class="sect-bdqh-layer-2 ">
-
-
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Tên </th>
-                                    <th>Quy mô</th>
-                                    <th>Chủ đầu tư</th>
-                                    <th>Giai đoạn triển khai</th>
-                                    <th>Địa điểm</th>
-                                    <th>Mô tả chi tiết</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>SunShine City</td>
-                                    <td>5 hecta</td>
-                                    <td>Tập đoàn SunShine Group</td>
-                                    <td>Quý IV/2019</td>
-                                    <td>KDT Nam Thang Long - KDT Ciputra</td>
-                                    <td><i class="fa fa-plus-circle" aria-hidden="true"></i> </td>
-                                </tr>
-                                <tr>
-                                    <td>SunShine City</td>
-                                    <td>5 hecta</td>
-                                    <td>Tập đoàn SunShine Group</td>
-                                    <td>Quý IV/2019</td>
-                                    <td>KDT Nam Thang Long - KDT Ciputra</td>
-                                    <td><i class="fa fa-plus-circle" aria-hidden="true"></i> </td>
-                                </tr>
-                                </tbody>
-                            </table>
-
+<%--                            <table class="table table-hover">--%>
+<%--                                <thead>--%>
+<%--                                <tr>--%>
+<%--                                    <th>Tên </th>--%>
+<%--                                    <th>Quy mô</th>--%>
+<%--                                    <th>Chủ đầu tư</th>--%>
+<%--                                    <th>Giai đoạn triển khai</th>--%>
+<%--                                    <th>Địa điểm</th>--%>
+<%--                                    <th>Mô tả chi tiết</th>--%>
+<%--                                </tr>--%>
+<%--                                </thead>--%>
+<%--                                <tbody>--%>
+<%--                                <tr>--%>
+<%--                                    <td>SunShine City</td>--%>
+<%--                                    <td>5 hecta</td>--%>
+<%--                                    <td>Tập đoàn SunShine Group</td>--%>
+<%--                                    <td>Quý IV/2019</td>--%>
+<%--                                    <td>KDT Nam Thang Long - KDT Ciputra</td>--%>
+<%--                                    <td><i class="fa fa-plus-circle" aria-hidden="true"></i> </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td>SunShine City</td>--%>
+<%--                                    <td>5 hecta</td>--%>
+<%--                                    <td>Tập đoàn SunShine Group</td>--%>
+<%--                                    <td>Quý IV/2019</td>--%>
+<%--                                    <td>KDT Nam Thang Long - KDT Ciputra</td>--%>
+<%--                                    <td><i class="fa fa-plus-circle" aria-hidden="true"></i> </td>--%>
+<%--                                </tr>--%>
+<%--                                </tbody>--%>
+<%--                            </table>--%>
                         </div>
                     </li>
                     <li>
-                            <span class="text-uppercase">Thông tin kế hoạch sử dụng
-                                đất</span>
+                            <span class="text-uppercase">Các quyết định được phê duyệt</span>
                         <div class="info-bdqh-layer-2 sect-bdqh-layer-2">
                             <div class="chitiet-qh">
                                 <div class="chitiet-qh-title" style="background: #ecd59f">
@@ -453,89 +449,87 @@
                         </div>
                     </li>
                     <li>
-                            <span class="text-uppercase">Thông tin kế hoạch sử dụng
-                                đất <span>đơn vị: đồng/m2</span></span>
+                            <span class="text-uppercase">Giá đất quy định tại vị trí</span>
                         <div class="sect-bdqh-layer-2">
-                            <table class="table table-hover">
-                                <thead style="background: #cdb3d4">
-                                <tr>
-                                    <th>Bảng giá đất </th>
-                                    <th>Vị trí</th>
-                                    <th>Giá đất</th>
-                                    <th>Năm</th>
+<%--                            <table class="table table-hover">--%>
+<%--                                <thead style="background: #cdb3d4">--%>
+<%--                                <tr>--%>
+<%--                                    <th>Bảng giá đất </th>--%>
+<%--                                    <th>Vị trí</th>--%>
+<%--                                    <th>Giá đất</th>--%>
+<%--                                    <th>Năm</th>--%>
 
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td rowspan="4"></td>
+<%--                                </tr>--%>
+<%--                                </thead>--%>
+<%--                                <tbody>--%>
+<%--                                <tr>--%>
+<%--                                    <td rowspan="4"></td>--%>
 
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
 
-                                <tr>
-                                    <td rowspan="3"></td>
+<%--                                <tr>--%>
+<%--                                    <td rowspan="3"></td>--%>
 
-                                </tr>
+<%--                                </tr>--%>
 
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
 
 
-                                </tbody>
-                            </table>
+<%--                                </tbody>--%>
+<%--                            </table>--%>
 
                         </div>
                     </li>
                     <li>
-                            <span class="text-uppercase">Thông tin kế hoạch sử dụng
-                                đất <span>đơn vị: đồng/m2</span></span>
-                        <div class="sect-bdqh-layer-2">
-                            <div class="bl-sect-col">
-                                <div class="bl-sect-col-1" style="width: 60%">
-                                    <div class="bl-sect-col-1-top">
-                                        <span>Vị trí </span>
-                                    </div>
-                                    <div class="bl-sect-col-1-bottom"></div>
-                                </div>
-                                <div class="bl-sect-col-1" style="width: 25%">
-                                    <div class="bl-sect-col-1-top">
-                                        <span>Giá đất</span>
-                                    </div>
-                                    <div class="bl-sect-col-1-bottom"></div>
-                                </div>
-                                <div class="bl-sect-col-1" style="width: 15%">
-                                    <div class="bl-sect-col-1-top">
-                                        <span>Năm</span>
-                                    </div>
-                                    <div class="bl-sect-col-1-bottom"></div>
-                                </div>
+                            <span class="text-uppercase">Giá đất thị trường</span>
+<%--                        <div class="sect-bdqh-layer-2">--%>
+<%--                            <div class="bl-sect-col">--%>
+<%--                                <div class="bl-sect-col-1" style="width: 60%">--%>
+<%--                                    <div class="bl-sect-col-1-top">--%>
+<%--                                        <span>Vị trí </span>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="bl-sect-col-1-bottom"></div>--%>
+<%--                                </div>--%>
+<%--                                <div class="bl-sect-col-1" style="width: 25%">--%>
+<%--                                    <div class="bl-sect-col-1-top">--%>
+<%--                                        <span>Giá đất</span>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="bl-sect-col-1-bottom"></div>--%>
+<%--                                </div>--%>
+<%--                                <div class="bl-sect-col-1" style="width: 15%">--%>
+<%--                                    <div class="bl-sect-col-1-top">--%>
+<%--                                        <span>Năm</span>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="bl-sect-col-1-bottom"></div>--%>
+<%--                                </div>--%>
 
-                            </div>
+<%--                            </div>--%>
 
-                        </div>
+<%--                        </div>--%>
                     </li>
                 </ul>
 

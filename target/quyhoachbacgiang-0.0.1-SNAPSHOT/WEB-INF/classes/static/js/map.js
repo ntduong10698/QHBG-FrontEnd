@@ -11,7 +11,14 @@ $(document).ready(function () {
         $(".bl-v2").removeClass("d-flex");
         $(".bl-v2").toggleClass("d-none");
     });
-    $(".content-form-search>i").click(function () {
-        $(".form-search-toado").toggle();
+    $(".form-search-toado").css("display","none"); // off table search
+    $('#inputSearchMap').keyup(function () {
+        this.value = this.value.toUpperCase();
     });
+    $(".content-form-search > .fa-times-circle").click(function () {
+        $(".form-search-toado").css("display","none");
+    })
+    // $(".content-form-search>i").click(function () {
+    //     $(".form-search-toado").toggle();
+    // });
 });

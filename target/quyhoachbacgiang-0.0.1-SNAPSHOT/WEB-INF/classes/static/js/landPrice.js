@@ -11,8 +11,21 @@ $(document).ready(function () {
         });
     }
     // Select 2 Plugin Jquery in landprice.html
-    $(".mselect").select2( {
+    $(".mselect").select2({
         placeholder: "--- Gõ để tìm kiếm ---",
         allowClear: true
-    } );
+    });
+    $("#click-qd").click(function () {
+        $("#block-price-bottom").fadeOut();
+        $("#block-price-bottom").fadeOut(3000);
+        $(".class-int").css({"display": "inline"})
+    });
+    $(".class-int").click(function () {
+        $("#block-price-bottom").fadeIn(1000);
+    });
+
+
 });
+
+
+
