@@ -33,6 +33,7 @@
     <%-- Title--%>
     <title><tiles:insertAttribute name="title"/></title>
     <%@include file="../library/library_css.jsp" %>
+    <script src="resources/js/main.js"></script>
     <script src="resources/js/ajax/ajax_main.js"></script>
 </head>
 <body>

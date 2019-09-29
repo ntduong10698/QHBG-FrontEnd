@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="resources/css/landPrice.css">
 <link rel="stylesheet" href="resources/css/project.css">
 <link rel="stylesheet" href="resources/css/decision.css">
+<script src="resources/js/ajax/ajax_price_nn.js"></script>
+<script src="resources/js/ajax/ajax_price_pnn.js"></script>
+<script src="resources/js/ajax/ajax_land_price.js"></script>
 <!-- MAIN -->
 <main>
 

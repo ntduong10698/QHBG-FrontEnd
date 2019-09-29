@@ -18,6 +18,11 @@ function viewInfoSoild(data) {
 }
 //end xy ly click chi tiet khoi trong map
 
+//set data infoKhUse qh,kh
+// end set data infoKhUse
+
+
+//view map arcgis
 require([
     "esri/Map",
     "esri/views/MapView",

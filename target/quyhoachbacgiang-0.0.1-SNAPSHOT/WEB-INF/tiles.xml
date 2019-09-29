@@ -38,10 +38,28 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/decision.jsp"/>
     </definition>
 
-    <!-- Decision Page  -->
+    <!-- Map Page  -->
     <definition name="map" extends="base.definition">
         <put-attribute name="title" value="Bản Đồ"/>
         <put-attribute name="body" value="/WEB-INF/bodyfragments/map.jsp"/>
+    </definition>
+
+    <!-- FindQhKhUse Page  -->
+    <definition name="findQhKhUse" extends="base.definition">
+        <put-attribute name="title" value="Tra cứu sử dụng đất"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/findQhKhUse.jsp"/>
+    </definition>
+
+    <!-- FindDcQh Page  -->
+    <definition name="findDcQh" extends="base.definition">
+        <put-attribute name="title" value="Tra cứu điều chỉnh quy hoạch"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/findDcQh.jsp"/>
+    </definition>
+
+    <!-- HsDc Page  -->
+    <definition name="hsDc" extends="base.definition">
+        <put-attribute name="title" value="Hệ số điều chỉnh"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/hsDc.jsp"/>
     </definition>
 
 </tiles-definitions>
