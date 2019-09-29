@@ -35,10 +35,12 @@ $(document).ready(function () {
     $(".table-dat  tbody tr td span>span").click(function () {
         $("#block-price-bottom").fadeIn(1000);
     });
-
+    PhanPageLandprice(window.location.href);
 
 
 });
+
+
 
 
 
