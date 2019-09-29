@@ -1,4 +1,7 @@
+const URL_API = "http://123.31.45.240:8480/excel_admin/api/";
+const tokenHeader_value = ""
 const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
+
 function mucDich(color) {
     var int = parseInt(color, 10);
     switch (int) {

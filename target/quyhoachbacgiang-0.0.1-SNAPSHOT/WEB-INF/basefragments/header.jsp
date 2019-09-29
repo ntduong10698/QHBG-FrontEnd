@@ -6,23 +6,23 @@
             <div class="liimg-wp">
                 <img src="resources/img/user1.png" alt="">
             </div>
-            <div class="litext-wp">
+            <form class="litext-wp">
                 <span class="lit-cap">Tài khoản</span>
-                <div class="liinput"><input type="text" placeholder="Email"></div>
-                <div class="liinput"><input type="password" placeholder="Mật khẩu"></div>
+                <div class="liinput"><input type="text" id="email" placeholder="Email" required></div>
+                <div class="liinput"><input type="password" id="password" placeholder="Mật khẩu" required></div>
                 <div class="rpw">
                     <input type="checkbox">
                     <span>Nhớ tài khoản và mật khẩu</span>
                 </div>
-                <span class="libt"> <a href="#">Đăng nhập</a></span>
+                <span class="libt"> <button type="submit" id="submit-log">Đăng nhập</button></span>
                 <div class="listatus">
                     <a class="out">Thoát</a>
                     <a class="licsi">Đăng ký</a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-    <div class="d-signin">
+    <form class="d-signin">
         <div class="siimg">
             <img src="resources/img/suser1.png" alt="">
         </div>
@@ -33,54 +33,55 @@
             <div class="sicleft">
                 <div class="sicitem-wp">
                     <span>Tên đăng nhập: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="name" type="text" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Mật khẩu: <span>(*)</span></span>
-                    <input type="password">
+                    <input id="pass1" type="password" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Nhập lại mật khẩu: <span>(*)</span></span>
-                    <input type="password">
+                    <input id="pass2" type="password" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Họ và tên: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="fullname" type="text" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Địa chỉ: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="address" type="text" required>
                 </div>
             </div>
             <div class="sicright">
                 <div class="sicitem-wp">
                     <span>Email: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="emailSign" type="text" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Số điện thoại: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="phoneNumber" type="text" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Số CMND: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="numberCMT" type="text" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Ngày cấp: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="dateCMT" type="date" required>
                 </div>
                 <div class="sicitem-wp">
                     <span>Nơi cấp: <span>(*)</span></span>
-                    <input type="text">
+                    <input id="addCMT" type="text" required>
                 </div>
             </div>
         </div>
-        <span class="sisave"><a href="#"><i class="fas fa-download"></i> Lưu lại</a></span>
+        <span class="sisave"><button id="submitResign" type="submit"><i
+                class="fas fa-download"></i> Lưu lại</button></span>
         <div class="sistatus">
             <a class="out">Thoát</a>
             <a class="sibcl"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
         </div>
-    </div>
+    </form>
 </section>
 <!-- HEADER -->
 <header>
@@ -97,13 +98,13 @@
                         <div class="ihwp">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <span>so_tnmt_vt@bacgiang.gov.vn</span>
+                        <span>banbientap_stmt@bacgiang.gov.vn</span>
                     </a>
                     <a class="icon " href="tel:02043856047" title="Phone">
                         <div class="ihwp">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <span>0204.3856047 - 0204.3858831</span>
+                        <a href="tel:02043856047"><span>0204.3856.047</span>  </a>
                     </a>
                     <a class="icon "
                        href="https://www.google.com/maps/place/Sở+Tài+nguyên+và+Môi+trường+tỉnh+Bắc+Giang/@21.2771565,106.1935929,17z/data=!3m1!4b1!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"
@@ -111,7 +112,8 @@
                         <div class="ihwp">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span>
+                     <a
+                                href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end p-0 hdright">
@@ -184,40 +186,42 @@
                             <span>Trang chủ</span>
                         </a>
                     </li>
-<%--                    <li class="menu-item item-product">--%>
-<%--                        <a href="#" title="tin tức">--%>
-<%--                            <span>Tin tức</span>--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="menu-item item-product">--%>
+                    <%--                        <a href="#" title="tin tức">--%>
+                    <%--                            <span>Tin tức</span>--%>
+                    <%--                        </a>--%>
+                    <%--                    </li>--%>
                     <li class="menu-item">
-                        <a href="gia-dat" title="giá đất">
+                        <a href="gia-dat-nong-nghiep" title="giá đất">
                             <span>Giá đất</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
+                            <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>
-                                </a>
+                            </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Giai đoạn 2015-2019</span></a></li>
+                                    <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i>
+                                        <span>Giai đoạn 2015-2019</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất phi nông
+                            <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất phi nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>
-                                </a>
+                            </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Giai đoạn 2015-2019</span></a></li>
+                                    <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i>
+                                        <span>Giai đoạn 2015-2019</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
+                            <li><a href="quyet-dinh?nhomQuyetDinh=1"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
                                             thể</span></a></li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Hệ số điều
+                            <li><a href="he-so-dieu-chinh"><i class="fas fa-angle-double-right"></i> <span>Hệ số điều
                                             chỉnh</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="quy hoạch">
+                        <a href="quy-hoach?map=0" title="quy hoạch">
                             <span>Quy hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
@@ -228,7 +232,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="quy-hoach?map=1">
                                     <i class="fas fa-angle-double-right"></i>
                                     <span>Quy hoạch sử dụng đất các huyện, thành phố</span>
                                     <i class="fas fa-caret-right"></i>
@@ -286,23 +290,25 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu quy hoạch sử dụng đất</span></a></li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu điều chỉnh quy hoạch</span></a></li>
+                            <li><a href="tra-cuu-quy-hoach"><i class="fas fa-angle-double-right"></i> <span>Tra cứu quy hoạch sử dụng đất</span></a>
+                            </li>
+                            <li><a href="tra-cuu-dieu-chinh-quy-hoach"><i class="fas fa-angle-double-right"></i>
+                                <span>Tra cứu điều chỉnh quy hoạch</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="kế hoạch">
+                        <a href="ke-hoach?map=1&nam=2015" title="kế hoạch">
                             <span>Kế hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
                             <li>
-                                <a href="#">
+                                <a href="ke-hoach?map=1&nam=2015">
                                     <i class="fas fa-angle-double-right"></i>
                                     <span>Kế hoạch sử dụng đất các huyện, thành phố</span>
                                     <i class="fas fa-caret-right"></i>
                                 </a>
                                 <ul class="submenu-lv2">
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=1&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Thành phố Bắc Giang</span>
                                         <i class="fas fa-caret-right"></i>
@@ -330,7 +336,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=2&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Hiệp Hòa</span>
                                         <i class="fas fa-caret-right"></i>
@@ -358,7 +364,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=3&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Yên Dũng</span>
                                         <i class="fas fa-caret-right"></i>
@@ -386,7 +392,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=4&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lục Nam</span>
                                         <i class="fas fa-caret-right"></i>
@@ -414,7 +420,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=5&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Sơn Động</span>
                                         <i class="fas fa-caret-right"></i>
@@ -442,7 +448,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=6&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lạng Giang</span>
                                         <i class="fas fa-caret-right"></i>
@@ -470,7 +476,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=7&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Việt Yên</span>
                                         <i class="fas fa-caret-right"></i>
@@ -498,7 +504,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=8&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Tân Yên</span>
                                         <i class="fas fa-caret-right"></i>
@@ -526,7 +532,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=9&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Lục Ngạn</span>
                                         <i class="fas fa-caret-right"></i>
@@ -554,7 +560,7 @@
                                             </a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">
+                                    <li><a href="ke-hoach?map=10&nam=2015">
                                         <i class="fas fa-angle-double-right"></i>
                                         <span>Huyện Yên Thế</span>
                                         <i class="fas fa-caret-right"></i>
@@ -584,7 +590,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="fas fa-angle-double-right"></i> <span>Tra cứu kế hoạch sử dụng đất</span></a></li>
+                            <li><a href="tra-cuu-ke-hoach"><i class="fas fa-angle-double-right"></i>
+                                <span>Tra cứu kế hoạch sử dụng đất</span></a></li>
                         </ul>
                     </li>
                     <li class="menu-item">

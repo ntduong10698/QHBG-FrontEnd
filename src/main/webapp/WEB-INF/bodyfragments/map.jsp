@@ -614,7 +614,7 @@
                                 đất</span>
                         <div class="info-bdqh-layer-2 sect-bdqh-layer-2">
                             <div class="chitiet-qh">
-                                <div class="chitiet-qh-title" style="background: #eefcab">
+                                <div id ="infoKhUse" class="chitiet-qh-title" style="background: #eefcab">
 
                                     <div class="chitiet-qh-left">
                                         <ul>
