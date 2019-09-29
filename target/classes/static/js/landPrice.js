@@ -23,9 +23,19 @@ $(document).ready(function () {
     $(".class-int").click(function () {
         $("#block-price-bottom").fadeIn(1000);
     });
-
+    PhanPageLandprice(window.location.href);
 
 });
+
+function PhanPageLandprice(url) {
+    if (url.indexOf("gia-dat-nong-nghiep") > 0) {
+        callNongNghiep();
+    } else if (url.indexOf("gia-dat-phi-nong-nghiep")) {
+        callPhiNongNghiep();
+    }else {
+        console.log("lỗi")
+    }
+}
 
 
 
