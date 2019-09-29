@@ -1,5 +1,6 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
-
+var checkMap = 0; // truong phan biet cac huyen va tinh
+var year;
 // xy ly click chi tiet khoi trong map
 // tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
 function fnView(indexPopUp) {
@@ -15,11 +16,162 @@ function viewInfoSoild(data) {
     $("#infoSoild ul li:nth-child(4)").html(`<span>${ data.Tinh }</span>`);
     $("#infoSoild ul li:nth-child(5)").html(`<span>${ data.Huyen }</span>`);
     $("#infoSoild ul li:nth-child(6)").html(`<span>${ data.Xa }</span>`);
+    setInfoKhUse(data);
 }
 //end xy ly click chi tiet khoi trong map
 
 //set data infoKhUse qh,kh
+function setInfoKhUse(data) {
+    let pathName = window.location.href;
+    let textViewLeft = '';
+    let textViewRight = '';
+    let mkh = data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaQuyHoach;
+    let chiTieu = data.MaQuyHoach === undefined ? data.MucDichSuDung : data.MucDichQuyHoach;
+    if (pathName.indexOf("quy-hoach") > -1) {
+        textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
+        $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+        callThongKeQuyHoach(mkh, checkMap).then(rs => {
+            if (rs.length > 0) {
+                textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+            } else {
+                textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+            }
+            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+        }).catch(err => {
+            console.log(err);
+        });
+    } else if (pathName.indexOf("ke-hoach") > -1) {
+        textViewLeft = `<li><span>Chỉ tiêu</span></li>
+                        <li><span>Mã Đất</span></li>
+                        <li><span>Tổng diện tích</span></li>
+                        <li><span>Năm 2015</span></li>
+                        <li><span>Năm 2016</span></li>
+                        <li><span>Năm 2017</span></li>
+                        <li><span>Năm 2018</span></li>
+                        <li><span>Năm 2019</span></li>`;
+        $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+        callThongKeKeHoach(mkh, checkMap).then(rs => {
+            setTableInfoSoildKh(rs); //set data in tabelInfoSoildKh
+            textViewRight += `<li><span>${chiTieu}</span></li>
+                               <li><span>${mkh}</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>`;
+            // dung year loc tu arr bản ghi
+            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);// set tat ca trong hop sang khong co, neu co dung jquery set lai
+            if (rs.length > 0) {
+                rs.map(data => {
+                    if (data.quyHoachKeHoach == 'KH') {
+                        // chi lay data KH o chi tiet
+                        if (data.year == year) {
+                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
+                        }
+                        switch (data.year) {
+                            // voi moi nam view ra tong dien tich ma day o nam day
+                            case '2015':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2016':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2017':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2018':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2019':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                        }
+                    }
+                })
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+}
 // end set data infoKhUse
+
+//set data tableInfoSoild-KH
+function setTableInfoSoildKh(dataTable) {
+    let viewTable = '';
+    let dataKh = dataTable.filter(data => data.quyHoachKeHoach === "KH");
+    let viewThead = '';
+    dataKh.sort(function (a, b) {
+        return a.year - b.year;
+    })
+    let dataHt = dataTable.filter(data => (data.quyHoachKeHoach == "KH-HT" && data.year == year));
+    //create khung cac bang
+    // tao khung thead cho cac bang
+    if(dataHt.length > 0) {
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th rowspan="2">Cơ cấu</th>
+                    <th colspan=${dataHt[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataHt[0].dienTichTheoXas.map(data => {
+            viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
+        })
+        viewThead += `</tr></thead>`;
+    } else if(dataKh.length > 0) {
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th rowspan="2">Cơ cấu</th>
+                    <th colspan=${dataKh[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataKh[0].dienTichTheoXas.map(data => {
+            viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
+        })
+        viewThead += `</tr></thead>`;
+    } else {
+        viewThead = "Chưa có dữ liệu";
+    }
+    //end tao khung thead cho cac bang
+
+    //bang hien trang, khong co data thi in ra chua co du lieu
+    viewTable = `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${dataHt[0] == null? "" : dataHt[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                    </table>
+                </div>
+            </div>`;
+    //bang kh cac nam, neu khong co data thì map se khong chay
+    dataKh.map(data => {
+        viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${data.name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                    </table>
+                </div>
+            </div>`;
+    })
+    $("#tableInfoSoild").html(viewTable);
+    //end create khung cac bang
+
+
+    //click view table loi refes lai trang
+    $("a#clickViewTableInfoSoild").click(function () {
+        $(".tbdetailf").addClass("show");
+        return false;
+    })
+}
+//end set data tableInfoSoild-KH
 
 
 //view map arcgis
@@ -46,8 +198,6 @@ require([
 ], function (Map, MapView, MapImageLayer, Legend, Extent, SpatialReference, IdentifyTask,
              IdentifyParameters, SimpleFillSymbol, Graphic, QueryTask, Query, on, dom, Sublayer, arrayUtils, esriRequest, Point) {
 
-    var checkMap = 0; // truong phan biet cac huyen va tinh
-
     //function handling
 
     //get url web
@@ -56,7 +206,6 @@ require([
         let pathName = window.location.href;
         let arrSplit = [];
         let indexHuyen;
-        let year;
         if (pathName.search("quy-hoach") > -1) {
             arrSplit = pathName.split("map=");
             if (arrSplit[1] !== "0") {
