@@ -1,14 +1,15 @@
 function callNongNghiep() {
-    
+    callAllPriceLand();
 }
 function callAllPriceLand() {
-
     $.ajax({
-        type: "method",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
+        type:  "GET",
+        url: URL_API + "api/v1/public/gia-dat/gia-dat-nong-nghiep/all" ,
+        dataType: "json",
+        timeout:2000,
         success: function (response) {
+            console.log(response)
+
         }
     });
 

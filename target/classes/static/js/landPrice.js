@@ -15,27 +15,32 @@ $(document).ready(function () {
         placeholder: "--- Gõ để tìm kiếm ---",
         allowClear: true
     });
+    $("#dp-drop8").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop9").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop10").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
     $("#click-qd").click(function () {
         $("#block-price-bottom").fadeOut();
         $("#block-price-bottom").fadeOut(3000);
         $(".class-int").css({"display": "inline"})
     });
-    $(".class-int").click(function () {
+    $(".table-dat  tbody tr td span>span").click(function () {
         $("#block-price-bottom").fadeIn(1000);
     });
     PhanPageLandprice(window.location.href);
 
+
 });
 
-function PhanPageLandprice(url) {
-    if (url.indexOf("gia-dat-nong-nghiep") > 0) {
-        callNongNghiep();
-    } else if (url.indexOf("gia-dat-phi-nong-nghiep")) {
-        callPhiNongNghiep();
-    }else {
-        console.log("lỗi")
-    }
-}
+
 
 
 
