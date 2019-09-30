@@ -1,5 +1,6 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
-
+var checkMap = 0; // truong phan biet cac huyen va tinh
+var year;
 // xy ly click chi tiet khoi trong map
 // tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
 function fnView(indexPopUp) {
@@ -15,9 +16,353 @@ function viewInfoSoild(data) {
     $("#infoSoild ul li:nth-child(4)").html(`<span>${ data.Tinh }</span>`);
     $("#infoSoild ul li:nth-child(5)").html(`<span>${ data.Huyen }</span>`);
     $("#infoSoild ul li:nth-child(6)").html(`<span>${ data.Xa }</span>`);
+    setInfoKhUse(data);
 }
 //end xy ly click chi tiet khoi trong map
 
+//set data infoKhUse qh,kh
+function setInfoKhUse(data) {
+    let pathName = window.location.href;
+    let textViewLeft = '';
+    let textViewRight = '';
+    let mkh = data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaQuyHoach;
+    let chiTieu = data.MaQuyHoach === undefined ? data.MucDichSuDung : data.MucDichQuyHoach;
+    textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
+    $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+    if (pathName.indexOf("quy-hoach") > -1) {
+        if (checkMap !== 0) {
+            // quy haoch huyen
+            callThongKeQuyHoach(mkh, checkMap).then(rs => {
+
+                setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
+
+                if (rs.length > 0) {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                } else {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                }
+                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            // quy hoach tinh
+            callThongKeQuyHoachTinh(mkh).then(rs => {
+                rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
+
+                setTableInfoSoildQHTinh(rs);
+
+                if (rs.length > 0) {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                } else {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                }
+                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+            })
+        }
+    } else if (pathName.indexOf("ke-hoach") > -1) {
+        textViewLeft = `<li><span>Chỉ tiêu</span></li>
+                        <li><span>Mã Đất</span></li>
+                        <li><span>Tổng diện tích</span></li>
+                        <li><span>Năm 2015</span></li>
+                        <li><span>Năm 2016</span></li>
+                        <li><span>Năm 2017</span></li>
+                        <li><span>Năm 2018</span></li>
+                        <li><span>Năm 2019</span></li>`;
+        $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+        callThongKeKeHoach(mkh, checkMap).then(rs => {
+
+            setTableInfoSoildKh(rs); //set data in tabelInfoSoildKh
+
+            textViewRight += `<li><span>${chiTieu}</span></li>
+                               <li><span>${mkh}</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>
+                               <li><span>...</span></li>`;
+            // dung year loc tu arr bản ghi
+            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);// set tat ca trong hop sang khong co, neu co dung jquery set lai
+            if (rs.length > 0) {
+                rs.map(data => {
+                    if (data.quyHoachKeHoach == 'KH') {
+                        // chi lay data KH o chi tiet
+                        if (data.year == year) {
+                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
+                        }
+                        switch (data.year) {
+                            // voi moi nam view ra tong dien tich ma day o nam day
+                            case '2015':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2016':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2017':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2018':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                            case '2019':
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                break;
+                        }
+                    }
+                })
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+}
+// end set data infoKhUse
+
+//set data tableInfoSoild-KH
+function setTableInfoSoildKh(dataTable) {
+    let viewTable = '';
+    let dataKh = dataTable.filter(data => data.quyHoachKeHoach === "KH");
+    let viewThead = '';
+    dataKh.sort(function (a, b) {
+        return a.year - b.year;
+    })
+    let dataHt = dataTable.filter(data => (data.quyHoachKeHoach == "KH-HT" && data.year == year));
+    if(dataHt.length > 0) dataKh.unshift(dataHt[0]); //full bang
+    //create khung cac bang
+    // tao khung thead cho cac bang
+    if(dataKh.length > 0) {
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th colspan=${dataKh[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataKh[0].dienTichTheoXas.map(data => {
+            viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
+        })
+        viewThead += `</tr></thead>`;
+
+        //set data cac keHoach
+        $("#tableInfoSoild").html(""); //reset data
+        dataKh.map(data => {
+            let dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich}</td>`;
+            data.dienTichTheoXas.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${data.name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+        })
+    } else {
+        viewTable = "<strong>Chưa có dữ liệu</strong>";
+    }
+    //end tao khung thead cho cac bang
+
+    $("#tableInfoSoild").html(viewTable);
+    //end create khung cac bang
+
+}
+//end set data tableInfoSoild-KH
+
+//set data tableInfoSoild-Qh-Huyen
+function setTableInfoSoildQHHuyen(dataTable) {
+    let viewTable = '';
+    let viewThead = '';
+    let dataViewTable = '';
+    let mkhCall = '';
+    //set Bang Quy Hoach Huyen
+    if (dataTable.length > 0) {
+        mkhCall = dataTable[0].loaiDat.maKyHieu;
+        // neu co data
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Cấp tỉnh phân bổ</th>
+                    <th rowspan="2">Cấp huyện xác định</th>
+                    <th rowspan="2">Tổng số</th>
+                    <th colspan=${dataTable[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataTable[0].dienTichTheoXas.map(data => {
+            viewThead += `<th>${data.xa == null ? "Xã ..." :data.xa.tenXa}</th>`;
+        })
+        viewThead += "</tr></thead>";
+        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
+                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
+                        <td>${dataTable[0].dienTichCapTinhPhanBo}</td>
+                        <td>${dataTable[0].dienTichCapHuyenXacDinh}</td>
+                        <td>${dataTable[0].tongDienTich}</td>`;
+
+        dataTable[0].dienTichTheoXas.map(data => {
+            dataViewTable += `<td>${data.dienTich}</td>`
+        })
+
+        viewTable = `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${dataTable[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+
+        $("#tableInfoSoild").html(viewTable);
+    }
+
+    //set HienTrangQuyHoachHuyen cung api voi huyen
+    callThongKeKeHoach(mkhCall, checkMap).then(data => {
+        //reset value
+        viewTable = '';
+        viewThead = '';
+        dataViewTable = '';
+        let arrRs = data.filter(data1 => data1.year == "2020" && data1.quyHoachKeHoach === "QH-HT");
+        if(arrRs.length > 0) {
+            viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th colspan=${arrRs[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+            arrRs[0].dienTichTheoXas.map(data => {
+                viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
+            })
+            viewThead += `</tr></thead>`;
+            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td>`;
+            arrRs[0].dienTichTheoXas.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${arrRs[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+            console.log(viewTable);
+            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+        }
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+    }).catch(err => {
+        console.log(err);
+    })
+
+}
+//End set data tableInfoSoild-Qh-Huyen
+
+//set data tableInfoSoild-Qh-Tinh
+function setTableInfoSoildQHTinh(dataTable){
+    let viewTable = '';
+    let viewThead = '';
+    let dataViewTable = '';
+    let mkhCall = '';
+
+    //set data infoSoild QH Tinh
+    if(dataTable.length > 0) {
+        //set data infoSoild QH Tinh
+        mkhCall = dataTable[0].loaiDat.maKyHieu;
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Cấp quốc gia phân bổ</th>
+                    <th rowspan="2">Cấp tỉnh xác định</th>
+                    <th rowspan="2">Tổng số</th>
+                    <th rowspan="2">Cơ Cấu (%)</th>
+                    <th colspan=${dataTable[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataTable[0].dienTichTheoHuyens.map(data => {
+            viewThead += `<th>${data.huyen == null? "Huyện ..." :data.huyen.tenHuyen}</th>`;
+        })
+        viewThead += "</tr></thead>";
+
+        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
+                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
+                        <td>${dataTable[0].dienTichCapQGPhanBo}</td>
+                        <td>${dataTable[0].dienTichCapTinhXD}</td>
+                        <td>${dataTable[0].tongDienTich}</td>
+                        <td>...</td>`;
+
+        dataTable[0].dienTichTheoHuyens.map(data => {
+            dataViewTable += `<td>${data.dienTich}</td>`
+        })
+
+        viewTable = `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${dataTable[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+
+        $("#tableInfoSoild").html(viewTable);
+    }
+
+    //set data infoSoild QH-HT Tinh
+    callThongKeQuyHoachHienTrangTinh(mkhCall).then(data => {
+        //reset value
+        viewTable = '';
+        viewThead = '';
+        dataViewTable = '';
+        let arrRs = data.filter(data1 => data1.nam == "2020" && data1.quyHoachKeHoach === "QH-HT"); //check
+        if(arrRs.length > 0) {
+            console.log("hihi")
+            viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th rowspan="2">Cơ Cấu (%)</th>
+                    <th colspan=${arrRs[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+            arrRs[0].dienTichTheoHuyens.map(data => {
+                viewThead += `<th>${data.huyen == null? "Huyện ..." : data.huyen.tenHuyen}</th>`;
+            })
+            viewThead += `</tr></thead>`;
+            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td><td>${arrRs[0].coCau}</td>`;
+            arrRs[0].dienTichTheoHuyens.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${arrRs[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+            console.log(viewTable);
+            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+        }
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+
+    }).catch(err => {
+        console.log(err);
+    })
+};
+//end set data tableInfoSoild-QH-Tinh
+
+
+//view map arcgis
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -41,8 +386,6 @@ require([
 ], function (Map, MapView, MapImageLayer, Legend, Extent, SpatialReference, IdentifyTask,
              IdentifyParameters, SimpleFillSymbol, Graphic, QueryTask, Query, on, dom, Sublayer, arrayUtils, esriRequest, Point) {
 
-    var checkMap = 0; // truong phan biet cac huyen va tinh
-
     //function handling
 
     //get url web
@@ -51,7 +394,6 @@ require([
         let pathName = window.location.href;
         let arrSplit = [];
         let indexHuyen;
-        let year;
         if (pathName.search("quy-hoach") > -1) {
             arrSplit = pathName.split("map=");
             if (arrSplit[1] !== "0") {

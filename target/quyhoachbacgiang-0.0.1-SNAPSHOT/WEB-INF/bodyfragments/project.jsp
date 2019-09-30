@@ -64,7 +64,7 @@
                         <th>STT</th>
                         <th>Tên Dự án, công trình</th>
                         <th>Loại dự án</th>
-                        <th>Tổng diện tích (m2)</th>
+                        <th>Tổng diện tích (m<sup>2</sup>)</th>
                         <th>Địa điểm</th>
                         <th>Thuộc huyện</th>
                         <th>Căn cứ thu hồi, CMĐ</th>
