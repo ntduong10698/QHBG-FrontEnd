@@ -50,6 +50,11 @@ $(document).ready(function () {
     $(".tbdetailf .tbdfimg img").click(function () {
         $(".tbdetailf").removeClass("show");
     })
-
     //end close table full
+
+    //click view tableInfoSoild
+    $("a#clickViewTableInfoSoild").click(function () {
+        $(".tbdetailf").addClass("show");
+        return false;
+    })
 });
