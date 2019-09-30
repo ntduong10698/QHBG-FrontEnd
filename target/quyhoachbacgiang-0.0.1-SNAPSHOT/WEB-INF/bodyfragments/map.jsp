@@ -5,13 +5,13 @@
 <script src="resources/js/ajax/ajax_map_backend.js"></script>
 <script src="resources/js/ajax/ajax_map.js"></script>
 
-<section class="tbdetailf show">
+<section class="tbdetailf">
     <div class="tbdf-bg"></div>
     <div class="tbdf-wp">
         <div class="tbdfimg">
             <img src="resources/img/closeicon.png" alt="">
         </div>
-        <div class="tbbwp">
+        <div class="tbbwp" id="tableInfoSoild">
             <div class="table-wp">
                 <div class="tablep-cap">
                     <span>HIỆN TRẠNG SỬ DỤNG ĐẤT THÀNH PHỐ BẮC GIANG NĂM 2016</span>
@@ -614,7 +614,7 @@
                                 đất</span>
                         <div class="info-bdqh-layer-2 sect-bdqh-layer-2">
                             <div class="chitiet-qh">
-                                <div class="chitiet-qh-title" style="background: #eefcab">
+                                <div id ="infoKhUse" class="chitiet-qh-title" style="background: #eefcab">
 
                                     <div class="chitiet-qh-left">
                                         <ul>
@@ -820,7 +820,7 @@
 <%--                        </div>--%>
                     </li>
                 </ul>
-
+                <a href="" id="clickViewTableInfoSoild">Xem chi tiết >></a>
             </div>
             <div class="bl-v2-right">
                 <div class="bl-v2">

@@ -27,19 +27,39 @@ function setInfoKhUse(data) {
     let textViewRight = '';
     let mkh = data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaQuyHoach;
     let chiTieu = data.MaQuyHoach === undefined ? data.MucDichSuDung : data.MucDichQuyHoach;
+    textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
+    $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
     if (pathName.indexOf("quy-hoach") > -1) {
-        textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
-        $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
-        callThongKeQuyHoach(mkh, checkMap).then(rs => {
-            if (rs.length > 0) {
-                textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
-            } else {
-                textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
-            }
-            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
-        }).catch(err => {
-            console.log(err);
-        });
+        if (checkMap !== 0) {
+            // quy haoch huyen
+            callThongKeQuyHoach(mkh, checkMap).then(rs => {
+
+                setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
+
+                if (rs.length > 0) {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                } else {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                }
+                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            // quy hoach tinh
+            callThongKeQuyHoachTinh(mkh).then(rs => {
+                rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
+
+                setTableInfoSoildQHTinh(rs);
+
+                if (rs.length > 0) {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                } else {
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                }
+                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+            })
+        }
     } else if (pathName.indexOf("ke-hoach") > -1) {
         textViewLeft = `<li><span>Chỉ tiêu</span></li>
                         <li><span>Mã Đất</span></li>
@@ -51,7 +71,9 @@ function setInfoKhUse(data) {
                         <li><span>Năm 2019</span></li>`;
         $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
         callThongKeKeHoach(mkh, checkMap).then(rs => {
+
             setTableInfoSoildKh(rs); //set data in tabelInfoSoildKh
+
             textViewRight += `<li><span>${chiTieu}</span></li>
                                <li><span>${mkh}</span></li>
                                <li><span>...</span></li>
@@ -106,72 +128,238 @@ function setTableInfoSoildKh(dataTable) {
         return a.year - b.year;
     })
     let dataHt = dataTable.filter(data => (data.quyHoachKeHoach == "KH-HT" && data.year == year));
+    if(dataHt.length > 0) dataKh.unshift(dataHt[0]); //full bang
     //create khung cac bang
     // tao khung thead cho cac bang
-    if(dataHt.length > 0) {
+    if(dataKh.length > 0) {
         viewThead = `<thead><tr>
                     <th rowspan="2">Chỉ tiêu sử dụng đất</th>
                     <th rowspan="2">Mã</th>
                     <th rowspan="2">Diện tích</th>
-                    <th rowspan="2">Cơ cấu</th>
-                    <th colspan=${dataHt[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-        dataHt[0].dienTichTheoXas.map(data => {
-            viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
-        })
-        viewThead += `</tr></thead>`;
-    } else if(dataKh.length > 0) {
-        viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Diện tích</th>
-                    <th rowspan="2">Cơ cấu</th>
                     <th colspan=${dataKh[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
                  </tr><tr>`;
         dataKh[0].dienTichTheoXas.map(data => {
             viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
         })
         viewThead += `</tr></thead>`;
-    } else {
-        viewThead = "Chưa có dữ liệu";
-    }
-    //end tao khung thead cho cac bang
 
-    //bang hien trang, khong co data thi in ra chua co du lieu
-    viewTable = `<div class="table-wp">
-                <div class="tablep-cap">
-                    <span>${dataHt[0] == null? "" : dataHt[0].name}</span>
-                </div>
-                <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                    </table>
-                </div>
-            </div>`;
-    //bang kh cac nam, neu khong co data thì map se khong chay
-    dataKh.map(data => {
-        viewTable += `<div class="table-wp">
+        //set data cac keHoach
+        $("#tableInfoSoild").html(""); //reset data
+        dataKh.map(data => {
+            let dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich}</td>`;
+            data.dienTichTheoXas.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${data.name}</span>
                 </div>
                 <div style="overflow-y: auto">
                     <table class="table table-bordered">
                         ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
                     </table>
                 </div>
             </div>`;
-    })
+        })
+    } else {
+        viewTable = "<strong>Chưa có dữ liệu</strong>";
+    }
+    //end tao khung thead cho cac bang
+
     $("#tableInfoSoild").html(viewTable);
     //end create khung cac bang
 
-
-    //click view table loi refes lai trang
-    $("a#clickViewTableInfoSoild").click(function () {
-        $(".tbdetailf").addClass("show");
-        return false;
-    })
 }
 //end set data tableInfoSoild-KH
+
+//set data tableInfoSoild-Qh-Huyen
+function setTableInfoSoildQHHuyen(dataTable) {
+    let viewTable = '';
+    let viewThead = '';
+    let dataViewTable = '';
+    let mkhCall = '';
+    //set Bang Quy Hoach Huyen
+    if (dataTable.length > 0) {
+        mkhCall = dataTable[0].loaiDat.maKyHieu;
+        // neu co data
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Cấp tỉnh phân bổ</th>
+                    <th rowspan="2">Cấp huyện xác định</th>
+                    <th rowspan="2">Tổng số</th>
+                    <th colspan=${dataTable[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataTable[0].dienTichTheoXas.map(data => {
+            viewThead += `<th>${data.xa == null ? "Xã ..." :data.xa.tenXa}</th>`;
+        })
+        viewThead += "</tr></thead>";
+        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
+                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
+                        <td>${dataTable[0].dienTichCapTinhPhanBo}</td>
+                        <td>${dataTable[0].dienTichCapHuyenXacDinh}</td>
+                        <td>${dataTable[0].tongDienTich}</td>`;
+
+        dataTable[0].dienTichTheoXas.map(data => {
+            dataViewTable += `<td>${data.dienTich}</td>`
+        })
+
+        viewTable = `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${dataTable[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+
+        $("#tableInfoSoild").html(viewTable);
+    }
+
+    //set HienTrangQuyHoachHuyen cung api voi huyen
+    callThongKeKeHoach(mkhCall, checkMap).then(data => {
+        //reset value
+        viewTable = '';
+        viewThead = '';
+        dataViewTable = '';
+        let arrRs = data.filter(data1 => data1.year == "2020" && data1.quyHoachKeHoach === "QH-HT");
+        if(arrRs.length > 0) {
+            viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th colspan=${arrRs[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+            arrRs[0].dienTichTheoXas.map(data => {
+                viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
+            })
+            viewThead += `</tr></thead>`;
+            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td>`;
+            arrRs[0].dienTichTheoXas.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${arrRs[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+            console.log(viewTable);
+            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+        }
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+    }).catch(err => {
+        console.log(err);
+    })
+
+}
+//End set data tableInfoSoild-Qh-Huyen
+
+//set data tableInfoSoild-Qh-Tinh
+function setTableInfoSoildQHTinh(dataTable){
+    let viewTable = '';
+    let viewThead = '';
+    let dataViewTable = '';
+    let mkhCall = '';
+
+    //set data infoSoild QH Tinh
+    if(dataTable.length > 0) {
+        //set data infoSoild QH Tinh
+        mkhCall = dataTable[0].loaiDat.maKyHieu;
+        viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Cấp quốc gia phân bổ</th>
+                    <th rowspan="2">Cấp tỉnh xác định</th>
+                    <th rowspan="2">Tổng số</th>
+                    <th rowspan="2">Cơ Cấu (%)</th>
+                    <th colspan=${dataTable[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+        dataTable[0].dienTichTheoHuyens.map(data => {
+            viewThead += `<th>${data.huyen == null? "Huyện ..." :data.huyen.tenHuyen}</th>`;
+        })
+        viewThead += "</tr></thead>";
+
+        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
+                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
+                        <td>${dataTable[0].dienTichCapQGPhanBo}</td>
+                        <td>${dataTable[0].dienTichCapTinhXD}</td>
+                        <td>${dataTable[0].tongDienTich}</td>
+                        <td>...</td>`;
+
+        dataTable[0].dienTichTheoHuyens.map(data => {
+            dataViewTable += `<td>${data.dienTich}</td>`
+        })
+
+        viewTable = `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${dataTable[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+
+        $("#tableInfoSoild").html(viewTable);
+    }
+
+    //set data infoSoild QH-HT Tinh
+    callThongKeQuyHoachHienTrangTinh(mkhCall).then(data => {
+        //reset value
+        viewTable = '';
+        viewThead = '';
+        dataViewTable = '';
+        let arrRs = data.filter(data1 => data1.nam == "2020" && data1.quyHoachKeHoach === "QH-HT"); //check
+        if(arrRs.length > 0) {
+            console.log("hihi")
+            viewThead = `<thead><tr>
+                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
+                    <th rowspan="2">Mã</th>
+                    <th rowspan="2">Diện tích</th>
+                    <th rowspan="2">Cơ Cấu (%)</th>
+                    <th colspan=${arrRs[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
+                 </tr><tr>`;
+            arrRs[0].dienTichTheoHuyens.map(data => {
+                viewThead += `<th>${data.huyen == null? "Huyện ..." : data.huyen.tenHuyen}</th>`;
+            })
+            viewThead += `</tr></thead>`;
+            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td><td>${arrRs[0].coCau}</td>`;
+            arrRs[0].dienTichTheoHuyens.map(data1 => {
+                dataViewTable += `<td>${data1.dienTich}</td>`
+            })
+            viewTable += `<div class="table-wp">
+                <div class="tablep-cap">
+                    <span>${arrRs[0].name}</span>
+                </div>
+                <div style="overflow-y: auto">
+                    <table class="table table-bordered">
+                        ${viewThead}
+                        <tbody><tr>${dataViewTable}</tr></tbody>
+                    </table>
+                </div>
+            </div>`;
+            console.log(viewTable);
+            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+        }
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+
+    }).catch(err => {
+        console.log(err);
+    })
+};
+//end set data tableInfoSoild-QH-Tinh
 
 
 //view map arcgis

@@ -8,7 +8,7 @@
             <div class="dpfilter-ct">
                 <div class="dpfc-item dpcf-fitem">
                     <span>Tìm kiếm văn bản:</span>
-                    <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                    <input id="searchTextQD" type="text" placeholder="Nhập từ khóa tìm kiếm...">
                 </div>
                 <div class="dpfc-item dpcf-cb">
                         <span>Tìm trong
@@ -20,32 +20,27 @@
                                 <span></span>
                             </div>
                         </span>
-                    <div class="icbra-wp">
+                    <form class="icbra-wp">
                         <div class="icbra-item">
-                            <input type="radio" id="cb01" name="r1">
+                            <input  type="radio" id="cb01" name="r1" value="0">
                             <label for="cb01">Tất cả</label>
                         </div>
                         <div class="icbra-item">
-                            <input type="radio" id="cb02" name="r1">
+                            <input  type="radio" id="cb02" name="r1" value="1">
                             <label for="cb02">Số hiệu</label>
                         </div>
                         <div class="icbra-item">
-                            <input type="radio" id="cb03" name="r1">
+                            <input  type="radio" id="cb03" name="r1" value="2">
                             <label for="cb03">Trích yếu</label>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="dpfc-item dpcf-select">
                     <span>Cơ quan ban hành</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop1" class="dp-drop">
                             <option value="">--- Gõ để tìm kiếm ---</option>
-                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
+
                         </select>
                     </div>
                 </div>
@@ -54,27 +49,13 @@
                     <div class="dpcft-drop">
                         <select id="dp-drop2" class="dp-drop">
                             <option value="">--- Gõ để tìm kiếm ---</option>
-                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            </option>
-                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            </option>
-                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
+
+
                         </select>
                     </div>
                 </div>
                 <div class="dpfc-item dpcf-bt">
-                    <a href="#"><img src="resources/img/searchbt.png" alt=""></a>
+                    <a ><img id="searchQuyetDinh" src="resources/img/searchbt.png" alt=""></a>
                 </div>
                 <div class="dpfc-item dpcf-bt">
                     <a href="#"><img src="resources/img/xls.png" alt=""></a>
@@ -85,6 +66,9 @@
     <section class="dp-table">
         <div class="container">
             <div class="row">
+                <div class="pagination" id="pagination">
+
+                </div>
                 <table class="table table-hover table-bordered" id="tableDecision">
                     <thead>
                     <tr>
