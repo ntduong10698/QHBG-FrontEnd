@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="resources/css/decision.css">
+<script src="resources/js/ajax/ajax_decision.js"></script>
 <!-- MAIN -->
 <main>
     <section class="dp-filter">
