@@ -85,7 +85,7 @@
     <section class="dp-table">
         <div class="container">
             <div class="row">
-                <table class="table table-hover table-bordered">
+                <table class="table table-hover table-bordered" id="tableDecision">
                     <thead>
                     <tr>
                         <th>Số, Kí hiệu</th>
@@ -96,116 +96,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span class="tdtime">Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">837/QĐ-UBND </a></td>
-                        <td><a href="#">Quyết định về việc điều chỉnh quy hoạch sử dụng đất đến năm 2020 của
-                            huyện Lục Ngạn</a>
-                        </td>
-                        <td>Ủy Ban Nhân Dân Tỉnh Bắc Giang </td>
-                        <td><span>Phó Chủ Tịch Lại Thanh Sơn</span>
-                            <span>Ngày ban hành: 27/11/2017</span></td>
-                        <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
-                    </tr>
+
+
                     </tbody>
                 </table>
             </div>
