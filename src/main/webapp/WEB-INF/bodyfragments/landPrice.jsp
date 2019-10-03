@@ -326,80 +326,84 @@
         </section>
 
         <section class="block-price-bottom " id="block-price-bottom">
-            <div class="fa-pr-bt ">
-                <div class="pr-bt-left">
-                    <a href="">
-                        <img src="resources/img/bando.png" alt="">
-                    </a>
-                </div>
-                <div class="pr-bt-right">
-                    <i id="click-qd" class="fa fa-times-circle-o" aria-hidden="true"></i>
-                    <div class="pr-top">
-                        <span>Thông tin quyết định</span>
+            <div>
+                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                <div class="fa-pr-bt ">
+                    <div class="pr-bt-left">
+                        <a href="">
+                            <img src="resources/img/bando.png" alt="">
+                        </a>
                     </div>
-                    <div class="pr-bottom ">
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Số quyết định</span>
-                            </div>
-                            <div class="pr-infor-right col-9">
-                                <span>861/QĐ-UBND</span>
-                            </div>
+                    <div class="pr-bt-right">
+                        <i id="click-qd" class="fa fa-times-circle-o" aria-hidden="true"></i>
+                        <div class="pr-top">
+                            <span>Thông tin quyết định</span>
                         </div>
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Trích yếu:</span>
+                        <div class="pr-bottom ">
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Số quyết định</span>
+                                </div>
+                                <div class="pr-infor-right col-9">
+                                    <span>861/QĐ-UBND</span>
+                                </div>
                             </div>
-                            <div class="pr-infor-right col-9">
-                                <span>Ban hành bảng giá đất giai đoạn 2015-2019 tỉnh Bắc Giang</span>
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Trích yếu:</span>
+                                </div>
+                                <div class="pr-infor-right col-9">
+                                    <span>Ban hành bảng giá đất giai đoạn 2015-2019 tỉnh Bắc Giang</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Cơ quan ban hành</span>
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Cơ quan ban hành</span>
+                                </div>
+                                <div class="pr-infor-right col-9">
+                                    <span>Ủy ban Nhân Dân Tỉnh Bắc Giang</span>
+                                </div>
                             </div>
-                            <div class="pr-infor-right col-9">
-                                <span>Ủy ban Nhân Dân Tỉnh Bắc Giang</span>
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Cơ quan ban hành</span>
+                                </div>
+                                <div class="pr-infor-right col-3">
+                                    <span>30/12/2014</span>
+                                </div>
+                                <div class="pr-infor-right col-3" style="background: #cccccc;">
+                                    <span>Thời gian hiệu lực</span>
+                                </div>
+                                <div class="pr-infor-right col-3">
+                                    <span>2015-2019</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Cơ quan ban hành</span>
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Cơ quan ban hành</span>
+                                </div>
+                                <div class="pr-infor-right col-3">
+                                    <span>30/12/2014</span>
+                                </div>
+                                <div class="pr-infor-right col-3" style="background: #cccccc;">
+                                    <span>Thời gian hiệu lực</span>
+                                </div>
+                                <div class="pr-infor-right col-3">
+                                    <span>2015-2019</span>
+                                </div>
                             </div>
-                            <div class="pr-infor-right col-3">
-                                <span>30/12/2014</span>
-                            </div>
-                            <div class="pr-infor-right col-3" style="background: #cccccc;">
-                                <span>Thời gian hiệu lực</span>
-                            </div>
-                            <div class="pr-infor-right col-3">
-                                <span>2015-2019</span>
-                            </div>
-                        </div>
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Cơ quan ban hành</span>
-                            </div>
-                            <div class="pr-infor-right col-3">
-                                <span>30/12/2014</span>
-                            </div>
-                            <div class="pr-infor-right col-3" style="background: #cccccc;">
-                                <span>Thời gian hiệu lực</span>
-                            </div>
-                            <div class="pr-infor-right col-3">
-                                <span>2015-2019</span>
-                            </div>
-                        </div>
-                        <div class="pr-info row">
-                            <div class="pr-infor-left col-3">
-                                <span>Cơ quan ban hành</span>
-                            </div>
-                            <div class="pr-infor-right col-9">
-                                <span><a href="">bacgiang.gov.vn</a></span>
+                            <div class="pr-info row">
+                                <div class="pr-infor-left col-3">
+                                    <span>Cơ quan ban hành</span>
+                                </div>
+                                <div class="pr-infor-right col-9">
+                                    <span><a href="">bacgiang.gov.vn</a></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

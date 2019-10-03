@@ -10,7 +10,9 @@ function callTableDecision() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
         if (result.length > 0) {
+            console.log(result)
             result.map(function (response, index) {
+                console.log(response)
                 tmp += `
                  <tr>
                             <td><a href="#">${response.soQuyetDinh} </a></td>
@@ -18,7 +20,7 @@ function callTableDecision() {
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
-                                <span>Ngày ban hành: ${response.ngayBanHanh.reverse().join("/")}</span></td>
+                                <span>Ngày ban hành: ${response.ngayBanHanh}</span></td>
                             <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
@@ -28,12 +30,11 @@ function callTableDecision() {
             $("#tableDecision").html("<span>Không có dữ liệu</span>");
         }
     })
-   
 }
-
+// .reverse().join("/")
 function callCoQuanBanHanh() {
     let tmp = "";
-    ajaxCallGet("v1/public/quyet-dinh/co_quan_ban_hanh/all").then(data => {
+    ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {
 
         data.map(function (response, index) {
             tmp += `
