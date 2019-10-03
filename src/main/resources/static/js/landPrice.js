@@ -33,7 +33,10 @@ $(document).ready(function () {
         $(".class-int").css({"display": "inline"})
     });
     $(".table-dat  tbody tr td span>span").click(function () {
-        $("#block-price-bottom").fadeIn(1000);
+        $("#block-price-bottom").toggleClass("d-inline");
+    });
+    $("#block-price-bottom>div>i").click(function () {
+        $("#block-price-bottom").toggleClass("d-none");
     });
     PhanPageLandprice(window.location.href);
 

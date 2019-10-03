@@ -452,6 +452,16 @@ p {
     bottom: 0;
     display: none;
 }
+.block-price-bottom >div{
+    position: relative;
+}
+.block-price-bottom >div>i{
+position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: var(--font-26);
+    color: var(--bg-blue-price);
+}
 .block-price-bottom.show{
     display: block;
 }
