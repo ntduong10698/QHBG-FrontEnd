@@ -26,6 +26,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/landPrice.jsp"/>
     </definition>
 
+    <!-- LandPrice Page  -->
+    <definition name="landPricePNN" extends="base.definition">
+        <put-attribute name="title" value="Giá Đất"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/landPricePNN.jsp"/>
+    </definition>
+
     <!-- Project Page  -->
     <definition name="project" extends="base.definition">
         <put-attribute name="title" value="Dự Án"/>

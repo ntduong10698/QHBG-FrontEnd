@@ -1,0 +1,19 @@
+.lanprift .dpfc-item.dpcf-select, .lanprift .dpfc-item.dpcf-fitem {
+    width: 17% !important;
+}
+
+/*CSS_TABLE_PNN*/
+thead th:first-child {
+    min-width: 30px !important;
+    width: 50px !important;
+}
+
+thead tr:first-child th:nth-child(2) {
+    width: 250px !important;
+}
+
+tbody td:nth-child(1) {
+    font-weight: bold;
+}
+
+/*END_CSS_TABLE_PNN*/
