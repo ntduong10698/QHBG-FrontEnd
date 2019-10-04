@@ -132,33 +132,16 @@ function setTableInfoSoildKh(dataTable) {
     //create khung cac bang
     // tao khung thead cho cac bang
     if(dataKh.length > 0) {
-        viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Diện tích</th>
-                    <th colspan=${dataKh[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-        dataKh[0].dienTichTheoXas.map(data => {
-            viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
-        })
-        viewThead += `</tr></thead>`;
 
         //set data cac keHoach
         $("#tableInfoSoild").html(""); //reset data
         dataKh.map(data => {
-            let dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich}</td>`;
-            data.dienTichTheoXas.map(data1 => {
-                dataViewTable += `<td>${data1.dienTich}</td>`
-            })
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${data.name}</span>
                 </div>
                 <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                        <tbody><tr>${dataViewTable}</tr></tbody>
-                    </table>
+                    ${getTableBieu_CH01_CH04_CH05_Ch06_Ch07_CH08_CH09(data)}
                 </div>
             </div>`;
         })
@@ -176,84 +159,39 @@ function setTableInfoSoildKh(dataTable) {
 //set data tableInfoSoild-Qh-Huyen
 function setTableInfoSoildQHHuyen(dataTable) {
     let viewTable = '';
-    let viewThead = '';
-    let dataViewTable = '';
     let mkhCall = '';
     //set Bang Quy Hoach Huyen
     if (dataTable.length > 0) {
         mkhCall = dataTable[0].loaiDat.maKyHieu;
-        // neu co data
-        viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Cấp tỉnh phân bổ</th>
-                    <th rowspan="2">Cấp huyện xác định</th>
-                    <th rowspan="2">Tổng số</th>
-                    <th colspan=${dataTable[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-        dataTable[0].dienTichTheoXas.map(data => {
-            viewThead += `<th>${data.xa == null ? "Xã ..." :data.xa.tenXa}</th>`;
-        })
-        viewThead += "</tr></thead>";
-        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
-                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
-                        <td>${dataTable[0].dienTichCapTinhPhanBo}</td>
-                        <td>${dataTable[0].dienTichCapHuyenXacDinh}</td>
-                        <td>${dataTable[0].tongDienTich}</td>`;
-
-        dataTable[0].dienTichTheoXas.map(data => {
-            dataViewTable += `<td>${data.dienTich}</td>`
-        })
 
         viewTable = `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${dataTable[0].name}</span>
                 </div>
                 <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                        <tbody><tr>${dataViewTable}</tr></tbody>
-                    </table>
+                    ${getTableBieu_CH03(dataTable[0])}
                 </div>
             </div>`;
 
         $("#tableInfoSoild").html(viewTable);
     }
 
-    //set HienTrangQuyHoachHuyen cung api voi huyen
+    //set HienTrangQuyHoachHuyen cung api voi kh-huyen
     callThongKeKeHoach(mkhCall, checkMap).then(data => {
         //reset value
         viewTable = '';
-        viewThead = '';
-        dataViewTable = '';
         let arrRs = data.filter(data1 => data1.year == "2020" && data1.quyHoachKeHoach === "QH-HT");
         if(arrRs.length > 0) {
-            viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Diện tích</th>
-                    <th colspan=${arrRs[0].dienTichTheoXas.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-            arrRs[0].dienTichTheoXas.map(data => {
-                viewThead += `<th>${data.xa == null? "Xã ..." : data.xa.tenXa}</th>`;
-            })
-            viewThead += `</tr></thead>`;
-            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td>`;
-            arrRs[0].dienTichTheoXas.map(data1 => {
-                dataViewTable += `<td>${data1.dienTich}</td>`
-            })
+
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${arrRs[0].name}</span>
                 </div>
                 <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                        <tbody><tr>${dataViewTable}</tr></tbody>
-                    </table>
+                    ${getTableBieu_CH01_CH04_CH05_Ch06_Ch07_CH08_CH09(arrRs[0])}
                 </div>
             </div>`;
-            console.log(viewTable);
+            // console.log(viewTable);
             $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
         if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
@@ -267,48 +205,18 @@ function setTableInfoSoildQHHuyen(dataTable) {
 //set data tableInfoSoild-Qh-Tinh
 function setTableInfoSoildQHTinh(dataTable){
     let viewTable = '';
-    let viewThead = '';
-    let dataViewTable = '';
     let mkhCall = '';
 
     //set data infoSoild QH Tinh
     if(dataTable.length > 0) {
         //set data infoSoild QH Tinh
         mkhCall = dataTable[0].loaiDat.maKyHieu;
-        viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Cấp quốc gia phân bổ</th>
-                    <th rowspan="2">Cấp tỉnh xác định</th>
-                    <th rowspan="2">Tổng số</th>
-                    <th rowspan="2">Cơ Cấu (%)</th>
-                    <th colspan=${dataTable[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-        dataTable[0].dienTichTheoHuyens.map(data => {
-            viewThead += `<th>${data.huyen == null? "Huyện ..." :data.huyen.tenHuyen}</th>`;
-        })
-        viewThead += "</tr></thead>";
-
-        dataViewTable =`<td>${dataTable[0].loaiDat.tenLoaiDat}</td>
-                        <td>${dataTable[0].loaiDat.maKyHieu}</td>
-                        <td>${dataTable[0].dienTichCapQGPhanBo}</td>
-                        <td>${dataTable[0].dienTichCapTinhXD}</td>
-                        <td>${dataTable[0].tongDienTich}</td>
-                        <td>...</td>`;
-
-        dataTable[0].dienTichTheoHuyens.map(data => {
-            dataViewTable += `<td>${data.dienTich}</td>`
-        })
-
         viewTable = `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${dataTable[0].name}</span>
                 </div>
                 <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                        <tbody><tr>${dataViewTable}</tr></tbody>
-                    </table>
+                    ${getTableBieu_CT0308(dataTable[0])}
                 </div>
             </div>`;
 
@@ -319,38 +227,16 @@ function setTableInfoSoildQHTinh(dataTable){
     callThongKeQuyHoachHienTrangTinh(mkhCall).then(data => {
         //reset value
         viewTable = '';
-        viewThead = '';
-        dataViewTable = '';
         let arrRs = data.filter(data1 => data1.nam == "2020" && data1.quyHoachKeHoach === "QH-HT"); //check
         if(arrRs.length > 0) {
-            console.log("hihi")
-            viewThead = `<thead><tr>
-                    <th rowspan="2">Chỉ tiêu sử dụng đất</th>
-                    <th rowspan="2">Mã</th>
-                    <th rowspan="2">Diện tích</th>
-                    <th rowspan="2">Cơ Cấu (%)</th>
-                    <th colspan=${arrRs[0].dienTichTheoHuyens.length}>Phân theo đơn vị hành chính</th>
-                 </tr><tr>`;
-            arrRs[0].dienTichTheoHuyens.map(data => {
-                viewThead += `<th>${data.huyen == null? "Huyện ..." : data.huyen.tenHuyen}</th>`;
-            })
-            viewThead += `</tr></thead>`;
-            dataViewTable = `<td>${arrRs[0].loaiDat.tenLoaiDat}</td><td>${arrRs[0].loaiDat.maKyHieu}</td><td>${arrRs[0].tongDienTich}</td><td>${arrRs[0].coCau}</td>`;
-            arrRs[0].dienTichTheoHuyens.map(data1 => {
-                dataViewTable += `<td>${data1.dienTich}</td>`
-            })
-            viewTable += `<div class="table-wp">
+            viewTable = `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${arrRs[0].name}</span>
                 </div>
                 <div style="overflow-y: auto">
-                    <table class="table table-bordered">
-                        ${viewThead}
-                        <tbody><tr>${dataViewTable}</tr></tbody>
-                    </table>
+                    ${getTableBieu_CT01(arrRs[0])}
                 </div>
             </div>`;
-            console.log(viewTable);
             $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
         if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu

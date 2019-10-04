@@ -306,15 +306,15 @@ p {
 }
 
 .table-dat  tbody tr td span>span{
-     border: 1px solid black;
-     width: 20px;
-     height: 20px;
-     border-radius: 50%;
-     background: transparent;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .table-dat  tbody tr td:hover span>span{
     background-color: black;
 }
@@ -448,9 +448,19 @@ p {
     background: #063141;
     position: fixed;
     width: 100%;
-    z-index: 1000;
+    z-index: 1004;
     bottom: 0;
     display: none;
+}
+.block-price-bottom >div{
+    position: relative;
+}
+.block-price-bottom >div>i{
+position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: var(--font-26);
+    color: var(--bg-blue-price);
 }
 .block-price-bottom.show{
     display: block;
@@ -562,7 +572,7 @@ p {
     padding-bottom: 10px;
 }
 .lanprift .dpfc-item.dpcf-select,.lanprift .dpfc-item.dpcf-fitem{
-    width: 17%;
+    width: 20%;
 }
 .ippwp{
     width: 100%;
