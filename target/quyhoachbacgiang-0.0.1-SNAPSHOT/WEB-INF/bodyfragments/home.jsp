@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-6">
                     <div class="subnav-wp">
-                        <a class="subnav-item" href="#">
+                        <a class="subnav-item" href="gia-dat-nong-nghiep">
                             <div class="sni-wp">
                                 <div class="snimg-wp">
                                     <img src="resources/img/coin.png" alt="">
@@ -26,7 +26,7 @@
                                 <img src="resources/img/arrow.png" alt="">
                             </div>
                         </a>
-                        <a class="subnav-item" href="#">
+                        <a class="subnav-item" href="quy-hoach?map=0">
                             <div class="sni-wp">
                                 <div class="snimg-wp">
                                     <img src="resources/img/shield1.png" alt="">
@@ -42,7 +42,7 @@
                             </div>
 
                         </a>
-                        <a class="subnav-item" href="#">
+                        <a class="subnav-item" href="du-an">
                             <div class="sni-wp">
                                 <div class="snimg-wp">
                                     <img src="resources/img/construction.png" alt="">
@@ -58,7 +58,7 @@
                             </div>
 
                         </a>
-                        <a class="subnav-item" href="#">
+                        <a class="subnav-item" href="quyet-dinh">
                             <div class="sni-wp">
                                 <div class="snimg-wp">
                                     <img src="resources/img/decistion.png" alt="">
@@ -74,7 +74,7 @@
                             </div>
 
                         </a>
-                        <a class="subnav-item" href="#">
+                        <a class="subnav-item" href="huong-dan">
                             <div class="sni-wp">
                                 <div class="snimg-wp">
                                     <img src="resources/img/direct.png" alt="">
