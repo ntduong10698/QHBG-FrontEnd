@@ -52,4 +52,19 @@ public class MainController {
     public String hsDc(Model model) {
         return "hsDc";
     }
+
+    @RequestMapping(value = {"/thong-tin-quyet-dinh"}, method = RequestMethod.GET)
+    public String infoDecision(Model model) {
+        return "infoDecision";
+    }
+
+    @RequestMapping(value = {"/huong-dan"}, method = RequestMethod.GET)
+    public String guide(Model model) {
+        return "home";
+    }
+
+    @RequestMapping(value = {"/gop-y"}, method = RequestMethod.GET)
+    public String feedBack(Model model) {
+        return "home";
+    }
 }
