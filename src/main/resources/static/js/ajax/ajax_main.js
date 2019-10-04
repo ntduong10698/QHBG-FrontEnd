@@ -104,7 +104,7 @@ async function ajaxCallPost(url) {
     await $.ajax({
         type: 'GET',
         dataType: "json",
-        url: url,
+        url: URL_API+ url,
         timeout: 30000,
         success: function (result) {
             rs = result

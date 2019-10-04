@@ -307,7 +307,6 @@
 
         </div>
     </section>
-
     <section class="block-price-bottom " id="block-price-bottom">
         <div class="fa-pr-bt ">
             <div class="pr-bt-left">
@@ -382,6 +381,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

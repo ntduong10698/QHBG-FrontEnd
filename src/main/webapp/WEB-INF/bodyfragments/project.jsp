@@ -1,22 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="resources/css/decision.css">
 <link rel="stylesheet" href="resources/css/project.css">
+<script src="resources/js/ajax/ajax_CongTrinhDuAn.js"></script>
 <main>
     <section class="dp-filter p-project">
         <div class="dpfilter-wp">
             <div class="dpfilter-ct">
                 <div class="dpfc-item dpcf-fitem ">
-                    <span>Thuộc đơn vị:</span>
+                    <span>Huyện:</span>
                     <div class="pp-select">
                         <select id="dp-drop3" class="pp-drop">
                             <option value="">--- Tất cả ---</option>
                             <option value="0">--- Tất cả ---</option>
-                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
+
+
                         </select>
                     </div>
                 </div>
@@ -24,19 +21,13 @@
                     <span>Loại dự án</span>
                     <div class="pp-select">
                         <select id="dp-drop4" class="pp-drop">
-                            <option value="">Dự án trong quy hoạch</option>
-                            <option value="0">Dự án trong quy hoạch</option>
-                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
-                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
-                            </option>
+
+
                         </select>
                     </div>
                 </div>
                 <div class="dpfc-item dpcf-fitem">
-                    <span>Danh mục dự án:</span>
+                    <span>Tên dự án:</span>
                     <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
                 </div>
                 <div class="dpfc-item dpcf-fitem">

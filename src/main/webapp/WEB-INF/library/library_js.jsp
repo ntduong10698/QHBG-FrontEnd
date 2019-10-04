@@ -1,2 +1,2 @@
-<%--<script src="https://kit.fontawesome.com/3bbe6e5ad3.js"></script>--%>
 
+<script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
