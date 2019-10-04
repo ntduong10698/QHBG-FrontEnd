@@ -13,9 +13,14 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping(value = {"/gia-dat-nong-nghiep", "/gia-dat-phi-nong-nghiep"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/gia-dat-nong-nghiep"}, method = RequestMethod.GET)
     public String landPrice(Model model) {
         return "landPrice";
+    }
+
+    @RequestMapping(value = {"/gia-dat-phi-nong-nghiep"}, method = RequestMethod.GET)
+    public String landPricePNN(Model model) {
+        return "landPricePNN";
     }
 
     @RequestMapping(value = {"/du-an"}, method = RequestMethod.GET)

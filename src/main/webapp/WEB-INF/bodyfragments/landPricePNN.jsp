@@ -1,50 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="resources/css/landPrice.css">
+<link rel="stylesheet" href="resources/css/landPricePNN.css">
 <link rel="stylesheet" href="resources/css/project.css">
 <link rel="stylesheet" href="resources/css/decision.css">
 <script src="resources/js/ajax/ajax_land_price.js"></script>
-<script src="resources/js/ajax/ajax_price_nn.js"></script>
+<script src="resources/js/ajax/ajax_price_pnn.js"></script>
 <!-- MAIN -->
 <main>
     <section class="dp-filter lanprift">
         <div class="dpfilter-wp">
             <div class="dpfilter-ct">
-                <%--                    <div class="bl-sea d-flex" style="">--%>
-                <%--                        <div class="search-1">--%>
-                <%--                            <select name="" id="">--%>
-                <%--                                <option value="">Bảng giá đất nông nghiệp</option>--%>
-                <%--                                <option value="">Bảng giá đất công nghiệp</option>--%>
-                <%--                            </select>--%>
-                <%--                        </div>--%>
-                <%--                        <div class="search-2 " style="width:8%">--%>
-                <%--                            <p>Năm / Giai đoạn:</p>--%>
-                <%--                            <select name="" id="">--%>
-                <%--                                <option value="">2015-2019</option>--%>
-                <%--                                <option value="">2019-2030</option>--%>
-                <%--                            </select>--%>
-                <%--                        </div>--%>
-                <%--                        <div class="search-2" style="width:32%">--%>
-                <%--                            <p>Bảng giá đất:</p>--%>
-                <%--                            <select name="" id="">--%>
-                <%--                                <option value="">Trồng lúa nước và cây hàng năm</option>--%>
-                <%--                                <option value="">Trồng rừng</option>--%>
-                <%--                            </select>--%>
-                <%--                        </div>--%>
-                <%--                        <div class="search-2">--%>
-                <%--                            <p>Vị trí:</p>--%>
-                <%--                            <input type="text">--%>
-                <%--                        </div>--%>
-                <%--                        <div class="search-2">--%>
-                <%--                            <p class="d-flex  "><span>Giá đất:</span><span>(đồng/m2)</span></p>--%>
-                <%--                            <div class="d-flex ">--%>
-                <%--                                <input class="ip-1" type="text">--%>
-                <%--                                <input class="ip-1" type="text">--%>
-                <%--                            </div>--%>
-
-                <%--                        </div>--%>
-                <%--                </div>--%>
                 <div class="dpfc-item dpcf-select">
-                    <span>Bảng giá đất nông nghiệp</span>
+                    <span>Bảng giá đất phi nông nghiệp</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop8" class="dp-drop">
                             <option value="">--- Gõ để tìm kiếm ---</option>
@@ -66,39 +33,76 @@
                         </select>
                     </div>
                 </div>
-<%--                    <div class="dpfc-item dpcf-select">--%>
-<%--                        <span>Bảng giá đất</span>--%>
-<%--                        <div class="dpcft-drop">--%>
-<%--                            <select id="dp-drop10" class="dp-drop">--%>
-<%--                                <option value="">--- Gõ để tìm kiếm ---</option>--%>
-<%--                                <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                </option>--%>
-<%--                                <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                </option>--%>
-<%--                                <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                            </select>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-                <div class="dpfc-item dpcf-fitem" id="searchViTriGiaDat">
-                    <span>Vị trí:</span>
-                    <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                <div class="dpfc-item dpcf-select">
+                    <span>Huyện</span>
+                    <div class="dpcft-drop">
+                        <select id="dp-drop10" class="dp-drop">
+                            <option value="">--- Gõ để tìm kiếm ---</option>
+                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                        </select>
+                    </div>
                 </div>
-                <div class="dpfc-item dpcf-fitem">
-                    <span>Giá đất (1.000 VNĐ/m<sup>2</sup>):</span>
-                    <div class="ippwp">
-                        <input type="number" value="0" placeholder="Giá nhỏ nhất" id="priceDatMin">
-                        <input type="number" placeholder="Giá lớn nhất" id="priceDatMax">
+                <div class="dpfc-item dpcf-select">
+                    <span>Xã</span>
+                    <div class="dpcft-drop">
+                        <select id="dp-drop11" class="dp-drop">
+                            <option value="">--- Gõ để tìm kiếm ---</option>
+                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dpfc-item dpcf-select">
+                    <span>Loại Xã</span>
+                    <div class="dpcft-drop">
+                        <select id="dp-drop12" class="dp-drop">
+                            <option value="">--- Gõ để tìm kiếm ---</option>
+                            <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            </option>
+                            <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                            <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="dpfc-item dpcf-bt" id="searchGiaDat">
@@ -108,8 +112,7 @@
                     <a href=""><img src="resources/img/xls.png" alt=""></a>
                 </div>
             </div>
-        </div>
-    </section>
+        </div> </section>
     <section class="container">
         <div class="block-table-price2">
             <table class="table-dat table table-hover table-bordered">
@@ -307,6 +310,7 @@
 
         </div>
     </section>
+
     <section class="block-price-bottom " id="block-price-bottom">
         <div class="fa-pr-bt ">
             <div class="pr-bt-left">
@@ -381,7 +385,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
