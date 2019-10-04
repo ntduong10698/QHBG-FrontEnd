@@ -68,4 +68,10 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/hsDc.jsp"/>
     </definition>
 
+    <!-- infoDecision Page  -->
+    <definition name="infoDecision" extends="base.definition">
+        <put-attribute name="title" value="Thông tin quyết định"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/infoDecision.jsp"/>
+    </definition>
+
 </tiles-definitions>

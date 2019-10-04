@@ -605,12 +605,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="hướng dẫn">
+                        <a href="huong-dan" title="hướng dẫn">
                             <span>Hướng dẫn</span>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" title="góp ý">
+                        <a href="gop-y" title="góp ý">
                             <span>Góp ý</span>
                         </a>
                     </li>

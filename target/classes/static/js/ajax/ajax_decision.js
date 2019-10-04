@@ -10,9 +10,7 @@ function callTableDecision() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
         if (result.length > 0) {
-            console.log(result)
             result.map(function (response, index) {
-                console.log(response)
                 tmp += `
                  <tr>
                             <td><a href="#">${response.soQuyetDinh} </a></td>

@@ -6,6 +6,8 @@ $(function () {
     callBangGiaDatPNN();
 })
 
+
+//GENERAL
 function callBangGiaDatPNN() {
     //set option bang gia dat
     let arrCallAjax = [callBangGiaDat(2),callBangGiaDat(3)];
@@ -29,71 +31,6 @@ function callBangGiaDatPNN() {
         console.log(err);
     })
     //end set option bang gia dat
-}
-
-function changeSelectBangGiaDatPNN() {
-    let idHuyen = $("#dp-drop10").val();
-    let id = $("#dp-drop8").val();
-    // id > 11 la dat nong thon
-    if (id <= 11) {
-        console.log("Call bang gia dat phi nong nghiep");
-    } else {
-        callGiaDatNongThon(id, idHuyen).then(rs => {
-            arrTable = rs;
-            setViewSelectXa(idHuyen, rs);
-            setViewLoaiXa();
-            $(".block-table-price2").html(setTableGiaDatNongThon(rs,idHuyen));
-            arrTable = rs;
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-    resetSelectXa();
-}
-
-function resetSelectView() {
-    $("#dp-drop8").select2({
-        placeholder: "--- Gõ để tìm kiếm ---",
-        allowClear: true
-    });
-    $("#dp-drop9").select2({
-        placeholder: "--- Gõ để tìm kiếm ---",
-        allowClear: true
-    });
-    $("#dp-drop9").val("0");
-    $("#dp-drop9").select2().trigger('change');
-
-    $("#dp-drop10").select2({
-        placeholder: "--- Gõ để tìm kiếm ---",
-        allowClear: true
-    });
-    $("#dp-drop11").select2({
-        placeholder: "--- Gõ để tìm kiếm ---",
-        allowClear: true
-    });
-    $("#dp-drop12").select2({
-        placeholder: "--- Gõ để tìm kiếm ---",
-        allowClear: true
-    });
-}
-
-function changeSelectXaNongThon() {
-
-}
-
-function callGiaDatNongThon(id,idHuyen) {
-    let url = `v1/public/gia-dat/gia-dat-tai-nong-thon/find-by-huyen-and-bang-gia-dat?bang-gia-dat-id=${id}&huyen-id=${idHuyen}`;
-    return ajaxCallGet(url);
-}
-
-function callGiaDatPhiNongNghiep(id) {
-    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-bang-gia-dat?bang-gia-dat-id=${id}`;
-    return ajaxCallGet(url);
-}
-
-function callViewLoaiXa() {
-    let url = `v1/public/dm-loai-xa/all`;
-    return ajaxCallGet(url);
 }
 
 //set View select huyen
@@ -144,6 +81,79 @@ function setViewSelectXa(idHuyen) {
     })
 }
 
+function changeSelectBangGiaDatPNN() {
+    let idHuyen = $("#dp-drop10").val();
+    let id = $("#dp-drop8").val();
+    // id > 11 la dat nong thon
+    if (id <= 11) {
+        hidenViewXa();
+        console.log("Call bang gia dat phi nong nghiep");
+    } else {
+        callGiaDatNongThon(id, idHuyen).then(rs => {
+            arrTable = rs;
+            setViewSelectXa(idHuyen, rs);
+            setViewLoaiXa();
+            $(".block-table-price2").html(setTableGiaDatNongThon(rs,idHuyen));
+            arrTable = rs;
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+    resetSelectXa();
+}
+
+function resetSelectView() {
+    $("#dp-drop8").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop9").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop9").val("0");
+    $("#dp-drop9").select2().trigger('change');
+
+    $("#dp-drop10").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop11").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+    $("#dp-drop12").select2({
+        placeholder: "--- Gõ để tìm kiếm ---",
+        allowClear: true
+    });
+}
+
+function hidenViewXa() {
+    $("#dp-drop11").parents('dpfc-item').css("display","none");
+    console.log()
+    $(".dpfc-item .dpcf-select").css("width","20%");
+    resetSelectView()
+}
+
+//END GENERAL
+
+//Gia Dat Nong Thon
+
+function callGiaDatNongThon(id,idHuyen) {
+    let url = `v1/public/gia-dat/gia-dat-tai-nong-thon/find-by-huyen-and-bang-gia-dat?bang-gia-dat-id=${id}&huyen-id=${idHuyen}`;
+    return ajaxCallGet(url);
+}
+
+function callGiaDatPhiNongNghiep(id) {
+    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-bang-gia-dat?bang-gia-dat-id=${id}`;
+    return ajaxCallGet(url);
+}
+
+function callViewLoaiXa() {
+    let url = `v1/public/dm-loai-xa/all`;
+    return ajaxCallGet(url);
+}
+
 //set view loai xa
 function setViewLoaiXa() {
     callViewLoaiXa().then(rs => {
@@ -169,14 +179,18 @@ function setViewLoaiXa() {
 function changeViewLoaiXa(arrFindXa, idHuyen) {
     $("#dp-drop12").change(function () {
         let val = $("#dp-drop12").val();
-        let arrRs = arrFindXa.filter(data => {
-            if (data.loaiXa.parent != null) {
-                return  (data.loaiXa.idDmLoaiXa == val || data.loaiXa.parent.idDmLoaiXa == val);
-            } else {
-                return data.loaiXa.idDmLoaiXa == val;
-            }
-        });
-        $(".block-table-price2").html(setTableGiaDatNongThon(arrRs,idHuyen));
+        if (val != 0) {
+            let arrRs = arrFindXa.filter(data => {
+                if (data.loaiXa.parent != null) {
+                    return  (data.loaiXa.idDmLoaiXa == val || data.loaiXa.parent.idDmLoaiXa == val);
+                } else {
+                    return data.loaiXa.idDmLoaiXa == val;
+                }
+            });
+            $(".block-table-price2").html(setTableGiaDatNongThon(arrRs,idHuyen));
+        } else {
+            $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
+        }
     })
 }
 //end change view loai xa
@@ -244,3 +258,9 @@ function resetSelectXa() {
     $("#dp-drop12").val("0");
     $("#dp-drop12").select2().trigger('change');;
 }
+
+//End gia dat nong thon
+
+//Gia dat thanh thi
+
+//Gia dat thanh thi
