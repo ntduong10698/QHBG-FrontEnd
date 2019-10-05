@@ -9,6 +9,7 @@ function callFullTableDecision() {
 function callTableDecision() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
+        console.log(result)
         if (result.length > 0) {
             result.map(function (response, index) {
                 tmp += `
@@ -18,8 +19,8 @@ function callTableDecision() {
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
-                                <span>Ngày ban hành: ${response.ngayBanHanh}</span></td>
-                            <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
+                                <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
+                            <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
             });
@@ -29,7 +30,7 @@ function callTableDecision() {
         }
     })
 }
-// .reverse().join("/")
+// .reverse()c
 function callCoQuanBanHanh() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {

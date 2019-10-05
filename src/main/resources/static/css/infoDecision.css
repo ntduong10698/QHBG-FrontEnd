@@ -1,0 +1,85 @@
+main{
+    min-height: 100%;
+    background-color: azure;
+    padding: 40px 0;
+}
+.dp-detail table{
+    background-color: white;
+    margin-bottom: 0;
+}
+.dp-detail i{
+    cursor: pointer;
+}
+.deciaddadj {
+    width: 100%;
+    background-color: white;
+    margin-top: 30px;
+}
+.deciaa-cap{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #3c8dbc;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.deciaa-cap span{
+    font-weight: 600;
+}
+.deciaa-table{
+    padding: 10px;
+    border: 1px solid #3c8dbc;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.dp-detail table thead tr{
+    background-color: rgb(237, 237, 237);
+}
+.dp-detail table thead tr th{
+    vertical-align: middle;
+    text-align: center;
+    font-size: var(--font13);
+    font-weight: 600;
+    padding: 5px;
+    white-space: nowrap;
+}
+.dp-detail table tbody tr td{
+    vertical-align: middle;
+    text-align: left;
+    font-size: var(--font13);
+    padding: 5px;
+}
+.deciaddadj table tbody tr td:last-child,.deciaddadj table tbody tr td:first-child{
+    text-align: center;
+}
+.decinfo{
+    width: 100%;
+    background-color: white;
+}
+.decinfo .deciaa-cap{
+    background-color: #00a65a;
+}
+.decinfo .deciaa-table{
+    border: 1px solid #00a65a;
+}
+.dttd-title{
+    font-weight: 600;
+    background-color: rgb(237, 237, 237);
+    width: 25%;
+}
+.dttd-tc{
+    font-weight: 600;
+    background-color: #f1f8fe;
+    color: #109bf7;
+}
+.dttd-stitle{
+    background-color: #f1f8fe;
+}
+.decinfo table td{
+    white-space: nowrap;
+    padding: 5px;
+    font-size: var(--font13);
+}
