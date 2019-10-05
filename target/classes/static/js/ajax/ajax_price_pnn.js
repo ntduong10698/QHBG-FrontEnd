@@ -123,7 +123,7 @@ function setViewSelectHuyen() {
     $("#dp-drop10").select2().trigger('change');
     // setViewSelectXa(1);
     $("#dp-drop10").change(function () {
-        setViewSelectXa($("#dp-drop10").val());
+        // setViewSelectXa($("#dp-drop10").val());
         callSelectBangGiaDatPNN();
     })
 }
@@ -313,7 +313,7 @@ function setTableGiaDatNongThon(rs,idHuyen) {
         viewData += setDataTableGiaDatNongThon(data1, index);
     })
     viewTable =`<div class="tablep-cap">
-                    <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo bảng giá đất ở nông thôn</span>
+                    <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo bảng giá đất ở nông thôn</span>
                 </div>
                 <table class="table-dat table table-hover table-bordered">
                     <thead>
