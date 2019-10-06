@@ -2,7 +2,8 @@ main{
     min-height: 100%;
 }
 .lu-landuseplan .dpfc-item.dpcf-select{
-    width: 43.5% !important;
+    /*width: 43.5% !important;*/
+    width: 43.5%;
     padding: 5px;
 }
 .lu-landuseplan .dpfc-item .dpcft-drop{
@@ -47,4 +48,20 @@ main{
     display: block;
     padding: 15px;
     color: white;
+}
+
+.fix-width-select {
+    width: 28% !important;
+}
+
+.table-QHK {
+    width: 100%;
+}
+
+.table-HTQH {
+    width: 100%;
+}
+
+table th:first-child {
+    min-width: 150px;
 }

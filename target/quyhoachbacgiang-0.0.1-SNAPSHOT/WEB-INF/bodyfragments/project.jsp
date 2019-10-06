@@ -28,14 +28,14 @@
                 </div>
                 <div class="dpfc-item dpcf-fitem">
                     <span>Tên dự án:</span>
-                    <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                    <input type="text" id="nameProject" placeholder="Nhập từ khóa tìm kiếm...">
                 </div>
                 <div class="dpfc-item dpcf-fitem">
                     <span>Địa điểm:</span>
-                    <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                    <input type="text" id="diaDiemDuAn" placeholder="Nhập từ khóa tìm kiếm...">
                 </div>
                 <div class="dpfc-item dpcf-bt">
-                    <a href="#"><img src="resources/img/searchbt.png" alt=""></a>
+                    <a id="clickSearchDuAn"><img src="resources/img/searchbt.png" alt=""></a>
                 </div>
                 <div class="dpfc-item dpcf-bt">
                     <a href="#"><img src="resources/img/xls.png" alt=""></a>
@@ -49,7 +49,7 @@
                 <div class="tablep-cap">
                     <span>Danh mục công trình dự án</span>
                 </div>
-                <table class="table table-hover table-bordered">
+                <table class="table table-hover table-bordered" id="tableCongTrinhDuAn">
                     <thead>
                     <tr>
                         <th>STT</th>
@@ -63,96 +63,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-                    <tr>
-                        <td>4062</td>
-                        <td>Khu công nghiệp Châu Minh-Mai Đình</td>
-                        <td>Dự án trong kì quy hoạch</td>
-                        <td>18000000</td>
-                        <td>Huyện Hiệp Hòa, Việt Yên</td>
-                        <td>Huyện Việt Yên</td>
-                        <td></td>
-                        <td><span><span><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
+
+
 
                     </tbody>
                 </table>

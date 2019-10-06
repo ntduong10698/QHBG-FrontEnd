@@ -6,6 +6,7 @@ var year;
 function fnView(indexPopUp) {
     $(".block-main-l2").toggle();
     viewInfoSoild(arrPopUpMap[indexPopUp]);
+    viewInforQuyetDinh(arrPopUpMap[indexPopUp]);
 }
 
 // set view infoSoild chi tiet
@@ -20,6 +21,31 @@ function viewInfoSoild(data) {
 }
 //end xy ly click chi tiet khoi trong map
 
+//setQuyetDinh
+function viewInforQuyetDinh(data) {
+    let maQuyetDinh = data.MaQuyetDinh;
+    // maQuyetDinh = "861/QĐ-UBND";
+    let view = `<li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>
+                <li>...</li>`;
+    $("#chiTietQuyetDinhMap ul").html(view);
+    callQuyetDinh(maQuyetDinh.toUpperCase()).then(data => {
+        console.log(data.ngayBanHanh);
+        $("#chiTietQuyetDinhMap ul li:nth-child(1)").html(data.soQuyetDinh);
+        $("#chiTietQuyetDinhMap ul li:nth-child(2)").html(data.trichYeu);
+        $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data.coQuanBanHanh != null ? data.coQuanBanHanh.tenCoQUan : "...");
+        $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data.nguoiKy);
+        $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data.ngayBanHanh != null ? `${reverseStringNam(data.ngayBanHanh)}` : "...");
+        $("#chiTietQuyetDinhMap ul li:nth-child(6)").html('<a href="#">Link đính kèm</a>');
+    }).catch(err => {
+        console.log(err);
+    })
+}
+//endsetQuyetDinh
+
 //set data infoKhUse qh,kh
 function setInfoKhUse(data) {
     let pathName = window.location.href;
@@ -32,6 +58,7 @@ function setInfoKhUse(data) {
     if (pathName.indexOf("quy-hoach") > -1) {
         if (checkMap !== 0) {
             // quy haoch huyen
+            setBieuMauKhacQH(mkh, checkMap); //set datain bieu mau khac ke hoach
             callThongKeQuyHoach(mkh, checkMap).then(rs => {
 
                 setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
@@ -47,6 +74,7 @@ function setInfoKhUse(data) {
             });
         } else {
             // quy hoach tinh
+            setBieuMauKhacQH(mkh, 0); //set datain bieu mau khac ke hoach
             callThongKeQuyHoachTinh(mkh).then(rs => {
                 rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
 
@@ -70,10 +98,11 @@ function setInfoKhUse(data) {
                         <li><span>Năm 2018</span></li>
                         <li><span>Năm 2019</span></li>`;
         $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+
+        setBieuMauKhacKH(mkh, checkMap); //set datain bieu mau khac ke hoach
         callThongKeKeHoach(mkh, checkMap).then(rs => {
 
             setTableInfoSoildKh(rs); //set data in tabelInfoSoildKh
-
             textViewRight += `<li><span>${chiTieu}</span></li>
                                <li><span>${mkh}</span></li>
                                <li><span>...</span></li>
@@ -134,7 +163,7 @@ function setTableInfoSoildKh(dataTable) {
     if(dataKh.length > 0) {
 
         //set data cac keHoach
-        $("#tableInfoSoild").html(""); //reset data
+        $("#tableInfoSoild .table-HTQH").html(""); //reset data
         dataKh.map(data => {
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
@@ -150,7 +179,7 @@ function setTableInfoSoildKh(dataTable) {
     }
     //end tao khung thead cho cac bang
 
-    $("#tableInfoSoild").html(viewTable);
+    $("#tableInfoSoild .table-HTQH").html(viewTable);
     //end create khung cac bang
 
 }
@@ -173,7 +202,7 @@ function setTableInfoSoildQHHuyen(dataTable) {
                 </div>
             </div>`;
 
-        $("#tableInfoSoild").html(viewTable);
+        $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
     //set HienTrangQuyHoachHuyen cung api voi kh-huyen
@@ -192,9 +221,9 @@ function setTableInfoSoildQHHuyen(dataTable) {
                 </div>
             </div>`;
             // console.log(viewTable);
-            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+            $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
-        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
     }).catch(err => {
         console.log(err);
     })
@@ -220,7 +249,7 @@ function setTableInfoSoildQHTinh(dataTable){
                 </div>
             </div>`;
 
-        $("#tableInfoSoild").html(viewTable);
+        $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
     //set data infoSoild QH-HT Tinh
@@ -237,14 +266,14 @@ function setTableInfoSoildQHTinh(dataTable){
                     ${getTableBieu_CT01(arrRs[0])}
                 </div>
             </div>`;
-            $("#tableInfoSoild").prepend(viewTable); //noi len dau hien trang hien thi truoc
+            $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
-        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Chưa có dữ liệu</strong>"); //set chưa có dữ liệu
 
     }).catch(err => {
         console.log(err);
     })
-};
+}
 //end set data tableInfoSoild-QH-Tinh
 
 
@@ -286,8 +315,12 @@ require([
                 checkMap = arrSplit[1] - 0; // set truong phan biet huyen va tinh// convert ve so
                 indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
                 rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
+                //set name ban do
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]}`);
             } else {
                 rs += "Quy_Hoach_Bac_Giang_2015_2019";
+                //set name ban do
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang`);
             }
         } else if (pathName.search("ke-hoach") > -1) {
             arrSplit = pathName.split("map=");
@@ -295,6 +328,8 @@ require([
             indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10
             year = pathName.split("nam=")[1];
             rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
+            //set name ban do
+            $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-${ARR_HUYEN_TEXT[indexHuyen]}-${year}`);
         }
         console.log(rs+"/MapServer")
         return rs + "/MapServer";

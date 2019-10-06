@@ -77,7 +77,7 @@ function setViewQuyetDinh(arrBangGiaDat) {
         // set truong hop default
         $("#dp-drop13").val(arrCallFilter[0].id);
         $("#dp-drop13").select2().trigger('change');
-        callSelectBangGiaDatPNNHsDc();//set truong hop default goc
+        callSelectBangGiaDatPNNHsDc();//set truong hop default khi trang moi view
     })
 }
 
