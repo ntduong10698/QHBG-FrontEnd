@@ -38,11 +38,11 @@
                 <div class="realtime">
                     <div class="rtwwp">
                         <span class="rt-cap"><i class="fas fa-users"></i> Thống kê truy cập</span>
-                        <div class="rtct-wp">
-                                <span class="rt-contet"><i class="fas fa-user-friends"></i><span>Đang truy cập: <span
-                                        class="rt-num">20</span></span></span>
-                            <span class="rt-contet"><i class="fas fa-chart-line"></i><span>Tổng truy cập: <span
-                                    class="rt-num">200.000</span></span></span>
+                        <div class="rtct-wp" id="histats_counter">
+<%--                                <span class="rt-contet"><i class="fas fa-user-friends"></i><span>Đang truy cập: <span--%>
+<%--                                        class="rt-num">20</span></span></span>--%>
+<%--                            <span class="rt-contet"><i class="fas fa-chart-line"></i><span>Tổng truy cập: <span--%>
+<%--                                    class="rt-num">200.000</span></span></span>--%>
                         </div>
                     </div>
                 </div>
@@ -50,4 +50,17 @@
         </div>
     </div>
 </footer>
+
+<!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4321001,4,605,110,55,00001011']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4321001&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  -->
 <!-- END FOOTER -->
