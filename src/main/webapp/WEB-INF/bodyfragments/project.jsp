@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="resources/css/decision.css">
 <link rel="stylesheet" href="resources/css/project.css">
+<link rel="stylesheet" href="resources/css/landPrice.css">
 <script src="resources/js/ajax/ajax_CongTrinhDuAn.js"></script>
 <main>
     <section class="dp-filter p-project">
@@ -10,7 +11,7 @@
                     <span>Huyện:</span>
                     <div class="pp-select">
                         <select id="dp-drop3" class="pp-drop">
-                            <option value="">--- Tất cả ---</option>
+                            <option value="0">--- Tất cả ---</option>
                             <option value="0">--- Tất cả ---</option>
 
 
@@ -89,6 +90,9 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="block-price-bottom " id="block-price-bottom">
+
     </section>
 </main>
 <!-- Plugin Select2 Js -->
