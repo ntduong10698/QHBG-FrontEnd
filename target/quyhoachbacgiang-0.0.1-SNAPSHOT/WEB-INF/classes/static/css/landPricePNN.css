@@ -1,6 +1,6 @@
-.lanprift .dpfc-item.dpcf-select, .lanprift .dpfc-item.dpcf-fitem {
-    width: 17% !important;
-}
+/*.lanprift .dpfc-item.dpcf-select, .lanprift .dpfc-item.dpcf-fitem {*/
+/*    width: 17% !important;*/
+/*}*/
 
 /*CSS_TABLE_PNN*/
 thead th:first-child {
@@ -13,7 +13,11 @@ thead tr:first-child th:nth-child(2) {
 }
 
 tbody td:nth-child(1) {
-    font-weight: bold;
+    /*font-weight: bold;*/
+}
+
+.fix-width-select {
+    width: 17% !important;
 }
 
 /*END_CSS_TABLE_PNN*/

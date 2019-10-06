@@ -52,16 +52,21 @@ function postInfoUserDangNhap() {
                 localStorage.setItem("infoUserLogin", JSON.stringify(result));
                 window.location.href = "home";
             }
-
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
             console.log(errorThrown);
         }
     })
 
 }
 
+function logOut() {
+    $("#logOut").click(function () {
+        localStorage.clear();
+        $("#lockhome").show();
+        $("#nameUser").hide();
+    })
+}
 function checkResign() {
 
     let user = {
@@ -150,13 +155,7 @@ function checkStatusLogin() {
 
     }
 }
-function logOut() {
-    $("#logOut").click(function () {
-        localStorage.clear();
-        $("#lockhome").show();
-        $("#nameUser").hide();
-    })
-}
+
 function checkpass() {
     $("#submitResign").click(function () {
         if ($("#pass1").val() === $("#pass2").val()) {
