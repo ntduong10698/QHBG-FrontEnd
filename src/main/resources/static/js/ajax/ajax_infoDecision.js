@@ -7,10 +7,10 @@ $(document).ready(function () {
 function getDataInfoQuyetDinh() {
 
     ajaxCallGet("v1/public/quyet-dinh/find-by-id?id=" + idWed[idWed.length - 1]).then(data => {
-console.log()
-        let tmp ="";
-if (data.duongDanTep !== null){
-    tmp = `
+        if (data !== null) {
+            let tmp = "";
+            if (data.duongDanTep !== null) {
+                tmp = `
  <tr>
                                 <td class="dttd-title">Tiêu đề</td>
                                 <td colspan="3" class="dttd-tc">${data.tieuDe}</td>
@@ -47,8 +47,8 @@ if (data.duongDanTep !== null){
                                 </td>
                             </tr>
 `;
-}else {
-    tmp = `
+            } else {
+                tmp = `
  <tr>
                                 <td class="dttd-title">Tiêu đề</td>
                                 <td colspan="3" class="dttd-tc">${data.tieuDe}</td>
@@ -85,12 +85,14 @@ if (data.duongDanTep !== null){
                                 </td>
                             </tr>
 `;
-}
+            }
+            $("#tableInfoDecesion tbody").html(tmp);
+        }else {
+            $("#tableInfoDecesion tbody").html("<tr><td>Không có dữ liệu để hiển thị</td></tr>");
+        }
 
-        $("#tableInfoDecesion tbody").html(tmp);
+
+
     });
 }
 
-function getDataDieuChinhBoSung() {
-ajaxCallGet("")
-}
