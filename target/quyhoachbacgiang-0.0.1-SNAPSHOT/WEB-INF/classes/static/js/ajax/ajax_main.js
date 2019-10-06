@@ -24,7 +24,6 @@ async function ajaxCall(url) {
 function checkLogin() {
     $("#submit-log").click(function () {
         if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-
             postInfoUserDangNhap();
         } else {
             alert("Vui lòng nhập đúng định dạng email.");
@@ -45,19 +44,42 @@ function postInfoUserDangNhap() {
         timeout: 30000,
         contentType: "application/json",
         success: function (result) {
+
+
             if (result == "username or password is not correct") {
                 alert("Tên tài khoản hoặc mật khẩu không chính xác")
             } else {
-                alert(result)
-                localStorage.setItem("infoUserLogin", JSON.stringify(result));
-                window.location.href = "home";
+
+                getInfoUserDangNhap(result);
             }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("Tên tài khoản hoặc mật khẩu không chính xác")
+            console.log(errorThrown);
+        }
+    })
+
+}
+
+function getInfoUserDangNhap(result) {
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        headers: {
+            "Authorization": result,
+        },
+        url: URL_API + "v1/user/profile",
+        timeout: 30000,
+        success: function (data) {
+            localStorage.setItem("infoUserLogin", JSON.stringify(data));
+            console.log(data)
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown);
         }
     })
-
 }
 
 function logOut() {
@@ -65,10 +87,11 @@ function logOut() {
         localStorage.clear();
         $("#lockhome").show();
         $("#nameUser").hide();
+        window.location.href = "home";
     })
 }
-function checkResign() {
 
+function checkResign() {
     let user = {
         "password": $("#pass1").val(),
         "fullName": $("#name").val(),
@@ -89,6 +112,7 @@ function checkResign() {
                 localStorage.setItem("infoUserResigter", JSON.stringify(result));
                 window.location.href = "home";
             }
+
 
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -117,7 +141,7 @@ function checkStatusLogin() {
                         </a>
 `;
         tmp2 = `
-          <a href="#" class="icon iconlogout show" title="Đăng Xuất">
+          <a href="#" id="logOut" class="icon iconlogout show" title="Đăng Xuất">
             <div class="ihwp">
                 <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
             </div>
@@ -125,8 +149,9 @@ function checkStatusLogin() {
         `;
         $("#lockhome").hide();
         $("#header").append(tmp2);
-        $("#addUser").append(tmp)
-    }else if(localStorage.getItem("infoUserLogin")!==null){
+        $("#addUser").append(tmp);
+        logOut();
+    } else if (localStorage.getItem("infoUserLogin") !== null) {
         let user = JSON.parse(localStorage.getItem("infoUserLogin"));
         console.log(user)
         tmp = `
@@ -159,27 +184,22 @@ function checkStatusLogin() {
 function checkpass() {
     $("#submitResign").click(function () {
         if ($("#pass1").val() === $("#pass2").val()) {
-            console.log("1")
+            if ($("#emailSign").val() == "" || $("#emailSign").val() === null || $("#emailSign").val() === undefined) {
+                alert("Vui lòng nhập email");
+            } else {
+                if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                    if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
+                        checkResign();
+                    } else {
+                        alert("Sai định dạng số điện thoại");
+                    }
+                } else {
+                    alert("Sai định dạng email vui lòng nhập lại")
+                }
+            }
         } else {
             alert("Mật khẩu không khớp vui lòng nhập lại");
         }
-        if ($("#emailSign").val() == "" || $("#emailSign").val() === null || $("#emailSign").val() === undefined) {
-            alert("Vui lòng nhập email")
-        } else {
-            if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-                console.log("2")
-            } else {
-                alert("Sai định dạng email vui lòng nhập lại")
-            }
-        }
-
-        if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
-            console.log("3")
-        } else {
-            alert("Sai định dạng số điện thoại");
-        }
-        checkResign();
-
     })
 }
 

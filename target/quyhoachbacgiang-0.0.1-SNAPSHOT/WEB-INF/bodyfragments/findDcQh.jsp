@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="resources/css/decision.css">
 <link rel="stylesheet" href="resources/css/findDcQh.css">
+<script src="resources/js/ajax/ajax_findDcQh.js"></script>
 <!-- MAIN -->
 <main>
     <section class="dp-filter lu-adjplan">

@@ -66,30 +66,30 @@
                         </select>
                     </div>
                 </div>
-<%--                    <div class="dpfc-item dpcf-select">--%>
-<%--                        <span>Bảng giá đất</span>--%>
-<%--                        <div class="dpcft-drop">--%>
-<%--                            <select id="dp-drop10" class="dp-drop">--%>
-<%--                                <option value="">--- Gõ để tìm kiếm ---</option>--%>
-<%--                                <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                </option>--%>
-<%--                                <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                </option>--%>
-<%--                                <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                                <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
-<%--                                </option>--%>
-<%--                            </select>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                <%--                    <div class="dpfc-item dpcf-select">--%>
+                <%--                        <span>Bảng giá đất</span>--%>
+                <%--                        <div class="dpcft-drop">--%>
+                <%--                            <select id="dp-drop10" class="dp-drop">--%>
+                <%--                                <option value="">--- Gõ để tìm kiếm ---</option>--%>
+                <%--                                <option value="0">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                <option value="1">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                <option value="2">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                </option>--%>
+                <%--                                <option value="3">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                <option value="4">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                </option>--%>
+                <%--                                <option value="5">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                                <option value="6">Bảng giá đất ở tại đô thị, ven trục đường giao thông--%>
+                <%--                                </option>--%>
+                <%--                            </select>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
                 <div class="dpfc-item dpcf-fitem" id="searchViTriGiaDat">
                     <span>Vị trí:</span>
                     <input type="text" placeholder="Nhập từ khóa tìm kiếm...">

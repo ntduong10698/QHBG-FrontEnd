@@ -151,14 +151,14 @@
                         <i class="fas fa-map-marked-alt    "></i><span> Lớp hiển thị</span>
                         <div class="layer-2-qh">
                             <ul>
-                                <li>Vùng Dữ Liệu</li>
+                                <li>Lớp hiển thị bản đồ</li>
                                 <li>
                                     <input type="checkbox" name="" id="checkHienTrang" checked>
-                                    Hiện trạng
+                                    Bản đồ hiện trạng
                                 </li>
                                 <li>
                                     <input type="checkbox" name="" id="checkQuyHoach" checked>
-                                    Quy hoạch
+                                    Bản đồ quy hoạch
                                 </li>
                             </ul>
                         </div>

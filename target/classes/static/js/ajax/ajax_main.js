@@ -52,6 +52,7 @@ function postInfoUserDangNhap() {
 
                 getInfoUserDangNhap(result);
             }
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert("Tên tài khoản hoặc mật khẩu không chính xác")
@@ -90,13 +91,6 @@ function logOut() {
     })
 }
 
-function logOut() {
-    $("#logOut").click(function () {
-        localStorage.clear();
-        $("#lockhome").show();
-        $("#nameUser").hide();
-    })
-}
 function checkResign() {
     let user = {
         "password": $("#pass1").val(),
