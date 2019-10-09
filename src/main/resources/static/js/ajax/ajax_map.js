@@ -316,11 +316,11 @@ require([
                 indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
                 rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]}`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]} 2015-2019`);
             } else {
                 rs += "Quy_Hoach_Bac_Giang_2015_2019";
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang 2015-2019`);
             }
         } else if (pathName.search("ke-hoach") > -1) {
             arrSplit = pathName.split("map=");
@@ -392,18 +392,18 @@ require([
         //pretreatment (tien xu ly)
         let layersCall = dataRs.layers;
         let sublayersCall = filterSublayers(layersCall); // get groupLayer QuyHoach, HienTrang or NenDiaLy
-        console.log(sublayersCall);
+        // console.log(sublayersCall);
         let sublayersClick = filterSublayersClick(layersCall); // get Layer QuyHoach, HienTrang
-        console.log(sublayersClick);
+        // console.log(sublayersClick);
         let layerKhoiXaHuyen = filterKhoiXaHuyen(layersCall, checkMap);
-        console.log(layerKhoiXaHuyen);
+        // console.log(layerKhoiXaHuyen);
         //end pretreatment
 
-        //set Option search map
-        if(checkMap === 0 ) {
-            // neu la tinh thi them tuy chon tim khoi huyen
-            $("#tieuChiSearchMap").append(`<option value="huyen">Huyện</option>`);
-        }
+        //set Option search map neu la tinh thi them option huyen (tam thoi bo)
+        // if(checkMap === 0 ) {
+        //     // neu la tinh thi them tuy chon tim khoi huyen
+        //     $("#tieuChiSearchMap").append(`<option value="huyen">Huyện</option>`);
+        // }
 
         //code map here
         let identifyTask, params;
@@ -436,7 +436,7 @@ require([
         let view = new MapView({
             container: "mapView",
             map: map,
-            extent: ext,
+            extent: ext
         });
         view.ui.move("zoom", "bottom-right");
         //end set view map
@@ -526,16 +526,20 @@ require([
                 queryXaHuyen.outFields = ["*"];
                 queryXaHuyen.where = queryViewXaHuyen;
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
+                    searchViewXaPhuong = results;
                     let arrXaHuyen = results.features;
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
-                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                            viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
                         } else {
-                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                            viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
                         }
                     })
                     $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
+                    $("#viewDanhSachXaHuyen li").click(function () {
+                        zoomToXaHuyen($(this).attr("data-uid"));
+                    })
                 }).catch(err => {
                     console.log(err);
                 })
@@ -646,6 +650,7 @@ require([
         //search map with id btnSearch
         on(dom.byId("btnSearchMap"), "click", executeQueryTask);
         var searchResults;
+        var searchViewXaPhuong;
         // handling search
         function executeQueryTask() {
             let inputSearch = dom.byId("inputSearchMap").value; //get text in input Search with id inputSearch
@@ -766,7 +771,7 @@ require([
                 });
             }
         }
-        
+
         function searchMapQuyHoach(inputSearch) {
             let queryTask = new QueryTask({
                 url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
@@ -882,6 +887,33 @@ require([
                 var uid_Search = searchResults.features[i].uid;
                 if (uid == uid_Search) {
                     var geometry = searchResults.features[i].geometry;
+                    var symbol = new SimpleFillSymbol({
+                        color: [0, 51, 204, 1],
+                        style: "none",
+                        outline: { // autocasts as esri/symbols/SimpleLineSymbol
+                            color: [0, 51, 204, 1],
+                            width: 2
+                        }
+                    });
+                    var polygonGraphic = new Graphic({
+                        geometry: geometry,
+                        symbol: symbol
+
+                    });
+                    view.graphics.removeAll();
+                    view.graphics.add(polygonGraphic);
+
+                    view.extent = geometry.extent;
+                    break;
+                }
+            }
+        }
+
+        function zoomToXaHuyen(uid) {
+            for (var i = 0; i < searchViewXaPhuong.features.length; i++) {
+                var uid_Search = searchViewXaPhuong.features[i].uid;
+                if (uid == uid_Search) {
+                    var geometry = searchViewXaPhuong.features[i].geometry;
                     var symbol = new SimpleFillSymbol({
                         color: [0, 51, 204, 1],
                         style: "none",

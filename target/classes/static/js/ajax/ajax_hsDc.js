@@ -299,7 +299,7 @@ function setViewTableDuongHsDc(rs) {
     arrChildDuong = arrChild;
     arrRoot.map(data => {
         viewTableDuong += `<tr data-cap=${data.cap}>
-                            <td><strong>${data.cap}</strong></td>
+                            <td><strong>${convertToRoman(data.cap)}</strong></td>
                             <td><strong>${data.ten}</strong></td>
                             <td></td>
                             <td></td>

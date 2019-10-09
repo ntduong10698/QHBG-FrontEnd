@@ -154,7 +154,7 @@
         <div class="row">
             <div class="logo-wp">
                 <div class="img-wp">
-                    <a href="/home"><img src="resources/img/logo.png" alt=""></a>
+                    <a href="home"><img src="resources/img/logo.png" alt=""></a>
                 </div>
                 <div class="logotext-wp">
                     <span>Sở tài nguyên và môi trường tỉnh Bắc Giang</span>

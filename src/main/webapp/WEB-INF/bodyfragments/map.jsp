@@ -140,7 +140,7 @@
                 <select name="" id="tieuChiSearchMap">
                     <option value="quyHoach">Quy Hoạch/ Kế Hoạch</option>
                     <option value="hienTrang">Hiện Trạng</option>
-                    <option value="xa">Xã</option>
+<%--                    <option value="xa">Xã</option>--%>
                 </select>
                 <button class="btn btn-info text-uppercase" id="btnSearchMap"><i class="fa fa-search" aria-hidden="true"></i>Tìm
                     kiếm</button>

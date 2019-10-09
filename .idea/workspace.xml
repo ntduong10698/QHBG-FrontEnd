@@ -6,17 +6,38 @@
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" line="566" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" line="570" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f94da25-68ea-4e0c-89ee-d72689d787ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/hsDc.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/hsDc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_findDcQh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_findDcQh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_hsDc.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_hsDc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/landPrice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/landPrice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/hsDc.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/hsDc.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/css/hsDc.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/hsDc.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/footer.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_findDcQh.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_findDcQh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_main.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_price_nn.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_price_nn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_price_pnn.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/ajax/ajax_price_pnn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/qh_bacgiang_gov_vn.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/qh_bacgiang_gov_vn.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/basefragments/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/basefragments/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/bodyfragments/findDcQh.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/bodyfragments/findDcQh.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/classes/static/css/map.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/classes/static/css/map.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/ajax/ajax_findDcQh.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/classes/static/js/ajax/ajax_findDcQh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/library/library_css.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/library/library_css.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/library/library_js.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/quyhoachbacgiang-0.0.1-SNAPSHOT/WEB-INF/library/library_js.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,102 +51,50 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/hsDc.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="507">
-                  <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_hsDc.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="422">
-                  <caret line="81" column="1" lean-forward="true" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
-                  <folding>
-                    <element signature="n#!!block;n#callQuyetDinhPnnNt#0" />
-                    <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/hsDc.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="332">
-                  <caret line="128" column="22" lean-forward="true" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/hsDc.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="140">
-                  <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="21" selection-end-column="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/landPrice.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_land_price.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="28" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="172">
-                  <caret line="416" selection-start-line="416" selection-end-line="434" selection-end-column="1" />
-                  <folding>
-                    <element signature="n#!!block;n#getViewQuyetDinh#0" />
-                    <element signature="n#!!block;n#callBangGiaDatPNN#0" />
-                    <element signature="n#!!block;n#resetSelectView#0" />
-                    <element signature="n#!!block;n#hidenViewXa#0" />
-                    <element signature="n#!!block;n#callViewLoaiXa#0" />
-                    <element signature="n#!!block;n#changeViewLoaiXa#0" />
-                    <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-                    <element signature="n#!!block;n#clickChiTietDatPNN#0" />
-                    <element signature="n#!!block;n#resetSelectXa#0" />
-                    <element signature="n#!!block;n#setViewTableDuong#0" />
-                    <element signature="n#!!block;n#setTableGiaDatPhiNongNghiep#0" />
-                    <element signature="n#!!block;n#setDataTableGiaDatPhiNongNghiep#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="539" column="68" selection-start-line="539" selection-start-column="68" selection-end-line="539" selection-end-column="68" />
+              <folding>
+                <element signature="n#!!block;n#setInfoKhUse#0" />
+                <element signature="n#!!block;n#setTableInfoSoildKh#0" />
+                <element signature="n#!!block;n#setTableInfoSoildQHHuyen#0" />
+                <element signature="n#!!block;n#setTableInfoSoildQHTinh#0" />
+                <element signature="e#13081#14601#0" />
+                <element signature="e#14862#15050#0" />
+                <element signature="e#15163#15331#0" />
+                <element signature="e#15486#15682#0" />
+                <element signature="e#15745#16442#0" />
+                <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="n#src#0;n#img#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+                <element signature="e#70#76#0" expanded="true" />
+                <element signature="e#70#76#0" expanded="true" />
+                <element signature="e#24007#28839#0" />
+                <element signature="e#29631#35669#0" />
+                <element signature="e#30418#33023#0" />
+                <element signature="e#35727#38353#0" />
+                <element signature="e#38412#40921#0" />
+                <element signature="e#41013#42009#0" />
+                <element signature="e#42128#42996#0" />
+                <element signature="e#43124#43720#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="143" column="25" lean-forward="true" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -137,13 +106,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Huyện/ Thành</find>
-      <find>view-qh-v2</find>
-      <find>view-qh-v1</find>
-      <find>.m-log</find>
-      <find>Mật khẩu:</find>
-      <find>/map</find>
-      <find>/ke-hoach</find>
       <find>fa-search</find>
       <find>input</find>
       <find>form-search-toado</find>
@@ -167,6 +129,13 @@
       <find>Trung</find>
       <find>clickChiTietDat</find>
       <find>console.log(id</find>
+      <find>logo</find>
+      <find>Vị trí</find>
+      <find>pa</find>
+      <find>sear</find>
+      <find>data-id</find>
+      <find>tieu</find>
+      <find>viewDanhSachXaHuyen</find>
     </findStrings>
     <replaceStrings>
       <replace>url(..</replace>
@@ -192,11 +161,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/project.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/decision.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/decision.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/project.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/findQhKhUse" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/findQhKhUse.js" />
@@ -206,30 +173,34 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/js/decision.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/project.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/findDcQh.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/findDcQh.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/hsDc.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/map.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/map.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map_backend.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/landPrice.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/bksoftwarevn/controller/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/landPrice.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/landPricePNN.jsp" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/main.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_land_price.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/landPricePNN.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/hsDc.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/hsDc.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/landPrice.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_findDcQh.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/footer.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/main.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_hsDc.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/hsDc.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/map.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js" />
       </list>
     </option>
   </component>
@@ -243,8 +214,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -405,12 +376,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/TaiLieuCLB/Project/FrontEnd-ThatFruit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\QHBG-FrontEnd\src\main\resources\static\js" />
+      <recent name="E:\Project\QHBG-FrontEnd\src\main\resources\static\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Project\QHBG-FrontEnd\src\main\resources\static\js" />
       <recent name="E:\Project\frontend-quyhoachbacgiang\src\main\resources\static\js" />
@@ -464,17 +440,23 @@
       <workItem from="1569981382463" duration="15561000" />
       <workItem from="1570069222183" duration="25792000" />
       <workItem from="1570290159844" duration="8482000" />
+      <workItem from="1570394465162" duration="737000" />
+      <workItem from="1570419196942" duration="4967000" />
+      <workItem from="1570432896547" duration="3871000" />
+      <workItem from="1570510231744" duration="623000" />
+      <workItem from="1570591248445" duration="3326000" />
+      <workItem from="1570604114843" duration="8519000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244156000" />
+    <option name="totallyTimeSpent" value="267429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17217484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18176973" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -484,7 +466,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36227223" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19721329" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -548,13 +530,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bksoftwarevn/ServletInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -583,13 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="66" column="68" selection-start-line="66" selection-start-column="58" selection-end-line="66" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/bksoftwarevn/config/TilesConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
@@ -615,13 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="604">
           <caret line="1073" selection-start-line="1073" selection-end-line="1073" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -677,31 +638,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/map.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12900">
-          <caret line="645" column="16" selection-start-line="645" selection-start-column="16" selection-end-line="645" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6860">
-          <caret line="343" selection-start-line="343" selection-end-line="344" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/findDcQh.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4360">
-          <caret line="218" column="41" selection-start-line="218" selection-start-column="41" selection-end-line="218" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -728,31 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/decision.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -767,42 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11640">
           <caret line="582" selection-start-line="582" selection-end-line="582" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3640">
-          <caret line="182" column="82" selection-start-line="182" selection-start-column="82" selection-end-line="182" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!block;n#setInfoKhUse#0" />
-            <element signature="n#!!block;n#setTableInfoSoildKh#0" />
-            <element signature="n#!!block;n#setTableInfoSoildQHTinh#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1500">
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!block;n#mucDich#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,35 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="416" selection-start-line="416" selection-end-line="434" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#getViewQuyetDinh#0" />
-            <element signature="n#!!block;n#callBangGiaDatPNN#0" />
-            <element signature="n#!!block;n#resetSelectView#0" />
-            <element signature="n#!!block;n#hidenViewXa#0" />
-            <element signature="n#!!block;n#callViewLoaiXa#0" />
-            <element signature="n#!!block;n#changeViewLoaiXa#0" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#clickChiTietDatPNN#0" />
-            <element signature="n#!!block;n#resetSelectXa#0" />
-            <element signature="n#!!block;n#setViewTableDuong#0" />
-            <element signature="n#!!block;n#setTableGiaDatPhiNongNghiep#0" />
-            <element signature="n#!!block;n#setDataTableGiaDatPhiNongNghiep#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/hsDc.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="52" column="1" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/hsDc.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
@@ -901,17 +755,221 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5757">
+          <caret line="156" column="29" lean-forward="true" selection-start-line="156" selection-start-column="29" selection-end-line="156" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="106" column="41" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/layouts/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/pagination.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/pagination.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1260" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_findQhKhUse.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_css.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/library/library_js.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/findDcQh.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_findDcQh.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="78" column="1" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#setSelectHuyen#0" />
+            <element signature="n#!!block;n#callDieuChinhQuyHoach#0" />
+            <element signature="n#!!block;n#getDataTableDieuChinhQuyHoach#0" />
+            <element signature="n#!!block;n#setTableDieuChinhQuyHoach#0" />
+            <element signature="n#!!block;n#callSizePageDcQh#0" />
+            <element signature="n#!!block;n#pageAblePage#0" />
+            <element signature="n#!!block;n#callSearchDcQuyHoach#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/basefragments/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_nn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="101" column="66" selection-start-line="101" selection-start-column="66" selection-end-line="101" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_price_pnn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="385" column="65" selection-start-line="385" selection-start-column="65" selection-end-line="385" selection-end-column="65" />
+          <folding>
+            <element signature="n#!!block;n#callBangGiaDatPNN#0" />
+            <element signature="n#!!block;n#setViewSelectHuyen#0" />
+            <element signature="n#!!block;n#setViewSelectXa#0" />
+            <element signature="n#!!block;n#callSelectBangGiaDatPNN#0" />
+            <element signature="n#!!block;n#resetSelectView#0" />
+            <element signature="n#!!block;n#hidenViewXa#0" />
+            <element signature="n#!!block;n#viewSelectXa#0" />
+            <element signature="n#!!block;n#callGiaDatNongThon#0" />
+            <element signature="n#!!block;n#callViewLoaiXa#0" />
+            <element signature="n#!!block;n#setViewLoaiXa#0" />
+            <element signature="n#!!block;n#changeViewLoaiXa#0" />
+            <element signature="n#!!block;n#setTableGiaDatNongThon#0" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#clickChiTietDatPNN#0" />
+            <element signature="n#!!block;n#setDataTableGiaDatNongThon#0" />
+            <element signature="n#!!block;n#resetSelectXa#0" />
+            <element signature="n#!!block;n#callGiaDatPhiNongNghiep#0" />
+            <element signature="n#!!block;n#callTenDuongByIdHuyen#0" />
+            <element signature="n#!!block;n#setViewTenDuong#0" />
+            <element signature="n#!!block;n#changeViewTenDuong#0" />
+            <element signature="n#!!block;n#findChilDuong#0" />
+            <element signature="n#!!block;n#countPoint#0" />
+            <element signature="n#!!block;n#setTableGiaDatPhiNongNghiep#0" />
+            <element signature="n#!!block;n#setDataTableGiaDatPhiNongNghiep#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_hsDc.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="81" column="1" lean-forward="true" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+        <state relative-caret-position="434">
+          <caret line="301" column="66" selection-start-line="301" selection-start-column="66" selection-end-line="301" selection-end-column="66" />
           <folding>
+            <element signature="n#!!block;n#setViewSelectHuyenHsDc#0" />
+            <element signature="n#!!block;n#callBangGiaDatPNNHsDc#0" />
+            <element signature="n#!!block;n#setViewQuyetDinh#0" />
             <element signature="n#!!block;n#callQuyetDinhPnnNt#0" />
+            <element signature="n#!!block;n#callSelectBangGiaDatPNNHsDc#0" />
+            <element signature="n#!!block;n#resetSelectXaHsDc#0" />
+            <element signature="n#!!block;n#setViewSelectXaHsDc#0" />
+            <element signature="n#!!block;n#setTableGiaDatNongThonHsDC#0" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#setDataTableGiaDatNongThonHsDc#0" />
+            <element signature="n#!!block;n#callGiaDatNongThonHcDc#0" />
+            <element signature="n#!!block;n#callGiaDatPhiNongNghiepHsDc#0" />
+            <element signature="n#!!block;n#setViewTenDuongHsDc#0" />
+            <element signature="n#!!block;n#changeViewTenDuongHsDc#0" />
+            <element signature="n#!!block;n#countPoint#0" />
+            <element signature="n#!!block;n#callTenDuongByIdHuyenHsDc#0" />
+            <element signature="n#!!block;n#findChilDuongHsDc#0" />
+            <element signature="n#!!block;n#setTableGiaDatPhiNongNghiepHsDc#0" />
+            <element signature="n#!!block;n#setDataTableGiaDatPhiNongNghiepHsDc#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/hsDc.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="288" column="1" selection-start-line="288" selection-start-column="1" selection-end-line="288" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#mucDich#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1404">
+          <caret line="309" column="60" selection-start-line="309" selection-start-column="60" selection-end-line="309" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/map.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="780" column="19" selection-start-line="780" selection-start-column="19" selection-end-line="780" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/bodyfragments/map.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="143" column="25" lean-forward="true" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/ajax/ajax_map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="539" column="68" selection-start-line="539" selection-start-column="68" selection-end-line="539" selection-end-column="68" />
+          <folding>
+            <element signature="n#!!block;n#setInfoKhUse#0" />
+            <element signature="n#!!block;n#setTableInfoSoildKh#0" />
+            <element signature="n#!!block;n#setTableInfoSoildQHHuyen#0" />
+            <element signature="n#!!block;n#setTableInfoSoildQHTinh#0" />
+            <element signature="e#13081#14601#0" />
+            <element signature="e#14862#15050#0" />
+            <element signature="e#15163#15331#0" />
+            <element signature="e#15486#15682#0" />
+            <element signature="e#15745#16442#0" />
+            <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#src#0;n#img#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#src#0;n#img#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="e#70#76#0" expanded="true" />
+            <element signature="e#70#76#0" expanded="true" />
+            <element signature="e#24007#28839#0" />
+            <element signature="e#29631#35669#0" />
+            <element signature="e#30418#33023#0" />
+            <element signature="e#35727#38353#0" />
+            <element signature="e#38412#40921#0" />
+            <element signature="e#41013#42009#0" />
+            <element signature="e#42128#42996#0" />
+            <element signature="e#43124#43720#0" />
           </folding>
         </state>
       </provider>
