@@ -307,7 +307,7 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Tệp đình kèm theo:</span>
                 </div>
                 <div class="pr-infor-right col-9">
-                    <span><a href=${quyetDinh.duongDanTep}>${quyetDinh.soQuyetDinh}</a></span>
+                    <span><a href="${quyetDinh.duongDanTep}" target="_blank">${quyetDinh.soQuyetDinh}</a></span>
                 </div>
             </div>`;
 }

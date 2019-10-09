@@ -80,7 +80,7 @@ html, body {
 
 .hea-tit-qh span {
     color: white;
-    font-size: 17px;
+    font-size: 15px;
     text-transform: uppercase;
 }
 
@@ -213,7 +213,7 @@ html, body {
     opacity: 0;
     display: flex;
     position: absolute;
-    left: -140px;
+    left: -188px;
     border-radius: 5px;
     top: 0;
     padding: 5px;
@@ -226,8 +226,8 @@ html, body {
     border-bottom: solid 12px transparent;
     border-left: solid 13px #f0f0f0;
     position: absolute;
-    right: -14%;
-    top: 6%;
+    right: -10%;
+    top: 2%;
 }
 
 .layer-2-qh>ul {
@@ -775,6 +775,10 @@ html, body {
     font-size: 13px;
     float: right;
     margin-right: 5px;
+}
+
+#viewDanhSachXaHuyen li{
+    cursor: pointer;
 }
 
 /*MAIN*/
