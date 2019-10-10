@@ -113,7 +113,8 @@ function setInfoKhUse(data) {
                         <li><span>Năm 2019</span></li>`;
         $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
 
-        setBieuMauKhacKH(mkh, checkMap); //set datain bieu mau khac ke hoach
+        console.log(year)
+        setBieuMauKhacKH(mkh, checkMap, year); //set datain bieu mau khac ke hoach
         callThongKeKeHoach(mkh, checkMap).then(rs => {
 
             setTableInfoSoildKh(rs); //set data in tabelInfoSoildKh
@@ -165,7 +166,8 @@ function setInfoKhUse(data) {
 //set data tableInfoSoild-KH
 function setTableInfoSoildKh(dataTable) {
     let viewTable = '';
-    let dataKh = dataTable.filter(data => data.quyHoachKeHoach === "KH");
+    console.log(dataTable);
+    let dataKh = dataTable.filter(data => data.quyHoachKeHoach === "KH" && data.year == year);
     let viewThead = '';
     dataKh.sort(function (a, b) {
         return a.year - b.year;

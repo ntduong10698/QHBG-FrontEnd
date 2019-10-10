@@ -1,17 +1,17 @@
 // Bieu Mau Khac Ke Hoach
-function setBieuMauKhacKH(mkh, idMap) {
+function setBieuMauKhacKH(mkh, idMap, year) {
     $("#tableInfoSoild .table-QHK").html(''); //resetView
-    callGetTableBieuMauKhacKh(mkh, idMap).then(data => {
+    callGetTableBieuMauKhacKh(mkh, idMap, year).then(data => {
         $("#tableInfoSoild .table-QHK").html(data);
     }).catch(err => {
         console.log(err);
     })
 }
 
-async function callGetTableBieuMauKhacKh(mkh, idMap) {
+async function callGetTableBieuMauKhacKh(mkh, idMap, year) {
     let viewTableKhac = '';
     await callThongKeKeHoach(mkh, idMap).then(rs => {
-        let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'KH-K');
+        let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'KH-K' && item.year == year);
         arrBMKhac.sort(function (a, b) {
             return a.year - b.year;
         })
