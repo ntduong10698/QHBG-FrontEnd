@@ -1,6 +1,20 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
 var checkMap = 0; // truong phan biet cac huyen va tinh
 var year;
+
+$(function () {
+    $("#closeThongKeMap").click(function () {
+        $(".block-left-qh").css("display","none");
+        $(".block-right-qh").addClass("hideThongKe");
+        $("#openThongKeMap").css("display","block");
+    })
+
+    $("#openThongKeMap").click(function () {
+        $(".block-left-qh").css("display","block");
+        $(".block-right-qh").removeClass("hideThongKe");
+        $("#openThongKeMap").css("display","none");
+    })
+})
 // xy ly click chi tiet khoi trong map
 // tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
 function fnView(indexPopUp) {
@@ -81,7 +95,7 @@ function setInfoKhUse(data) {
                 setTableInfoSoildQHTinh(rs);
 
                 if (rs.length > 0) {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich.toFixed(2)+" "+rs[0].unit}</span></li>`;
                 } else {
                     textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
                 }
@@ -118,24 +132,24 @@ function setInfoKhUse(data) {
                     if (data.quyHoachKeHoach == 'KH') {
                         // chi lay data KH o chi tiet
                         if (data.year == year) {
-                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
+                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
                         }
                         switch (data.year) {
                             // voi moi nam view ra tong dien tich ma day o nam day
                             case '2015':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2016':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2017':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2018':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2019':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                         }
                     }
@@ -316,12 +330,14 @@ require([
                 indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
                 rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]}`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]} 2015-2019`);
             } else {
                 rs += "Quy_Hoach_Bac_Giang_2015_2019";
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang 2015-2019`);
             }
+            // change name infoKhUse
+            $("#textInfoKhUser").html("Thông tin quy hoạch sử dụng đất");
         } else if (pathName.search("ke-hoach") > -1) {
             arrSplit = pathName.split("map=");
             checkMap = arrSplit[1].split("&")[0] - 0; //convert ve so
@@ -330,6 +346,8 @@ require([
             rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
             //set name ban do
             $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-${ARR_HUYEN_TEXT[indexHuyen]}-${year}`);
+            // change name infoKhUse
+            $("#textInfoKhUser").html("Thông tin kế hoạch sử dụng đất");
         }
         console.log(rs+"/MapServer")
         return rs + "/MapServer";
@@ -392,18 +410,18 @@ require([
         //pretreatment (tien xu ly)
         let layersCall = dataRs.layers;
         let sublayersCall = filterSublayers(layersCall); // get groupLayer QuyHoach, HienTrang or NenDiaLy
-        console.log(sublayersCall);
+        // console.log(sublayersCall);
         let sublayersClick = filterSublayersClick(layersCall); // get Layer QuyHoach, HienTrang
-        console.log(sublayersClick);
+        // console.log(sublayersClick);
         let layerKhoiXaHuyen = filterKhoiXaHuyen(layersCall, checkMap);
-        console.log(layerKhoiXaHuyen);
+        // console.log(layerKhoiXaHuyen);
         //end pretreatment
 
-        //set Option search map
-        if(checkMap === 0 ) {
-            // neu la tinh thi them tuy chon tim khoi huyen
-            $("#tieuChiSearchMap").append(`<option value="huyen">Huyện</option>`);
-        }
+        //set Option search map neu la tinh thi them option huyen (tam thoi bo)
+        // if(checkMap === 0 ) {
+        //     // neu la tinh thi them tuy chon tim khoi huyen
+        //     $("#tieuChiSearchMap").append(`<option value="huyen">Huyện</option>`);
+        // }
 
         //code map here
         let identifyTask, params;
@@ -436,7 +454,7 @@ require([
         let view = new MapView({
             container: "mapView",
             map: map,
-            extent: ext,
+            extent: ext
         });
         view.ui.move("zoom", "bottom-right");
         //end set view map
@@ -526,16 +544,20 @@ require([
                 queryXaHuyen.outFields = ["*"];
                 queryXaHuyen.where = queryViewXaHuyen;
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
+                    searchViewXaPhuong = results;
                     let arrXaHuyen = results.features;
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
-                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
+                            viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Xa.indexOf(".") > -1) ? item.Xa : "Xã "+item.Xa}</li>`;
                         } else {
-                            viewDanhSachXaHuyen += `<li><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
+                            viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
                         }
                     })
                     $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
+                    $("#viewDanhSachXaHuyen li").click(function () {
+                        zoomToXaHuyen($(this).attr("data-uid"));
+                    })
                 }).catch(err => {
                     console.log(err);
                 })
@@ -646,6 +668,7 @@ require([
         //search map with id btnSearch
         on(dom.byId("btnSearchMap"), "click", executeQueryTask);
         var searchResults;
+        var searchViewXaPhuong;
         // handling search
         function executeQueryTask() {
             let inputSearch = dom.byId("inputSearchMap").value; //get text in input Search with id inputSearch
@@ -766,7 +789,7 @@ require([
                 });
             }
         }
-        
+
         function searchMapQuyHoach(inputSearch) {
             let queryTask = new QueryTask({
                 url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
@@ -790,8 +813,8 @@ require([
                     features.map((data, index) => {
                         let item = data.attributes;
                         let uid = data.uid;
-                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`;
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>${item.DienTich > 0 ? item.DienTich.toFixed(2) : -item.DienTich.toFixed(2)} (ha)</td>`;
+                        content += `<td>${item.Xa.replace("p.","P.")}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`;
                     })
                     dom.byId("tableSearchMap").innerHTML = content;
                     features.map(data => {
@@ -844,8 +867,8 @@ require([
                     features.map((data, index) => {
                         let item = data.attributes;
                         let uid = data.uid;
-                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>${item.DienTich > 0 ? item.DienTich.toFixed(2) : -item.DienTich.toFixed(2)} (ha)</td>`;
+                        content += `<td>${item.Xa.replace("p.","P.")}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`
                     })
                     dom.byId("tableSearchMap").innerHTML = content;
                     features.map(data => {
@@ -882,6 +905,33 @@ require([
                 var uid_Search = searchResults.features[i].uid;
                 if (uid == uid_Search) {
                     var geometry = searchResults.features[i].geometry;
+                    var symbol = new SimpleFillSymbol({
+                        color: [0, 51, 204, 1],
+                        style: "none",
+                        outline: { // autocasts as esri/symbols/SimpleLineSymbol
+                            color: [0, 51, 204, 1],
+                            width: 2
+                        }
+                    });
+                    var polygonGraphic = new Graphic({
+                        geometry: geometry,
+                        symbol: symbol
+
+                    });
+                    view.graphics.removeAll();
+                    view.graphics.add(polygonGraphic);
+
+                    view.extent = geometry.extent;
+                    break;
+                }
+            }
+        }
+
+        function zoomToXaHuyen(uid) {
+            for (var i = 0; i < searchViewXaPhuong.features.length; i++) {
+                var uid_Search = searchViewXaPhuong.features[i].uid;
+                if (uid == uid_Search) {
+                    var geometry = searchViewXaPhuong.features[i].geometry;
                     var symbol = new SimpleFillSymbol({
                         color: [0, 51, 204, 1],
                         style: "none",

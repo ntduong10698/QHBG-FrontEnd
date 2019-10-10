@@ -99,7 +99,7 @@ function viewTableDatNongNghiep(rs) {
                             <td>${dataTable[0].bangGiaDat.tenBang}</td>
                             <td style="text-align: center !important;">1</td>
                             <td style="text-align: left !important;">${dataTable[0].viTri}</td>
-                            <td>${formatNumber(dataTable[0],'.','.')}</td>
+                            <td>${formatNumber(dataTable[0].giaDat,'.','.')}</td>
                             <td>
                                 <span>
                                     <span data-id="${dataTable[0].id}">

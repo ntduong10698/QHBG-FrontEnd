@@ -115,9 +115,11 @@
 <main>
     <!-- LỚP 1 -->
     <div class="block-main-qh">
+        <i class="far fa-caret-square-right" id="openThongKeMap" style="display: none"></i>
         <div class="block-left-qh">
             <div class="hea-tit-qh">
                 <span id="nameMap"><i class="fas fa-sitemap"></i></span>
+                <i class="fa fa-times-circle" aria-hidden="true" id="closeThongKeMap"></i>
             </div>
             <div class="view-qh view-qh-v1">
                 <div class="title-qh">
@@ -140,7 +142,7 @@
                 <select name="" id="tieuChiSearchMap">
                     <option value="quyHoach">Quy Hoạch/ Kế Hoạch</option>
                     <option value="hienTrang">Hiện Trạng</option>
-                    <option value="xa">Xã</option>
+<%--                    <option value="xa">Xã</option>--%>
                 </select>
                 <button class="btn btn-info text-uppercase" id="btnSearchMap"><i class="fa fa-search" aria-hidden="true"></i>Tìm
                     kiếm</button>
@@ -148,7 +150,7 @@
             <div class="block-hienthi">
                 <ul>
                     <li>
-                        <i class="fas fa-map-marked-alt    "></i><span> Lớp hiển thị</span>
+                        <i class="fas fa-map-marked-alt"></i><span> Lớp hiển thị</span>
                         <div class="layer-2-qh">
                             <ul>
                                 <li>Lớp hiển thị bản đồ</li>
@@ -431,7 +433,7 @@
                         </div>
                     </li>
                     <li>
-                            <span class="text-uppercase">Thông tin kế hoạch sử dụng
+                            <span class="text-uppercase" id="textInfoKhUser">Thông tin kế hoạch sử dụng
                                 đất</span>
                         <div class="info-bdqh-layer-2 sect-bdqh-layer-2">
                             <div class="chitiet-qh">
@@ -557,62 +559,62 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                            <span class="text-uppercase">Giá đất quy định tại vị trí</span>
-                        <div class="sect-bdqh-layer-2">
-<%--                            <table class="table table-hover">--%>
-<%--                                <thead style="background: #cdb3d4">--%>
-<%--                                <tr>--%>
-<%--                                    <th>Bảng giá đất </th>--%>
-<%--                                    <th>Vị trí</th>--%>
-<%--                                    <th>Giá đất</th>--%>
-<%--                                    <th>Năm</th>--%>
+<%--                    <li>--%>
+<%--                            <span class="text-uppercase">Giá đất quy định tại vị trí</span>--%>
+<%--                        <div class="sect-bdqh-layer-2">--%>
+<%--&lt;%&ndash;                            <table class="table table-hover">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <thead style="background: #cdb3d4">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <th>Bảng giá đất </th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <th>Vị trí</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <th>Giá đất</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <th>Năm</th>&ndash;%&gt;--%>
 
-<%--                                </tr>--%>
-<%--                                </thead>--%>
-<%--                                <tbody>--%>
-<%--                                <tr>--%>
-<%--                                    <td rowspan="4"></td>--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </thead>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tbody>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td rowspan="4"></td>&ndash;%&gt;--%>
 
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
 
-<%--                                <tr>--%>
-<%--                                    <td rowspan="3"></td>--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td rowspan="3"></td>&ndash;%&gt;--%>
 
-<%--                                </tr>--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
 
-<%--                                <tr>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <tr>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    <td></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </tr>&ndash;%&gt;--%>
 
 
-<%--                                </tbody>--%>
-<%--                            </table>--%>
+<%--&lt;%&ndash;                                </tbody>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </table>&ndash;%&gt;--%>
 
-                        </div>
-                    </li>
+<%--                        </div>--%>
+<%--                    </li>--%>
 <%--                    <li>--%>
 <%--                            <span class="text-uppercase">Giá đất thị trường</span>--%>
 <%--&lt;%&ndash;                        <div class="sect-bdqh-layer-2">&ndash;%&gt;--%>
