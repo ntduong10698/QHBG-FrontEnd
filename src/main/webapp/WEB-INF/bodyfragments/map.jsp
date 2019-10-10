@@ -115,9 +115,11 @@
 <main>
     <!-- LỚP 1 -->
     <div class="block-main-qh">
+        <i class="far fa-caret-square-right" id="openThongKeMap" style="display: none"></i>
         <div class="block-left-qh">
             <div class="hea-tit-qh">
                 <span id="nameMap"><i class="fas fa-sitemap"></i></span>
+                <i class="fa fa-times-circle" aria-hidden="true" id="closeThongKeMap"></i>
             </div>
             <div class="view-qh view-qh-v1">
                 <div class="title-qh">
@@ -148,7 +150,7 @@
             <div class="block-hienthi">
                 <ul>
                     <li>
-                        <i class="fas fa-map-marked-alt    "></i><span> Lớp hiển thị</span>
+                        <i class="fas fa-map-marked-alt"></i><span> Lớp hiển thị</span>
                         <div class="layer-2-qh">
                             <ul>
                                 <li>Lớp hiển thị bản đồ</li>
