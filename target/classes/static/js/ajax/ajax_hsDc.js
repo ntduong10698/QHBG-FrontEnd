@@ -332,7 +332,7 @@ function findChilDuongHsDc(root) {
     arrChildCap1.map(data1 => {
         viewTableDuong += `<tr data-cap=${data1.cap}>
                             <td>${data1.cap}</td>
-                            <td>${data1.ten}</td>
+                            <td>${checkCap(data1.cap)} ${data1.ten}</td>
                             <td></td>
                             <td></td>
                             <td></td>

@@ -138,7 +138,7 @@ html, body {
 .block-right-qh .block-search-qh-bd {
     position: absolute;
     top: 10px;
-    left: 15px;
+    left: 30px;
     display: flex;
     z-index: 1000;
 }
@@ -781,6 +781,27 @@ html, body {
     cursor: pointer;
 }
 
+#closeThongKeMap {
+    color: red;
+    position: absolute;
+    top: 4px;
+    left: calc(20% - 18px);
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#openThongKeMap {
+    font-size: 30px;
+    color: green;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hideThongKe {
+    width: 100% !important;
+}
 /*MAIN*/
 main {
     position: relative;

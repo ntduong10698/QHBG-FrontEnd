@@ -1,6 +1,20 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
 var checkMap = 0; // truong phan biet cac huyen va tinh
 var year;
+
+$(function () {
+    $("#closeThongKeMap").click(function () {
+        $(".block-left-qh").css("display","none");
+        $(".block-right-qh").addClass("hideThongKe");
+        $("#openThongKeMap").css("display","block");
+    })
+
+    $("#openThongKeMap").click(function () {
+        $(".block-left-qh").css("display","block");
+        $(".block-right-qh").removeClass("hideThongKe");
+        $("#openThongKeMap").css("display","none");
+    })
+})
 // xy ly click chi tiet khoi trong map
 // tao ham de dua vao onlick vi chua biet ro thoi diem sinh ra popUP
 function fnView(indexPopUp) {

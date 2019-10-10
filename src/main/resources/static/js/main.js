@@ -287,3 +287,15 @@ function convertToRoman(num) {
     }
     return str;
 }
+
+function checkCap(str) {
+    let count = countPoint(str);
+    let symbol = "";
+    if (count === 1)
+        symbol = ' ';
+    else if (count === 2)
+        symbol = "&nbsp;&nbsp;-";
+    else if (count === 3)
+        symbol = "&nbsp;&nbsp;&nbsp;&nbsp;+    ";
+    return symbol;
+}
