@@ -299,7 +299,7 @@ function setViewTableDuongHsDc(rs) {
     arrChildDuong = arrChild;
     arrRoot.map(data => {
         viewTableDuong += `<tr data-cap=${data.cap}>
-                            <td><strong>${data.cap}</strong></td>
+                            <td><strong>${convertToRoman(data.cap)}</strong></td>
                             <td><strong>${data.ten}</strong></td>
                             <td></td>
                             <td></td>
@@ -332,7 +332,7 @@ function findChilDuongHsDc(root) {
     arrChildCap1.map(data1 => {
         viewTableDuong += `<tr data-cap=${data1.cap}>
                             <td>${data1.cap}</td>
-                            <td>${data1.ten}</td>
+                            <td>${checkCap(data1.cap)} ${data1.ten}</td>
                             <td></td>
                             <td></td>
                             <td></td>

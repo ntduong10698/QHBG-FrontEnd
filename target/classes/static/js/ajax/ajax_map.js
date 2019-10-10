@@ -95,7 +95,7 @@ function setInfoKhUse(data) {
                 setTableInfoSoildQHTinh(rs);
 
                 if (rs.length > 0) {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich.toFixed(2)+" "+rs[0].unit}</span></li>`;
                 } else {
                     textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
                 }
@@ -132,24 +132,24 @@ function setInfoKhUse(data) {
                     if (data.quyHoachKeHoach == 'KH') {
                         // chi lay data KH o chi tiet
                         if (data.year == year) {
-                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
+                            $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(3)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`); // set lai tong dien tich voi li thu 3
                         }
                         switch (data.year) {
                             // voi moi nam view ra tong dien tich ma day o nam day
                             case '2015':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(4)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2016':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(5)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2017':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(6)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2018':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(7)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                             case '2019':
-                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich+" "+data.unit}</span>`);
+                                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul li:nth-child(8)").html(`<span>${data.tongDienTich.toFixed(2)+" "+data.unit}</span>`);
                                 break;
                         }
                     }
@@ -336,6 +336,8 @@ require([
                 //set name ban do
                 $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang 2015-2019`);
             }
+            // change name infoKhUse
+            $("#textInfoKhUser").html("Thông tin quy hoạch sử dụng đất");
         } else if (pathName.search("ke-hoach") > -1) {
             arrSplit = pathName.split("map=");
             checkMap = arrSplit[1].split("&")[0] - 0; //convert ve so
@@ -344,6 +346,8 @@ require([
             rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
             //set name ban do
             $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-${ARR_HUYEN_TEXT[indexHuyen]}-${year}`);
+            // change name infoKhUse
+            $("#textInfoKhUser").html("Thông tin kế hoạch sử dụng đất");
         }
         console.log(rs+"/MapServer")
         return rs + "/MapServer";
@@ -809,8 +813,8 @@ require([
                     features.map((data, index) => {
                         let item = data.attributes;
                         let uid = data.uid;
-                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`;
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}/${item.MaQuyHoach}</td> <td>${item.MucDichQuyHoach}</td><td>${item.DienTich > 0 ? item.DienTich.toFixed(2) : -item.DienTich.toFixed(2)} (ha)</td>`;
+                        content += `<td>${item.Xa.replace("p.","P.")}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`;
                     })
                     dom.byId("tableSearchMap").innerHTML = content;
                     features.map(data => {
@@ -863,8 +867,8 @@ require([
                     features.map((data, index) => {
                         let item = data.attributes;
                         let uid = data.uid;
-                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>${item.DienTich > 0 ? item.DienTich : -item.DienTich} (ha)</td>`;
-                        content += `<td>${item.Xa}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`
+                        content += `<tr><td>  ${index + 1} </td><td>${item.MaHienTrang}</td> <td>${item.MucDichSuDung}</td><td>${item.DienTich > 0 ? item.DienTich.toFixed(2) : -item.DienTich.toFixed(2)} (ha)</td>`;
+                        content += `<td>${item.Xa.replace("p.","P.")}</td><td>${item.Huyen}</td><td><a id='idVitri${uid}'  href='' '>Vị trí</a></td>`
                     })
                     dom.byId("tableSearchMap").innerHTML = content;
                     features.map(data => {
