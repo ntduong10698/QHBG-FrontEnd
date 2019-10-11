@@ -28,10 +28,35 @@ function viewInfoSoild(data) {
     $("#infoSoild ul li:nth-child(1)").html(`<span>${ data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaHienTrang+'/'+data.MaQuyHoach }</span>`);
     $("#infoSoild ul li:nth-child(2)").html(`<span>${ data.MucDichSuDung }</span>`);
     $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '...' : data.MucDichQuyHoach }</span>`);
-    $("#infoSoild ul li:nth-child(4)").html(`<span>${ data.Tinh }</span>`);
-    $("#infoSoild ul li:nth-child(5)").html(`<span>${ data.Huyen }</span>`);
-    $("#infoSoild ul li:nth-child(6)").html(`<span>${ data.Xa }</span>`);
+    $("#infoSoild ul li:nth-child(4)").html(`<span><a href="" data-type="tinh" class="reviewLocation">${ data.Tinh }</a></span>`);
+    $("#infoSoild ul li:nth-child(5)").html(`<span><a href="" data-type="huyen" class="reviewLocation">${ data.Huyen }</a></span>`);
+    $("#infoSoild ul li:nth-child(6)").html(`<span><a href="" data-type="xa" class="reviewLocation">${ data.Xa }</a></span>`);
     setInfoKhUse(data);
+}
+
+function clickReview() {
+    $(".reviewLocation").click(function () {
+        let type = $(this).attr("data-type");
+        let val =  $(this).text();
+        val = val.indexOf(".") > -1 ? val.split(".")[1].trim() : val; //tach ki tu truoc dau cham
+        let url = `v1/public/${type}/find-by-name?ten-${type}=${val}`;
+        console.log(url);
+        ajaxCallGet(url).then(data => {
+            if (data.gioiThieu !== null) {
+                $(".block-main-l2 .bl-v2-right .bl-v2").css("display","flex");
+                let viewData = `<i class="fa fa-times-circle" aria-hidden="true"></i>`;
+                viewData += `<div class="reviewTinhHuyenXa">${data.gioiThieu}</div>`;
+                $(".block-main-l2 .bl-v2-right .bl-v2").html(viewData);
+                //click tat reviewTinhHuyenXa
+                $(".bl-v2>i").click(function () {
+                    $(".bl-v2").css("display","none");
+                });
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+        return false;
+    })
 }
 //end xy ly click chi tiet khoi trong map
 
@@ -69,6 +94,7 @@ function setInfoKhUse(data) {
     let chiTieu = data.MaQuyHoach === undefined ? data.MucDichSuDung : data.MucDichQuyHoach;
     textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
     $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
+    clickReview();
     if (pathName.indexOf("quy-hoach") > -1) {
         if (checkMap !== 0) {
             // quy haoch huyen

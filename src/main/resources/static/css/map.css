@@ -511,6 +511,8 @@ html, body {
     display: flex;
     align-items: center;
     z-index: 1;
+    height: 200px;
+    margin-top: 80px;
 }
 
 .bl-v2-right .bl-v2 {
@@ -518,8 +520,10 @@ html, body {
     margin-left: 5px;
     padding: 10px;
     position: relative;
-    background: #38586c8c;
+    background: #ffffffcf;
     display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .bl-v2 .bl-v2-r-left {
@@ -823,6 +827,12 @@ html, body {
 
 .table {
     max-width: unset !important;
+}
+
+.reviewTinhHuyenXa {
+    height: 100%;
+    overflow: auto;
+    width: 100%;
 }
 /*MAIN*/
 main {
