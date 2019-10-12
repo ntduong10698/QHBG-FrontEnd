@@ -6,7 +6,7 @@
             <div class="liimg-wp">
                 <img src="resources/img/user1.png" alt="">
             </div>
-            <form class="litext-wp">
+            <div class="litext-wp">
                 <span class="lit-cap">Tài khoản</span>
                 <div class="liinput"><input type="text" id="email" placeholder="Email" required></div>
                 <div class="liinput"><input type="password" id="password" placeholder="Mật khẩu" required></div>
@@ -19,10 +19,10 @@
                     <a class="out">Thoát</a>
                     <a class="licsi">Đăng ký</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    <form class="d-signin">
+    <div class="d-signin">
         <div class="siimg">
             <img src="resources/img/suser1.png" alt="">
         </div>
@@ -32,46 +32,44 @@
         <div class="sicontent">
             <div class="sicleft">
                 <div class="sicitem-wp">
-                    <span>Tên đăng nhập: <span>(*)</span></span>
-                    <input id="name" type="text" required>
+                    <span>Họ và tên: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="fullname" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Mật khẩu: <span>(*)</span></span>
-                    <input id="pass1" type="password" required>
+                    <span>Email: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="emailSign" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Nhập lại mật khẩu: <span>(*)</span></span>
-                    <input id="pass2" type="password" required>
+                    <span>Mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="pass1" data-bol="false" type="password" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Họ và tên: <span>(*)</span></span>
-                    <input id="fullname" type="text" required>
+                    <span>Nhập lại mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="pass2" data-bol="false" type="password" required>
                 </div>
+
                 <div class="sicitem-wp">
-                    <span>Địa chỉ: <span>(*)</span></span>
-                    <input id="address" type="text" required>
+                    <span>Địa chỉ: <span>(*)</span > <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="address" data-bol="false" type="text" required>
                 </div>
             </div>
-            <div class="sicright">
+            <div class="sicright" id="sicright">
+
                 <div class="sicitem-wp">
-                    <span>Email: <span>(*)</span></span>
-                    <input id="emailSign" type="text" required>
+                    <span>Số điện thoại: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="phoneNumber"  data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Số điện thoại: <span>(*)</span></span>
-                    <input id="phoneNumber" type="text" required>
+                    <span>Số CMND: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="numberCMT" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Số CMND: <span>(*)</span></span>
-                    <input id="numberCMT" type="text" required>
+                    <span>Ngày cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="dateCMT" data-bol="false" type="date" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Ngày cấp: <span>(*)</span></span>
-                    <input id="dateCMT" type="date" required>
-                </div>
-                <div class="sicitem-wp">
-                    <span>Nơi cấp: <span>(*)</span></span>
-                    <input id="addCMT" type="text" required>
+                    <span>Nơi cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="addCMT" data-bol="false" type="text" required>
                 </div>
             </div>
         </div>
@@ -81,7 +79,7 @@
             <a class="out">Thoát</a>
             <a class="sibcl"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
         </div>
-    </form>
+    </div>
 </section>
 <!-- HEADER -->
 <header>
@@ -138,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <a id="lockhome" class="icon iconacc " href="#" title="Tài Khoản">
+        <a id="lockhome" class="icon iconacc "  title="Tài Khoản">
             <div class="ihwp">
                 <i class="fas fa-lock"></i>
             </div>

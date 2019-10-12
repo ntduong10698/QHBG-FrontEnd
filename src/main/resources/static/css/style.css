@@ -67,6 +67,12 @@ a.icon span{
     transition: .4s all;
     color: var(--color-gray);
 }
+.error{
+    font-size: 10px!important;
+    float: right;
+    display: none;
+
+}
 .hdleft >a{
     display: flex;
     align-items: center;
