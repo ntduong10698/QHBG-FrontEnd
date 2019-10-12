@@ -74,4 +74,22 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/infoDecision.jsp"/>
     </definition>
 
+    <!-- Guide Page  -->
+    <definition name="guide" extends="base.definition">
+        <put-attribute name="title" value="Hướng Dẫn"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/guide.jsp"/>
+    </definition>
+
+    <!-- FeedBack Page  -->
+    <definition name="feedBack" extends="base.definition">
+        <put-attribute name="title" value="Góp Ý"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/feedBack.jsp"/>
+    </definition>
+
+    <!-- FeedBack Page  -->
+    <definition name="active" extends="base.definition">
+        <put-attribute name="title" value="Xác Thực Đăng Ký"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/active.jsp"/>
+    </definition>
+
 </tiles-definitions>
