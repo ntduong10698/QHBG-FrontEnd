@@ -75,6 +75,7 @@ function setViewSelectXa(idHuyen) {
         $("#dp-drop11").html(viewSelectXa);
         changeViewLoaiXa(arrTable, idHuyen); //set default full arrTable
         $("#dp-drop11").change(function () {
+            viewLoadingGif();
             let idXa = $("#dp-drop11").val();
             if (idXa != 0) {
                 let xa = arrXa.filter(data => data.idXa == idXa);
@@ -91,6 +92,7 @@ function setViewSelectXa(idHuyen) {
                 clickChiTietDatPNN();
                 changeViewLoaiXa(arrFindXa, idHuyen);
             }
+            hideLoadingGif();
         })
     }).catch(err => {
         console.log(err);
@@ -101,6 +103,7 @@ function callSelectBangGiaDatPNN() {
     let idHuyen = $("#dp-drop10").val();
     let id = $("#dp-drop8").val();
     // id > 11 la dat nong thon
+    viewLoadingGif();
     if (id <= 11) {
         hidenViewXa();
         viewTableDuong = ''; //reset gia tri
@@ -111,6 +114,7 @@ function callSelectBangGiaDatPNN() {
             setViewTenDuong(idHuyen);
             // $(".block-table-price2").html(setTableGiaDatPhiNongNghiep(rs, idHuyen));
             //set default khi vao trang phi nong nghiep
+            hideLoadingGif();
         }).catch(err => {
             console.log(err);
         })
@@ -123,6 +127,7 @@ function callSelectBangGiaDatPNN() {
             $(".block-table-price2").html(setTableGiaDatNongThon(rs, idHuyen));
             clickChiTietDatPNN();
             arrTable = rs;
+            hideLoadingGif();
         }).catch(err => {
             console.log(err);
         })
@@ -214,6 +219,7 @@ function setViewLoaiXa() {
 //change view loai xa
 function changeViewLoaiXa(arrFindXa, idHuyen) {
     $("#dp-drop12").change(function () {
+        viewLoadingGif();
         let val = $("#dp-drop12").val();
         if (val != 0) {
             let arrRs = arrFindXa.filter(data => {
@@ -229,6 +235,7 @@ function changeViewLoaiXa(arrFindXa, idHuyen) {
             $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
             clickChiTietDatPNN();
         }
+        hideLoadingGif();
     })
 }
 //end change view loai xa
@@ -238,12 +245,12 @@ function setTableGiaDatNongThon(rs,idHuyen) {
    let arrTD = rs.filter(data => data.loaiXa.parent.idDmLoaiXa == 1);
    let arrMN = rs.filter(data => data.loaiXa.parent.idDmLoaiXa == 2);
    let viewTable = '';
-   let viewData = `<tr><td><strong>I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
+   let viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
    arrTD.map((data1, index) => {
        viewData += setDataTableGiaDatNongThon(data1, index);
    })
-    viewData += `<tr><td><strong>II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
+    viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
     arrMN.map((data1, index) => {
         viewData += setDataTableGiaDatNongThon(data1, index);
@@ -301,9 +308,19 @@ function clickChiTietDatPNN() {
 }
 
 function setDataTableGiaDatNongThon(data1, index) {
-    return `<tr><td>${index+1}</td><td>${data1.loaiXa.tenLoaiXa}</td><td>${formatNumber(data1.viTri11,'.','.')}</td><td>${formatNumber(data1.viTri12,'.','.')}</td>
-            <td>${formatNumber(data1.viTri13,'.','.')}</td><td>${formatNumber(data1.viTri14,'.','.')}</td><td>${formatNumber(data1.viTri21,'.','.')}</td><td>${formatNumber(data1.viTri22,'.','.')}</td><td>${formatNumber(data1.viTri23,'.','.')}</td>
-            <td>${formatNumber(data1.viTri24,'.','.')}</td><td>${formatNumber(data1.viTri31,'.','.')}</td><td>${formatNumber(data1.viTri32,'.','.')}</td><td>${formatNumber(data1.viTri33,'.','.')}</td><td>${formatNumber(data1.viTri34,'.','.')}</td>
+    return `<tr><td>${index+1}</td><td>${data1.loaiXa.tenLoaiXa}</td>
+            <td>${data1.viTri11 == 0 ? '' : formatNumber(data1.viTri11,'.','.')}</td>
+            <td>${data1.viTri12 == 0 ? '' : formatNumber(data1.viTri12,'.','.')}</td>
+            <td>${data1.viTri13 == 0 ? '' : formatNumber(data1.viTri13,'.','.')}</td>
+            <td>${data1.viTri14 == 0 ? '' : formatNumber(data1.viTri14,'.','.')}</td>
+            <td>${data1.viTri21 == 0 ? '' : formatNumber(data1.viTri21,'.','.')}</td>
+            <td>${data1.viTri22 == 0 ? '' : formatNumber(data1.viTri22,'.','.')}</td>
+            <td>${data1.viTri23 == 0 ? '' : formatNumber(data1.viTri23,'.','.')}</td>
+            <td>${data1.viTri24 == 0 ? '' : formatNumber(data1.viTri24,'.','.')}</td>
+            <td>${data1.viTri31 == 0 ? '' : formatNumber(data1.viTri31,'.','.')}</td>
+            <td>${data1.viTri32 == 0 ? '' : formatNumber(data1.viTri32,'.','.')}</td>
+            <td>${data1.viTri33 == 0 ? '' : formatNumber(data1.viTri33,'.','.')}</td>
+            <td>${data1.viTri34 == 0 ? '' : formatNumber(data1.viTri34,'.','.')}</td>
             <td><span><span data-id=${data1.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span></td>
             </tr>`;
 }
@@ -352,6 +369,7 @@ function setViewTenDuong(idHuyen) {
 
 function changeViewTenDuong(idHuyen) {
     $("#dp-drop12").change(function () {
+        viewLoadingGif();
         $(".block-table-price2 tbody").html(viewTableDuongData); //set lai full data de find bang jquery
         let val = $("#dp-drop12").val();
         if (val != 0) {
@@ -367,6 +385,7 @@ function changeViewTenDuong(idHuyen) {
         } else {
             // $(".block-table-price2").html(setTableGiaDatPhiNongNghiep(arr,idHuyen));
         }
+        hideLoadingGif();
     })
 }
 
@@ -383,7 +402,7 @@ function setViewTableDuong(rs) {
     arrChildDuong = arrChild;
     arrRoot.map(data => {
         viewTableDuong += `<tr data-cap=${data.cap}>
-                            <td><strong>${convertToRoman(data.cap)}</strong></td>
+                            <td><strong style="font-family: 'Times New Roman', Times, serif">${convertToRoman(data.cap)}</strong></td>
                             <td><strong>${data.ten}</strong></td>
                             <td></td>
                             <td></td>
@@ -416,7 +435,7 @@ function findChilDuong(root) {
     })
     arrChildCap1.map(data1 => {
         viewTableDuong += `<tr data-cap=${data1.cap}>
-                            <td>${data1.cap}</td>
+                            <td><strong>${viewCap(data1.cap)}</strong></td>
                             <td>${checkCap(data1.cap)} ${data1.ten}</td>
                             <td></td>
                             <td></td>
@@ -448,7 +467,7 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
                 <table class="table-dat table table-hover table-bordered">
                     <thead>
                         <tr>
-                            <th>Cấp</th>
+                            <th>STT</th>
                             <th style="width: 360px !important;">Tên đường, đoạn đường</th>
                             <th>Vị trí 1</th>
                             <th>Vị trí 2</th>
@@ -472,10 +491,10 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
 function setDataTableGiaDatPhiNongNghiep() {
    arrTable.map(data => {
        let item = $(`tr[data-cap='${data.danhMucDuong.cap}']`);
-       item.children("td:nth-child(3)").html(formatNumber(data.viTri1,'.','.'));
-       item.children("td:nth-child(4)").html(formatNumber(data.viTri2,'.','.'));
-       item.children("td:nth-child(5)").html(formatNumber(data.viTri3,'.','.'));
-       item.children("td:nth-child(6)").html(formatNumber(data.viTri4,'.','.'));
+       item.children("td:nth-child(3)").html(data.viTri1 == 0 ? '': formatNumber(data.viTri1,'.','.'));
+       item.children("td:nth-child(4)").html(data.viTri2 == 0 ? '': formatNumber(data.viTri2,'.','.'));
+       item.children("td:nth-child(5)").html(data.viTri3 == 0 ? '': formatNumber(data.viTri3,'.','.'));
+       item.children("td:nth-child(6)").html(data.viTri4 == 0 ? '': formatNumber(data.viTri4,'.','.'));
        item.children("td:nth-child(7)").html(data.quyetDinh != null ? data.quyetDinh.namDau +" - "+data.quyetDinh.namCuoi : "-" );
        item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span>`)
    })

@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<section id="loading-gif" style="display: none">
+    <div class="img-loading-gif">
+        <img src="resources/img/loading-gif.gif">
+    </div>
+</section>
 <section class="m-loginsignin">
     <div class="login-bg"></div>
     <div class="d-login">
@@ -6,7 +11,7 @@
             <div class="liimg-wp">
                 <img src="resources/img/user1.png" alt="">
             </div>
-            <form class="litext-wp">
+            <div class="litext-wp">
                 <span class="lit-cap">Tài khoản</span>
                 <div class="liinput"><input type="text" id="email" placeholder="Email" required></div>
                 <div class="liinput"><input type="password" id="password" placeholder="Mật khẩu" required></div>
@@ -19,10 +24,10 @@
                     <a class="out">Thoát</a>
                     <a class="licsi">Đăng ký</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    <form class="d-signin">
+    <div class="d-signin">
         <div class="siimg">
             <img src="resources/img/suser1.png" alt="">
         </div>
@@ -32,46 +37,44 @@
         <div class="sicontent">
             <div class="sicleft">
                 <div class="sicitem-wp">
-                    <span>Tên đăng nhập: <span>(*)</span></span>
-                    <input id="name" type="text" required>
+                    <span>Họ và tên: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="fullname" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Mật khẩu: <span>(*)</span></span>
-                    <input id="pass1" type="password" required>
+                    <span>Email: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="emailSign" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Nhập lại mật khẩu: <span>(*)</span></span>
-                    <input id="pass2" type="password" required>
+                    <span>Mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="pass1" data-bol="false" type="password" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Họ và tên: <span>(*)</span></span>
-                    <input id="fullname" type="text" required>
+                    <span>Nhập lại mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="pass2" data-bol="false" type="password" required>
                 </div>
+
                 <div class="sicitem-wp">
-                    <span>Địa chỉ: <span>(*)</span></span>
-                    <input id="address" type="text" required>
+                    <span>Địa chỉ: <span>(*)</span > <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="address" data-bol="false" type="text" required>
                 </div>
             </div>
-            <div class="sicright">
+            <div class="sicright" id="sicright">
+
                 <div class="sicitem-wp">
-                    <span>Email: <span>(*)</span></span>
-                    <input id="emailSign" type="text" required>
+                    <span>Số điện thoại: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="phoneNumber"  data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Số điện thoại: <span>(*)</span></span>
-                    <input id="phoneNumber" type="text" required>
+                    <span>Số CMND: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="numberCMT" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Số CMND: <span>(*)</span></span>
-                    <input id="numberCMT" type="text" required>
+                    <span>Ngày cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="dateCMT" data-bol="false" type="date" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Ngày cấp: <span>(*)</span></span>
-                    <input id="dateCMT" type="date" required>
-                </div>
-                <div class="sicitem-wp">
-                    <span>Nơi cấp: <span>(*)</span></span>
-                    <input id="addCMT" type="text" required>
+                    <span>Nơi cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <input id="addCMT" data-bol="false" type="text" required>
                 </div>
             </div>
         </div>
@@ -81,12 +84,12 @@
             <a class="out">Thoát</a>
             <a class="sibcl"><i class="fas fa-long-arrow-alt-left"></i> Quay lại</a>
         </div>
-    </form>
+    </div>
 </section>
 <!-- HEADER -->
 <header>
     <div class="hwapper d-flex" id="header">
-        <a class="icon" href="/home" title="Home">
+        <a class="icon" href="home" title="Home">
             <div class="ihwp iconhome">
                 <i class="fas fa-home"></i>
             </div>
@@ -108,27 +111,27 @@
                     </a>
                     <a class="icon "
                        href="https://www.google.com/maps/place/Sở+Tài+nguyên+và+Môi+trường+tỉnh+Bắc+Giang/@21.2771565,106.1935929,17z/data=!3m1!4b1!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"
-                       title="Địa chỉ">
+                       title="Địa chỉ"
+                       target="_blank">
                         <div class="ihwp">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                     <a
-                                href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
+                     <a href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN" target="_blank"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end p-0 hdright">
                     <div class="noapp  d-flex" id="addUser">
-                        <a class="icon " href="#" title="Tin tức">
-                            <div class="ihwp">
-                                <i class="far fa-newspaper"></i>
-                            </div>
-                        </a>
-                        <a class="icon" href="#" title="Góp ý">
+<%--                        <a class="icon " href="#" title="Tin tức">--%>
+<%--                            <div class="ihwp">--%>
+<%--                                <i class="far fa-newspaper"></i>--%>
+<%--                            </div>--%>
+<%--                        </a>--%>
+                        <a class="icon" href="gop-y" title="Góp ý">
                             <div class="ihwp">
                                 <i class="fas fa-comments"></i>
                             </div>
                         </a>
-                        <a class="icon" href="#" title="Hướng dẫn">
+                        <a class="icon" href="huong-dan" title="Hướng dẫn">
                             <div class="ihwp">
                                 <i class="fas fa-map-signs"></i>
                             </div>
@@ -138,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <a id="lockhome" class="icon iconacc " href="#" title="Tài Khoản">
+        <a id="lockhome" class="icon iconacc "  title="Tài Khoản">
             <div class="ihwp">
                 <i class="fas fa-lock"></i>
             </div>

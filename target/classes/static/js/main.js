@@ -301,3 +301,18 @@ function checkCap(str) {
         symbol = "&nbsp;&nbsp;&nbsp;&nbsp;+    ";
     return symbol;
 }
+
+function viewCap(str) {
+    let count = countPoint(str);
+    return count === 1? str.split(".")[1].trim(): '';
+}
+
+function viewLoadingGif() {
+    $("#loading-gif").css("display","block");
+}
+
+function hideLoadingGif() {
+    setTimeout(function () {
+        $("#loading-gif").css("display","none");
+    }, 200)
+}

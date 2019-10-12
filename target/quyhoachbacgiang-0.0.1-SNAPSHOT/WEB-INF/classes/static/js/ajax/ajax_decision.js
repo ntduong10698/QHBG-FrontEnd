@@ -14,8 +14,8 @@ function callTableDecision() {
             result.map(function (response, index) {
                 tmp += `
                  <tr>
-                            <td><a href="#">${response.soQuyetDinh} </a></td>
-                            <td><a href="#">${response.trichYeu}</a>
+                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
+                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.trichYeu}</a>
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
@@ -81,17 +81,18 @@ function searchLoaiQuyetDinh() {
 
 function addDataAfterGet(data) {
     let tmp = "";
+    console.log(data)
     if (data.length > 0) {
         data.map(function (response, index) {
             tmp += `
                 <tr>
-                            <td><a href="#">${response.soQuyetDinh} </a></td>
-                            <td><a href="#">${response.trichYeu}</a>
+                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
+                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.trichYeu}</a>
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
                                 <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
-                            <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
+                            <td> <a href=""><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
         });
@@ -111,14 +112,18 @@ function searchTextQuyetDinh() {
                 break;
             }
         }
-        if ($("#searchTextQD").val().match("^[a-zA-Z0-9]+$")) {
-            ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
-                if (data.length>0){
+        if ($("#searchTextQD").val()!==""){
+            if ($("#searchTextQD").val().match("^[a-zA-Z0-9]+$")) {
+                ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
+
                     addDataAfterGet(data);
-                }
-            });
-        }else{
-            alert("Chỉ chấp nhận kí tự thường, in hoa, không nhận chấp nhận số và kí tự đặc biệt")
+
+                });
+            }else{
+                alert("Chỉ chấp nhận kí tự thường, in hoa, không nhận chấp nhận số và kí tự đặc biệt")
+            }
+        } else{
+            alert("Vui lòng nhập từ khóa tìm kiếm ")
         }
 
     })

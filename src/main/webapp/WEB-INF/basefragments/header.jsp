@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<section id="loading-gif" style="display: none">
+    <div class="img-loading-gif">
+        <img src="resources/img/loading-gif.gif">
+    </div>
+</section>
 <section class="m-loginsignin">
     <div class="login-bg"></div>
     <div class="d-login">
