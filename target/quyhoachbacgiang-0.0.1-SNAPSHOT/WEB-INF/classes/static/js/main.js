@@ -1,10 +1,29 @@
-
-
-
 const URL_API = "http://123.31.45.240:8480/excel_admin/api/";
 const tokenHeader_value = "";
 const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
 const ARR_HUYEN_TEXT = ['TP Bắc Giang', 'Hiệp Hòa', 'Yên Dũng', 'Lục Nam', 'Sơn Động', 'Lạng Giang', 'Việt Yên', 'Tân Yên', 'Lục Ngạn', 'Yên Thế'];
+const MA_DAT = ['NPP: Đất nông nghiệp','SXN: Đất sản xuất nông nghiệp','CHN: Đất trồng cây hằng năm','LUA: Đất trồng lúa','LUC: Đất chuyên trồng lúa nước'
+,'LUK: Đất trồng lúa nước còn lại','LUN: Đất trồng lúa nương','COC: Đất cỏ dùng vào chăn nuôi','HNK: Đất trồng cây hằng năm khác'
+,'BHK: Đất trồng cây hằng năm khác','NHK: Đất nương rẫy trồng cây hằng năm khác','CLN: Đất trồng cây lâu năm','LNC: Đất trồng cây công nghiệp lâu năm'
+,'LNQ: Đất trồng cây ăn quả lâu năm','LNK: Đất trồng cây lâu năm khác','LNP: Đất lâm nghiệp','RSX: Đất rừng sản xuất'
+,'RSN: Đất có rừng tự nhiên sản xuất','RST: Đất có rừng trồng sản xuất','RSK: Đất khoanh nuôi phục hồi rừng sản xuất'
+,'RSM: Đất trồng rừng sản xuất','RPH: Đất rừng phòng hộ','RPN: Đất có rừng tự nhiên phòng hộ','RPT: Đất có rừng trồng phòng hộ'
+,'RPK: Đất khoanh nuôi phục hồi rừng phòng hộ','RPM: Đất trồng rừng phòng hộ','RDD: Đất rừng đặc dụng','RDN: Đất có rừng tự nhiên đặc dụng'
+,'RDT: Đất có rừng trồng đặc dụng','RDK: Đất khoanh nuôi phụ hồi rừng đặc dụng','RDM: Đất trồng rừng đặc dụng','NTS: Đất nuôi trồng thủy sản'
+,'TSL: Đất nuôi trồng thủy sản nước lợ; mặn','TSN: Đất chuyên nuôi trồng thủy sản nước ngọt','LMU: Đất làm muối'
+,'NKH: Đất nông nghiệp khác','PNN: Đất phi nông nghiệp','OTC: Đất ở', 'ONT: Đất ở tại nông thôn','ODT: Đất ở tại đô thị'
+,'CDG: Đất chuyên dùng','CTS: Đất trụ sở cơ quan; công trình sự nghiệp','TSC: Đất trụ sở cơ quan; công trình','DTS: Đất xây dựng trụ sở của tổ chức sự nghiệp'
+,'TSK: Đất trụ sở khác','CQP: Đất quốc phòng', 'CAN: Đất an ninh','CSK: Đất sản xuất; kinh doanh phi nông nghiệp','SKK: Đất khu công nghiệp'
+,'SKC: Đất cơ sở sản xuất; kinh doanh','SKS: Đất cho hoạt động khoáng sản','SKX: Đất sản xuất vật liệu xây dựng; gốm sứ'
+,'CCC: Đất có mục đính công cộng','DGT: Đất giao thông','TMD: Đất thương mại; dịch vụ','TMD: Đất thương mại; dịch vụ'
+,'DTL: Đất thủy lợi','DNL: Đất công trình năng lượng','DBV: Đất công trình bưu chính viễn thông','DSH: Đất sinh hoạt cộng đồng'
+,'DVH: Đất cơ sở văn hóa','DKV: Đất khu vui chơi; giải trí công cộng','DYT: Đất cơ sở y tế','DGD: Đất cơ sở giáo dục-đào tạo'
+,'DTT: Đất cơ sở thể dục-thể thao','DKH: Đất cơ sở nghiên cứu khoa học','DXH: Đất cơ sở dịch vụ về xã hội','DCH: Đất chợ'
+,'DDT: Đất có di tích; danh thắng', 'DRA: Đất bãi  thải; xử lý chất thải','TTN: Đất tôn giáo; tín ngưỡng','TON: Đất tôn giáo'
+,'TIN: Đất tín ngưỡng','NTD: Đất nghĩa trang; nghĩa địa','SMN: Đất sông suối và mặt nước chuyên dùng','SON: Đất sông; ngoài; kênh; rạch; suối'
+,'MNC: Đất có mặt nước chuyên dùng','PNK: Đất phi nông nghiệp khác','CSD: Đất bằng chưa sử dụng','BCS: Đất đôi núi chưa sử dụng'
+,'NCS: Núi đá không có rừng cây','MVB: Đất có mặt nước ver biển', 'MVT: Đất mặt nước ven biển nuôi trồng thủy sản'
+,'MVR: Đất mặt nước ven biển có rừng ngập mặn','MVK: Đất mặt nước ven biển có mục đích khác'];
 function mucDich(color) {
     var int = parseInt(color, 10);
     switch (int) {
@@ -238,4 +257,45 @@ function formatNumber(nStr, decSeperate, groupSeperate) {
         x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
     }
     return x1 + x2;
+}
+
+function reverseStringNam(text) {
+    return  text.split("-").reverse().join("/");
+}
+
+function convertToRoman(num) {
+    let roman = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1
+    };
+    let str = '';
+    for (let i of Object.keys(roman)) {
+        let q = Math.floor(num / roman[i]);
+        num -= q * roman[i];
+        str += i.repeat(q);
+    }
+    return str;
+}
+
+function checkCap(str) {
+    let count = countPoint(str);
+    let symbol = "";
+    if (count === 1)
+        symbol = ' ';
+    else if (count === 2)
+        symbol = "&nbsp;&nbsp;-";
+    else if (count === 3)
+        symbol = "&nbsp;&nbsp;&nbsp;&nbsp;+    ";
+    return symbol;
 }

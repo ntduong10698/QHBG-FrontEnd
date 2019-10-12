@@ -14,7 +14,7 @@
                     <input type="checkbox">
                     <span>Nhớ tài khoản và mật khẩu</span>
                 </div>
-                <span class="libt"> <button type="submit" id="submit-log">Đăng nhập</button></span>
+                <span class="libt"> <button  id="submit-log">Đăng nhập</button></span>
                 <div class="listatus">
                     <a class="out">Thoát</a>
                     <a class="licsi">Đăng ký</a>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <span class="sisave"><button id="submitResign" type="submit"><i
+        <span class="sisave"><button id="submitResign" ><i
                 class="fas fa-download"></i> Lưu lại</button></span>
         <div class="sistatus">
             <a class="out">Thoát</a>
@@ -85,7 +85,7 @@
 </section>
 <!-- HEADER -->
 <header>
-    <div class="hwapper d-flex">
+    <div class="hwapper d-flex" id="header">
         <a class="icon" href="/home" title="Home">
             <div class="ihwp iconhome">
                 <i class="fas fa-home"></i>
@@ -117,7 +117,7 @@
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end p-0 hdright">
-                    <div class="noapp  d-flex">
+                    <div class="noapp  d-flex" id="addUser">
                         <a class="icon " href="#" title="Tin tức">
                             <div class="ihwp">
                                 <i class="far fa-newspaper"></i>
@@ -133,28 +133,17 @@
                                 <i class="fas fa-map-signs"></i>
                             </div>
                         </a>
-                        <a href="#" class="user-name show" title="Tên Chủ tài Khoản">
-                            <div class="usn-wp">
-                                <div class="usn-img">
-                                    <img src="resources/img/user2.png" alt="">
-                                </div>
-                                <span>Trương Thị Sáng</span>
-                            </div>
-                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
-        <a class="icon iconacc hide" href="#" title="Tài Khoản">
+        <a id="lockhome" class="icon iconacc " href="#" title="Tài Khoản">
             <div class="ihwp">
                 <i class="fas fa-lock"></i>
             </div>
         </a>
-        <a href="#" class="icon iconlogout show" title="Đăng Xuất">
-            <div class="ihwp">
-                <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
-            </div>
-        </a>
+
     </div>
 </header>
 <!-- END HEADER -->
@@ -165,7 +154,7 @@
         <div class="row">
             <div class="logo-wp">
                 <div class="img-wp">
-                    <a href="/home"><img src="resources/img/logo.png" alt=""></a>
+                    <a href="home"><img src="resources/img/logo.png" alt=""></a>
                 </div>
                 <div class="logotext-wp">
                     <span>Sở tài nguyên và môi trường tỉnh Bắc Giang</span>

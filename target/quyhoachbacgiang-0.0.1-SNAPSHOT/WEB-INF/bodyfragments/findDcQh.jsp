@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="resources/css/decision.css">
 <link rel="stylesheet" href="resources/css/findDcQh.css">
+<script src="resources/js/ajax/ajax_findDcQh.js"></script>
 <!-- MAIN -->
 <main>
     <section class="dp-filter lu-adjplan">
@@ -8,7 +9,7 @@
             <div class="dpfilter-ct">
                 <div class="dpfc-item dpcf-fitem">
                     <span>Tìm kiếm thông tin điều chỉnh bổ sung</span>
-                    <input type="text" placeholder="Vị trí, địa điểm điều chỉnh, bổ xung">
+                    <input type="text" placeholder="Vị trí, địa điểm điều chỉnh, bổ xung" id="inputViTri">
                 </div>
                 <div class="dpfc-item dpcf-select">
                     <span>Huyện áp dụng</span>
@@ -28,10 +29,10 @@
                 </div>
                 <div class="dpfc-item dpcf-fitem">
                     <span>Số quyết định</span>
-                    <input type="text" placeholder="Nhập số quyết định">
+                    <input type="text" placeholder="Nhập số quyết định" id="inputQuyetDinh">
                 </div>
                 <div class="dpfc-item dpcf-bt">
-                    <a href="#"><img src="resources/img/searchbt.png" alt=""></a>
+                    <a href="" id="searchDcQH"><img src="resources/img/searchbt.png" alt=""></a>
                 </div>
                 <div class="dpfc-item dpcf-bt">
                     <a href="#"><img src="resources/img/xls.png" alt=""></a>
@@ -319,20 +320,8 @@
                 </table>
                 <div class="pp-pagi">
                     <div class="ppgai-wp">
-                        <span>Hiển thị 1 trên tổng số 5000 trang</span>
-                        <div class="pagi-c">
-                            <span><i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i></span>
-                            <span><i class="fas fa-angle-double-left"></i></span>
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                            <span>...</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span><i class="fas fa-angle-double-right"></i></span>
-                            <span><i class="fas fa-angle-double-right"></i><i class="fas fa-angle-double-right"></i></span>
+                        <div class="page-able">
+                            <div id="pagination"></div>
                         </div>
                     </div>
                 </div>

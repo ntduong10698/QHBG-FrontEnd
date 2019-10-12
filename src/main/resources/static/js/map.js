@@ -8,8 +8,7 @@ $(document).ready(function () {
         $(".bl-v2").toggleClass("d-flex");
     })
     $(".bl-v2>i").click(function () {
-        $(".bl-v2").removeClass("d-flex");
-        $(".bl-v2").toggleClass("d-none");
+        $(".bl-v2").css("display","none");
     });
     $(".form-search-toado").css("display","none"); // off table search
     $('#inputSearchMap').keyup(function () {

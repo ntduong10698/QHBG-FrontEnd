@@ -26,9 +26,29 @@ main{
 .lu-adjcoe .table-wp table tbody tr td{
     text-align: center;
     text-transform: uppercase;
-    font-weight: 600;
-    background-color: #ededed;
+    /* font-weight: 600; */
+    /* background-color: #ededed; */
+    vertical-align: middle;
 }
 .lu-adjcoe .table-wp table tbody tr:hover td{
     font-style: normal !important;
+}
+
+.table-wp .tablep-cap{
+    background-color: #ededed;
+    text-align: center;
+    text-transform: uppercase;
+    /* font-weight: 600; */
+    padding: .75rem;
+}
+
+.table-wp thead {}
+
+.table-wp thead tr {
+    background: white !important;
+}
+
+.table-wp tbody tr td:nth-child(2) {
+    text-transform: unset !important;
+    text-align: left !important;
 }

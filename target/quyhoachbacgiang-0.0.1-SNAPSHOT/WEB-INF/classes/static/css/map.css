@@ -72,14 +72,15 @@ html, body {
 
 .hea-tit-qh {
     background: #22465c;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
     height: 40px;
+    padding-top: 10px;
 }
 
 .hea-tit-qh span {
     color: white;
-    font-size: var(--font-20);
+    font-size: 15px;
     text-transform: uppercase;
 }
 
@@ -137,7 +138,7 @@ html, body {
 .block-right-qh .block-search-qh-bd {
     position: absolute;
     top: 10px;
-    left: 15px;
+    left: 30px;
     display: flex;
     z-index: 1000;
 }
@@ -212,7 +213,7 @@ html, body {
     opacity: 0;
     display: flex;
     position: absolute;
-    left: -140px;
+    left: -188px;
     border-radius: 5px;
     top: 0;
     padding: 5px;
@@ -225,8 +226,8 @@ html, body {
     border-bottom: solid 12px transparent;
     border-left: solid 13px #f0f0f0;
     position: absolute;
-    right: -14%;
-    top: 6%;
+    right: -10%;
+    top: 2%;
 }
 
 .layer-2-qh>ul {
@@ -584,7 +585,7 @@ html, body {
 
 .form-search-toado {
     position: absolute;
-    max-width: 500px;
+    max-width: 700px;
     overflow: auto;
     max-height: 100%;
     /* height: 100%; */
@@ -606,7 +607,7 @@ html, body {
     font-size: var(--font-20);
 }
 .content-form-search>table {
-    font-size: var(--font13);
+    font-size: 12px;
 }
 
 .content-form-search>table>thead {}
@@ -776,6 +777,53 @@ html, body {
     margin-right: 5px;
 }
 
+#viewDanhSachXaHuyen li{
+    cursor: pointer;
+}
+
+#closeThongKeMap {
+    color: red;
+    position: absolute;
+    top: 4px;
+    left: calc(20% - 18px);
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#openThongKeMap {
+    font-size: 30px;
+    color: green;
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#tableSearchMap td {
+    padding: 8px;
+}
+
+#tableSearchMap th {
+    padding: 8px;
+}
+
+.hideThongKe {
+    width: 100% !important;
+}
+
+#tableInfoSoild table tr td:nth-child(1){
+    min-width: 235px !important;
+    margin: unset;
+}
+
+#tableInfoSoild table tr td:nth-child(2){
+    min-width: 60px !important;
+    margin: unset;
+}
+
+.table {
+    max-width: unset !important;
+}
 /*MAIN*/
 main {
     position: relative;

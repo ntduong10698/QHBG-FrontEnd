@@ -8,6 +8,10 @@ $(document).ready(function () {
         placeholder: "--- Chọn đơn vị ---",
         allowClear: true
     } );
+    $("#dp-drop7").select2( {
+        placeholder: "--- Chọn Năm ---",
+        allowClear: true
+    } );
     // Scroll Fix Filter
     $(window).scroll(function () {
         var scroll = $(this).scrollTop();

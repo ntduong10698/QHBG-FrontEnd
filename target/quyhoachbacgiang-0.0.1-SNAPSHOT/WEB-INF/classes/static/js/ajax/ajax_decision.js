@@ -9,6 +9,7 @@ function callFullTableDecision() {
 function callTableDecision() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
+        console.log(result)
         if (result.length > 0) {
             result.map(function (response, index) {
                 tmp += `
@@ -18,8 +19,8 @@ function callTableDecision() {
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
-                                <span>Ngày ban hành: ${response.ngayBanHanh}</span></td>
-                            <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
+                                <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
+                            <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
             });
@@ -29,7 +30,7 @@ function callTableDecision() {
         }
     })
 }
-// .reverse().join("/")
+// .reverse()c
 function callCoQuanBanHanh() {
     let tmp = "";
     ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {
@@ -83,14 +84,14 @@ function addDataAfterGet(data) {
     if (data.length > 0) {
         data.map(function (response, index) {
             tmp += `
-                 <tr>
+                <tr>
                             <td><a href="#">${response.soQuyetDinh} </a></td>
                             <td><a href="#">${response.trichYeu}</a>
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
-                                <span>Ngày ban hành: ${response.ngayBanHanh.reverse().join("/")}</span></td>
-                            <td> <a href="#"><i class="fas fa-paperclip"></i></a></td>
+                                <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
+                            <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
         });
@@ -103,7 +104,7 @@ function addDataAfterGet(data) {
 function searchTextQuyetDinh() {
     $("#searchQuyetDinh").click(function () {
         let test = document.getElementsByName("r1");
-        let valuee = null;
+        let valuee = 0;
         for (let i = 0; i < test.length; i++) {
             if (test[i].checked) {
                 valuee = test[i].value;
@@ -119,8 +120,6 @@ function searchTextQuyetDinh() {
         }else{
             alert("Chỉ chấp nhận kí tự thường, in hoa, không nhận chấp nhận số và kí tự đặc biệt")
         }
-
-
 
     })
 }

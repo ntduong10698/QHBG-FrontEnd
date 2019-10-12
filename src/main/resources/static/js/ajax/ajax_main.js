@@ -299,7 +299,9 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Ngày ban hành:</span>
                 </div>
                 <div class="pr-infor-right col-3">
-                    <span>${quyetDinh.ngayBanHanh.length === 3 ? quyetDinh.ngayBanHanh[2] + "/" + quyetDinh.ngayBanHanh[1] + "/" + quyetDinh.ngayBanHanh[0] : "..."}</span>
+
+                    <span>${quyetDinh.ngayBanHanh.split("-").length === 3 ? quyetDinh.ngayBanHanh.split("-")[2]+"/"+quyetDinh.ngayBanHanh.split("-")[1]+"/"+quyetDinh.ngayBanHanh.split("-")[0] : "..."}</span>
+
                 </div>
                 <div class="pr-infor-right col-3" style="background: #cccccc;">
                     <span>Thời gian hiệu lực:</span>
@@ -327,7 +329,7 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Tệp đình kèm theo:</span>
                 </div>
                 <div class="pr-infor-right col-9">
-                    <span><a href=${quyetDinh.duongDanTep}>${quyetDinh.soQuyetDinh}</a></span>
+                    <span><a href="${quyetDinh.duongDanTep}" target="_blank">${quyetDinh.soQuyetDinh}</a></span>
                 </div>
             </div>`;
 }

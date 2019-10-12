@@ -57,7 +57,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="dpfc-item dpcf-select">
+                <div class="dpfc-item dpcf-select" style="display: none;">
                     <span>Xã</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop11" class="dp-drop">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="dpfc-item dpcf-select">
-                    <span>Loại Xã</span>
+                    <span id="nameSelectDrop12">Tên Đường</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop12" class="dp-drop">
                             <option value="">--- Gõ để tìm kiếm ---</option>
@@ -116,196 +116,196 @@
     <section class="container">
         <div class="block-table-price2">
             <table class="table-dat table table-hover table-bordered">
-                <thead>
-                <tr>
-                    <th>Bảng Giá Đất</th>
-                    <th>STT</th>
-                    <th>Vị Trí</th>
-                    <th>Giá Đất</th>
-                    <th>Chi Tiết</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                <thead>--%>
+<%--                <tr>--%>
+<%--                    <th>Bảng Giá Đất</th>--%>
+<%--                    <th>STT</th>--%>
+<%--                    <th>Vị Trí</th>--%>
+<%--                    <th>Giá Đất</th>--%>
+<%--                    <th>Chi Tiết</th>--%>
+<%--                </tr>--%>
+<%--                </thead>--%>
+<%--                <tbody>--%>
+<%--                <tr>--%>
+<%--                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>
-                        <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>--%>
+<%--                        <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span>--%>
+<%--                    </td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
 
-                <tr>
-                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                <tr>--%>
+<%--                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>2</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>3</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>4</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>5</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td rowspan="6">Bảng Giá Đất Trồng Lúa Nước Và Cây Hàng Năm</td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>2</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>3</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>4</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Tại Thành Phố Bắc Giang</td>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>5</td>--%>
+<%--                    <td>Tại Thành Phố Bắc Giang</td>--%>
 
-                    <td>60.000</td>
-                    <td>                            <span>
-                            <span>
-                                <i class="fas fa-plus" aria-hidden="true"></i>
-                            </span>
-                        </span></td>
-                </tr>
+<%--                    <td>60.000</td>--%>
+<%--                    <td>                            <span>--%>
+<%--                            <span>--%>
+<%--                                <i class="fas fa-plus" aria-hidden="true"></i>--%>
+<%--                            </span>--%>
+<%--                        </span></td>--%>
+<%--                </tr>--%>
 
 
-                </tbody>
+<%--                </tbody>--%>
             </table>
 
         </div>

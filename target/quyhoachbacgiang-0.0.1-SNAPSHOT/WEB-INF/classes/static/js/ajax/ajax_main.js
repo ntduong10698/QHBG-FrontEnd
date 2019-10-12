@@ -1,6 +1,7 @@
 $(document).ready(function () {
     checkLogin();
     checkpass();
+    checkStatusLogin();
 });
 
 async function ajaxCall(url) {
@@ -23,59 +24,182 @@ async function ajaxCall(url) {
 function checkLogin() {
     $("#submit-log").click(function () {
         if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-            alert("ok");
+            postInfoUserDangNhap();
         } else {
             alert("Vui lòng nhập đúng định dạng email.");
+            return false;
         }
     });
 }
 
-function checkResign() {
-
-    let user = {
-        "": $("#name").val(),
-        "": $("#pass1").val(),
-        "": $("#pass2").val(),
-        "": $("#fullname").val(),
-        "": $("#address").val(),
-        "": $("#emailSign").val(),
-        "": $("#phoneNumber").val(),
-        "": $("#numberCMT").val(),
-        "": $("#dateCMT").val(),
-        "": $("#addCMT").val(),
-
+function postInfoUserDangNhap() {
+    let dataUser = {
+        "email": $("#email").val(),
+        "password": $("#password").val()
     }
     $.ajax({
-        type: "method",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
+        type: 'POST',
+        data: JSON.stringify(dataUser),
+        url: URL_API + "v1/public/user/login",
+        timeout: 30000,
+        contentType: "application/json",
+        success: function (result) {
 
+
+            if (result == "username or password is not correct") {
+                alert("Tên tài khoản hoặc mật khẩu không chính xác")
+            } else {
+
+                getInfoUserDangNhap(result);
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("Tên tài khoản hoặc mật khẩu không chính xác")
+            console.log(errorThrown);
         }
-    });
+    })
 
+}
+
+function getInfoUserDangNhap(result) {
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        headers: {
+            "Authorization": result,
+        },
+        url: URL_API + "v1/user/profile",
+        timeout: 30000,
+        success: function (data) {
+            localStorage.setItem("infoUserLogin", JSON.stringify(data));
+            console.log(data)
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(errorThrown);
+        }
+    })
+}
+
+function logOut() {
+    $("#logOut").click(function () {
+        localStorage.clear();
+        $("#lockhome").show();
+        $("#nameUser").hide();
+        window.location.href = "home";
+    })
+}
+
+function checkResign() {
+    let user = {
+        "password": $("#pass1").val(),
+        "fullName": $("#name").val(),
+        "email": $("#emailSign").val(),
+    }
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(user),
+        url: URL_API + "v1/public/user/register",
+        timeout: 30000,
+        contentType: "application/json",
+        success: function (result) {
+            alert(result);
+            if (result == "Email has been used") {
+                alert("Email đã được sử dụng")
+            } else {
+                alert(result)
+                localStorage.setItem("infoUserResigter", JSON.stringify(result));
+                window.location.href = "home";
+            }
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("Email đã được sử dụng ")
+            console.log(errorThrown);
+        }
+    })
+
+
+}
+
+function checkStatusLogin() {
+    let tmp = "";
+    let tmp2 = "";
+
+    if (localStorage.getItem("infoUserResigter") !== null) {
+        let user = JSON.parse(localStorage.getItem("infoUserResigter"));
+        tmp = `
+  <a href="#" class="user-name show" title="Tên Chủ tài Khoản">
+                            <div class="usn-wp">
+                                <div class="usn-img">
+                                    <img src="resources/img/user2.png" alt="">
+                                </div>
+                                <span>${user.fullName}</span>
+                            </div>
+                        </a>
+`;
+        tmp2 = `
+          <a href="#" id="logOut" class="icon iconlogout show" title="Đăng Xuất">
+            <div class="ihwp">
+                <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
+            </div>
+        </a>
+        `;
+        $("#lockhome").hide();
+        $("#header").append(tmp2);
+        $("#addUser").append(tmp);
+        logOut();
+    } else if (localStorage.getItem("infoUserLogin") !== null) {
+        let user = JSON.parse(localStorage.getItem("infoUserLogin"));
+        console.log(user)
+        tmp = `
+  <a href="#" id="nameUser" class="user-name show" title="Tên Chủ tài Khoản">
+                            <div class="usn-wp">
+                                <div class="usn-img">
+                                    <img src="resources/img/user2.png" alt="">
+                                </div>
+                                <span>${user.fullName}</span>
+                            </div>
+                        </a>
+`;
+        tmp2 = `
+          <a href="#" class="icon iconlogout show" id="logOut" title="Đăng Xuất">
+            <div class="ihwp">
+                <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
+            </div>
+        </a>
+        `;
+        $("#lockhome").hide();
+        $("#header").append(tmp2);
+        $("#addUser").append(tmp);
+        logOut();
+    } else {
+        $("#lockhome").show();
+
+    }
 }
 
 function checkpass() {
     $("#submitResign").click(function () {
         if ($("#pass1").val() === $("#pass2").val()) {
-            console.log("1")
+            if ($("#emailSign").val() == "" || $("#emailSign").val() === null || $("#emailSign").val() === undefined) {
+                alert("Vui lòng nhập email");
+            } else {
+                if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                    if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
+                        checkResign();
+                    } else {
+                        alert("Sai định dạng số điện thoại");
+                    }
+                } else {
+                    alert("Sai định dạng email vui lòng nhập lại")
+                }
+            }
         } else {
             alert("Mật khẩu không khớp vui lòng nhập lại");
         }
-        if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-            console.log("2")
-        } else {
-            alert("Sai định dạng email vui lòng nhập lại")
-        }
-        if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
-            console.log("3")
-        } else {
-            alert("Sai định dạng số điện thoại");
-        }
-
-
     })
 }
 
@@ -87,7 +211,7 @@ async function ajaxCallGet(url) {
         headers: {
             "Authorization": tokenHeader_value,
         },
-        url: URL_API+url,
+        url: URL_API + url,
         timeout: 30000,
         success: function (result) {
             rs = result
@@ -99,13 +223,14 @@ async function ajaxCallGet(url) {
     return rs;
 }
 
-async function ajaxCallPost(url) {
+async function ajaxCallPost(url, dataUser) {
     let rs = null;
     await $.ajax({
-        type: 'GET',
-        dataType: "json",
-        url: URL_API+ url,
+        type: 'POST',
+        data: JSON.stringify(dataUser),
+        url: URL_API + url,
         timeout: 30000,
+        contentType: "application/json",
         success: function (result) {
             rs = result
         },
@@ -152,13 +277,15 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Ngày ban hành:</span>
                 </div>
                 <div class="pr-infor-right col-3">
-                    <span>${quyetDinh.ngayBanHanh.length === 3 ? quyetDinh.ngayBanHanh[2]+"/"+quyetDinh.ngayBanHanh[1]+"/"+quyetDinh.ngayBanHanh[0] : "..."}</span>
+
+                    <span>${quyetDinh.ngayBanHanh.split("-").length === 3 ? quyetDinh.ngayBanHanh.split("-")[2]+"/"+quyetDinh.ngayBanHanh.split("-")[1]+"/"+quyetDinh.ngayBanHanh.split("-")[0] : "..."}</span>
+
                 </div>
                 <div class="pr-infor-right col-3" style="background: #cccccc;">
                     <span>Thời gian hiệu lực:</span>
                 </div>
                 <div class="pr-infor-right col-3">
-                    <span>${quyetDinh.namDau+"-"+quyetDinh.namCuoi}</span>
+                    <span>${quyetDinh.namDau + "-" + quyetDinh.namCuoi}</span>
                 </div>
             </div>
             <div class="pr-info row">
@@ -180,7 +307,7 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Tệp đình kèm theo:</span>
                 </div>
                 <div class="pr-infor-right col-9">
-                    <span><a href=${quyetDinh.duongDanTep}>${quyetDinh.soQuyetDinh}</a></span>
+                    <span><a href="${quyetDinh.duongDanTep}" target="_blank">${quyetDinh.soQuyetDinh}</a></span>
                 </div>
             </div>`;
 }
