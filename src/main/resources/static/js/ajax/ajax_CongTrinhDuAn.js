@@ -35,30 +35,30 @@ function getLoaiDuAn() {
     })
 }
 
-function getTableDuAn() {
-    ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
-        console.log(data);
-
-        let tmp = "";
-        data.map(function (result, index) {
-            checkCacTruong(result);
-            tmp += `
-             <tr>
-                        <td>${index + 1}</td>
-                        <td>${result.tenCongTrinhDuAn}</td>
-                        <td>${result.loaiCongTrinhDuAn.ten}</td>
-                        <td>${result.tongDienTich}</td>
-                        <td>${result.diaDiem}</td>
-                        <td>${result.huyen.tenHuyen}</td>
-                        <td>${result.canCuThuHoi}</td>
-                        <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-            `;
-
-        });
-        $("#tableCongTrinhDuAn tbody").html(tmp);
-    })
-}
+// function getTableDuAn() {
+//     ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
+//         console.log(data);
+//
+//         let tmp = "";
+//         data.map(function (result, index) {
+//             checkCacTruong(result);
+//             tmp += `
+//              <tr>
+//                         <td>${index + 1}</td>
+//                         <td>${result.tenCongTrinhDuAn}</td>
+//                         <td>${result.loaiCongTrinhDuAn.ten}</td>
+//                         <td>${result.tongDienTich}</td>
+//                         <td>${result.diaDiem}</td>
+//                         <td>${result.huyen.tenHuyen}</td>
+//                         <td>${result.canCuThuHoi}</td>
+//                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
+//                     </tr>
+//             `;
+//
+//         });
+//         $("#tableCongTrinhDuAn tbody").html(tmp);
+//     })
+// }
 
 function checkCacTruong(result) {
     result.tenCongTrinhDuAn = (result.tenCongTrinhDuAn !== null ? result.tenCongTrinhDuAn : "");
@@ -145,7 +145,8 @@ function findIdCongTrinhDuAn(id) {
                    
                     <div class="pr-info row">
                         <div class="pr-infor-left col-3">
-                            <span>Căn cứ thu hồi:</span>
+       +
+                           <span>Căn cứ thu hồi:</span>
                         </div>
                         <div class="pr-infor-right col-9">
                             <span><a href="">${data.canCuThuHoi}</a></span>
@@ -181,59 +182,60 @@ function clickHide() {
     $("#block-price-bottom").hide()
 }
 
-// function pagination_CongTrinhDuAn() {
-//     let arr = new Array();
-//     ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
-//         console.log(data.length%10)
-//
-//
-//     });
-//     $('#tableCongTrinhDuAn').pagination({
-//         dataSource: function(done) {
-//             $.ajax({
-//                 type: 'GET',
-//                 dataType: "json",
-//                 headers: {
-//                     "Authorization": tokenHeader_value,
-//                 },
-//                 url: URL_API+ 'v1/public/cong-trinh-du-an/page',
-//                 timeout:2000,
-//                 success: function(response) {
-//                     done(response);
-//                 }
-//             });
-//         },
-//
-//
-//         pageSize: 10,
-//         autoHidePrevious: true,
-//         autoHideNext: true,
-//         callback: function (data, pagination) {
-//
-//
-//             let tmp = "";
-//         data.map(function (result, index) {
-//
-//             if (pagination.pageNumber<2){
-//                 index +=1;
-//                 pagination.pageNumber='';
-//             }
-//             checkCacTruong(result);
-//             tmp += `
-//              <tr>
-//                         <td>${pagination.pageNumber}${index}</td>
-//                         <td>${result.tenCongTrinhDuAn}</td>
-//                         <td>${result.loaiCongTrinhDuAn.ten}</td>
-//                         <td>${result.tongDienTich}</td>
-//                         <td>${result.diaDiem}</td>
-//                         <td>${result.huyen.tenHuyen}</td>
-//                         <td>${result.canCuThuHoi}</td>
-//                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
-//                     </tr>
-//             `;
-//
-//         });
-//         $("#tableCongTrinhDuAn tbody").html(tmp);
-//         }
-//     })
-// }
+function pagination_CongTrinhDuAn() {
+    let arr = new Array();
+    ajaxCallGet("v1/public/cong-trinh-du-an/count-page").then(data => {
+       arr=data;
+       console.log(arr);
+
+
+    });
+    $('#tableCongTrinhDuAn').pagination({
+        dataSource: function(done) {
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                headers: {
+                    "Authorization": tokenHeader_value,
+                },
+                url: URL_API+ 'v1/public/cong-trinh-du-an/page',
+                timeout:2000,
+                success: function(response) {
+                    done(response);
+                }
+            });
+        },
+
+
+        pageSize: 10,
+        autoHidePrevious: true,
+        autoHideNext: true,
+        callback: function (data, pagination) {
+
+
+            let tmp = "";
+        data.map(function (result, index) {
+
+            if (pagination.pageNumber<2){
+                index +=1;
+                pagination.pageNumber='';
+            }
+            checkCacTruong(result);
+            tmp += `
+             <tr>
+                        <td>${pagination.pageNumber}${index}</td>
+                        <td>${result.tenCongTrinhDuAn}</td>
+                        <td>${result.loaiCongTrinhDuAn.ten}</td>
+                        <td>${result.tongDienTich}</td>
+                        <td>${result.diaDiem}</td>
+                        <td>${result.huyen.tenHuyen}</td>
+                        <td>${result.canCuThuHoi}</td>
+                        <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
+                    </tr>
+            `;
+
+        });
+        $("#tableCongTrinhDuAn tbody").html(tmp);
+        }
+    })
+}
