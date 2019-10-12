@@ -86,7 +86,7 @@
 <!-- HEADER -->
 <header>
     <div class="hwapper d-flex" id="header">
-        <a class="icon" href="/home" title="Home">
+        <a class="icon" href="home" title="Home">
             <div class="ihwp iconhome">
                 <i class="fas fa-home"></i>
             </div>
@@ -108,27 +108,27 @@
                     </a>
                     <a class="icon "
                        href="https://www.google.com/maps/place/Sở+Tài+nguyên+và+Môi+trường+tỉnh+Bắc+Giang/@21.2771565,106.1935929,17z/data=!3m1!4b1!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"
-                       title="Địa chỉ">
+                       title="Địa chỉ"
+                       target="_blank">
                         <div class="ihwp">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                     <a
-                                href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
+                     <a href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN" target="_blank"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end p-0 hdright">
                     <div class="noapp  d-flex" id="addUser">
-                        <a class="icon " href="#" title="Tin tức">
-                            <div class="ihwp">
-                                <i class="far fa-newspaper"></i>
-                            </div>
-                        </a>
-                        <a class="icon" href="#" title="Góp ý">
+<%--                        <a class="icon " href="#" title="Tin tức">--%>
+<%--                            <div class="ihwp">--%>
+<%--                                <i class="far fa-newspaper"></i>--%>
+<%--                            </div>--%>
+<%--                        </a>--%>
+                        <a class="icon" href="gop-y" title="Góp ý">
                             <div class="ihwp">
                                 <i class="fas fa-comments"></i>
                             </div>
                         </a>
-                        <a class="icon" href="#" title="Hướng dẫn">
+                        <a class="icon" href="huong-dan" title="Hướng dẫn">
                             <div class="ihwp">
                                 <i class="fas fa-map-signs"></i>
                             </div>

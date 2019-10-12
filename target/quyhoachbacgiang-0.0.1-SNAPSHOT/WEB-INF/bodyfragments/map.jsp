@@ -648,48 +648,48 @@
             <div class="bl-v2-right">
                 <div class="bl-v2">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
-                    <div class="bl-v2-r-left">
-                        <div class="bl-v2-r-left-title">
-                            <div class="b-bl-v2  text-uppercase">
-                                <span> Chung Cư SunShine</span>
-                            </div>
-                            <div class="content-bl-v2">
-                                <div class="content-bl-v2-left">
-                                    <span>Tên dự án: </span>
-                                </div>
-                                <div class=" content-bl-v2-left content-bl-v2-right">
-                                    <span>Sunshine City</span>
-                                </div>
-                            </div>
-                            <div class="content-bl-v2">
-                                <div class="content-bl-v2-left">
-                                    <span>Chủ đầu tư dự án:</span>
-                                </div>
-                                <div class=" content-bl-v2-left content-bl-v2-right">
-                                    <span>Chủ đầu tư tập đoàn Sunshine Group</span>
-                                </div>
-                            </div>
-                            <div class="content-bl-v2">
-                                <div class="content-bl-v2-left">
-                                    <span>Vị trí dự án:</span>
-                                </div>
-                                <div class=" content-bl-v2-left content-bl-v2-right">
-                                    <span>KDT Nam Thăng Long -KDT Ciputral, Bắc Từ Liêm, Hà Nội </span>
-                                </div>
-                            </div>
-                            <div class="content-bl-v2">
-                                <div class="content-bl-v2-left">
-                                    <span>Tổng diện tích dự án:</span>
-                                </div>
-                                <div class=" content-bl-v2-left content-bl-v2-right">
-                                    <span>Chung cư và biệt thự liền kề</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bl-v2-r-right">
-                        <img src="resources/img/bdqh-1.png" alt="">
-                    </div>
+<%--                    <div class="bl-v2-r-left">--%>
+<%--                        <div class="bl-v2-r-left-title">--%>
+<%--                            <div class="b-bl-v2  text-uppercase">--%>
+<%--                                <span> Chung Cư SunShine</span>--%>
+<%--                            </div>--%>
+<%--                            <div class="content-bl-v2">--%>
+<%--                                <div class="content-bl-v2-left">--%>
+<%--                                    <span>Tên dự án: </span>--%>
+<%--                                </div>--%>
+<%--                                <div class=" content-bl-v2-left content-bl-v2-right">--%>
+<%--                                    <span>Sunshine City</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="content-bl-v2">--%>
+<%--                                <div class="content-bl-v2-left">--%>
+<%--                                    <span>Chủ đầu tư dự án:</span>--%>
+<%--                                </div>--%>
+<%--                                <div class=" content-bl-v2-left content-bl-v2-right">--%>
+<%--                                    <span>Chủ đầu tư tập đoàn Sunshine Group</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="content-bl-v2">--%>
+<%--                                <div class="content-bl-v2-left">--%>
+<%--                                    <span>Vị trí dự án:</span>--%>
+<%--                                </div>--%>
+<%--                                <div class=" content-bl-v2-left content-bl-v2-right">--%>
+<%--                                    <span>KDT Nam Thăng Long -KDT Ciputral, Bắc Từ Liêm, Hà Nội </span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="content-bl-v2">--%>
+<%--                                <div class="content-bl-v2-left">--%>
+<%--                                    <span>Tổng diện tích dự án:</span>--%>
+<%--                                </div>--%>
+<%--                                <div class=" content-bl-v2-left content-bl-v2-right">--%>
+<%--                                    <span>Chung cư và biệt thự liền kề</span>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="bl-v2-r-right">--%>
+<%--                        <img src="resources/img/bdqh-1.png" alt="">--%>
+<%--                    </div>--%>
                 </div>
             </div>
         </div>

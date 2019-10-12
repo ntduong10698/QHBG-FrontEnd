@@ -31,6 +31,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <%-- Title--%>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/img/logo.png">
     <title><tiles:insertAttribute name="title"/></title>
     <%@include file="../library/library_css.jsp" %>
     <script src="resources/js/main.js"></script>

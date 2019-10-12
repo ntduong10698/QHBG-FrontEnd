@@ -511,8 +511,9 @@ html, body {
     display: flex;
     align-items: center;
     z-index: 1;
-    height: 200px;
+    min-height: 200px;
     margin-top: 80px;
+    height: 60%;
 }
 
 .bl-v2-right .bl-v2 {

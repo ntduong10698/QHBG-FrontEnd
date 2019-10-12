@@ -60,11 +60,16 @@ public class MainController {
 
     @RequestMapping(value = {"/huong-dan"}, method = RequestMethod.GET)
     public String guide(Model model) {
-        return "home";
+        return "guide";
     }
 
     @RequestMapping(value = {"/gop-y"}, method = RequestMethod.GET)
     public String feedBack(Model model) {
-        return "home";
+        return "feedBack";
+    }
+
+    @RequestMapping(value = {"/xac-thuc"}, method = RequestMethod.GET)
+    public String active(Model model) {
+        return "active";
     }
 }
