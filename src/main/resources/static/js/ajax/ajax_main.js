@@ -33,10 +33,12 @@ function checkLogin() {
 }
 
 function postInfoUserDangNhap() {
+
     let dataUser = {
         "email": $("#email").val(),
         "password": $("#password").val()
     }
+    async :false;
     $.ajax({
         type: 'POST',
         data: JSON.stringify(dataUser),
@@ -105,7 +107,7 @@ function checkResign() {
         timeout: 30000,
         contentType: "application/json",
         success: function (result) {
-            sendEmailXacThucTaiKhoan(result.id)
+            sendEmailXacThucTaiKhoan(result.id,result.email)
             // localStorage.setItem("infoUserResigter", JSON.stringify(result));
             window.location.href = "home";
         },
@@ -117,10 +119,10 @@ function checkResign() {
 }
 
 // gửi email xác thực tài khoản
-function sendEmailXacThucTaiKhoan(id,email) {
-ajaxCallGet("api/v1/public/email?email="+email+"&header=Xác thực tài khoản"+"&content=Xác thực tài khoản").then(data=>{
-    console.log(data)
-})
+function sendEmailXacThucTaiKhoan(id, email) {
+    ajaxCallGet("api/v1/public/email?email=" + email + "&header=Xác thực tài khoản" + "&content=Xác thực tài khoản").then(data => {
+        console.log(data);
+    })
 }
 
 // check xem đã đăng nhập hay chưa để add tên đăng nhập
