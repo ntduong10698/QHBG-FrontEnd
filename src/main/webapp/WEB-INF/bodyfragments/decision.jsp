@@ -73,7 +73,7 @@
                 <table class="table table-hover table-bordered" id="tableDecision">
                     <thead>
                     <tr>
-                        <th>Số, Kí hiệu</th>
+                        <th>Số, Ký hiệu</th>
                         <th>Trích yếu</th>
                         <th>Cơ quan ban hành</th>
                         <th>Người ký</th>

@@ -45,14 +45,8 @@ function postInfoUserDangNhap() {
         contentType: "application/json",
         success: function (result) {
 
-
-            if (result == "username or password is not correct") {
-                alert("Tên tài khoản hoặc mật khẩu không chính xác")
-            } else {
-
-                getInfoUserDangNhap(result);
-            }
-
+            getInfoUserDangNhap(result);
+            window.location.href = "home";
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert("Tên tài khoản hoặc mật khẩu không chính xác")
@@ -91,12 +85,19 @@ function logOut() {
     })
 }
 
+// lấy thông tin đăng kí post lên sever
 function checkResign() {
     let user = {
         "password": $("#pass1").val(),
-        "fullName": $("#name").val(),
+        "fullName": $("#fullname").val(),
         "email": $("#emailSign").val(),
+        "address": $("#address").val(),
+        "sdt": $("#phoneNumber").val(),
+        "cmt": $("#numberCMT").val(),
+        "ngayCap": $("#dateCMT").val(),
+        "noiCap": $("#addCMT").val()
     }
+    console.log(user);
     $.ajax({
         type: 'POST',
         data: JSON.stringify(user),
@@ -104,26 +105,25 @@ function checkResign() {
         timeout: 30000,
         contentType: "application/json",
         success: function (result) {
-            alert(result);
-            if (result == "Email has been used") {
-                alert("Email đã được sử dụng")
-            } else {
-                alert(result)
-                localStorage.setItem("infoUserResigter", JSON.stringify(result));
-                window.location.href = "home";
-            }
-
-
+            sendEmailXacThucTaiKhoan(result.id)
+            // localStorage.setItem("infoUserResigter", JSON.stringify(result));
+            window.location.href = "home";
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert("Email đã được sử dụng ")
             console.log(errorThrown);
         }
     })
-
-
 }
 
+// gửi email xác thực tài khoản
+function sendEmailXacThucTaiKhoan(id,email) {
+ajaxCallGet("api/v1/public/email?email="+email+"&header=Xác thực tài khoản"+"&content=Xác thực tài khoản").then(data=>{
+    console.log(data)
+})
+}
+
+// check xem đã đăng nhập hay chưa để add tên đăng nhập
 function checkStatusLogin() {
     let tmp = "";
     let tmp2 = "";
@@ -131,7 +131,7 @@ function checkStatusLogin() {
     if (localStorage.getItem("infoUserResigter") !== null) {
         let user = JSON.parse(localStorage.getItem("infoUserResigter"));
         tmp = `
-  <a href="#" class="user-name show" title="Tên Chủ tài Khoản">
+  <a  class="user-name show" title="Tên Chủ tài Khoản">
                             <div class="usn-wp">
                                 <div class="usn-img">
                                     <img src="resources/img/user2.png" alt="">
@@ -141,7 +141,7 @@ function checkStatusLogin() {
                         </a>
 `;
         tmp2 = `
-          <a href="#" id="logOut" class="icon iconlogout show" title="Đăng Xuất">
+          <a  id="logOut" class="icon iconlogout show" title="Đăng Xuất">
             <div class="ihwp">
                 <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
             </div>
@@ -153,9 +153,9 @@ function checkStatusLogin() {
         logOut();
     } else if (localStorage.getItem("infoUserLogin") !== null) {
         let user = JSON.parse(localStorage.getItem("infoUserLogin"));
-        console.log(user)
+
         tmp = `
-  <a href="#" id="nameUser" class="user-name show" title="Tên Chủ tài Khoản">
+  <a  id="nameUser" class="user-name show" title="Tên Chủ tài Khoản">
                             <div class="usn-wp">
                                 <div class="usn-img">
                                     <img src="resources/img/user2.png" alt="">
@@ -165,7 +165,7 @@ function checkStatusLogin() {
                         </a>
 `;
         tmp2 = `
-          <a href="#" class="icon iconlogout show" id="logOut" title="Đăng Xuất">
+          <a  class="icon iconlogout show" id="logOut" title="Đăng Xuất">
             <div class="ihwp">
                 <i class="fas fa-sign-out-alt" title="Đăng Xuất"></i>
             </div>
@@ -181,26 +181,48 @@ function checkStatusLogin() {
     }
 }
 
+// check tất cả các ô đã được điền hay chưa
 function checkpass() {
     $("#submitResign").click(function () {
-        if ($("#pass1").val() === $("#pass2").val()) {
-            if ($("#emailSign").val() == "" || $("#emailSign").val() === null || $("#emailSign").val() === undefined) {
-                alert("Vui lòng nhập email");
+        $(".sicitem-wp").map(function () {
+            if ($(this).children('input').val() == "") {
+                $(this).find(".error").css({"display": "inline"})
+            } else if ($(this).children('input').val() !== "") {
+                $(this).find(".error").css({"display": "none"})
+            }
+        });
+        // trả về các phần tử chưa nhập
+        let arr = $(" .sicitem-wp").map(function () {
+            return $(this).children('input').val() == "";
+        })
+        let check = true;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] == true) {
+                check = false;
+                break;
             } else {
-                if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-                    if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
-                        checkResign();
+                check = true;
+            }
+        }
+        if (check == true) {
+            if ($("#sicright .sicitem-wp").last().children('input').val() !== "") {
+                if ($("#pass1").val() == $("#pass2").val() && $("#pass1").val() != "") {
+                    if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                        if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
+                            checkResign();
+                        } else {
+                            alert("Sai định dạng số điện thoại");
+                        }
+                        ``
                     } else {
-                        alert("Sai định dạng số điện thoại");
+                        alert("Sai định dạng email vui lòng nhập lại")
                     }
                 } else {
-                    alert("Sai định dạng email vui lòng nhập lại")
+                    alert("Mật khẩu không khớp vui lòng nhập lại");
                 }
             }
-        } else {
-            alert("Mật khẩu không khớp vui lòng nhập lại");
         }
-    })
+    });
 }
 
 async function ajaxCallGet(url) {
