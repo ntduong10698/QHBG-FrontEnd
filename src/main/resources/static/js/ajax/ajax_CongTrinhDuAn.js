@@ -1,7 +1,9 @@
 $(document).ready(function () {
     getHuyen();
+
     getLoaiDuAn();
-    getTableDuAn();
+    // getTableDuAn();
+    pagination_CongTrinhDuAn()
     findCongTrinhDuAn()
 });
 
@@ -33,30 +35,30 @@ function getLoaiDuAn() {
     })
 }
 
-function getTableDuAn() {
-    ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
-        console.log(data);
-        let tmp = "";
-        data.map(function (result, index) {
-            checkCacTruong(result);
-            tmp += `
-             <tr>
-                        <td>${index}</td>
-                        <td>${result.tenCongTrinhDuAn}</td>
-                        <td>${result.loaiCongTrinhDuAn.ten}</td>
-                        <td>${result.tongDienTich}</td>
-                        <td>${result.diaDiem}</td>
-                        <td>${result.huyen.tenHuyen}</td>
-                        <td>${result.canCuThuHoi}</td>
-                        <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-            `;
-
-        });
-        $("#tableCongTrinhDuAn tbody").html(tmp);
-    })
-
-}
+// function getTableDuAn() {
+//     ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
+//         console.log(data);
+//
+//         let tmp = "";
+//         data.map(function (result, index) {
+//             checkCacTruong(result);
+//             tmp += `
+//              <tr>
+//                         <td>${index + 1}</td>
+//                         <td>${result.tenCongTrinhDuAn}</td>
+//                         <td>${result.loaiCongTrinhDuAn.ten}</td>
+//                         <td>${result.tongDienTich}</td>
+//                         <td>${result.diaDiem}</td>
+//                         <td>${result.huyen.tenHuyen}</td>
+//                         <td>${result.canCuThuHoi}</td>
+//                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
+//                     </tr>
+//             `;
+//
+//         });
+//         $("#tableCongTrinhDuAn tbody").html(tmp);
+//     })
+// }
 
 function checkCacTruong(result) {
     result.tenCongTrinhDuAn = (result.tenCongTrinhDuAn !== null ? result.tenCongTrinhDuAn : "");
@@ -65,6 +67,7 @@ function checkCacTruong(result) {
     result.tongDienTich = (result.tongDienTich !== null ? result.tongDienTich : "");
     result.huyen.tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
     result.canCuThuHoi = (result.canCuThuHoi !== null ? result.canCuThuHoi : "");
+    result.tongDienTich = (result.tongDienTich > 0 ? result.tongDienTich : "")
 }
 
 function findCongTrinhDuAn() {
@@ -75,11 +78,10 @@ function findCongTrinhDuAn() {
                 console.log(data)
                 let tmp = "";
                 data.map(function (result, index) {
-
                     checkCacTruong(result);
                     tmp += `
              <tr>
-                        <td>${index}</td>
+                        <td>${index + 1}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
@@ -94,20 +96,15 @@ function findCongTrinhDuAn() {
             } else {
                 $("#tableCongTrinhDuAn tbody").html("<tr> <td colspan='13'>Không có kết quả</td></tr>");
             }
-
         });
-
-
     })
-
 }
 
 function findIdCongTrinhDuAn(id) {
-
-    let tmp="";
+    let tmp = "";
     ajaxCallGet("v1/public/cong-trinh-du-an/find-by-id?id=" + id).then(data => {
-        console.log(data)
-        tmp +=`
+        checkCacTruong(data)
+        tmp += `
         <div class="fa-pr-bt ">
             <div class="pr-bt-left">
                 <a href="">
@@ -148,10 +145,27 @@ function findIdCongTrinhDuAn(id) {
                    
                     <div class="pr-info row">
                         <div class="pr-infor-left col-3">
-                            <span>Căn cứ thu hồi:</span>
+       +
+                           <span>Căn cứ thu hồi:</span>
                         </div>
                         <div class="pr-infor-right col-9">
                             <span><a href="">${data.canCuThuHoi}</a></span>
+                        </div>
+                    </div>
+                      <div class="pr-info row">
+                        <div class="pr-infor-left col-3">
+                            <span>Diện tích:</span>
+                        </div>
+                        <div class="pr-infor-right col-9">
+                            <span><a href="">${data.tongDienTich}</a></span>
+                        </div>
+                    </div>
+                      <div class="pr-info row">
+                        <div class="pr-infor-left col-3">
+                            <span>Ghi chú:</span>
+                        </div>
+                        <div class="pr-infor-right col-9">
+                            <span><a href=""></a></span>
                         </div>
                     </div>
                 </div>
@@ -161,12 +175,74 @@ function findIdCongTrinhDuAn(id) {
         `;
         $("#block-price-bottom").html(tmp);
     })
-
-
     $("#block-price-bottom").fadeIn(1000);
-
-
 }
+
 function clickHide() {
     $("#block-price-bottom").hide()
+}
+
+function pagination_CongTrinhDuAn() {
+
+    let arr ;
+    ajaxCallGet("v1/public/cong-trinh-du-an/count-page").then(data => {
+        arr = new Array(data);
+        console.log(arr.length)
+        $('#pagination_CongTrinh').pagination({
+            dataSource: arr,
+            pageSize: 1,
+            pageNumber:1,
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (data, pagination) {
+                let tmp = "";
+                $.ajax({
+                    type: 'GET',
+                    dataType: "json",
+                    async:false,
+                    headers: {
+                        "Authorization": tokenHeader_value,
+                    },
+                    url: URL_API + 'v1/public/cong-trinh-du-an/page?page=' + pagination.pageNumber,
+                    timeout: 2000,
+                    success: function (response) {
+                        if (pagination.pageNumber < 2) {
+
+                            pagination.pageNumber = '';
+                        }else {
+
+                            pagination.pageNumber -= 1;
+                        }
+                        response.map(function (result, index) {
+
+                            if (pagination.pageNumber < 2) {
+                                index += 1;
+                            }else {
+                                index += 1;
+                            }
+                            checkCacTruong(result);
+                            tmp += `
+             <tr>
+                        <td>${pagination.pageNumber}${index}</td>
+                        <td>${result.tenCongTrinhDuAn}</td>
+                        <td>${result.loaiCongTrinhDuAn.ten}</td>
+                        <td>${result.tongDienTich}</td>
+                        <td>${result.diaDiem}</td>
+                        <td>${result.huyen.tenHuyen}</td>
+                        <td>${result.canCuThuHoi}</td>
+                        <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
+                    </tr>
+            `;
+                        });
+                        $("#tableCongTrinhDuAn tbody").html(tmp);
+                    }
+                });
+            }
+        });
+
+    });
+
+
+
+
 }
