@@ -45,7 +45,7 @@
         </div>
     </section>
     <section class="pp-table">
-        <div class="container">
+        <div class="container" style="background: white;">
             <div class="row">
                 <div class="tablep-cap">
                     <span>Danh mục công trình dự án</span>
