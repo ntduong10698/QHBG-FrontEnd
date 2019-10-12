@@ -183,45 +183,47 @@ function clickHide() {
 }
 
 function pagination_CongTrinhDuAn() {
-    let arr = new Array();
+
+    let arr ;
     ajaxCallGet("v1/public/cong-trinh-du-an/count-page").then(data => {
-       arr=data;
-       console.log(arr);
+        arr = new Array(data);
+        console.log(arr.length)
+        $('#pagination_CongTrinh').pagination({
+            dataSource: arr,
+            pageSize: 1,
+            pageNumber:1,
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (data, pagination) {
+                let tmp = "";
+                $.ajax({
+                    type: 'GET',
+                    dataType: "json",
+                    async:false,
+                    headers: {
+                        "Authorization": tokenHeader_value,
+                    },
+                    url: URL_API + 'v1/public/cong-trinh-du-an/page?page=' + pagination.pageNumber,
+                    timeout: 2000,
+                    success: function (response) {
+                        if (pagination.pageNumber < 2) {
 
+                            pagination.pageNumber = '';
+                        }else {
 
-    });
-    $('#tableCongTrinhDuAn').pagination({
-        dataSource: function(done) {
-            $.ajax({
-                type: 'GET',
-                dataType: "json",
-                headers: {
-                    "Authorization": tokenHeader_value,
-                },
-                url: URL_API+ 'v1/public/cong-trinh-du-an/page',
-                timeout:2000,
-                success: function(response) {
-                    done(response);
-                }
-            });
-        },
+                            pagination.pageNumber -= 1;
+                        }
+                        response.map(function (result, index) {
 
+                            if (pagination.pageNumber < 2) {
+                                index += 1;
 
-        pageSize: 10,
-        autoHidePrevious: true,
-        autoHideNext: true,
-        callback: function (data, pagination) {
+                            }else {
+                                index += 1;
 
-
-            let tmp = "";
-        data.map(function (result, index) {
-
-            if (pagination.pageNumber<2){
-                index +=1;
-                pagination.pageNumber='';
-            }
-            checkCacTruong(result);
-            tmp += `
+                            }
+                            checkCacTruong(result);
+                            tmp += `
              <tr>
                         <td>${pagination.pageNumber}${index}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
@@ -233,9 +235,16 @@ function pagination_CongTrinhDuAn() {
                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
                     </tr>
             `;
-
+                        });
+                        $("#tableCongTrinhDuAn tbody").html(tmp);
+                    }
+                });
+            }
         });
-        $("#tableCongTrinhDuAn tbody").html(tmp);
-        }
-    })
+
+    });
+
+
+
+
 }
