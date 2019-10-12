@@ -2,6 +2,7 @@ callNongNghiep(1);
 function callNongNghiep(checkLandPrice) {
 
     //set data in select in bang gia dat nong nghiep
+    viewLoadingGif();
     callBangGiaDat(checkLandPrice).then(data => {
         let optionSelect = "<option value='0'>--- Gõ để tìm kiếm ---</option>";
         let arrCall = [];
@@ -19,6 +20,7 @@ function callNongNghiep(checkLandPrice) {
             //call find gia dat nong nghiep
             findSelectBangGiaDat(rs);
             findGiaDatNongNghiep(rs);
+            hideLoadingGif();
         }).catch(err => {
             console.log(err);
         })
@@ -35,6 +37,7 @@ function callGiaDatNongNghiep(id) {
 
 function findGiaDatNongNghiep(rs) {
     $("#searchGiaDat").click(function () {
+        viewLoadingGif();
         let searchViTriGiaDat = $("#searchViTriGiaDat input").val().toUpperCase();
         let priceDatMin = $("#priceDatMin").val() == '' ? 0 : $("#priceDatMin").val()*1000; //to vnd
         let priceDatMax = $("#priceDatMax").val() == '' ? '' : $("#priceDatMax").val()*1000;
@@ -54,12 +57,14 @@ function findGiaDatNongNghiep(rs) {
             })
         }
         viewTableDatNongNghiep(arrFilter);
+        hideLoadingGif();
         return false;
     })
 }
 
 function findSelectBangGiaDat(rs) {
     $("#dp-drop8").change(function () {
+        viewLoadingGif();
        let val = $("#dp-drop8").val();
        if(val != 0) {
            let arrFilter = rs.filter(data => data[0].bangGiaDat.id == val);
@@ -71,6 +76,7 @@ function findSelectBangGiaDat(rs) {
         $("#searchViTriGiaDat input").val('');
         $("#priceDatMin").val(0);
         $("#priceDatMax").val('');
+        hideLoadingGif();
     })
 }
 
@@ -83,7 +89,7 @@ function viewTableDatNongNghiep(rs) {
                 viewTable += `<tr>
                                     <td>${index1 + 1}</td>
                                     <td>${data1.viTri}</td>
-                                    <td>${formatNumber(data1.giaDat,'.','.')}</td>
+                                    <td>${data1.giaDat == 0 ?'' : formatNumber(data1.giaDat,'.','.')}</td>
                                     <td>
                                         <span>
                                             <span data-id="${data1.id}">
@@ -99,7 +105,7 @@ function viewTableDatNongNghiep(rs) {
                             <td>${dataTable[0].bangGiaDat.tenBang}</td>
                             <td style="text-align: center !important;">1</td>
                             <td style="text-align: left !important;">${dataTable[0].viTri}</td>
-                            <td>${formatNumber(dataTable[0].giaDat,'.','.')}</td>
+                            <td>${dataTable[0].giaDat == 0 ? '' : formatNumber(dataTable[0].giaDat,'.','.')}</td>
                             <td>
                                 <span>
                                     <span data-id="${dataTable[0].id}">

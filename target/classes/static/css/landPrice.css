@@ -329,7 +329,7 @@ p {
     text-align: center;
     padding: 5px;
     border: 1px solid #666666;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .table-dat tbody tr td:nth-child(2) {
@@ -456,7 +456,7 @@ p {
     position: relative;
 }
 .block-price-bottom >div>i{
-position: absolute;
+    position: absolute;
     top: 5px;
     right: 5px;
     font-size: var(--font-26);
@@ -572,7 +572,7 @@ position: absolute;
     padding-bottom: 10px;
 }
 .lanprift .dpfc-item.dpcf-select,.lanprift .dpfc-item.dpcf-fitem{
-    width: 20%;
+    width: 21%;
 }
 .ippwp{
     width: 100%;
