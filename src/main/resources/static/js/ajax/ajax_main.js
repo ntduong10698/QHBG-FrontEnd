@@ -46,9 +46,12 @@ function postInfoUserDangNhap() {
         timeout: 30000,
         contentType: "application/json",
         success: function (result) {
-
-            getInfoUserDangNhap(result);
-            window.location.href = "home";
+            if (result == "") {
+                alert("Vui lòng kiểm  email để kích hoạt tài khoản")
+            } else {
+                getInfoUserDangNhap(result);
+                window.location.href = "home";
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert("Tên tài khoản hoặc mật khẩu không chính xác")
@@ -89,6 +92,7 @@ function logOut() {
 
 // lấy thông tin đăng kí post lên sever
 function checkResign() {
+
     let user = {
         "password": $("#pass1").val(),
         "fullName": $("#fullname").val(),
@@ -107,7 +111,8 @@ function checkResign() {
         timeout: 30000,
         contentType: "application/json",
         success: function (result) {
-            sendEmailXacThucTaiKhoan(result.id,result.email)
+            sendEmailXacThucTaiKhoan(result.id, result.email)
+            alert("Vui lòng kiểm tra email để xác thực tài khoản")
             // localStorage.setItem("infoUserResigter", JSON.stringify(result));
             window.location.href = "home";
         },
@@ -120,8 +125,7 @@ function checkResign() {
 
 // gửi email xác thực tài khoản
 function sendEmailXacThucTaiKhoan(id, email) {
-    ajaxCallGet("api/v1/public/email?email=" + email + "&header=Xác thực tài khoản" + "&content=Xác thực tài khoản").then(data => {
-        console.log(data);
+    ajaxCallGet("v1/public/email?email=" + email + "&header=Xác thực tài khoản" + "&content= Nhấn vào liên kết để kích hoạt tài khoản của bạn: http://localhost:8080/xac-thuc?id=" + id).then(data => {
     })
 }
 
