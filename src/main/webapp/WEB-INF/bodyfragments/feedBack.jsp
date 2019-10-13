@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="resources/css/feedBack.css">
-<script src="resources/js/ajax/ajax_feddBack.js"></script>
+<script src="resources/js/ajax/ajax_feedBack.js"></script>
 <!-- MAIN -->
 <main>
     <section class="p-feedback">

@@ -74,7 +74,7 @@ function findCongTrinhDuAn() {
     $("#clickSearchDuAn").click(function () {
         console.log()
         ajaxCallGet("v1/public/cong-trinh-du-an/filter?ten-cong-trinh=" + $("#nameProject").val() + "&dia-diem=" + $("#diaDiemDuAn").val() + "&loai-du-an=" + $("#dp-drop4").val() + "&huyen=" + $("#dp-drop3").val()).then(data => {
-            if (data !== null) {
+            if (data.length >0) {
                 console.log(data)
                 let tmp = "";
                 data.map(function (result, index) {
@@ -207,25 +207,21 @@ function pagination_CongTrinhDuAn() {
                     timeout: 2000,
                     success: function (response) {
                         if (pagination.pageNumber < 2) {
-
-                            pagination.pageNumber = '';
+                            pagination.pageNumber = 0;
                         }else {
-
-                            pagination.pageNumber -= 1;
+                            pagination.pageNumber = (pagination.pageNumber- 1)*10;
                         }
                         response.map(function (result, index) {
 
                             if (pagination.pageNumber < 2) {
                                 index += 1;
-
                             }else {
                                 index += 1;
-
                             }
                             checkCacTruong(result);
                             tmp += `
              <tr>
-                        <td>${pagination.pageNumber}${index}</td>
+                        <td>${pagination.pageNumber +index}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
@@ -243,8 +239,5 @@ function pagination_CongTrinhDuAn() {
         });
 
     });
-
-
-
 
 }

@@ -22,13 +22,51 @@ async function ajaxCall(url) {
 }
 
 function checkLogin() {
-    $("#submit-log").click(function () {
-        if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-            postInfoUserDangNhap();
-        } else {
-            alert("Vui lòng nhập đúng định dạng email.");
-            return false;
+    $("#email").change(function () {
+        if ($("#email").val() === "") {
+            $("#email").parent().children().eq(1).css({"display": "inline"})
+            $("#email").parent().children().eq(2).css({"display": "none"})
+        } else if ($("#email").val() !== "") {
+            $("#email").siblings().eq(1).css({"display": "none"})
+            if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                $("#email").parent().children().eq(2).css({"display": "none"})
+            } else {
+                $("#email").parent().children().eq(2).css({"display": "inline"})
+                $("#email").parent().children().eq(1).css({"display": "none"})
+            }
         }
+    })
+    $("#password").change(function () {
+        if ($("#password").val() === "") {
+            $("#password").parent().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#password").parent().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#submit-log").click(function () {
+        if ($("#email").val()==""){
+            $("#email").parent().children().eq(1).css({"display": "inline"})
+            $("#email").parent().children().eq(2).css({"display": "none"})
+
+        } else if($("#email").val()!=="" ){
+            $("#password").parent().children().eq(1).css({"display": "none"})
+            if ($("#email").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                $("#email").parent().children().eq(1).css({"display": "none"})
+                $("#email").parent().children().eq(2).css({"display": "none"})
+
+                if ($("#password").val() ===""){
+                    $("#password").parent().children().eq(1).css({"display": "inline"})
+                } else {
+                    $("#password").parent().children().eq(1).css({"display": "none"})
+                    postInfoUserDangNhap();
+                }
+            } else {
+                $("#email").parent().children().eq(1).css({"display": "none"})
+                $("#email").parent().children().eq(2).css({"display": "inline"})
+            }
+        }
+
+
     });
 }
 
@@ -189,18 +227,97 @@ function checkStatusLogin() {
 
 // check tất cả các ô đã được điền hay chưa
 function checkpass() {
+    // check change ở ô input
+    $("#pass2").change(function () {
+        if ($("#pass1").val() !== $("#pass2").val() && $("#pass1").val() != "" && $("#pass2").val() != "") {
+            $("#pass2").siblings().children().eq(1).css({"display": "none"})
+            $("#pass2").siblings().children().eq(2).css({"display": "inline"})
+        } else {
+            $("#pass2").siblings().children().eq(2).css({"display": "none"})
+        }
+    })
+    $("#fullname").change(function () {
+        if ($("#fullname").val() == "") {
+            $("#fullname").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#fullname").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#pass1").change(function () {
+
+        if ($("#pass1").val() == "") {
+            $("#pass1").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#pass1").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#emailSign").change(function () {
+        if ($("#emailSign").val() === "") {
+            $("#emailSign").siblings().children().eq(1).css({"display": "inline"})
+            $("#emailSign").siblings().children().eq(2).css({"display": "none"})
+        } else if ($("#emailSign").val() !== "") {
+            $("#emailSign").siblings().children().eq(1).css({"display": "none"})
+            if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
+                $("#emailSign").siblings().children().eq(2).css({"display": "none"})
+            } else {
+                $("#emailSign").siblings().children().eq(2).css({"display": "inline"})
+            }
+        }
+    })
+    $("#address").change(function () {
+        if ($("#address").val() == "") {
+            $("#address").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#address").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#phoneNumber").change(function () {
+        if ($("#phoneNumber").val() === "") {
+            $("#phoneNumber").siblings().children().eq(1).css({"display": "inline"})
+            $("#phoneNumber").siblings().children().eq(2).css({"display": "none"})
+        } else if ($("#phoneNumber").val() !== "") {
+            $("#phoneNumber").siblings().children().eq(1).css({"display": "none"})
+            if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
+                $("#phoneNumber").siblings().children().eq(2).css({"display": "none"})
+            } else {
+                $("#phoneNumber").siblings().children().eq(2).css({"display": "inline"})
+            }
+        }
+    })
+    $("#numberCMT").change(function () {
+        if ($("#numberCMT").val() == "") {
+            $("#numberCMT").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#numberCMT").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#dateCMT").change(function () {
+        if ($("#dateCMT").val() == "") {
+            $("#dateCMT").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#dateCMT").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
+    $("#addCMT").change(function () {
+        if ($("#addCMT").val() == "") {
+            $("#addCMT").siblings().children().eq(1).css({"display": "inline"})
+        } else {
+            $("#addCMT").siblings().children().eq(1).css({"display": "none"})
+        }
+    })
     $("#submitResign").click(function () {
         $(".sicitem-wp").map(function () {
             if ($(this).children('input').val() == "") {
-                $(this).find(".error").css({"display": "inline"})
+                $(this).find(".error").eq(0).css({"display": "inline"})
             } else if ($(this).children('input').val() !== "") {
-                $(this).find(".error").css({"display": "none"})
+                $(this).find(".error").eq(0).css({"display": "none"})
             }
         });
         // trả về các phần tử chưa nhập
         let arr = $(" .sicitem-wp").map(function () {
             return $(this).children('input').val() == "";
         })
+        // kieerm tra xem con phan tu nao chua nhap khong
         let check = true;
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] == true) {
@@ -211,22 +328,7 @@ function checkpass() {
             }
         }
         if (check == true) {
-            if ($("#sicright .sicitem-wp").last().children('input').val() !== "") {
-                if ($("#pass1").val() == $("#pass2").val() && $("#pass1").val() != "") {
-                    if ($("#emailSign").val().match("^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$")) {
-                        if ($("#phoneNumber").val().match("(09|01[2|6|8|9])+([0-9]{8})\\b")) {
-                            checkResign();
-                        } else {
-                            alert("Sai định dạng số điện thoại");
-                        }
-                        ``
-                    } else {
-                        alert("Sai định dạng email vui lòng nhập lại")
-                    }
-                } else {
-                    alert("Mật khẩu không khớp vui lòng nhập lại");
-                }
-            }
+            checkResign();
         }
     });
 }
@@ -305,7 +407,7 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Ngày ban hành:</span>
                 </div>
                 <div class="pr-infor-right col-3">
-                    <span>${quyetDinh.ngayBanHanh.split("-").length === 3 ? quyetDinh.ngayBanHanh.split("-")[2]+"/"+quyetDinh.ngayBanHanh.split("-")[1]+"/"+quyetDinh.ngayBanHanh.split("-")[0] : "..."}</span>
+                    <span>${quyetDinh.ngayBanHanh.split("-").length === 3 ? quyetDinh.ngayBanHanh.split("-")[2] + "/" + quyetDinh.ngayBanHanh.split("-")[1] + "/" + quyetDinh.ngayBanHanh.split("-")[0] : "..."}</span>
                 </div>
             </div>
             <div class="pr-info row">

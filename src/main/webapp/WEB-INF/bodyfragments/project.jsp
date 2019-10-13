@@ -12,7 +12,7 @@
                     <div class="pp-select">
                         <select id="dp-drop3" class="pp-drop">
                             <option value="0">--- Tất cả ---</option>
-                            <option value="0">--- Tất cả ---</option>
+
 
 
                         </select>
@@ -69,25 +69,7 @@
 
                     </tbody>
                 </table>
-                <div class="pp-pagi">
-                    <div class="ppgai-wp">
-                        <span>Hiển thị 1 trên tổng số 5000 trang</span>
-                        <div class="pagi-c">
-                            <span><i class="fas fa-angle-double-left"></i><i class="fas fa-angle-double-left"></i></span>
-                            <span><i class="fas fa-angle-double-left"></i></span>
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                            <span>...</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span><i class="fas fa-angle-double-right"></i></span>
-                            <span><i class="fas fa-angle-double-right"></i><i class="fas fa-angle-double-right"></i></span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>

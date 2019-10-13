@@ -72,7 +72,7 @@ a.icon span{
     font-size: 10px!important;
     float: right;
     display: none;
-
+    color: red!important;
 }
 .hdleft >a{
     display: flex;
@@ -768,6 +768,10 @@ span.rt-contet i{
     display: flex;
     flex-direction: column;
 }
+.sicitem-wp>div{
+    display: flex;
+    justify-content: space-between;
+}
 .sicitem-wp span{
     font-size: 14px;
     font-weight: 600;
@@ -1097,5 +1101,10 @@ span.it-cap{
 
 .img-loading-gif img{
     width: 60px;
+}
+.paginationjs{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin: auto;
 }
 /*END_LOADING_GIF*/
