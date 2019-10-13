@@ -65,7 +65,7 @@
         </div>
     </section>
     <section class="dp-table">
-        <div class="container">
+        <div class="container" style="background: white;">
             <div class="row">
                 <div class="pagination" id="pagination">
 

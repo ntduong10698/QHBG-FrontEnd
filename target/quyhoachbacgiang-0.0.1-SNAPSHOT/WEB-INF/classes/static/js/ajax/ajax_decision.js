@@ -30,6 +30,7 @@ function callTableDecision() {
         }
     })
 }
+
 // .reverse()c
 function callCoQuanBanHanh() {
     let tmp = "";
@@ -112,17 +113,17 @@ function searchTextQuyetDinh() {
                 break;
             }
         }
-        if ($("#searchTextQD").val()!==""){
+        if ($("#searchTextQD").val() !== "") {
             if ($("#searchTextQD").val().match("^[a-zA-Z0-9]+$")) {
                 ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
 
                     addDataAfterGet(data);
 
                 });
-            }else{
+            } else {
                 alert("Chỉ chấp nhận kí tự thường, in hoa, không nhận chấp nhận số và kí tự đặc biệt")
             }
-        } else{
+        } else {
             alert("Vui lòng nhập từ khóa tìm kiếm ")
         }
 

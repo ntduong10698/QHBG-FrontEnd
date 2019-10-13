@@ -217,10 +217,8 @@ function pagination_CongTrinhDuAn() {
 
                             if (pagination.pageNumber < 2) {
                                 index += 1;
-
                             }else {
                                 index += 1;
-
                             }
                             checkCacTruong(result);
                             tmp += `

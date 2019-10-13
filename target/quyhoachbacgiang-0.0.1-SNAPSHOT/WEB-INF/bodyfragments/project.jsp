@@ -45,8 +45,8 @@
         </div>
     </section>
     <section class="pp-table">
-        <div class="container">
-            <div class="row">
+        <div class="container" style="background: white;">
+            <div class="row" id="pagination_CongTrinh">
                 <div class="tablep-cap">
                     <span>Danh mục công trình dự án</span>
                 </div>

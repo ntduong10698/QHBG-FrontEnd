@@ -1,4 +1,6 @@
-callNongNghiep(1);
+$(function () {
+    callNongNghiep(1);
+})
 function callNongNghiep(checkLandPrice) {
 
     //set data in select in bang gia dat nong nghiep
