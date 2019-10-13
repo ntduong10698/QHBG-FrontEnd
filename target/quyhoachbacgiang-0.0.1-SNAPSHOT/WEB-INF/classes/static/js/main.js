@@ -24,6 +24,8 @@ const MA_DAT = ['NPP: Đất nông nghiệp','SXN: Đất sản xuất nông ngh
 ,'MNC: Đất có mặt nước chuyên dùng','PNK: Đất phi nông nghiệp khác','CSD: Đất bằng chưa sử dụng','BCS: Đất đôi núi chưa sử dụng'
 ,'NCS: Núi đá không có rừng cây','MVB: Đất có mặt nước ver biển', 'MVT: Đất mặt nước ven biển nuôi trồng thủy sản'
 ,'MVR: Đất mặt nước ven biển có rừng ngập mặn','MVK: Đất mặt nước ven biển có mục đích khác'];
+var passUser=null;
+var emailUserr=null;
 function mucDich(color) {
     var int = parseInt(color, 10);
     switch (int) {

@@ -92,7 +92,6 @@ function setViewSelectXa(idHuyen) {
                 clickChiTietDatPNN();
                 changeViewLoaiXa(arrFindXa, idHuyen);
             }
-            hideLoadingGif();
         })
     }).catch(err => {
         console.log(err);
@@ -114,7 +113,6 @@ function callSelectBangGiaDatPNN() {
             setViewTenDuong(idHuyen);
             // $(".block-table-price2").html(setTableGiaDatPhiNongNghiep(rs, idHuyen));
             //set default khi vao trang phi nong nghiep
-            hideLoadingGif();
         }).catch(err => {
             console.log(err);
         })
@@ -127,7 +125,6 @@ function callSelectBangGiaDatPNN() {
             $(".block-table-price2").html(setTableGiaDatNongThon(rs, idHuyen));
             clickChiTietDatPNN();
             arrTable = rs;
-            hideLoadingGif();
         }).catch(err => {
             console.log(err);
         })
@@ -219,9 +216,9 @@ function setViewLoaiXa() {
 //change view loai xa
 function changeViewLoaiXa(arrFindXa, idHuyen) {
     $("#dp-drop12").change(function () {
-        viewLoadingGif();
         let val = $("#dp-drop12").val();
         if (val != 0) {
+            viewLoadingGif();
             let arrRs = arrFindXa.filter(data => {
                 if (data.loaiXa.parent != null) {
                     return  (data.loaiXa.idDmLoaiXa == val || data.loaiXa.parent.idDmLoaiXa == val);
@@ -235,7 +232,6 @@ function changeViewLoaiXa(arrFindXa, idHuyen) {
             $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
             clickChiTietDatPNN();
         }
-        hideLoadingGif();
     })
 }
 //end change view loai xa
@@ -288,7 +284,8 @@ function setTableGiaDatNongThon(rs,idHuyen) {
                     <tbody>
                         ${viewData}
                     </tbody>
-                </table>`
+                </table>`;
+    hideLoadingGif();
     return viewTable;
 }
 
@@ -369,10 +366,10 @@ function setViewTenDuong(idHuyen) {
 
 function changeViewTenDuong(idHuyen) {
     $("#dp-drop12").change(function () {
-        viewLoadingGif();
         $(".block-table-price2 tbody").html(viewTableDuongData); //set lai full data de find bang jquery
         let val = $("#dp-drop12").val();
         if (val != 0) {
+            viewLoadingGif();
             let arrSelectDuong = arrAllDuongSort.filter(item => item.cap.startsWith(val+"."));
             let viewSelect = '';
             arrSelectDuong.map(item => {
@@ -381,11 +378,11 @@ function changeViewTenDuong(idHuyen) {
             viewSelect = `<tr data-cap="${val}">`+$(`tr[data-cap='${val}']`).html() +"</tr>" + viewSelect;
             // console.log(viewSelect);
             $(".block-table-price2 tbody").html(viewSelect);
+            hideLoadingGif();
             clickChiTietDatPNN();
         } else {
             // $(".block-table-price2").html(setTableGiaDatPhiNongNghiep(arr,idHuyen));
         }
-        hideLoadingGif();
     })
 }
 
@@ -400,9 +397,9 @@ function setViewTableDuong(rs) {
         }
     })
     arrChildDuong = arrChild;
-    arrRoot.map(data => {
+    arrRoot.map((data, index) => {
         viewTableDuong += `<tr data-cap=${data.cap}>
-                            <td><strong style="font-family: 'Times New Roman', Times, serif">${convertToRoman(data.cap)}</strong></td>
+                            <td><strong style="font-family: 'Times New Roman', Times, serif">${convertToRoman(index + 1)}</strong></td>
                             <td><strong>${data.ten}</strong></td>
                             <td></td>
                             <td></td>
@@ -433,9 +430,9 @@ function findChilDuong(root) {
         let arrB = b.cap.split(".");
         return arrA[arrA.length - 1] - arrB[arrB.length - 1]
     })
-    arrChildCap1.map(data1 => {
+    arrChildCap1.map((data1, index1) => {
         viewTableDuong += `<tr data-cap=${data1.cap}>
-                            <td><strong>${viewCap(data1.cap)}</strong></td>
+                            <td><strong>${viewCap(data1.cap) === '' ? '' : index1 + 1}</strong></td>
                             <td>${checkCap(data1.cap)} ${data1.ten}</td>
                             <td></td>
                             <td></td>
@@ -486,6 +483,7 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     //setDataTable
     setDataTableGiaDatPhiNongNghiep();
     viewTableDuongData = $(".block-table-price2 tbody").html();
+    hideLoadingGif();
 }
 
 function setDataTableGiaDatPhiNongNghiep() {
