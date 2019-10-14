@@ -129,6 +129,11 @@ function callSelectBangGiaDatPNN() {
             console.log(err);
         })
     }
+    //run export Excel
+    $("#exportExel a").click(function () {
+        exportExcel("tableExport","BangGiaDatPhiNongNghiep");
+        return false;
+    })
     resetSelectXa();
 }
 
@@ -254,7 +259,7 @@ function setTableGiaDatNongThon(rs,idHuyen) {
     viewTable =`<div class="tablep-cap">
                     <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo bảng giá đất ở nông thôn</span>
                 </div>
-                <table class="table-dat table table-hover table-bordered">
+                <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
                         <tr>
                             <th rowspan="3">STT</th>
@@ -461,7 +466,7 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     let viewTable = `<div class="tablep-cap">
                     <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo bảng giá đất ở tại đô thị, ven trục đường giao thông</span>
                 </div>
-                <table class="table-dat table table-hover table-bordered">
+                <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
                         <tr>
                             <th>STT</th>

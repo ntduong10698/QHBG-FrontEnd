@@ -118,7 +118,7 @@ function viewTableDatNongNghiep(rs) {
                         </tr>`;
         }
     })
-    viewTable = `<table class="table-dat table table-hover table-bordered">
+    viewTable = `<table class="table-dat table table-hover table-bordered" id="tableExport">
                             <thead>
                             <tr>
                                 <th>Bảng Giá Đất</th>
@@ -151,4 +151,10 @@ function viewTableDatNongNghiep(rs) {
         $("#block-price-bottom").fadeIn(1000);
     });
     // end set view table bang gia dat nong nghiep full
+
+    //run export Excel
+    $("#exportExel a").click(function () {
+        exportExcel("tableExport","BangGiaDatNongNghiep");
+        return false;
+    })
 }

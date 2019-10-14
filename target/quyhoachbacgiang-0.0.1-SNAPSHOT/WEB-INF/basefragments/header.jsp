@@ -13,13 +13,21 @@
             </div>
             <div class="litext-wp">
                 <span class="lit-cap">Tài khoản</span>
-                <div class="liinput"><input type="text" id="email" placeholder="Email" required></div>
-                <div class="liinput"><input type="password" id="password" placeholder="Mật khẩu" required></div>
+                <div class="liinput" style="display: block">
+                    <input type="text" id="email" placeholder="Email" required>
+                    <span style="margin-top: 5px;float: left;margin-bottom:5px"  class="error"> Email không được bỏ trống </span>
+                    <span style="margin-top: 5px;float: left;margin-bottom:5px"  class="error"> Định dạng email không đúng </span>
+
+                </div>
+                <div class="liinput" style="display: inline">
+                    <input type="password" id="password" placeholder="Mật khẩu" required>
+                    <span style="margin-top: 5px;float: left" class="error "> Mật khẩu không được bỏ trống </span>
+                </div>
                 <div class="rpw">
                     <input type="checkbox">
                     <span>Nhớ tài khoản và mật khẩu</span>
                 </div>
-                <span class="libt"> <button  id="submit-log">Đăng nhập</button></span>
+                <span class="libt"> <button id="submit-log">Đăng nhập</button></span>
                 <div class="listatus">
                     <a class="out">Thoát</a>
                     <a class="licsi">Đăng ký</a>
@@ -37,48 +45,80 @@
         <div class="sicontent">
             <div class="sicleft">
                 <div class="sicitem-wp">
-                    <span>Họ và tên: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Họ và tên: <span>(*)</span> </span>
+                        <span class="error">Họ và tên không được bỏ trống </span>
+
+                    </div>
                     <input id="fullname" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Email: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Email: <span>(*)</span> </span>
+                        <span class="error">Họ và tên không được bỏ trống </span>
+                        <span class="error">Email không đúng định dạng</span>
+                    </div>
+
                     <input id="emailSign" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Mật khẩu: <span>(*)</span> </span>
+                        <span class="error">Mật khẩu không được để trống</span>
+                    </div>
                     <input id="pass1" data-bol="false" type="password" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Nhập lại mật khẩu: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Nhập lại mật khẩu: <span>(*)</span></span>
+                        <span class="error">Vui lòng nhập lại mật khẩu </span>
+                        <span class="error">Mật khẩu không khớp</span>
+                    </div>
                     <input id="pass2" data-bol="false" type="password" required>
                 </div>
 
                 <div class="sicitem-wp">
-                    <span>Địa chỉ: <span>(*)</span > <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Địa chỉ: <span>(*)</span> </span>
+                        <span class="error">Địa chỉ không được bỏ trống </span>
+                    </div>
                     <input id="address" data-bol="false" type="text" required>
                 </div>
             </div>
             <div class="sicright" id="sicright">
 
                 <div class="sicitem-wp">
-                    <span>Số điện thoại: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
-                    <input id="phoneNumber"  data-bol="false" type="text" required>
+                    <div>
+                        <span>Số điện thoại: <span>(*)</span> </span>
+                        <span class="error"> Số điện thoại không được bỏ trống </span>
+                        <span class="error"> Sai định đạng số điện thoại </span>
+                    </div>
+                    <input id="phoneNumber" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Số CMND: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Số CMND: <span>(*)</span> </span>
+                        <span class="error"> Số CMND không được bỏ trống </span>
+                    </div>
                     <input id="numberCMT" data-bol="false" type="text" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Ngày cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Ngày cấp: <span>(*)</span> </span>
+                        <span class="error"> Ngày cấp CMND không được bỏ trống </span>
+                    </div>
                     <input id="dateCMT" data-bol="false" type="date" required>
                 </div>
                 <div class="sicitem-wp">
-                    <span>Nơi cấp: <span>(*)</span> <span class="error">Vui lòng điền thông tin vào đây</span></span>
+                    <div>
+                        <span>Nơi cấp: <span>(*)</span> </span>
+                        <span class="error"> Nơi cấp không được bỏ trống </span>
+                    </div>
                     <input id="addCMT" data-bol="false" type="text" required>
                 </div>
             </div>
         </div>
-        <span class="sisave"><button id="submitResign" ><i
+        <span class="sisave"><button id="submitResign"><i
                 class="fas fa-download"></i> Lưu lại</button></span>
         <div class="sistatus">
             <a class="out">Thoát</a>
@@ -107,7 +147,7 @@
                         <div class="ihwp">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <a href="tel:02043856047"><span>0204.3856.047</span>  </a>
+                        <a href="tel:02043856047"><span>0204.3856.047</span> </a>
                     </a>
                     <a class="icon "
                        href="https://www.google.com/maps/place/Sở+Tài+nguyên+và+Môi+trường+tỉnh+Bắc+Giang/@21.2771565,106.1935929,17z/data=!3m1!4b1!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"
@@ -116,16 +156,17 @@
                         <div class="ihwp">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                     <a href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN" target="_blank"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
+                        <a href="https://www.google.com/maps/place/S%E1%BB%9F+T%C3%A0i+nguy%C3%AAn+v%C3%A0+M%C3%B4i+tr%C6%B0%E1%BB%9Dng+t%E1%BB%89nh+B%E1%BA%AFc+Giang/@21.2769586,106.1946887,18z/data=!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN"
+                           target="_blank"> <span>Số 50 Đường Ngô Gia Tự - TP.Bắc Giang</span> </a>
                     </a>
                 </div>
                 <div class="col-2 d-flex justify-content-end p-0 hdright">
                     <div class="noapp  d-flex" id="addUser">
-<%--                        <a class="icon " href="#" title="Tin tức">--%>
-<%--                            <div class="ihwp">--%>
-<%--                                <i class="far fa-newspaper"></i>--%>
-<%--                            </div>--%>
-<%--                        </a>--%>
+                        <%--                        <a class="icon " href="#" title="Tin tức">--%>
+                        <%--                            <div class="ihwp">--%>
+                        <%--                                <i class="far fa-newspaper"></i>--%>
+                        <%--                            </div>--%>
+                        <%--                        </a>--%>
                         <a class="icon" href="gop-y" title="Góp ý">
                             <div class="ihwp">
                                 <i class="fas fa-comments"></i>
@@ -141,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <a id="lockhome" class="icon iconacc "  title="Tài Khoản">
+        <a id="lockhome" class="icon iconacc " title="Tài Khoản">
             <div class="ihwp">
                 <i class="fas fa-lock"></i>
             </div>
