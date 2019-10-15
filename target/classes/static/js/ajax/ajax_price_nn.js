@@ -118,7 +118,7 @@ function viewTableDatNongNghiep(rs) {
                         </tr>`;
         }
     })
-    viewTable = `<table class="table-dat table table-hover table-bordered" id="tableExport">
+    viewTable = `<table class="table-dat table table-hover table-bordered tableexport-string" id="tableExport" >
                             <thead>
                             <tr>
                                 <th>Bảng Giá Đất</th>

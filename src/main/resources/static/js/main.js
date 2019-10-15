@@ -318,6 +318,7 @@ function hideLoadingGif() {
 }
 
 function exportExcel(tableSelect, fileNameExport) {
+    $("th,td").addClass("tableexport-string");
     let instance = $(`#${tableSelect}`).tableExport({
         formats: ['xlsx'],
         fileName: fileNameExport,
@@ -325,4 +326,5 @@ function exportExcel(tableSelect, fileNameExport) {
     });
     let exportData = instance.getExportData()[tableSelect]['xlsx'];
     instance.export2file(exportData.data, exportData.mimeType, fileNameExport, exportData.fileExtension);
+    $("th,td").removeClass("tableexport-string");
 }

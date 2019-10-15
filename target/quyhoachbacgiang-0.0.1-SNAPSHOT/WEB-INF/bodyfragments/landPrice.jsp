@@ -104,7 +104,7 @@
                 <div class="dpfc-item dpcf-bt" id="searchGiaDat">
                     <a href=""><img src="resources/img/searchbt.png" alt=""></a>
                 </div>
-                <div class="dpfc-item dpcf-bt">
+                <div class="dpfc-item dpcf-bt" id="exportExel">
                     <a href=""><img src="resources/img/xls.png" alt=""></a>
                 </div>
             </div>
