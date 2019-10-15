@@ -18,19 +18,23 @@
                             <div class="pfl-content">
                                 <div class="sicitem-wp">
                                     <span >Họ và tên: <span>(*)</span></span>
-                                    <input type="text" placeholder="Nhập họ và tên">
+                                    <input type="text" placeholder="Nhập họ và tên" id="gop-y-name">
+                                    <span class="gop-y-error" style="display: none">Vui lòng nhập đúng định dạng Họ và tên.</span>
                                 </div>
                                 <div class="sicitem-wp">
                                     <span >Email: <span>(*)</span></span>
-                                    <input type="email" placeholder="Nhập Email">
+                                    <input type="email" placeholder="Nhập Email" id="gop-y-email">
+                                    <span class="gop-y-error" style="display: none">Vui lòng nhập đúng định dạng Email.</span>
                                 </div>
                                 <div class="sicitem-wp">
                                     <span >Tiêu đề: <span>(*)</span></span>
-                                    <input type="text" placeholder="Nhập Tiêu đề">
+                                    <input type="text" placeholder="Nhập Tiêu đề" id="gop-y-header">
+                                    <span class="gop-y-error" style="display: none">Vui lòng nhập tiêu đề(dưới 100 ký tự).</span>
                                 </div>
                                 <div class="sicitem-wp">
                                     <span >Nội dung: <span>(*)</span></span>
-                                    <textarea  placeholder="Nhập nội dung góp ý"></textarea>
+                                    <textarea  placeholder="Nhập nội dung góp ý" id="gop-y-content"></textarea>
+                                    <span class="gop-y-error" style="display: none">Vui lòng nhập nội dung.</span>
                                 </div>
                                 <div class="sicitem-wp">
                                     <div><span></span></div>
