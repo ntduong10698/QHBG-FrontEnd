@@ -35,37 +35,14 @@ function getLoaiDuAn() {
     })
 }
 
-// function getTableDuAn() {
-//     ajaxCallGet("v1/public/cong-trinh-du-an/all").then(data => {
-//         console.log(data);
-//
-//         let tmp = "";
-//         data.map(function (result, index) {
-//             checkCacTruong(result);
-//             tmp += `
-//              <tr>
-//                         <td>${index + 1}</td>
-//                         <td>${result.tenCongTrinhDuAn}</td>
-//                         <td>${result.loaiCongTrinhDuAn.ten}</td>
-//                         <td>${result.tongDienTich}</td>
-//                         <td>${result.diaDiem}</td>
-//                         <td>${result.huyen.tenHuyen}</td>
-//                         <td>${result.canCuThuHoi}</td>
-//                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
-//                     </tr>
-//             `;
-//
-//         });
-//         $("#tableCongTrinhDuAn tbody").html(tmp);
-//     })
-// }
-
 function checkCacTruong(result) {
+
     result.tenCongTrinhDuAn = (result.tenCongTrinhDuAn !== null ? result.tenCongTrinhDuAn : "");
     result.diaDiem = (result.diaDiem !== null ? result.diaDiem : "");
     result.loaiCongTrinhDuAn = (result.loaiCongTrinhDuAn !== null ? result.loaiCongTrinhDuAn : "");
     result.tongDienTich = (result.tongDienTich !== null ? result.tongDienTich : "");
-    result.huyen.tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
+
+
     result.canCuThuHoi = (result.canCuThuHoi !== null ? result.canCuThuHoi : "");
     result.tongDienTich = (result.tongDienTich > 0 ? result.tongDienTich : "")
 }
@@ -75,9 +52,13 @@ function findCongTrinhDuAn() {
         console.log()
         ajaxCallGet("v1/public/cong-trinh-du-an/filter?ten-cong-trinh=" + $("#nameProject").val() + "&dia-diem=" + $("#diaDiemDuAn").val() + "&loai-du-an=" + $("#dp-drop4").val() + "&huyen=" + $("#dp-drop3").val()).then(data => {
             if (data.length >0) {
-                console.log(data)
+                checkCacTruong(data)
                 let tmp = "";
                 data.map(function (result, index) {
+                    let  tenHuyen="";
+                    if (result.huyen !==null){
+                        tenHuyen =(result.huyen.tenHuyen !== null ?  result.huyen.tenHuyen :  "");
+                    }
                     checkCacTruong(result);
                     tmp += `
              <tr>
@@ -86,7 +67,7 @@ function findCongTrinhDuAn() {
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
                         <td>${result.diaDiem}</td>
-                        <td>${result.huyen.tenHuyen}</td>
+                        <td>${tenHuyen}</td>
                         <td>${result.canCuThuHoi}</td>
                         <td><span><span class="dataCongtrinh" onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})" ><i class="fas fa-plus"></i></span></span></td>
                     </tr>
@@ -104,6 +85,7 @@ function findIdCongTrinhDuAn(id) {
     let tmp = "";
     ajaxCallGet("v1/public/cong-trinh-du-an/find-by-id?id=" + id).then(data => {
         checkCacTruong(data)
+
         tmp += `
         <div class="fa-pr-bt ">
             <div class="pr-bt-left">
@@ -145,7 +127,6 @@ function findIdCongTrinhDuAn(id) {
                    
                     <div class="pr-info row">
                         <div class="pr-infor-left col-3">
-       +
                            <span>Căn cứ thu hồi:</span>
                         </div>
                         <div class="pr-infor-right col-9">
@@ -206,6 +187,7 @@ function pagination_CongTrinhDuAn() {
                     url: URL_API + 'v1/public/cong-trinh-du-an/page?page=' + pagination.pageNumber,
                     timeout: 2000,
                     success: function (response) {
+                        console.log(response)
                         if (pagination.pageNumber < 2) {
                             pagination.pageNumber = 0;
                         }else {
@@ -219,6 +201,10 @@ function pagination_CongTrinhDuAn() {
                                 index += 1;
                             }
                             checkCacTruong(result);
+                            let  tenHuyen="";
+                            if (result.huyen !==null){
+                                tenHuyen =(result.huyen.tenHuyen !== null ?  result.huyen.tenHuyen :  "");
+                            }
                             tmp += `
              <tr>
                         <td>${pagination.pageNumber +index}</td>
@@ -226,7 +212,7 @@ function pagination_CongTrinhDuAn() {
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
                         <td>${result.diaDiem}</td>
-                        <td>${result.huyen.tenHuyen}</td>
+                        <td>${tenHuyen}</td>
                         <td>${result.canCuThuHoi}</td>
                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
                     </tr>

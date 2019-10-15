@@ -76,6 +76,9 @@
 .pp-table table tbody tr td{
     font-size: 15px;
 }
+.pp-table table tbody tr td:first-child{
+    text-align: center;
+}
 .tablep-cap{
     display: block;
     text-align: center;
