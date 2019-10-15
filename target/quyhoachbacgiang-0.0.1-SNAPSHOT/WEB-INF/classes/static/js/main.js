@@ -1,4 +1,4 @@
-const URL_API = "http://123.31.45.240:8480/excel_admin/api/";
+const URL_API = "http://123.31.45.240:8480/admin/api/";
 const tokenHeader_value = "";
 const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
 const ARR_HUYEN_TEXT = ['TP Bắc Giang', 'Hiệp Hòa', 'Yên Dũng', 'Lục Nam', 'Sơn Động', 'Lạng Giang', 'Việt Yên', 'Tân Yên', 'Lục Ngạn', 'Yên Thế'];
@@ -315,4 +315,16 @@ function hideLoadingGif() {
     setTimeout(function () {
         $("#loading-gif").css("display","none");
     }, 200)
+}
+
+function exportExcel(tableSelect, fileNameExport) {
+    $("th,td").addClass("tableexport-string");
+    let instance = $(`#${tableSelect}`).tableExport({
+        formats: ['xlsx'],
+        fileName: fileNameExport,
+        exportButtons: false
+    });
+    let exportData = instance.getExportData()[tableSelect]['xlsx'];
+    instance.export2file(exportData.data, exportData.mimeType, fileNameExport, exportData.fileExtension);
+    $("th,td").removeClass("tableexport-string");
 }

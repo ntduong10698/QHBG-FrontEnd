@@ -109,6 +109,12 @@ function callSelectBangGiaDatPNNHsDc() {
             console.log(err);
         })
     }
+    //run export Excel
+    $("#exportExel a").unbind('click');
+    $("#exportExel a").click(function () {
+        exportExcel("tableExport","HeSoDieuChinh");
+        return false;
+    })
     resetSelectXaHsDc();
 }
 
@@ -170,7 +176,7 @@ function setTableGiaDatNongThonHsDC(rs,idHuyen) {
     arrMN.map((data1, index) => {
         viewData += setDataTableGiaDatNongThonHsDc(data1, index);
     })
-    viewTable =`<table class="table table-bordered">
+    viewTable =`<table class="table table-bordered" id="tableExport">
                     <tbody>
                         <tr>
                             <td colspan="14" style="background: #ededed;"><strong>${$("#dp-drop13 option:selected").text()} - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo Bảng giá đất ở nông thôn </strong></td>
@@ -353,7 +359,7 @@ function setTableGiaDatPhiNongNghiepHsDc(viewData, idHuyen){
     let viewTable = `<div class="tablep-cap">
                     <span><strong>${$("#dp-drop13 option:selected").text()} - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo bảng giá đất ở tại đô thị, ven trục đường giao thông</strong></span>
                 </div>
-                <table class="table-dat table table-hover table-bordered">
+                <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
                         <tr>
                             <th>Cấp</th>
