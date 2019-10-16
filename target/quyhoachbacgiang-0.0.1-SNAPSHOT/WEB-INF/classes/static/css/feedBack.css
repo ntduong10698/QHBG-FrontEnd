@@ -76,7 +76,7 @@ span.pfc-cap{
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 .pfl-content .sicitem-wp input{
     margin-left: 40px;
@@ -174,4 +174,20 @@ a.asendfb:hover{
     -webkit-line-clamp: unset;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.sicitem-wp{
+    position: relative;
+}
+
+.sicitem-wp .gop-y-error{
+    position: absolute;
+    bottom: -14px;
+    font-size: 11px;
+    color: red;
+    right: 0;
+}
+
+coccocgrammar {
+    display: none;
 }

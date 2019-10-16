@@ -1,6 +1,7 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
 var checkMap = 0; // truong phan biet cac huyen va tinh
 var year;
+var quyetDinhMap;
 
 $(function () {
     $("#closeThongKeMap").click(function () {
@@ -25,6 +26,7 @@ function fnView(indexPopUp) {
 
 // set view infoSoild chi tiet
 function viewInfoSoild(data) {
+    console.log(data.MaQuyetDinh);
     $("#infoSoild ul li:nth-child(1)").html(`<span>${ data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaHienTrang+'/'+data.MaQuyHoach }</span>`);
     $("#infoSoild ul li:nth-child(2)").html(`<span>${ data.MucDichSuDung }</span>`);
     $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '...' : data.MucDichQuyHoach }</span>`);
@@ -61,27 +63,29 @@ function clickReview() {
 //end xy ly click chi tiet khoi trong map
 
 //setQuyetDinh
-function viewInforQuyetDinh(data) {
-    let maQuyetDinh = data.MaQuyetDinh;
-    // maQuyetDinh = "861/QĐ-UBND";
-    let view = `<li>...</li>
+function viewInforQuyetDinh() {
+    let maQuyetDinh = quyetDinhMap;
+    console.log(maQuyetDinh);
+    let view = `<li>${maQuyetDinh === null ? '...' : maQuyetDinh}</li>
                 <li>...</li>
                 <li>...</li>
                 <li>...</li>
                 <li>...</li>
                 <li>...</li>`;
     $("#chiTietQuyetDinhMap ul").html(view);
-    callQuyetDinh(maQuyetDinh.toUpperCase()).then(data => {
-        console.log(data.ngayBanHanh);
-        $("#chiTietQuyetDinhMap ul li:nth-child(1)").html(data.soQuyetDinh);
-        $("#chiTietQuyetDinhMap ul li:nth-child(2)").html(data.trichYeu);
-        $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data.coQuanBanHanh != null ? data.coQuanBanHanh.tenCoQUan : "...");
-        $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data.nguoiKy);
-        $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data.ngayBanHanh != null ? `${reverseStringNam(data.ngayBanHanh)}` : "...");
-        $("#chiTietQuyetDinhMap ul li:nth-child(6)").html('<a href="#">Link đính kèm</a>');
-    }).catch(err => {
-        console.log(err);
-    })
+    if (maQuyetDinh != null) {
+        callQuyetDinhMap(maQuyetDinh.toUpperCase(),year).then(data => {
+            if (data.length > 0) {
+                $("#chiTietQuyetDinhMap ul li:nth-child(2)").html(data[0].trichYeu);
+                $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : "...");
+                $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data[0].nguoiKy);
+                $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "...");
+                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}">Link đính kèm</a>` : '<a href="#">Link đính kèm</a>'}`);
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
 }
 //endsetQuyetDinh
 
@@ -359,11 +363,14 @@ require([
                 rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
                 //set name ban do
                 $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]} 2015-2019`);
+                quyetDinhMap = QUYET_DINH_QH[indexHuyen+1];
             } else {
                 rs += "Quy_Hoach_Bac_Giang_2015_2019";
                 //set name ban do
                 $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang 2015-2019`);
+                quyetDinhMap = QUYET_DINH_QH[0];
             }
+            year = '2015';
             // change name infoKhUse
             $("#textInfoKhUser").html("Thông tin quy hoạch sử dụng đất");
         } else if (pathName.search("ke-hoach") > -1) {
@@ -376,6 +383,23 @@ require([
             $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-${ARR_HUYEN_TEXT[indexHuyen]}-${year}`);
             // change name infoKhUse
             $("#textInfoKhUser").html("Thông tin kế hoạch sử dụng đất");
+            switch (year) {
+                case '2015':
+                    quyetDinhMap = QUYET_DINH_KH_2015[indexHuyen+1];
+                    break;
+                case '2016':
+                    quyetDinhMap = QUYET_DINH_KH_2016[indexHuyen+1];
+                    break;
+                case '2017':
+                    quyetDinhMap = QUYET_DINH_KH_2017[indexHuyen+1];
+                    break;
+                case '2018':
+                    quyetDinhMap = QUYET_DINH_KH_2018[indexHuyen+1];
+                    break;
+                case '2019':
+                    quyetDinhMap = QUYET_DINH_KH_2019[indexHuyen+1];
+                    break;
+            }
         }
         console.log(rs+"/MapServer")
         return rs + "/MapServer";
@@ -623,7 +647,7 @@ require([
                                         "<br><b>Mục đích sử dụng đất: </b> {MucDichSuDung}" +
                                         "<br><b>Mục đích quy hoạch: </b> {MucDichQuyHoach}" +
                                         "<br><b>Diện tích: </b> {DienTich} (ha)" +
-                                        "<br><b>Số Quyết Định :</b> {MaQuyetDinh}" +
+                                        "<br><b>Số Quyết Định :</b>" + `${quyetDinhMap == null ? '' : quyetDinhMap}` +
                                         "<br><b>Xã :</b> <span>{Xa}</span> " +
                                         "<b> Huyện :</b> <span>{Huyen}</span> " +
                                         "<b> Tỉnh :</b> <span>{Tinh}</span> " +

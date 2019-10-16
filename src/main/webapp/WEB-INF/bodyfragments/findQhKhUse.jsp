@@ -63,9 +63,9 @@
                 <div class="dpfc-item dpcf-bt">
                     <a href="#" id="searchTraCuu"><img src="resources/img/searchbt.png" alt=""></a>
                 </div>
-                <div class="dpfc-item dpcf-bt">
-                    <a href="#"><img src="resources/img/xls.png" alt=""></a>
-                </div>
+<%--                <div class="dpfc-item dpcf-bt">--%>
+<%--                    <a href="#"><img src="resources/img/xls.png" alt=""></a>--%>
+<%--                </div>--%>
             </div>
         </div>
     </section>

@@ -66,10 +66,8 @@
     </section>
     <section class="dp-table">
         <div class="container" style="background: white;">
-            <div class="row">
-                <div class="pagination" id="pagination">
+            <div class="row" id="pagination">
 
-                </div>
                 <table class="table table-hover table-bordered" id="tableDecision">
                     <thead>
                     <tr>

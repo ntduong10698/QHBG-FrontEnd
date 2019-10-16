@@ -328,3 +328,7 @@ function exportExcel(tableSelect, fileNameExport) {
     instance.export2file(exportData.data, exportData.mimeType, fileNameExport, exportData.fileExtension);
     $("th,td").removeClass("tableexport-string");
 }
+
+function testInput(str, strReg) {
+    return str.match(strReg); //tra ve null nếu không trùng
+}
