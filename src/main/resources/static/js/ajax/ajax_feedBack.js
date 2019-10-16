@@ -6,9 +6,20 @@ function testInputEmail(str) {
     return str == null ? null : testInput(str, "^[a-z][a-z0-9_\\.]{5,32}@[a-z0-9]{2,}(\\.[a-z0-9]{2,4}){1,2}$");
 }
 
-function sendFeedBack(email, header, content) {
-    let url = `v1/public/email/html?email=${email}&header=${header}&content=${content}`;
-    return ajaxCallGet(url);
+function sendFeedBack(email, header, content, name) {
+    let obj = {
+        daTraLoi: false,
+        email: email,
+        ngayGopY: "",
+        noiDung: content,
+        noiDungTraLoi: "",
+        status: true,
+        tenNguoiGui: name,
+        tieuDe: header,
+        tieuDeTraLoi: ""
+    }
+    let url = `v1/public/gop-y/upload`;
+    return ajaxCallPost(url, obj);
 }
 
 function clickSendFeedBack() {
@@ -31,8 +42,7 @@ function clickSendFeedBack() {
 
         if (checkName === "none" && checkEmail === "none" && checkNoiDung === "none" && checkTieuDe === "none") {
             viewLoadingGif();
-            noiDung = `<strong>Gửi từ:</strong> ${email}<br><strong>Họ tên:</strong> ${name}<br>${noiDung}`;
-            sendFeedBack(email, tieuDe, noiDung).then(rs => {
+            sendFeedBack(email, tieuDe, noiDung, name).then(rs => {
                 alert("Gửi phản hồi thành công!");
                 hideLoadingGif();
             }).catch(err => {

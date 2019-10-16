@@ -90,9 +90,27 @@ function searchDcQuyHoach() {
             $("#pagination").css("display","block");
             pageAblePage(10);
         } else {
-            $("#pagination").css("display","none");
-            callSearchDcQuyHoach(viTri, huyenId, soQuyetDinh).then(data => {
-                $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(data));
+            // $("#pagination").css("display","none");
+            callSearchDcQuyHoach(viTri, huyenId, soQuyetDinh).then(data1 => {
+                console.log(data1.length);
+                (function () {
+                    var container = $('#pagination');
+                    container.pagination({
+                        dataSource: data1,
+                        locator: 'items',
+                        totalNumber: data1.length,
+                        pageSize: 10,
+                        showPageNumbers: true,
+                        showPrevious: true,
+                        showNext: true,
+                        showNavigator: true,
+                        showFirstOnEllipsisShow: true,
+                        showLastOnEllipsisShow: true,
+                        callback: function (response, pagination) {
+                            $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(response));
+                        }
+                    })
+                })();
             }).catch(err => {
                 console.log(err);
             })

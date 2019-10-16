@@ -34,7 +34,7 @@
                 <div class="dpfc-item dpcf-bt">
                     <a href="" id="searchDcQH"><img src="resources/img/searchbt.png" alt=""></a>
                 </div>
-                <div class="dpfc-item dpcf-bt">
+                <div class="dpfc-item dpcf-bt" id="exportExel">
                     <a href="#"><img src="resources/img/xls.png" alt=""></a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
     <section class="dp-table lu-adjplan">
         <div class="container">
             <div class="row">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="tableExport">
                     <thead>
                     <tr>
                         <th>Vị trí, địa điểm</th>

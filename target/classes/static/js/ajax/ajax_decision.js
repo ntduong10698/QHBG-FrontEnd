@@ -7,7 +7,6 @@ function callFullTableDecision() {
 }
 
 function callTableDecision() {
-
     $('#pagination').pagination({
         dataSource: function (done) {
 

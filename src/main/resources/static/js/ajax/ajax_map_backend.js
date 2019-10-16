@@ -362,7 +362,7 @@ function getTableBieu_CT01(data) {
 //end Table HT_Tinh
 
 //callQuyetDinh
-function callQuyetDinh(maQuyetDinh) {
-    let url = `v1/public/quyet-dinh/find-by-so-quyet-dinh?so-quyet-dinh=${maQuyetDinh}`;
+function callQuyetDinhMap(maQuyetDinh, nam) {
+    let url = `v1/public/quyet-dinh/find-by-so-quyet-dinh-and-nam-dau?sqd=${maQuyetDinh}&nam-dau=${nam}`;
     return ajaxCallGet(url);
 }

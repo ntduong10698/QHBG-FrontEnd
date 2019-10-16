@@ -3,7 +3,7 @@ main{
 }
 .lu-landuseplan .dpfc-item.dpcf-select{
     /*width: 43.5% !important;*/
-    width: 43.5%;
+    width: 46%;
     padding: 5px;
 }
 .lu-landuseplan .dpfc-item .dpcft-drop{
@@ -51,7 +51,7 @@ main{
 }
 
 .fix-width-select {
-    width: 28% !important;
+    width: 30% !important;
 }
 
 .table-QHK {
