@@ -33,7 +33,7 @@ function clickSendFeedBack() {
             viewLoadingGif();
             noiDung = `<strong>Gửi từ:</strong> ${email}<br><strong>Họ tên:</strong> ${name}<br>${noiDung}`;
             sendFeedBack(email, tieuDe, noiDung).then(rs => {
-                alert("Gửi phản hồi thành công");
+                alert("Gửi phản hồi thành công!");
                 hideLoadingGif();
             }).catch(err => {
                 console.log(err);
