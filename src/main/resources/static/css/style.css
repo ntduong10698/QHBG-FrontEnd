@@ -1106,6 +1106,8 @@ span.it-cap{
 .paginationjs{
     margin-bottom: 20px;
     margin-top: 20px;
-    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 /*END_LOADING_GIF*/

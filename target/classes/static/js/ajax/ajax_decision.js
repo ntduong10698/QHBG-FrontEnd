@@ -6,19 +6,27 @@ function callFullTableDecision() {
 
 }
 
-function callTableDecision() {
+function sortDecision(arr) {
+    arr.sort((a, b) => {
+        return ('' + b.ngayBanHanh).localeCompare(a.ngayBanHanh);
+    });
+}
 
+function callTableDecision() {
+    let arr= null;
     $('#pagination').pagination({
         dataSource: function (done) {
-
             ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
-                done(result);
+                arr=result;
+                sortDecision(arr)
+                done(arr);
             });
         },
         pageSize: 10,
         autoHidePrevious: true,
         autoHideNext: true,
         callback: function (result, pagination) {
+
             console.log(result)
             if (result.length > 0) {
                 let tmp = "";
@@ -34,7 +42,7 @@ function callTableDecision() {
                             <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
-                    console.log(tmp)
+
                 });
                 $("#tableDecision tbody").html(tmp);
             } else {
@@ -43,6 +51,7 @@ function callTableDecision() {
         }
     });
 }
+
 
 // .reverse()c
 function callCoQuanBanHanh() {
@@ -85,7 +94,7 @@ function searchCoQuanBanHanh() {
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
-                   done(data)
+                    done(data)
                 });
             },
             pageSize: 10,
