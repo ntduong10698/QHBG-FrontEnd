@@ -1,0 +1,118 @@
+ul{
+    list-style: none;
+}
+main{
+    background-color: azure;
+    min-height: 100%;
+}
+.p-instruction{
+    padding: 35px 0;
+}
+.instrunav-wp{
+    background-color: white;
+    box-shadow: 1px 1px 5px #d1d1d1;
+}
+.instru-cap{
+    border-bottom: 1px solid #d1d1d1;
+    padding: 12px 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+}
+.instru-cap::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-blue);
+}
+.instru-cap span{
+    padding: 11px 0;
+    position: relative;
+}
+.instru-cap span::after{
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--color-blue);
+}
+.ic-item{
+    padding: 12px 15px;
+}
+.ic-item:not(:last-child){
+    border-bottom: 1px solid #d1d1d1
+}
+.ic-item a{
+    font-size: 14px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ic-item a:hover{
+    color:  var(--color-blue);
+}
+.instrupa-wp{
+    background-color: white;
+    box-shadow: 1px 1px 5px #d1d1d1;
+    display: none;
+}
+.instrupa-cap{
+    border-bottom: 1px solid #d1d1d1;
+    padding: 12px 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+}
+.instrupa-cap::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-blue);
+}
+.instrupa-cap span{
+    padding: 11px 0;
+    position: relative;
+}
+.instrupa-cap span::after{
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--color-blue);
+}
+.instrupa-step{
+    padding: 15px 20px;
+}
+.instrupast{
+    padding: 5px 10px;
+    color: white;
+    background-color: var(--color-blue);
+    font-weight: 600;
+    display: inline-block;
+}
+.instrupa-desc{
+    margin: 10px 0;
+    font-size: 14px;
+}
+.instrupa-img img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+.show{
+    display: block;
+}

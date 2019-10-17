@@ -4,13 +4,19 @@ $(document).ready(function () {
     checkpass();
     checkStatusLogin();
     callThongKeTruyCap().then(data => {
+        console.log("plus");
         $("#tk-online").html(data[0].truyCap);
         $("#tk-tong").html(formatNumber(data[1].truyCap,'.','.'));
+        // setImageThongKe(data[1].truyCap);
     }).then(err => {
         console.log(err);
     })
     $(window).on('beforeunload', function(){
-        callThongKeTruyCapTru();
+        callThongKeTruyCapTru().then(rs => {
+            console.log("minus");
+        }).catch(err => {
+            console.log(err);
+        });
     });
 });
 
@@ -455,24 +461,35 @@ function callThongKeTruyCapTru() {
 function activeMenu() {
     let href = window.location.href;
     if (href.indexOf("gia-dat") > -1) {
-        $("ul.header__menu li:nth-child(2)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(2)").css("background","#0063ac");
     }
     if (href.indexOf("quy-hoach") > -1) {
-        $("ul.header__menu li:nth-child(3)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(3)").css("background","#0063ac");
     }
     if (href.indexOf("ke-hoach") > -1) {
-        $("ul.header__menu li:nth-child(4)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(4)").css("background","#0063ac");
     }
     if (href.indexOf("du-an") > -1) {
-        $("ul.header__menu li:nth-child(5)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(5)").css("background","#0063ac");
     }
     if (href.indexOf("quyet-dinh") > -1) {
-        $("ul.header__menu li:nth-child(6)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(6)").css("background","#0063ac");
     }
     if (href.indexOf("huong-dan") > -1) {
-        $("ul.header__menu li:nth-child(7)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(7)").css("background","#0063ac");
     }
     if (href.indexOf("gop-y") > -1) {
-        $("ul.header__menu li:nth-child(8)").css("background","#0063ac");
+        $("ul.header__menu > li:nth-child(8)").css("background","#0063ac");
+    }
+}
+
+function setImageThongKe(tongTruyCap) {
+    tongTruyCap = tongTruyCap + '';
+    let arr = tongTruyCap.trim().split("");
+    arr.reverse();
+    if (arr.length < 6) {
+        arr.map((data, index) => {
+            $(`.image-number-couter img:nth-child(${6 - index})`).attr('src',`/resources/img/icons8-${data}-100.png`);
+        })
     }
 }

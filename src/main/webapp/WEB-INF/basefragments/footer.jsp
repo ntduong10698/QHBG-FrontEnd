@@ -39,6 +39,14 @@
                 <div class="realtime">
                     <div class="rtwwp">
                         <span class="rt-cap"><i class="fas fa-users"></i> Thống kê truy cập</span>
+                        <div class="image-number-couter">
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+<%--                            <img src="/resources/img/icons8-0-100.png" alt="">--%>
+                        </div>
                         <div class="rtct-wp">
                                 <span class="rt-contet"><i class="fas fa-user-friends"></i><span>Đang truy cập: <span
                                         class="rt-num" id="tk-online"></span></span></span>
