@@ -63,7 +63,7 @@ function pageAblePage(size) {
                 showPageNumbers: true,
                 showPrevious: true,
                 showNext: true,
-                showNavigator: true,
+                // showNavigator: true,
                 showFirstOnEllipsisShow: true,
                 showLastOnEllipsisShow: true,
                 callback: function (response, pagination) {
@@ -107,7 +107,7 @@ function searchDcQuyHoach() {
                         showPageNumbers: true,
                         showPrevious: true,
                         showNext: true,
-                        showNavigator: true,
+                        // showNavigator: true,
                         showFirstOnEllipsisShow: true,
                         showLastOnEllipsisShow: true,
                         callback: function (response, pagination) {
