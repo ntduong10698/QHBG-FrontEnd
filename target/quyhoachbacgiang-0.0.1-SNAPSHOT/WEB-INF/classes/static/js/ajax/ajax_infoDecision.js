@@ -1,12 +1,13 @@
 var idWed = window.location.href.split("=");
 $(document).ready(function () {
     getDataInfoQuyetDinh();
-    getDataDieuChinhBoSung();
+    // getDataDieuChinhBoSung();
 });
 
 function getDataInfoQuyetDinh() {
 
     ajaxCallGet("v1/public/quyet-dinh/find-by-id?id=" + idWed[idWed.length - 1]).then(data => {
+        console.log(data);
         if (data !== null) {
             let tmp = "";
             if (data.duongDanTep !== null) {
@@ -27,12 +28,11 @@ function getDataInfoQuyetDinh() {
                                 <td class="dttd-title">Cơ quan ban hành</td>
                                 <td colspan="3">${data.coQuanBanHanh.tenCoQUan}</td>
                             </tr>
-                            <tr>
+                             <tr>
                                 <td class="dttd-title">Ngày ban hành</td>
-                                <td>${data.ngayBanHanh.split("-").reverse().join("/")}</td>
-                                <td class="dttd-stitle">Thời gian hiệu lực</td>
-                                <td>${data.namDau} - ${data.namCuoi}</td>
+                                <td colspan="3">${data.ngayBanHanh.split("-").reverse().join("/")}</td>
                             </tr>
+                            
                             <tr>
                                 <td class="dttd-title"> Người ký</td>
                                 <td>${data.nguoiKy}</td>
@@ -42,7 +42,7 @@ function getDataInfoQuyetDinh() {
                             <tr>
                                 <td class="dttd-title">Tài liệu kèm theo</td>
                                 <td colspan="3" class="">
-                                    <div><a href="#"><i class="fa fa-paperclip"></i> ${data.duongDanTep} </a>
+                                    <div><a href="${data.duongDanTep}"><i class="fa fa-paperclip"></i> Tải xuống  </a>
                                     </div>
                                 </td>
                             </tr>
@@ -65,11 +65,9 @@ function getDataInfoQuyetDinh() {
                                 <td class="dttd-title">Cơ quan ban hành</td>
                                 <td colspan="3">${data.coQuanBanHanh.tenCoQUan}</td>
                             </tr>
-                            <tr>
+                              <tr>
                                 <td class="dttd-title">Ngày ban hành</td>
-                                <td>${data.ngayBanHanh.split("-").reverse().join("/")}</td>
-                                <td class="dttd-stitle">Thời gian hiệu lực</td>
-                                <td>${data.namDau} - ${data.namCuoi}</td>
+                                <td colspan="3">${data.ngayBanHanh.split("-").reverse().join("/")}</td>
                             </tr>
                             <tr>
                                 <td class="dttd-title"> Người ký</td>
@@ -80,17 +78,15 @@ function getDataInfoQuyetDinh() {
                             <tr>
                                 <td class="dttd-title">Tài liệu kèm theo</td>
                                 <td colspan="3" class="">
-                                    <div><a href="#"><i class="fa fa-paperclip"></i> </a>
-                                    </div>
+                                    <div><a href=""> </a></div>
                                 </td>
                             </tr>
 `;
             }
             $("#tableInfoDecesion tbody").html(tmp);
-        }else {
+        } else {
             $("#tableInfoDecesion tbody").html("<tr><td>Không có dữ liệu để hiển thị</td></tr>");
         }
-
 
 
     });

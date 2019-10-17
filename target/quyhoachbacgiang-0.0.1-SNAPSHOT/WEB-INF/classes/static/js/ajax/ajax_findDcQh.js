@@ -31,6 +31,10 @@ function getDataTableDieuChinhQuyHoach(data) {
             </tr>`
         })
     }
+    $("#exportExel a").click(function () {
+        exportExcel("tableExport", "DieuChinhQuyHoach");
+        return false;
+    })
     return dataTable
 }
 
