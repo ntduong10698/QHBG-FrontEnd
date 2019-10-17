@@ -26,7 +26,6 @@ function callTableDecision() {
         autoHidePrevious: true,
         autoHideNext: true,
         callback: function (result, pagination) {
-
             console.log(result)
             if (result.length > 0) {
                 let tmp = "";

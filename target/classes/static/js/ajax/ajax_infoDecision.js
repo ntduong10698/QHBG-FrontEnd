@@ -78,8 +78,7 @@ function getDataInfoQuyetDinh() {
                             <tr>
                                 <td class="dttd-title">Tài liệu kèm theo</td>
                                 <td colspan="3" class="">
-                                    <div><a href=""> </a>
-                                    </div>
+                                    <div><a href=""> </a></div>
                                 </td>
                             </tr>
 `;

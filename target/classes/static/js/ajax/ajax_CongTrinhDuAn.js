@@ -1,8 +1,6 @@
 $(document).ready(function () {
     getHuyen();
-
     getLoaiDuAn();
-    // getTableDuAn();
     pagination_CongTrinhDuAn()
     findCongTrinhDuAn()
 });
@@ -49,18 +47,27 @@ function checkCacTruong(result) {
 
 function findCongTrinhDuAn() {
     $("#clickSearchDuAn").click(function () {
-        console.log()
-        ajaxCallGet("v1/public/cong-trinh-du-an/filter?ten-cong-trinh=" + $("#nameProject").val() + "&dia-diem=" + $("#diaDiemDuAn").val() + "&loai-du-an=" + $("#dp-drop4").val() + "&huyen=" + $("#dp-drop3").val()).then(data => {
-            if (data.length >0) {
-                checkCacTruong(data)
-                let tmp = "";
-                data.map(function (result, index) {
-                    let  tenHuyen="";
-                    if (result.huyen !==null){
-                        tenHuyen =(result.huyen.tenHuyen !== null ?  result.huyen.tenHuyen :  "");
-                    }
-                    checkCacTruong(result);
-                    tmp += `
+
+        $('#pagination_CongTrinh').pagination({
+            dataSource: function (done) {
+                ajaxCallGet("v1/public/cong-trinh-du-an/filter?ten-cong-trinh=" + $("#nameProject").val() + "&dia-diem=" + $("#diaDiemDuAn").val() + "&loai-du-an=" + $("#dp-drop4").val() + "&huyen=" + $("#dp-drop3").val()).then(data => {
+                    done(data)
+                });
+            },
+            pageSize: 10,
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (data, pagination) {
+                if (data.length > 0) {
+                    checkCacTruong(data)
+                    let tmp = "";
+                    data.map(function (result, index) {
+                        let tenHuyen = "";
+                        if (result.huyen !== null) {
+                            tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
+                        }
+                        checkCacTruong(result);
+                        tmp += `
              <tr>
                         <td>${index + 1}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
@@ -72,10 +79,11 @@ function findCongTrinhDuAn() {
                         <td><span><span class="dataCongtrinh" onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})" ><i class="fas fa-plus"></i></span></span></td>
                     </tr>
             `;
-                })
-                $("#tableCongTrinhDuAn tbody").html(tmp);
-            } else {
-                $("#tableCongTrinhDuAn tbody").html("<tr> <td colspan='13'>Không có kết quả</td></tr>");
+                    })
+                    $("#tableCongTrinhDuAn tbody").html(tmp);
+                } else {
+                    $("#tableCongTrinhDuAn tbody").html("<tr> <td colspan='13'>Không có kết quả</td></tr>");
+                }
             }
         });
     })
@@ -130,7 +138,7 @@ function findIdCongTrinhDuAn(id) {
                            <span>Căn cứ thu hồi:</span>
                         </div>
                         <div class="pr-infor-right col-9">
-                            <span><a href="">${data.canCuThuHoi}</a></span>
+                            <span>${data.canCuThuHoi}</span>
                         </div>
                     </div>
                       <div class="pr-info row">
@@ -138,7 +146,7 @@ function findIdCongTrinhDuAn(id) {
                             <span>Diện tích:</span>
                         </div>
                         <div class="pr-infor-right col-9">
-                            <span><a href="">${data.tongDienTich}</a></span>
+                            <span>${data.tongDienTich}</span>
                         </div>
                     </div>
                       <div class="pr-info row">
@@ -146,7 +154,7 @@ function findIdCongTrinhDuAn(id) {
                             <span>Ghi chú:</span>
                         </div>
                         <div class="pr-infor-right col-9">
-                            <span><a href=""></a></span>
+                            <span></span>
                         </div>
                     </div>
                 </div>
@@ -165,14 +173,14 @@ function clickHide() {
 
 function pagination_CongTrinhDuAn() {
 
-    let arr ;
+    let arr;
     ajaxCallGet("v1/public/cong-trinh-du-an/count-page").then(data => {
         arr = new Array(data);
         console.log(arr.length)
         $('#pagination_CongTrinh').pagination({
             dataSource: arr,
             pageSize: 1,
-            pageNumber:1,
+            pageNumber: 1,
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (data, pagination) {
@@ -180,7 +188,7 @@ function pagination_CongTrinhDuAn() {
                 $.ajax({
                     type: 'GET',
                     dataType: "json",
-                    async:false,
+                    async: false,
                     headers: {
                         "Authorization": tokenHeader_value,
                     },
@@ -190,24 +198,24 @@ function pagination_CongTrinhDuAn() {
                         console.log(response)
                         if (pagination.pageNumber < 2) {
                             pagination.pageNumber = 0;
-                        }else {
-                            pagination.pageNumber = (pagination.pageNumber- 1)*10;
+                        } else {
+                            pagination.pageNumber = (pagination.pageNumber - 1) * 10;
                         }
                         response.map(function (result, index) {
 
                             if (pagination.pageNumber < 2) {
                                 index += 1;
-                            }else {
+                            } else {
                                 index += 1;
                             }
                             checkCacTruong(result);
-                            let  tenHuyen="";
-                            if (result.huyen !==null){
-                                tenHuyen =(result.huyen.tenHuyen !== null ?  result.huyen.tenHuyen :  "");
+                            let tenHuyen = "";
+                            if (result.huyen !== null) {
+                                tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
                             }
                             tmp += `
              <tr>
-                        <td>${pagination.pageNumber +index}</td>
+                        <td>${pagination.pageNumber + index}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
