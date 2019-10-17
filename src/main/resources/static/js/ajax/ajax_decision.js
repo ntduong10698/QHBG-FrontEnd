@@ -32,7 +32,6 @@ function callTableDecision() {
         autoHideNext: true,
         callback: function (result, pagination) {
 
-            // console.log(result)
             if (result.length > 0) {
                 let tmp = "";
                 result.map(function (response, index) {
