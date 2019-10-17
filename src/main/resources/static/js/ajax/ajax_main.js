@@ -1,7 +1,23 @@
 $(document).ready(function () {
+    activeMenu();
     checkLogin();
     checkpass();
     checkStatusLogin();
+    callThongKeTruyCap().then(data => {
+        console.log("plus");
+        $("#tk-online").html(data[0].truyCap);
+        $("#tk-tong").html(formatNumber(data[1].truyCap,'.','.'));
+        // setImageThongKe(data[1].truyCap);
+    }).then(err => {
+        console.log(err);
+    })
+    $(window).on('beforeunload', function(){
+        callThongKeTruyCapTru().then(rs => {
+            console.log("minus");
+        }).catch(err => {
+            console.log(err);
+        });
+    });
 });
 
 async function ajaxCall(url) {
@@ -434,67 +450,46 @@ function getViewQuyetDinh(quyetDinh) {
             </div>`;
 }
 
-// function getViewQuyetDinh(quyetDinh) {
-//     return `<div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Số quyết định</span>
-//                 </div>
-//                 <div class="pr-infor-right col-9">
-//                     <span>${quyetDinh.soQuyetDinh}</span>
-//                 </div>
-//             </div>
-//             <div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Trích yếu:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-9">
-//                     <span>${quyetDinh.trichYeu}</span>
-//                 </div>
-//             </div>
-//             <div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Cơ quan ban hành:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-9">
-//                     <span>${quyetDinh.coQuanBanHanh == null ? "..." : quyetDinh.coQuanBanHanh.tenCoQUan}</span>
-//                 </div>
-//             </div>
-//             <div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Ngày ban hành:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-3">
-//
-//                     <span>${quyetDinh.ngayBanHanh.split("-").length === 3 ? quyetDinh.ngayBanHanh.split("-")[2]+"/"+quyetDinh.ngayBanHanh.split("-")[1]+"/"+quyetDinh.ngayBanHanh.split("-")[0] : "..."}</span>
-//
-//                 </div>
-//                 <div class="pr-infor-right col-3" style="background: #cccccc;">
-//                     <span>Thời gian hiệu lực:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-3">
-//                     <span>${quyetDinh.namDau + "-" + quyetDinh.namCuoi}</span>
-//                 </div>
-//             </div>
-//             <div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Người ký:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-3">
-//                     <span>${quyetDinh.nguoiKy}</span>
-//                 </div>
-//                 <div class="pr-infor-right col-3" style="background: #cccccc;">
-//                     <span>Chức vụ:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-3">
-//                     <span>${quyetDinh.chucVu}</span>
-//                 </div>
-//             </div>
-//             <div class="pr-info row">
-//                 <div class="pr-infor-left col-3">
-//                     <span>Tệp đình kèm theo:</span>
-//                 </div>
-//                 <div class="pr-infor-right col-9">
-//                     <span><a href="${quyetDinh.duongDanTep}" target="_blank">${quyetDinh.soQuyetDinh}</a></span>
-//                 </div>
-//             </div>`;
-// }
+function callThongKeTruyCap() {
+    return ajaxCallGet('v1/public/thong-ke-truy-cap');
+}
+
+function callThongKeTruyCapTru() {
+    return ajaxCallGet('v1/public/thong-ke-truy-cap?plus=false');
+}
+
+function activeMenu() {
+    let href = window.location.href;
+    if (href.indexOf("gia-dat") > -1) {
+        $("ul.header__menu > li:nth-child(2)").css("background","#0063ac");
+    }
+    if (href.indexOf("quy-hoach") > -1) {
+        $("ul.header__menu > li:nth-child(3)").css("background","#0063ac");
+    }
+    if (href.indexOf("ke-hoach") > -1) {
+        $("ul.header__menu > li:nth-child(4)").css("background","#0063ac");
+    }
+    if (href.indexOf("du-an") > -1) {
+        $("ul.header__menu > li:nth-child(5)").css("background","#0063ac");
+    }
+    if (href.indexOf("quyet-dinh") > -1) {
+        $("ul.header__menu > li:nth-child(6)").css("background","#0063ac");
+    }
+    if (href.indexOf("huong-dan") > -1) {
+        $("ul.header__menu > li:nth-child(7)").css("background","#0063ac");
+    }
+    if (href.indexOf("gop-y") > -1) {
+        $("ul.header__menu > li:nth-child(8)").css("background","#0063ac");
+    }
+}
+
+function setImageThongKe(tongTruyCap) {
+    tongTruyCap = tongTruyCap + '';
+    let arr = tongTruyCap.trim().split("");
+    arr.reverse();
+    if (arr.length < 6) {
+        arr.map((data, index) => {
+            $(`.image-number-couter img:nth-child(${6 - index})`).attr('src',`/resources/img/icons8-${data}-100.png`);
+        })
+    }
+}

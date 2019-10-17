@@ -12,9 +12,6 @@
                     <div class="pp-select">
                         <select id="dp-drop3" class="pp-drop">
                             <option value="0">--- Tất cả ---</option>
-
-
-
                         </select>
                     </div>
                 </div>
@@ -22,8 +19,6 @@
                     <span>Loại dự án</span>
                     <div class="pp-select">
                         <select id="dp-drop4" class="pp-drop">
-
-
                         </select>
                     </div>
                 </div>
@@ -56,7 +51,7 @@
                         <th>STT</th>
                         <th>Tên Dự án, công trình</th>
                         <th>Loại dự án</th>
-                        <th>Tổng diện tích (m<sup>2</sup>)</th>
+                        <th>Tổng diện tích (ha)</th>
                         <th>Địa điểm</th>
                         <th>Thuộc huyện</th>
                         <th>Căn cứ thu hồi, CMĐ</th>

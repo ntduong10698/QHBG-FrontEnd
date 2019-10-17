@@ -1,21 +1,45 @@
+var href = window.location.href;
 function callFullTableDecision() {
-    callTableDecision();
+    // callTableDecision();
     callCoQuanBanHanh();
     callLoaiQuyetDinh();
     searchTextQuyetDinh();
 
+    //them cho phan gia dat
+    if (href.indexOf("nhomQuyetDinh") == -1 ){
+        callTableDecision();
+    }
+}
+
+function sortDecision(arr) {
+    arr.sort((a, b) => {
+        return ('' + b.ngayBanHanh).localeCompare(a.ngayBanHanh);
+    });
 }
 
 function callTableDecision() {
-    let tmp = "";
-    ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
-        console.log(result)
-        if (result.length > 0) {
-            result.map(function (response, index) {
-                tmp += `
+    let arr= null;
+    $('#pagination').pagination({
+        dataSource: function (done) {
+            ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
+                arr=result;
+                sortDecision(arr)
+                done(arr);
+            });
+        },
+        pageSize: 10,
+        autoHidePrevious: true,
+        autoHideNext: true,
+        callback: function (result, pagination) {
+
+            // console.log(result)
+            if (result.length > 0) {
+                let tmp = "";
+                result.map(function (response, index) {
+                    tmp += `
                  <tr>
                             <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
-                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.trichYeu}</a>
+                            <td>${response.trichYeu}
                             </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
@@ -23,13 +47,16 @@ function callTableDecision() {
                             <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
-            });
-            $("#tableDecision tbody").html(tmp);
-        } else {
-            $("#tableDecision").html("<span>Không có dữ liệu</span>");
+
+                });
+                $("#tableDecision tbody").html(tmp);
+            } else {
+                $("#tableDecision").html("<span>Không có dữ liệu</span>");
+            }
         }
-    })
+    });
 }
+
 
 // .reverse()c
 function callCoQuanBanHanh() {
@@ -59,9 +86,13 @@ function callLoaiQuyetDinh() {
             `;
         })
         $("#dp-drop2").append(tmp);
-    })
-    searchLoaiQuyetDinh()
 
+        //them cho phan quyet dinhs
+        let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
+        $("#dp-drop2").val(idNhomQuyetDinh);
+        $("#dp-drop2").select2().trigger('change');
+    })
+    searchLoaiQuyetDinh();
 }
 
 function searchCoQuanBanHanh() {
@@ -69,27 +100,54 @@ function searchCoQuanBanHanh() {
         ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
             addDataAfterGet(data)
         });
+        $('#pagination').pagination({
+            dataSource: function (done) {
+                ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
+                    done(data)
+                });
+            },
+            pageSize: 10,
+
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (result, pagination) {
+                addDataAfterGet(result)
+            }
+        })
     })
 }
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
-        ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
-            addDataAfterGet(data);
-        });
+
+        $('#pagination').pagination({
+            dataSource: function (done) {
+                ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
+                    done(data)
+                });
+            },
+            pageSize: 10,
+
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (result, pagination) {
+                addDataAfterGet(result)
+            }
+        })
     });
 }
 
 function addDataAfterGet(data) {
-    let tmp = "";
+
     console.log(data)
     if (data.length > 0) {
+        let tmp = "";
         data.map(function (response, index) {
+            console.log(tmp)
             tmp += `
                 <tr>
                             <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
-                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.trichYeu}</a>
-                            </td>
+                            <td>${response.trichYeu} </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
                                 <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
@@ -113,14 +171,21 @@ function searchTextQuyetDinh() {
                 break;
             }
         }
-        // if ($("#searchTextQD").val() !== "") {
-        //
-        // } else {
-        //     alert("Vui lòng nhập từ khóa tìm kiếm ")
-        // }
-        ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
-            addDataAfterGet(data);
-        });
+        $('#pagination').pagination({
+            dataSource: function (done) {
+                ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
+                    done(data);
+                });
+            },
+            pageSize: 10,
+
+            autoHidePrevious: true,
+            autoHideNext: true,
+            callback: function (result, pagination) {
+                addDataAfterGet(result)
+            }
+        })
+
 
     })
 }

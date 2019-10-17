@@ -1,9 +1,14 @@
+var href = window.location.href;
 function callFullTableDecision() {
-    callTableDecision();
+    // callTableDecision();
     callCoQuanBanHanh();
     callLoaiQuyetDinh();
     searchTextQuyetDinh();
 
+    //them cho phan gia dat
+    if (href.indexOf("nhomQuyetDinh") == -1 ){
+        callTableDecision();
+    }
 }
 
 function sortDecision(arr) {
@@ -26,7 +31,7 @@ function callTableDecision() {
         autoHidePrevious: true,
         autoHideNext: true,
         callback: function (result, pagination) {
-            console.log(result)
+
             if (result.length > 0) {
                 let tmp = "";
                 result.map(function (response, index) {
@@ -80,9 +85,13 @@ function callLoaiQuyetDinh() {
             `;
         })
         $("#dp-drop2").append(tmp);
-    })
-    searchLoaiQuyetDinh()
 
+        //them cho phan quyet dinhs
+        let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
+        $("#dp-drop2").val(idNhomQuyetDinh);
+        $("#dp-drop2").select2().trigger('change');
+    })
+    searchLoaiQuyetDinh();
 }
 
 function searchCoQuanBanHanh() {

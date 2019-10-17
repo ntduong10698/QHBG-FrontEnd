@@ -53,10 +53,10 @@ function getTableBieu_QG02_CT02_CH02_QP02(data) {
                     </tr>`;
     dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td>
                     <td>${data.loaiDat.maKyHieu}</td>
-                    <td>${data.dienTich_QH_KH_DuocDuyet.toFixed(2)}</td>
-                    <td>${data.ketQuaDienTich.toFixed(2)}</td>
-                    <td>${data.ketQuaTangGiam.toFixed(2)}</td>
-                    <td>${data.ketQuaTyLe.toFixed(2)}</td>`;
+                    <td>${data.dienTich_QH_KH_DuocDuyet ==0 ? '' : data.dienTich_QH_KH_DuocDuyet.toFixed(2)}</td>
+                    <td>${data.ketQuaDienTich == 0 ? '' : data.ketQuaDienTich.toFixed(2)}</td>
+                    <td>${data.ketQuaTangGiam == 0 ? '' : data.ketQuaTangGiam.toFixed(2)}</td>
+                    <td>${data.ketQuaTyLe == 0 ? '' : data.ketQuaTyLe.toFixed(2)}</td>`;
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
                         <tbody><tr>${dataViewTable}</tr></tbody>
@@ -99,12 +99,12 @@ function getTableBieu_QG04_CT04_QP04(data) {
                     </tr>`;
     dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td>
                     <td>${data.loaiDat.maKyHieu}</td>
-                    <td>${data.dienTichCoCauTheoNams[0].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichCoCauTheoNams[0].coCau.toFixed(2)}</td>
-                    <td>${data.dienTichCoCauTheoNams[1].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichCoCauTheoNams[1].coCau.toFixed(2)}</td>
-                    <td>${data.dienTichCoCauTheoNams[2].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichCoCauTheoNams[2].coCau.toFixed(2)}</td>`;
+                    <td>${data.dienTichCoCauTheoNams[0].dienTich == 0 ? '' : data.dienTichCoCauTheoNams[0].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichCoCauTheoNams[0].coCau == 0 ? '' : data.dienTichCoCauTheoNams[0].coCau.toFixed(2)}</td>
+                    <td>${data.dienTichCoCauTheoNams[1].dienTich == 0 ? '' : data.dienTichCoCauTheoNams[1].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichCoCauTheoNams[1].coCau == 0 ? '' : data.dienTichCoCauTheoNams[1].coCau.toFixed(2)}</td>
+                    <td>${data.dienTichCoCauTheoNams[2].dienTich == 0 ? '' : data.dienTichCoCauTheoNams[2].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichCoCauTheoNams[2].coCau ==0 ? '': data.dienTichCoCauTheoNams[2].coCau.toFixed(2)}</td>`;
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
                         <tbody><tr>${dataViewTable}</tr></tbody>
@@ -140,12 +140,12 @@ function getTableBieu_QG08_CT07_QP06(data) {
                     </tr>`;
     dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td>
                     <td>${data.loaiDat.maKyHieu}</td>
-                    <td>${data.namHienTrang.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[0].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[1].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[2].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[3].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[4].dienTich.toFixed(2)}</td>`;
+                    <td>${data.namHienTrang == 0 ? '' : data.namHienTrang.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[0].dienTich == 0 ? '' : data.dienTichTheoNams[0].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[1].dienTich == 0 ? '' : data.dienTichTheoNams[1].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[2].dienTich == 0 ? '' : data.dienTichTheoNams[2].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[3].dienTich == 0 ? '' : data.dienTichTheoNams[3].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[4].dienTich == 0 ? '' : data.dienTichTheoNams[4].dienTich.toFixed(2)}</td>`;
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
                         <tbody><tr>${dataViewTable}</tr></tbody>
@@ -183,11 +183,11 @@ function getTableBieu_QG0911_CT0911_QP08(data) {
     dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td>
                     <td>${data.loaiDat.maKyHieu}</td>
                     <td>${data.tongDienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[0].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[1].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[2].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[3].dienTich.toFixed(2)}</td>
-                    <td>${data.dienTichTheoNams[4].dienTich.toFixed(2)}</td>`;
+                    <td>${data.dienTichTheoNams[0].dienTich == 0 ? '' : data.dienTichTheoNams[0].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[1].dienTich == 0 ? '' : data.dienTichTheoNams[1].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[2].dienTich == 0 ? '' : data.dienTichTheoNams[2].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[3].dienTich == 0 ? '' : data.dienTichTheoNams[3].dienTich.toFixed(2)}</td>
+                    <td>${data.dienTichTheoNams[4].dienTich == 0 ? '' : data.dienTichTheoNams[4].dienTich.toFixed(2)}</td>`;
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
                         <tbody><tr>${dataViewTable}</tr></tbody>
@@ -221,9 +221,9 @@ function getTableBieu_QG0506_CT0506_QP05(data) {
                     </tr>`;
     dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td>
                     <td>${data.loaiDat.maKyHieu}</td>
-                    <td>${data.caThoiKKy.toFixed(2)}</td>
-                    <td>${data.kyDau.toFixed(2)}</td>
-                    <td>${data.kyCuoi.toFixed(2)}</td>`;
+                    <td>${data.caThoiKKy == 0 ? '' : data.caThoiKKy.toFixed(2)}</td>
+                    <td>${data.kyDau == 0 ? '' : data.kyDau.toFixed(2)}</td>
+                    <td>${data.kyCuoi == 0 ? '' : data.kyCuoi.toFixed(2)}</td>`;
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
                         <tbody><tr>${dataViewTable}</tr></tbody>
@@ -250,9 +250,9 @@ function getTableBieu_CH01_CH04_CH05_Ch06_Ch07_CH08_CH09(data) {
     data.dienTichTheoXas.map(data1 => {
         viewThead += `<th>${data1.xa == null? "Xã ..." : data1.xa.tenXa}</th>`;
     })
-    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich.toFixed(2)}</td>`;
+    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich ==0 ? '' :data.tongDienTichdata.tongDienTich.toFixed(2)}</td>`;
     data.dienTichTheoXas.map(data1 => {
-        dataViewTable += `<td>${data1.dienTich.toFixed(2)}</td>`
+        dataViewTable += `<td>${data1.dienTich ==0 ? '' : data1.dienTich.toFixed(2)}</td>`
     })
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
@@ -281,11 +281,11 @@ function getTableBieu_CH03(data) {
     viewThead += "</tr></thead>";
     dataViewTable =`<td>${data.loaiDat.tenLoaiDat}</td>
                         <td>${data.loaiDat.maKyHieu}</td>
-                        <td>${data.dienTichCapTinhPhanBo.toFixed(2)}</td>
-                        <td>${data.dienTichCapHuyenXacDinh.toFixed(2)}</td>
-                        <td>${data.tongDienTich.toFixed(2)}</td>`;
+                        <td>${data.dienTichCapTinhPhanBo == 0 ? '' : data.dienTichCapTinhPhanBo.toFixed(2)}</td>
+                        <td>${data.dienTichCapHuyenXacDinh == 0 ? '' : data.dienTichCapHuyenXacDinh.toFixed(2)}</td>
+                        <td>${data.tongDienTich ==0 ? '' : data.tongDienTich.toFixed(2)}</td>`;
     data.dienTichTheoXas.map(data1 => {
-        dataViewTable += `<td>${data1.dienTich.toFixed(2)}</td>`
+        dataViewTable += `<td>${data1.dienTich == 0 ?'' : data1.dienTich.toFixed(2)}</td>`
     })
 
     viewTable = `<table class="table table-bordered">
@@ -317,12 +317,12 @@ function getTableBieu_CT0308(data) {
 
     dataViewTable =`<td>${data.loaiDat.tenLoaiDat}</td>
                         <td>${data.loaiDat.maKyHieu}</td>
-                        <td>${data.dienTichCapQGPhanBo.toFixed(2)}</td>
-                        <td>${data.dienTichCapTinhXD.toFixed(2)}</td>
-                        <td>${data.tongDienTich.toFixed(2)}</td>
-                        <td>${data.coCau === undefined ? "...": data.coCau === null ? "..." : data.coCau.toFixed(2)}</td>`;
+                        <td>${data.dienTichCapQGPhanBo == 0 ? '' : data.dienTichCapQGPhanBo.toFixed(2)}</td>
+                        <td>${data.dienTichCapTinhXD == 0 ? '' : data.dienTichCapTinhXD.toFixed(2)}</td>
+                        <td>${data.tongDienTich ==0 ? '' : data.tongDienTich.toFixed(2)}</td>
+                        <td>${data.coCau === undefined ? "..." : data.coCau === null ? "..." : data.coCau.toFixed(2)}</td>`;
     data.dienTichTheoHuyens.map(data => {
-        dataViewTable += `<td>${data.dienTich.toFixed(2)}</td>`
+        dataViewTable += `<td>${data.dienTich == 0 ? '' : data.dienTich.toFixed(2)}</td>`
     })
 
     viewTable = `<table class="table table-bordered">
@@ -349,9 +349,9 @@ function getTableBieu_CT01(data) {
         viewThead += `<th>${data1.huyen == null? "Huyện ..." : data1.huyen.tenHuyen}</th>`;
     })
     viewThead += `</tr></thead>`;
-    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich.toFixed(2)}</td><td>${data.coCau.toFixed(2)}</td>`;
+    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich == 0 ? '' : data.tongDienTich.toFixed(2)}</td><td>${data.coCau ==0 ? '' : data.coCau.toFixed(2)}</td>`;
     data.dienTichTheoHuyens.map(data1 => {
-        dataViewTable += `<td>${data1.dienTich.toFixed(2)}</td>`
+        dataViewTable += `<td>${data1.dienTich == 0 ? '' : data1.dienTich.toFixed(2)}</td>`
     })
     viewTable += `<table class="table table-bordered">
                         ${viewThead}
@@ -362,7 +362,7 @@ function getTableBieu_CT01(data) {
 //end Table HT_Tinh
 
 //callQuyetDinh
-function callQuyetDinh(maQuyetDinh) {
-    let url = `v1/public/quyet-dinh/find-by-so-quyet-dinh?so-quyet-dinh=${maQuyetDinh}`;
+function callQuyetDinhMap(maQuyetDinh, nam) {
+    let url = `v1/public/quyet-dinh/find-by-so-quyet-dinh-and-nam-dau?sqd=${maQuyetDinh}&nam-dau=${nam}`;
     return ajaxCallGet(url);
 }
