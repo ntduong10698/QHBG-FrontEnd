@@ -247,7 +247,7 @@
                                         <span>Giai đoạn 2015-2019</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href="quyet-dinh?nhomQuyetDinh=1"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
+                            <li><a href="quyet-dinh?nhomQuyetDinh=3"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
                                             thể</span></a></li>
                             <li><a href="he-so-dieu-chinh"><i class="fas fa-angle-double-right"></i> <span>Hệ số điều
                                             chỉnh</span></a></li>
