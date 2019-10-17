@@ -14,98 +14,98 @@
         </div>
         <div class="tbbwp" id="tableInfoSoild">
             <div class="table-HTQH">
-                <div class="table-wp">
-                    <div class="tablep-cap">
-                        <span>HIỆN TRẠNG SỬ DỤNG ĐẤT THÀNH PHỐ BẮC GIANG NĂM 2016</span>
-                    </div>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th rowspan="2">Chỉ tiêu</th>
-                            <th rowspan="2">Mã</th>
-                            <th rowspan="2">Diện tích</th>
-                            <th rowspan="2">Cơ cấu</th>
-                            <th colspan="10">Phân theo đơn vị hành chính</th>
-                        </tr>
-                        <tr>
-                            <th>TP.Bắc Giang</th>
-                            <th>Huyện Hiệp Hòa</th>
-                            <th>Huyện Yên Dũng</th>
-                            <th>Huyện Lục Nam</th>
-                            <th>Huyện Sơn Đông</th>
-                            <th>Huyện Lạng Giang</th>
-                            <th>Huyện Việt Yên</th>
-                            <th>Huyện Tân Yên</th>
-                            <th>Huyện Lục Ngạn</th>
-                            <th>Huyện Yên Thế</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Đất chuyên trồng lúa nước</td>
-                            <td>LUC</td>
-                            <td>2072.85</td>
-                            <td>81.09</td>
-                            <td>0</td>
-                            <td>272.44</td>
-                            <td>72.12</td>
-                            <td>0.15</td>
-                            <td>0</td>
-                            <td>54.05</td>
-                            <td>0.89</td>
-                            <td>0.03</td>
-                            <td>49.05</td>
-                            <td>37.91</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-wp">
-                    <div class="tablep-cap">
-                        <span>HIỆN TRẠNG SỬ DỤNG ĐẤT THÀNH PHỐ BẮC GIANG NĂM 2016</span>
-                    </div>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th rowspan="2">Chỉ tiêu</th>
-                            <th rowspan="2">Mã</th>
-                            <th rowspan="2">Diện tích</th>
-                            <th rowspan="2">Cơ cấu</th>
-                            <th colspan="10">Phân theo đơn vị hành chính</th>
-                        </tr>
-                        <tr>
-                            <th>TP.Bắc Giang</th>
-                            <th>Huyện Hiệp Hòa</th>
-                            <th>Huyện Yên Dũng</th>
-                            <th>Huyện Lục Nam</th>
-                            <th>Huyện Sơn Đông</th>
-                            <th>Huyện Lạng Giang</th>
-                            <th>Huyện Việt Yên</th>
-                            <th>Huyện Tân Yên</th>
-                            <th>Huyện Lục Ngạn</th>
-                            <th>Huyện Yên Thế</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Đất chuyên trồng lúa nước</td>
-                            <td>LUC</td>
-                            <td>2072.85</td>
-                            <td>81.09</td>
-                            <td>0</td>
-                            <td>272.44</td>
-                            <td>72.12</td>
-                            <td>0.15</td>
-                            <td>0</td>
-                            <td>54.05</td>
-                            <td>0.89</td>
-                            <td>0.03</td>
-                            <td>49.05</td>
-                            <td>37.91</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+<%--                <div class="table-wp">--%>
+<%--                    <div class="tablep-cap">--%>
+<%--                        <span>HIỆN TRẠNG SỬ DỤNG ĐẤT THÀNH PHỐ BẮC GIANG NĂM 2016</span>--%>
+<%--                    </div>--%>
+<%--                    <table class="table table-bordered">--%>
+<%--                        <thead>--%>
+<%--                        <tr>--%>
+<%--                            <th rowspan="2">Chỉ tiêu</th>--%>
+<%--                            <th rowspan="2">Mã</th>--%>
+<%--                            <th rowspan="2">Diện tích</th>--%>
+<%--                            <th rowspan="2">Cơ cấu</th>--%>
+<%--                            <th colspan="10">Phân theo đơn vị hành chính</th>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>TP.Bắc Giang</th>--%>
+<%--                            <th>Huyện Hiệp Hòa</th>--%>
+<%--                            <th>Huyện Yên Dũng</th>--%>
+<%--                            <th>Huyện Lục Nam</th>--%>
+<%--                            <th>Huyện Sơn Đông</th>--%>
+<%--                            <th>Huyện Lạng Giang</th>--%>
+<%--                            <th>Huyện Việt Yên</th>--%>
+<%--                            <th>Huyện Tân Yên</th>--%>
+<%--                            <th>Huyện Lục Ngạn</th>--%>
+<%--                            <th>Huyện Yên Thế</th>--%>
+<%--                        </tr>--%>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <tr>--%>
+<%--                            <td>Đất chuyên trồng lúa nước</td>--%>
+<%--                            <td>LUC</td>--%>
+<%--                            <td>2072.85</td>--%>
+<%--                            <td>81.09</td>--%>
+<%--                            <td>0</td>--%>
+<%--                            <td>272.44</td>--%>
+<%--                            <td>72.12</td>--%>
+<%--                            <td>0.15</td>--%>
+<%--                            <td>0</td>--%>
+<%--                            <td>54.05</td>--%>
+<%--                            <td>0.89</td>--%>
+<%--                            <td>0.03</td>--%>
+<%--                            <td>49.05</td>--%>
+<%--                            <td>37.91</td>--%>
+<%--                        </tr>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
+<%--                </div>--%>
+<%--                <div class="table-wp">--%>
+<%--                    <div class="tablep-cap">--%>
+<%--                        <span>HIỆN TRẠNG SỬ DỤNG ĐẤT THÀNH PHỐ BẮC GIANG NĂM 2016</span>--%>
+<%--                    </div>--%>
+<%--                    <table class="table table-bordered">--%>
+<%--                        <thead>--%>
+<%--                        <tr>--%>
+<%--                            <th rowspan="2">Chỉ tiêu</th>--%>
+<%--                            <th rowspan="2">Mã</th>--%>
+<%--                            <th rowspan="2">Diện tích</th>--%>
+<%--                            <th rowspan="2">Cơ cấu</th>--%>
+<%--                            <th colspan="10">Phân theo đơn vị hành chính</th>--%>
+<%--                        </tr>--%>
+<%--                        <tr>--%>
+<%--                            <th>TP.Bắc Giang</th>--%>
+<%--                            <th>Huyện Hiệp Hòa</th>--%>
+<%--                            <th>Huyện Yên Dũng</th>--%>
+<%--                            <th>Huyện Lục Nam</th>--%>
+<%--                            <th>Huyện Sơn Đông</th>--%>
+<%--                            <th>Huyện Lạng Giang</th>--%>
+<%--                            <th>Huyện Việt Yên</th>--%>
+<%--                            <th>Huyện Tân Yên</th>--%>
+<%--                            <th>Huyện Lục Ngạn</th>--%>
+<%--                            <th>Huyện Yên Thế</th>--%>
+<%--                        </tr>--%>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <tr>--%>
+<%--                            <td>Đất chuyên trồng lúa nước</td>--%>
+<%--                            <td>LUC</td>--%>
+<%--                            <td>2072.85</td>--%>
+<%--                            <td>81.09</td>--%>
+<%--                            <td>0</td>--%>
+<%--                            <td>272.44</td>--%>
+<%--                            <td>72.12</td>--%>
+<%--                            <td>0.15</td>--%>
+<%--                            <td>0</td>--%>
+<%--                            <td>54.05</td>--%>
+<%--                            <td>0.89</td>--%>
+<%--                            <td>0.03</td>--%>
+<%--                            <td>49.05</td>--%>
+<%--                            <td>37.91</td>--%>
+<%--                        </tr>--%>
+<%--                        </tbody>--%>
+<%--                    </table>--%>
+<%--                </div>--%>
             </div>
             <div class="table-QHK">
             </div>
