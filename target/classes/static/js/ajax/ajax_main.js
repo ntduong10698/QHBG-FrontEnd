@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    activeMenu();
     checkLogin();
     checkpass();
     checkStatusLogin();
@@ -449,4 +450,29 @@ function callThongKeTruyCap() {
 
 function callThongKeTruyCapTru() {
     return ajaxCallGet('v1/public/thong-ke-truy-cap?plus=false');
+}
+
+function activeMenu() {
+    let href = window.location.href;
+    if (href.indexOf("gia-dat") > -1) {
+        $("ul.header__menu li:nth-child(2)").css("background","#0063ac");
+    }
+    if (href.indexOf("quy-hoach") > -1) {
+        $("ul.header__menu li:nth-child(3)").css("background","#0063ac");
+    }
+    if (href.indexOf("ke-hoach") > -1) {
+        $("ul.header__menu li:nth-child(4)").css("background","#0063ac");
+    }
+    if (href.indexOf("du-an") > -1) {
+        $("ul.header__menu li:nth-child(5)").css("background","#0063ac");
+    }
+    if (href.indexOf("quyet-dinh") > -1) {
+        $("ul.header__menu li:nth-child(6)").css("background","#0063ac");
+    }
+    if (href.indexOf("huong-dan") > -1) {
+        $("ul.header__menu li:nth-child(7)").css("background","#0063ac");
+    }
+    if (href.indexOf("gop-y") > -1) {
+        $("ul.header__menu li:nth-child(8)").css("background","#0063ac");
+    }
 }
