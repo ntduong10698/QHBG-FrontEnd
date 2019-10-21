@@ -33,21 +33,7 @@ function callTableDecision() {
         callback: function (result, pagination) {
 
             if (result.length > 0) {
-                let tmp = "";
-                result.map(function (response, index) {
-                    tmp += `
-                 <tr>
-                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
-                            <td>${response.trichYeu}
-                            </td>
-                            <td>${response.coQuanBanHanh.tenCoQUan} </td>
-                            <td><span>${response.chucVu} ${response.nguoiKy}</span>
-                                <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
-                            <td> <a href="thong-tin-quyet-dinh?id=${response.id}"><i class="fas fa-paperclip"></i></a></td>
-                        </tr>
-                `;
-
-                });
+                let tmp = addDataAfterGet(result);
                 $("#tableDecision tbody").html(tmp);
             } else {
                 $("#tableDecision").html("<span>Không có dữ liệu</span>");
@@ -145,12 +131,12 @@ function addDataAfterGet(data) {
             console.log(tmp)
             tmp += `
                 <tr>
-                            <td><a href="thong-tin-quyet-dinh?id=${response.id}">${response.soQuyetDinh} </a></td>
+                            <td><a href="thong-tin-quyet-dinh?id=${response.id}" target="_blank">${response.soQuyetDinh} </a></td>
                             <td>${response.trichYeu} </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu} ${response.nguoiKy}</span>
                                 <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
-                            <td> <a href=""><i class="fas fa-paperclip"></i></a></td>
+                            <td> <a href="${response.duongDanTep}" target="_blank"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
         });
