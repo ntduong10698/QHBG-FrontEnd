@@ -458,6 +458,10 @@ function callThongKeTruyCapTru() {
     return ajaxCallGet('v1/public/thong-ke-truy-cap?plus=false');
 }
 
+function callHuyen() {
+    return ajaxCallGet('v1/public/huyen/find-by-ten-tinh?ten-tinh=Bắc Giang');
+}
+
 function activeMenu() {
     let href = window.location.href;
     if (href.indexOf("gia-dat") > -1) {

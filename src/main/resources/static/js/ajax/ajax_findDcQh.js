@@ -6,10 +6,14 @@ $(function () {
 
 function setSelectHuyen() {
     let view = '<option value="0">Gõ để tìm kiếm</option>';
-    ARR_HUYEN_TEXT.map((data, index) => {
-        view += `<option value="${index + 1}">${data}</option>`;
+    callHuyen().then(data1 => {
+        data1.map((data, index) => {
+            view += `<option value="${data.idHuyen}">${data.tenHuyen}</option>`;
+        })
+        $("#dp-drop7").html(view);
+    }).catch(err => {
+        console.log(err);
     })
-    $("#dp-drop7").html(view);
 }
 
 function callDieuChinhQuyHoach(page) {

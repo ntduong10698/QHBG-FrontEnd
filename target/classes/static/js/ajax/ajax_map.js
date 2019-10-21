@@ -75,12 +75,13 @@ function viewInforQuyetDinh() {
     $("#chiTietQuyetDinhMap ul").html(view);
     if (maQuyetDinh != null) {
         callQuyetDinhMap(maQuyetDinh.toUpperCase(),year).then(data => {
+            console.log(data);
             if (data.length > 0) {
                 $("#chiTietQuyetDinhMap ul li:nth-child(2)").html(data[0].trichYeu);
                 $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : "...");
                 $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data[0].nguoiKy);
                 $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "...");
-                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}">Link đính kèm</a>` : '<a href="#">Link đính kèm</a>'}`);
+                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}" target="_blank">${maQuyetDinh}</a>` : '<a href="#">Link đính kèm</a>'}`);
             }
         }).catch(err => {
             console.log(err);
@@ -595,6 +596,7 @@ require([
                 queryXaHuyen.returnGeometry = true;
                 queryXaHuyen.outFields = ["*"];
                 queryXaHuyen.where = queryViewXaHuyen;
+                console.log(queryXaHuyen);
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
                     searchViewXaPhuong = results;
                     let arrXaHuyen = results.features;

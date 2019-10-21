@@ -8,7 +8,7 @@ var viewTableDuongData = ''; //co chua gia
 
 $(function () {
     setViewSelectHuyen(); //set truong hop default
-    callBangGiaDatPNN();
+    // callBangGiaDatPNN();
     // changeSelectBangGiaDatPNN();
 })
 
@@ -50,17 +50,22 @@ function callBangGiaDatPNN() {
 //set View select huyen
 function setViewSelectHuyen() {
     // let viewSelectHuyen = `<option value='0'>--- Gõ để tìm kiếm ---</option>`;
-    let viewSelectHuyen = "";
-    ARR_HUYEN_TEXT.map((huyen, index) => {
-        viewSelectHuyen += `<option value=${index + 1}>${huyen}</option>`;
-    })
-    $("#dp-drop10").html(viewSelectHuyen);
-    $("#dp-drop10").val("1");
-    $("#dp-drop10").select2().trigger('change');
-    // setViewSelectXa(1);
-    $("#dp-drop10").change(function () {
-        // setViewSelectXa($("#dp-drop10").val());
-        callSelectBangGiaDatPNN();
+    callHuyen().then(data => {
+        let viewSelectHuyen = "";
+        data.map((huyen, index) => {
+            viewSelectHuyen += `<option value=${huyen.idHuyen}>${huyen.tenHuyen}</option>`;
+        })
+        $("#dp-drop10").html(viewSelectHuyen);
+        $("#dp-drop10").val("1");
+        $("#dp-drop10").select2().trigger('change');
+        // setViewSelectXa(1);
+        $("#dp-drop10").change(function () {
+            // setViewSelectXa($("#dp-drop10").val());
+            callSelectBangGiaDatPNN();
+        })
+        callBangGiaDatPNN();
+    }).catch(err => {
+        console.log(err);
     })
 }
 
