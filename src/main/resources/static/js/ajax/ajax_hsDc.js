@@ -6,7 +6,7 @@ var viewTableDuong = ''; // chua co gia
 var viewTableDuongData = ''; //co chua gia
 $(function () {
     setViewSelectHuyenHsDc();
-    callBangGiaDatPNNHsDc();
+    // callBangGiaDatPNNHsDc();
 })
 
 //GENERAL
@@ -14,15 +14,20 @@ $(function () {
 //set View select huyen
 function setViewSelectHuyenHsDc() {
     // let viewSelectHuyen = `<option value='0'>--- Gõ để tìm kiếm ---</option>`;
-    let viewSelectHuyen = "";
-    ARR_HUYEN_TEXT.map((huyen, index) => {
-        viewSelectHuyen += `<option value=${index + 1}>${huyen}</option>`;
-    })
-    $("#dp-drop15").html(viewSelectHuyen);
-    $("#dp-drop15").val("1");
-    $("#dp-drop15").select2().trigger('change');
-    $("#dp-drop15").change(function () {
-        callSelectBangGiaDatPNNHsDc();
+    callHuyen().then(data => {
+        let viewSelectHuyen = "";
+        data.map((huyen, index) => {
+            viewSelectHuyen += `<option value=${huyen.idHuyen}>${huyen.tenHuyen}</option>`;
+        })
+        $("#dp-drop15").html(viewSelectHuyen);
+        $("#dp-drop15").val("1");
+        $("#dp-drop15").select2().trigger('change');
+        $("#dp-drop15").change(function () {
+            callSelectBangGiaDatPNNHsDc();
+        })
+        callBangGiaDatPNNHsDc();
+    }).catch(err => {
+        console.log(err);
     })
 }
 
@@ -362,7 +367,7 @@ function setTableGiaDatPhiNongNghiepHsDc(viewData, idHuyen){
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
                         <tr>
-                            <th>Cấp</th>
+                            <th>STT</th>
                             <th style="width: 360px !important;">Tên đường, đoạn đường</th>
                             <th>Vị trí 1</th>
                             <th>Vị trí 2</th>
