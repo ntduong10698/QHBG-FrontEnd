@@ -78,6 +78,11 @@ function setViewSelectXa(idHuyen) {
             viewSelectXa += `<option value=${xa.idXa}>${xa.tenXa}</option>`
         })
         $("#dp-drop11").html(viewSelectXa);
+        $("#dp-drop11").unbind('change'); //reset function change
+        $("#dp-drop11").select2({
+            placeholder: "--- Gõ để tìm kiếm ---",
+            allowClear: true
+        });
         changeViewLoaiXa(arrTable, idHuyen); //set default full arrTable
         $("#dp-drop11").change(function () {
             viewLoadingGif();
@@ -135,6 +140,7 @@ function callSelectBangGiaDatPNN() {
         })
     }
     //run export Excel
+    $("#exportExel a").unbind("click");
     $("#exportExel a").click(function () {
         exportExcel("tableExport","BangGiaDatPhiNongNghiep");
         return false;
@@ -248,8 +254,16 @@ function changeViewLoaiXa(arrFindXa, idHuyen) {
 
 //set table GiaDatNongThon
 function setTableGiaDatNongThon(rs,idHuyen) {
-   let arrTD = rs.filter(data => data.loaiXa.parent.idDmLoaiXa == 1);
-   let arrMN = rs.filter(data => data.loaiXa.parent.idDmLoaiXa == 2);
+   let arrTD = rs.filter(data => {
+       if (data.loaiXa.parent !== null) {
+           return data.loaiXa.parent.idDmLoaiXa == 1;
+       }
+   });
+   let arrMN = rs.filter(data => {
+       if (data.loaiXa.parent !== null) {
+           return data.loaiXa.parent.idDmLoaiXa == 2;
+       }
+   });
    let viewTable = '';
    let viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;

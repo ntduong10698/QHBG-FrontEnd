@@ -43,18 +43,22 @@ function setSelectDat() {
 function setSelectDonVi() {
     let viewSelect = '';
     let option = 1;
-    ARR_HUYEN_TEXT.map((data, index) => {
-        viewSelect += `<option value="${index + 1}">${data}</option>`;
+    callHuyen().then(data1 => {
+        data1.map((data, index) => {
+            viewSelect += `<option value="${data.idHuyen}">${data.tenHuyen}</option>`;
+        })
+        if (checkPage === 0 ) {
+            viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
+            option = 0;
+        } else {
+            setViewSelectYear();
+        }
+        $("#dp-drop6").html(viewSelect);
+        $("#dp-drop6").val(option);
+        $("#dp-drop6").select2().trigger('change');
+    }).catch(err => {
+        console.log(err);
     })
-    if (checkPage === 0 ) {
-        viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
-        option = 0;
-    } else {
-        setViewSelectYear();
-    }
-    $("#dp-drop6").html(viewSelect);
-    $("#dp-drop6").val(option);
-    $("#dp-drop6").select2().trigger('change');
 }
 //click search 
 function clickSearchTraCuu() {

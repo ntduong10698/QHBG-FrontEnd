@@ -19,10 +19,10 @@
                     <span class="ftifo-cap">Sở tài nguyên và môi trường tỉnh Bắc Giang</span>
                     <a href="https://www.google.com/maps/place/Sở+Tài+nguyên+và+Môi+trường+tỉnh+Bắc+Giang/@21.2771565,106.1935929,17z/data=!3m1!4b1!4m5!3m4!1s0x31356d0d66577871:0x627892764830097b!8m2!3d21.2771565!4d106.1957816?hl=vi-VN" target="_blank">
                         <span><i class="fas fa-map-marker-alt"></i> </span> Số 50 Đường Ngô Gia Tự - Thành phố Bắc Giang - Tỉnh Bắc Giang</a>
-                    <a href="tel:0204.3856047"><span><i class="fas fa-phone"></i></span>0204.3856047 -
-                        0204.3858831</a>
-                    <a href="mailto: so_tnmt_vt@bacgiang.gov.vn"><span><i class="fas fa-envelope"></i></span>
-                        so_tnmt_vt@bacgiang.gov.vn</a>
+                    <a href="tel:0204.3856047" style="display: inline-flex;"><span><i class="fas fa-phone"></i></span>0204.3856047 - </a>
+                    <a href="tel:0204.3858831" style="display: inline-block;">0204.3858831</a>
+                    <a href="mailto:banbientap_stmt@bacgiang.gov.vn"><span><i class="fas fa-envelope"></i></span>
+                        banbientap_stmt@bacgiang.gov.vn</a>
                     <a href="https://stnmt.bacgiang.gov.vn/" target="_blank"><span><i class="fas fa-globe"></i></span>
                         https://stnmt.bacgiang.gov.vn/</a>
                 </div>

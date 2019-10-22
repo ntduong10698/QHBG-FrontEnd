@@ -18,8 +18,7 @@
                                 </div>
                                 <div class="sntext-wp">
                                     <span class="snt-cap">Giá đất</span>
-                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất theo nhà
-                                            nước...</span>
+                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất của tỉnh Bắc Giang...</span>
                                 </div>
                             </div>
                             <div class="snimg-arrow">
@@ -33,8 +32,7 @@
                                 </div>
                                 <div class="sntext-wp">
                                     <span class="snt-cap">Quy hoạch & Kế hoạch</span>
-                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất theo nhà
-                                            nước...</span>
+                                    <span>Ứng dụng quy hoạch & kế hoạch giúp hiện thị thông tin bản đồ quy hoạch và kế hoạch của tỉnh Bắc Giang...</span>
                                 </div>
                             </div>
                             <div class="snimg-arrow">
@@ -49,8 +47,7 @@
                                 </div>
                                 <div class="sntext-wp">
                                     <span class="snt-cap">Công trình & Dự án</span>
-                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất theo nhà
-                                            nước...</span>
+                                    <span>Ứng dụng công trình và dự án giúp bạn tra thông tin về công trình và dự án của tỉnh Bắc Giang...</span>
                                 </div>
                             </div>
                             <div class="snimg-arrow">
@@ -65,8 +62,7 @@
                                 </div>
                                 <div class="sntext-wp">
                                     <span class="snt-cap">Quyết định</span>
-                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất theo nhà
-                                            nước...</span>
+                                    <span>Ứng dụng quyết định giúp bạn tra thông tin về các quyết định liên quan về đất tỉnh Bắc Giang ...</span>
                                 </div>
                             </div>
                             <div class="snimg-arrow">
@@ -81,8 +77,7 @@
                                 </div>
                                 <div class="sntext-wp">
                                     <span class="snt-cap">Hướng dẫn</span>
-                                    <span>Ứng dụng giá đất giúp bạn tra thông tin về quy định giá đất theo nhà
-                                            nước...</span>
+                                    <span>Ứng dụng hướng dẫn giúp bạn tìm hiểu các thao tác với web...</span>
                                 </div>
                             </div>
                             <div class="snimg-arrow">

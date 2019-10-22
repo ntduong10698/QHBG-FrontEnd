@@ -81,7 +81,7 @@ function viewInforQuyetDinh() {
                 $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : "...");
                 $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data[0].nguoiKy);
                 $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "...");
-                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}" target="_blank">${maQuyetDinh}</a>` : '<a href="#">Link đính kèm</a>'}`);
+                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}" target="_blank">${maQuyetDinh}</a>` : ''}`);
             }
         }).catch(err => {
             console.log(err);
