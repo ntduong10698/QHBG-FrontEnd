@@ -6,10 +6,14 @@ $(function () {
 
 function setSelectHuyen() {
     let view = '<option value="0">Gõ để tìm kiếm</option>';
-    ARR_HUYEN_TEXT.map((data, index) => {
-        view += `<option value="${index + 1}">${data}</option>`;
+    callHuyen().then(data1 => {
+        data1.map((data, index) => {
+            view += `<option value="${data.idHuyen}">${data.tenHuyen}</option>`;
+        })
+        $("#dp-drop7").html(view);
+    }).catch(err => {
+        console.log(err);
     })
-    $("#dp-drop7").html(view);
 }
 
 function callDieuChinhQuyHoach(page) {
@@ -78,7 +82,7 @@ function pageAblePage(size) {
 }
 
 function callSearchDcQuyHoach(viTri, huyenId, soQuyetDinh) {
-    let url = `v1/public/quyet-dinh/thong-tin-dieu-chinh-quy-hoach/filter?viTri=${viTri}&huyen-id=${huyenId}&so-quyet-dinh=${soQuyetDinh.toUpperCase()}`;
+    let url = `v1/public/quyet-dinh/thong-tin-dieu-chinh-quy-hoach/filter?vi-tri=${viTri}&huyen-id=${huyenId}&so-quyet-dinh=${soQuyetDinh.toUpperCase()}`;
     return ajaxCallGet(url);
 }
 

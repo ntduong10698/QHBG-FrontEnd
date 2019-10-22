@@ -82,7 +82,7 @@ function pageAblePage(size) {
 }
 
 function callSearchDcQuyHoach(viTri, huyenId, soQuyetDinh) {
-    let url = `v1/public/quyet-dinh/thong-tin-dieu-chinh-quy-hoach/filter?viTri=${viTri}&huyen-id=${huyenId}&so-quyet-dinh=${soQuyetDinh.toUpperCase()}`;
+    let url = `v1/public/quyet-dinh/thong-tin-dieu-chinh-quy-hoach/filter?vi-tri=${viTri}&huyen-id=${huyenId}&so-quyet-dinh=${soQuyetDinh.toUpperCase()}`;
     return ajaxCallGet(url);
 }
 

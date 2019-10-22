@@ -179,7 +179,7 @@ function checkResign() {
 
 // gửi email xác thực tài khoản
 function sendEmailXacThucTaiKhoan(id, email) {
-    ajaxCallGet("v1/public/email?email=" + email + "&header=Xác thực tài khoản" + "&content= Nhấn vào liên kết để kích hoạt tài khoản của bạn: http://localhost:8080/xac-thuc?id=" + id).then(data => {
+    ajaxCallGet("v1/public/email?email=" + email + "&header=Xác thực tài khoản" + `&content= Nhấn vào liên kết để kích hoạt tài khoản của bạn: ${getUrlEmailActive()}/xac-thuc?id=` + id).then(data => {
     })
 }
 
@@ -445,7 +445,7 @@ function getViewQuyetDinh(quyetDinh) {
                     <span>Tệp đình kèm theo:</span>
                 </div>
                 <div class="pr-infor-right col-9">
-                    <span><a href=${quyetDinh.duongDanTep}>${quyetDinh.soQuyetDinh}</a></span>
+                    <span>${quyetDinh.duongDanTep == null ? '' : `<a href=${quyetDinh.duongDanTep} target="_blank">${quyetDinh.soQuyetDinh}</a>`}</span>
                 </div>
             </div>`;
 }
@@ -495,5 +495,20 @@ function setImageThongKe(tongTruyCap) {
         arr.map((data, index) => {
             $(`.image-number-couter img:nth-child(${6 - index})`).attr('src',`/resources/img/icons8-${data}-100.png`);
         })
+    }
+}
+
+function getUrlEmailActive() {
+    let host = window.location.hostname;
+    let port = window.location.port;
+    console.log(port);
+    if (port.length > 0) {
+        if (host === 'localhost' || host === '127.0.0.1') {
+            return "http://"+host+":"+port;
+        } else{
+            return  "http://"+host+":"+port+"/qh_bacgiang_gov_vn";
+        }
+    } else {
+        return "https://www."+window.location.hostname;
     }
 }

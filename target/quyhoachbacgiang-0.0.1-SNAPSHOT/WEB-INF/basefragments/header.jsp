@@ -23,10 +23,10 @@
                     <input type="password" id="password" placeholder="Mật khẩu" required>
                     <span style="margin-top: 5px;float: left" class="error "> Mật khẩu không được bỏ trống </span>
                 </div>
-                <div class="rpw">
-                    <input type="checkbox">
-                    <span>Nhớ tài khoản và mật khẩu</span>
-                </div>
+<%--                <div class="rpw">--%>
+<%--                    <input type="checkbox">--%>
+<%--                    <span>Nhớ tài khoản và mật khẩu</span>--%>
+<%--                </div>--%>
                 <span class="libt"> <button id="submit-log">Đăng nhập</button></span>
                 <div class="listatus">
                     <a class="out">Thoát</a>
@@ -55,7 +55,7 @@
                 <div class="sicitem-wp">
                     <div>
                         <span>Email: <span>(*)</span> </span>
-                        <span class="error">Họ và tên không được bỏ trống </span>
+                        <span class="error">Email không được bỏ trống </span>
                         <span class="error">Email không đúng định dạng</span>
                     </div>
 
@@ -137,7 +137,7 @@
         <div class="container">
             <div class="row d-flex justify-content-between">
                 <div class="col-8 d-flex p-0 hdleft">
-                    <a class="icon" href="mailto:so_tnmt_vt@bacgiang.gov.vn" title="Mail">
+                    <a class="icon" href="mailto:banbientap_stmt@bacgiang.gov.vn" title="Mail">
                         <div class="ihwp">
                             <i class="fas fa-envelope"></i>
                         </div>

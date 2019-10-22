@@ -338,3 +338,7 @@ function exportExcel(tableSelect, fileNameExport) {
 function testInput(str, strReg) {
     return str.match(strReg); //tra ve null nếu không trùng
 }
+
+function viewTextXa(xa) {
+    return xa.indexOf("TT") > -1 ? "TT "+xa.split("TT")[1]: xa;
+}
