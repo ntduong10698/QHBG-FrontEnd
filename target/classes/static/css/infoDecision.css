@@ -86,3 +86,10 @@ main{
     padding: 5px;
     font-size: var(--font13);
 }
+#quyetDinhLienQuan thead th{
+    text-align: center;
+    padding: 5px 10px;
+}
+#quyetDinhLienQuan tbody td{
+    padding: 5px 10px;
+}

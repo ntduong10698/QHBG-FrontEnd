@@ -1,4 +1,5 @@
 var href = window.location.href;
+
 function callFullTableDecision() {
     // callTableDecision();
     callCoQuanBanHanh();
@@ -6,9 +7,13 @@ function callFullTableDecision() {
     searchTextQuyetDinh();
 
     //them cho phan gia dat
-    if (href.indexOf("nhomQuyetDinh") == -1 ){
+    if (href.indexOf("nhomQuyetDinh") == -1) {
         callTableDecision();
     }
+    $("#exportExel a").click(function () {
+        exportExcel("tableDecision","QuyetDinh");
+        return false;
+    })
 }
 
 function sortDecision(arr) {
@@ -18,11 +23,13 @@ function sortDecision(arr) {
 }
 
 function callTableDecision() {
-    let arr= null;
+    viewLoadingGif();
+    let arr = null;
     $('#pagination').pagination({
         dataSource: function (done) {
             ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
-                arr=result;
+                hideLoadingGif();
+                arr = result;
                 sortDecision(arr)
                 done(arr);
             });
@@ -103,10 +110,12 @@ function searchCoQuanBanHanh() {
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
+        viewLoadingGif();
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
-                    done(data)
+                    hideLoadingGif();
+                    done(data);
                 });
             },
             pageSize: 10,
@@ -145,6 +154,7 @@ function addDataAfterGet(data) {
 
 function searchTextQuyetDinh() {
     $("#searchQuyetDinh").click(function () {
+        viewLoadingGif();
         let test = document.getElementsByName("r1");
         let valuee = 0;
         for (let i = 0; i < test.length; i++) {
@@ -156,6 +166,7 @@ function searchTextQuyetDinh() {
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
+                    hideLoadingGif();
                     done(data);
                 });
             },

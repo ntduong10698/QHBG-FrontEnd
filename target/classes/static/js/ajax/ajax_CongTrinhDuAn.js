@@ -3,6 +3,10 @@ $(document).ready(function () {
     getLoaiDuAn();
     pagination_CongTrinhDuAn()
     findCongTrinhDuAn()
+    $("#exportExel a").click(function () {
+        exportExcel("tableCongTrinhDuAn", "DuAn");
+        return false;
+    });
 });
 
 function getHuyen() {
@@ -47,7 +51,7 @@ function checkCacTruong(result) {
 
 function findCongTrinhDuAn() {
     $("#clickSearchDuAn").click(function () {
-
+        viewLoadingGif();
         $('#pagination_CongTrinh').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/cong-trinh-du-an/filter?ten-cong-trinh=" + $("#nameProject").val() + "&dia-diem=" + $("#diaDiemDuAn").val() + "&loai-du-an=" + $("#dp-drop4").val() + "&huyen=" + $("#dp-drop3").val()).then(data => {
@@ -58,6 +62,7 @@ function findCongTrinhDuAn() {
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (data, pagination) {
+                hideLoadingGif();
                 if (data.length > 0) {
                     checkCacTruong(data)
                     let tmp = "";
@@ -172,11 +177,10 @@ function clickHide() {
 }
 
 function pagination_CongTrinhDuAn() {
-
+    viewLoadingGif();
     let arr;
     ajaxCallGet("v1/public/cong-trinh-du-an/count-page").then(data => {
         arr = new Array(data);
-        console.log(arr.length)
         $('#pagination_CongTrinh').pagination({
             dataSource: arr,
             pageSize: 1,
@@ -184,6 +188,7 @@ function pagination_CongTrinhDuAn() {
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (data, pagination) {
+                hideLoadingGif();
                 let tmp = "";
                 $.ajax({
                     type: 'GET',
@@ -195,19 +200,12 @@ function pagination_CongTrinhDuAn() {
                     url: URL_API + 'v1/public/cong-trinh-du-an/page?page=' + pagination.pageNumber,
                     timeout: 2000,
                     success: function (response) {
+
                         console.log(response)
-                        if (pagination.pageNumber < 2) {
-                            pagination.pageNumber = 0;
-                        } else {
-                            pagination.pageNumber = (pagination.pageNumber - 1) * 10;
-                        }
+                        pagination.pageNumber = (pagination.pageNumber - 1) * 10;
                         response.map(function (result, index) {
 
-                            if (pagination.pageNumber < 2) {
-                                index += 1;
-                            } else {
-                                index += 1;
-                            }
+
                             checkCacTruong(result);
                             let tenHuyen = "";
                             if (result.huyen !== null) {
@@ -215,7 +213,7 @@ function pagination_CongTrinhDuAn() {
                             }
                             tmp += `
              <tr>
-                        <td>${pagination.pageNumber + index}</td>
+                        <td>${pagination.pageNumber + index + 1}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
