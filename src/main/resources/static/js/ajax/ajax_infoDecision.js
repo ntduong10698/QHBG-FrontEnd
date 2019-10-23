@@ -156,8 +156,8 @@ function getQuyetDinhLienQuan(id) {
                                 <td style="text-align:center;width:5%">${index + 1}</td>
                                 <td style="width:25%">${result.viTri}</td>
                                 <td style="width:30%">${result.moTa}</td>
-                                <td style="width:30%">${result.lyDo}</td>
-                                <td style="width:10%; text-align:center">${formatNumber(result.giaDat, '.', '.')}<sup class="sup-text">2</sup>
+                                <td style="width:30%">${formatNumber(result.giaDat, '.', '.')}</td>
+                               
                                 </td>
                             </tr>
 `;
