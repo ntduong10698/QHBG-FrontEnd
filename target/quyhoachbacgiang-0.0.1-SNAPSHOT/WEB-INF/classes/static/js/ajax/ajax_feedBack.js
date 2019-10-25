@@ -37,8 +37,8 @@ function clickSendFeedBack() {
 
         $(".pfl-content .sicitem-wp:nth-child(1) .gop-y-error").css("display",checkName);
         $(".pfl-content .sicitem-wp:nth-child(2) .gop-y-error").css("display",checkEmail);
-        $(".pfl-content .sicitem-wp:nth-child(3) .gop-y-error").css("display",checkNoiDung);
-        $(".pfl-content .sicitem-wp:nth-child(4) .gop-y-error").css("display",checkTieuDe);
+        $(".pfl-content .sicitem-wp:nth-child(4) .gop-y-error").css("display",checkNoiDung);
+        $(".pfl-content .sicitem-wp:nth-child(3) .gop-y-error").css("display",checkTieuDe);
 
         if (checkName === "none" && checkEmail === "none" && checkNoiDung === "none" && checkTieuDe === "none") {
             viewLoadingGif();

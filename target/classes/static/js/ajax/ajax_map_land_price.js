@@ -17,7 +17,7 @@ function setViewTableDuong(rs) {
     arrChildDuong = arrChild;
     arrRoot.map((data, index) => {
         viewTableDuong += `<tr data-cap=${data.cap}>
-                            <td><strong style="font-family: 'Times New Roman', Times, serif">${index + 1}</strong></td>
+                            <td><strong>${index + 1}</strong></td>
                             <td style="text-align: left;"><strong>${data.ten}</strong></td>
                             <td></td>
                             <td></td>
@@ -78,7 +78,7 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
                         <tr>
-                            <th style="width: 25px !important;">STT</th>
+                            <th style="width: 80px !important;">STT</th>
                             <th style="width: 360px !important;">Tên đường, đoạn đường</th>
                             <th>Vị trí 1</th>
                             <th>Vị trí 2</th>
