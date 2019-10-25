@@ -92,7 +92,6 @@ function searchCoQuanBanHanh() {
                 });
             },
             pageSize: 10,
-
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {
@@ -104,7 +103,6 @@ function searchCoQuanBanHanh() {
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
-
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
@@ -112,7 +110,6 @@ function searchLoaiQuyetDinh() {
                 });
             },
             pageSize: 10,
-
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {

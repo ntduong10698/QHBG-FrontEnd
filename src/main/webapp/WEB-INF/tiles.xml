@@ -92,4 +92,10 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/active.jsp"/>
     </definition>
 
+    <!-- FeedBack Page  -->
+    <definition name="mapLandPrice" extends="base.definition">
+        <put-attribute name="title" value="Bản đồ giá đất"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/mapLandPrice.jsp"/>
+    </definition>
+
 </tiles-definitions>

@@ -72,4 +72,9 @@ public class MainController {
     public String active(Model model) {
         return "active";
     }
+
+    @RequestMapping(value = {"/ban-do-gia-dat"}, method = RequestMethod.GET)
+    public String mapLandPrice(Model model) {
+        return "mapLandPrice";
+    }
 }

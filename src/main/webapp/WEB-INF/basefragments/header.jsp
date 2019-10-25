@@ -229,6 +229,14 @@
                             <span>Giá đất</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
+                            <li><a href="ban-do-gia-dat?giaidoan=2015-2019"><i class="fas fa-angle-double-right"></i> <span>Bản đồ giá đất</span>
+                                <i class="fas fa-caret-right"></i>
+                            </a>
+                                <ul class="submenu-lv2">
+                                    <li><a href="ban-do-gia-dat?giaidoan=2015-2019"><i class="fas fa-angle-double-right"></i>
+                                        <span>Giai đoạn 2015-2019</span></a></li>
+                                </ul>
+                            </li>
                             <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>
