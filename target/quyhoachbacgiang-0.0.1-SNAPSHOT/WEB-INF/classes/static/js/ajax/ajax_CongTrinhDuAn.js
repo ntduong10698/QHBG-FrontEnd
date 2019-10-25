@@ -143,7 +143,7 @@ function findIdCongTrinhDuAn(id) {
                     </div>
                       <div class="pr-info row">
                         <div class="pr-infor-left col-3">
-                            <span>Diện tích:</span>
+                            <span>Diện tích (ha):</span>
                         </div>
                         <div class="pr-infor-right col-9">
                             <span>${data.tongDienTich}</span>
