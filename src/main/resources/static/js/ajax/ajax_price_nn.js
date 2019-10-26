@@ -6,7 +6,7 @@ function callNongNghiep(checkLandPrice) {
     //set data in select in bang gia dat nong nghiep
     viewLoadingGif();
     callBangGiaDat(checkLandPrice).then(data => {
-        let optionSelect = "<option value='0'>--- Gõ để tìm kiếm ---</option>";
+        let optionSelect = "<option value='0'>--- Tất Cả ---</option>";
         let arrCall = [];
         data.map(rs => {
             optionSelect += `<option value=${rs.id}>${rs.tenBang}</option>`;
@@ -44,18 +44,17 @@ function findGiaDatNongNghiep(rs) {
         let priceDatMin = $("#priceDatMin").val() == '' ? 0 : $("#priceDatMin").val()*1000; //to vnd
         let priceDatMax = $("#priceDatMax").val() == '' ? '' : $("#priceDatMax").val()*1000;
         let bangGiaDat = $("#dp-drop8").val();
-        console.log(priceDatMax);
         let arrFilter = [];
         if (bangGiaDat == 0) {
             rs.map(arr => {
                 arrFilter.push(arr.filter(data => (priceDatMax == '' ? ((data.viTri.toUpperCase().indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin))
-                                    : ((data.viTri.indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin) && (data.giaDat <= priceDatMax) ) ) ));
+                                    : ((data.viTri.toUpperCase().indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin) && (data.giaDat <= priceDatMax) ) ) ));
             })
         } else {
             arrSearch = rs.filter(data => data[0].bangGiaDat.id == bangGiaDat);
             arrSearch.map(arr => {
                 arrFilter.push(arr.filter(data => (priceDatMax == '' ? ((data.viTri.toUpperCase().indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin))
-                    : ((data.viTri.indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin) && (data.giaDat <= priceDatMax) ) ) ));
+                    : ((data.viTri.toUpperCase().indexOf(searchViTriGiaDat) > -1) && (data.giaDat >= priceDatMin) && (data.giaDat <= priceDatMax) ) ) ));
             })
         }
         viewTableDatNongNghiep(arrFilter);

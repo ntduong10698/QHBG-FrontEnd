@@ -122,7 +122,7 @@
             </div>
             <div class="view-qh view-qh-v1">
                 <div class="title-qh">
-                    <span><i class="fas fa-city"></i> Huyện</span>
+                    <span><i class="fas fa-city"></i> Huyện/ Thành Phố</span>
                 </div>
                 <ul id="viewDanhSachXaHuyen">
                 </ul>

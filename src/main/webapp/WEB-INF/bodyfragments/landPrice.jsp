@@ -61,7 +61,7 @@
                     <span>Năm/Giai đoạn</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop9" class="dp-drop">
-                            <option value="">--- Gõ để tìm kiếm ---</option>
+                            <option value="">--- Tất Cả ---</option>
                             <option value="0">2015-2019</option>
                         </select>
                     </div>
@@ -95,7 +95,7 @@
                     <input type="text" placeholder="Nhập từ khóa tìm kiếm...">
                 </div>
                 <div class="dpfc-item dpcf-fitem">
-                    <span>Giá đất (1.000 VNĐ/m<sup>2</sup>):</span>
+                    <span>Giá đất x1.000 (VNĐ/m<sup>2</sup>):</span>
                     <div class="ippwp">
                         <input type="number" value="0" placeholder="Giá nhỏ nhất" id="priceDatMin">
                         <input type="number" placeholder="Giá lớn nhất" id="priceDatMax">

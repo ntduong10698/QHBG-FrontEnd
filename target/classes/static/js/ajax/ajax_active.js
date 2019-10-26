@@ -14,7 +14,8 @@ function active(id) {
         contentType: "application/json",
         success: function (result) {
             console.log((result));
-            alert("Xác thực tài khoản thành công. Vui lòng đăng nhập lại")
+            // alert("Xác thực tài khoản thành công. Vui lòng đăng nhập lại");
+            viewAlter(1,"Xác thực tài khoản thành công. Vui lòng đăng nhập lại");
             window.location.href = "home";
         },
     }).catch(err => {
