@@ -253,6 +253,7 @@ $(document).ready(function () {
             });
         }
     });
+    $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
 });
 
 function formatNumber(nStr, decSeperate, groupSeperate) {
@@ -341,4 +342,39 @@ function testInput(str, strReg) {
 
 function viewTextXa(xa) {
     return xa.indexOf("TT") > -1 ? "TT "+xa.split("TT")[1]: xa;
+}
+
+function viewAlter(type, mess) {
+    let typeAlter = '';
+    let note = '';
+    switch (type) {
+        case 1:
+            typeAlter = 'alert-success';
+            note = 'Thành công';
+            break;
+        case 2:
+            typeAlter = 'alert-info';
+            note = 'Thông báo';
+            break;
+        case 3:
+            typeAlter = 'alert-warning';
+            note = 'Cảnh báo';
+            break;
+        case 4:
+            typeAlter = 'alert-danger';
+            note = 'Lỗi';
+            break;
+        default:
+            typeAlter = 'alert-info';
+            note = 'Thông báo';
+            break;
+    }
+    $(".alert").addClass(typeAlter);
+    $(".alert").html(`<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>${note + '!'}</strong> ${mess}.`);
+    $('.alert').css({'opacity': '1', 'visibility': 'visible'});
+    setTimeout(function () {
+        $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
+        $(".alert").removeClass(typeAlter);
+    }, 200)
 }

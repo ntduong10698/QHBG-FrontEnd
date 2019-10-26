@@ -133,7 +133,7 @@ function resetSelectXaHsDc() {
 function setViewSelectXaHsDc(idHuyen) {
     callXa(idHuyen).then(rs => {
         arrXa = rs;
-        let viewSelectXa = `<option value='0'>--- Gõ để tìm kiếm ---</option>`;
+        let viewSelectXa = `<option value='0'>--- Tất Cả ---</option>`;
         rs.map(xa => {
             viewSelectXa += `<option value=${xa.idXa}>${xa.tenXa}</option>`
         })
@@ -246,7 +246,7 @@ function callGiaDatPhiNongNghiepHsDc(idBangGiaDat, idHuyen, idQuyetDinh) {
 
 function setViewTenDuongHsDc() {
     callTenDuongByIdHuyenHsDc().then(rs => {
-        let viewSelect = '<option value="0">--- Gõ để tìm kiếm ---</option>';
+        let viewSelect = '<option value="0">--- Tất Cả ---</option>';
         arrAllDuong = rs;
         rs.map(data => {
             viewSelect += `<option value="${data.cap}">${data.ten}</option>`

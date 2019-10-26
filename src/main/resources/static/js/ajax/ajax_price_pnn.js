@@ -73,7 +73,7 @@ function setViewSelectHuyen() {
 function setViewSelectXa(idHuyen) {
     callXa(idHuyen).then(rs => {
         arrXa = rs;
-        let viewSelectXa = `<option value='0'>--- Gõ để tìm kiếm ---</option>`;
+        let viewSelectXa = `<option value='0'>--- Tất Cả ---</option>`;
         rs.map(xa => {
             viewSelectXa += `<option value=${xa.idXa}>${xa.tenXa}</option>`
         })
@@ -205,7 +205,7 @@ function callViewLoaiXa() {
 //set view loai xa
 function setViewLoaiXa() {
     callViewLoaiXa().then(rs => {
-        let viewLoaiXa = "<option value='0'>--- Gõ để tìm kiếm ---</option>";
+        let viewLoaiXa = "<option value='0'>--- Tất Cả ---</option>";
         let arrRoot = rs.filter(item => item.parent === null);
         let arrChild = rs.filter(item => item.parent !== null);
         arrRoot.map(data => {
@@ -276,7 +276,7 @@ function setTableGiaDatNongThon(rs,idHuyen) {
         viewData += setDataTableGiaDatNongThon(data1, index);
     })
     viewTable =`<div class="tablep-cap">
-                    <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo bảng giá đất ở nông thôn</span>
+                    <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
                 </div>
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
@@ -368,7 +368,7 @@ function callTenDuongByIdHuyen(idHuyen) {
 
 function setViewTenDuong(idHuyen) {
     callTenDuongByIdHuyen(idHuyen).then(rs => {
-        let viewSelect = '<option value="0">--- Gõ để tìm kiếm ---</option>';
+        let viewSelect = '<option value="0">--- Tất Cả ---</option>';
         arrAllDuong = rs;
         rs.map(data => {
             viewSelect += `<option value="${data.cap}">${data.ten}</option>`
@@ -483,7 +483,7 @@ function countPoint(text) {
 
 function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     let viewTable = `<div class="tablep-cap">
-                    <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo bảng giá đất ở tại đô thị, ven trục đường giao thông</span>
+                    <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
                 </div>
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>

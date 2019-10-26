@@ -775,7 +775,8 @@ require([
                         });
                     } else {
                         $(".form-search-toado").css("display","none");
-                        alert("Không tìm thấy kết quả phù hợp");
+                        // alert("Không tìm thấy kết quả phù hợp");
+                        viewAlter(2,"Không tìm thấy kết quả phù hợp");
                     }
                     $(document.body).css({
                         'cursor': 'default'
@@ -827,7 +828,8 @@ require([
                         $(".form-search-toado").css("display","block");
                     } else {
                         $(".form-search-toado").css("display","none");
-                        alert("Không tìm thấy kết quả phù hợp");
+                        // alert("Không tìm thấy kết quả phù hợp");
+                        viewAlter(2,"Không tìm thấy kết quả phù hợp");
                     }
                     $(document.body).css({
                         'cursor': 'default'
@@ -883,7 +885,8 @@ require([
                     });
                 } else {
                     $(".form-search-toado").css("display","none");
-                    alert("Không tìm thấy kết quả phù hợp");
+                    // alert("Không tìm thấy kết quả phù hợp");
+                    viewAlter(2,"Không tìm thấy kết quả phù hợp");
                 }
                 $(document.body).css({
                     'cursor': 'default'
@@ -937,7 +940,8 @@ require([
                     });
                 } else {
                     $(".form-search-toado").css("display","none");
-                    alert("Không tìm thấy kết quả phù hợp");
+                    // alert("Không tìm thấy kết quả phù hợp");
+                    viewAlter(2,"Không tìm thấy kết quả phù hợp");
                 }
                 $(document.body).css({
                     'cursor': 'default'
@@ -1054,7 +1058,8 @@ require([
         //end search check box
     }).catch(err => {
         console.log(err);
-        alert("Chưa có dữ liệu bản đồ");
+        // alert("Chưa có dữ liệu bản đồ");
+        viewAlter(2,"Chưa có dữ liệu bản đồ");
     });
 
     //end render map and handling map
