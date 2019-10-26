@@ -376,5 +376,5 @@ function viewAlter(type, mess) {
     setTimeout(function () {
         $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
         $(".alert").removeClass(typeAlter);
-    }, 200)
+    }, 2000)
 }
