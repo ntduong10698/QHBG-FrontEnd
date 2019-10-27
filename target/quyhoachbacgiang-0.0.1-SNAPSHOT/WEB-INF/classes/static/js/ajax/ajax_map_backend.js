@@ -250,7 +250,7 @@ function getTableBieu_CH01_CH04_CH05_Ch06_Ch07_CH08_CH09(data) {
     data.dienTichTheoXas.map(data1 => {
         viewThead += `<th>${data1.xa == null? "Xã ..." : viewTextXa(data1.xa.tenXa)}</th>`;
     })
-    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich ==0 ? '' :data.tongDienTichdata.tongDienTich.toFixed(2)}</td>`;
+    dataViewTable = `<td>${data.loaiDat.tenLoaiDat}</td><td>${data.loaiDat.maKyHieu}</td><td>${data.tongDienTich ==0 ? '' :data.tongDienTich.toFixed(2)}</td>`;
     data.dienTichTheoXas.map(data1 => {
         dataViewTable += `<td>${data1.dienTich ==0 ? '' : data1.dienTich.toFixed(2)}</td>`
     })

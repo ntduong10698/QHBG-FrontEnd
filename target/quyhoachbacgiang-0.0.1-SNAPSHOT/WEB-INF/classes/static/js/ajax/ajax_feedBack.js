@@ -43,7 +43,8 @@ function clickSendFeedBack() {
         if (checkName === "none" && checkEmail === "none" && checkNoiDung === "none" && checkTieuDe === "none") {
             viewLoadingGif();
             sendFeedBack(email, tieuDe, noiDung, name).then(rs => {
-                alert("Gửi phản hồi thành công!");
+                // alert("Gửi phản hồi thành công!");
+                viewAlter(1,"Gửi phản hồi thành công!")
                 hideLoadingGif();
             }).catch(err => {
                 console.log(err);

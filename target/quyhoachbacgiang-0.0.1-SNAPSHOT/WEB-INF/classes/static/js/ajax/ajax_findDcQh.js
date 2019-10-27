@@ -30,11 +30,13 @@ function getDataTableDieuChinhQuyHoach(data) {
                 <td>${item.huyen == null ? "Huyện ..." : item.huyen.tenHuyen}</td>
                 <td>${item.noiDung}</td>
                 <td>${item.lyDo}</td>
-                <td>${formatNumber(item.dienTich,',',',')} m<sup>2</sup></td>
-                <td><a target="_blank" href="${item.quyetDinh.duongDanTep}">${item.quyetDinh.soQuyetDinh}</a></td>
+                <td>${formatNumber(item.dienTich/100000,',',',').replace('.',',')} (ha)</td>
+                <td>${item.quyetDinh !== null ? `<a target="_blank" href="${item.quyetDinh.duongDanTep}">${item.quyetDinh.soQuyetDinh}</a>`: ''}</td>
+                <td style="text-align: center;">${item.quyetDinh !== null ? reverseStringNam(item.quyetDinh.ngayBanHanh) : ''}</td>
             </tr>`
         })
     }
+    hideLoadingGif();
     $("#exportExel a").click(function () {
         exportExcel("tableExport", "DieuChinhQuyHoach");
         return false;
@@ -56,6 +58,7 @@ function callSizePageDcQh(size) {
 }
 
 function pageAblePage(size) {
+    viewLoadingGif();
     callSizePageDcQh(size).then(result => {
         (function () {
             var container = $('#pagination');
@@ -99,6 +102,7 @@ function searchDcQuyHoach() {
             pageAblePage(10);
         } else {
             // $("#pagination").css("display","none");
+            viewLoadingGif();
             callSearchDcQuyHoach(viTri, huyenId, soQuyetDinh).then(data1 => {
                 console.log(data1.length);
                 (function () {

@@ -1,5 +1,5 @@
-let href = window.location.href;
-let checkPage = href.indexOf("ke-hoach") > -1 ? 1 : 0; // 0 la quy haoch 1 la ke hoach
+var href = window.location.href;
+var checkPage = href.indexOf("ke-hoach") > -1 ? 1 : 0; // 0 la quy haoch 1 la ke hoach
 $(function () {
     let mkh = '';
     let idHuyen = '';
@@ -13,6 +13,15 @@ $(function () {
 function setViewSelectYear() {
     $("#dp-drop7").parents(".dpfc-item").css("display","block");
     $(".dpfilter-wp .dpcf-select").addClass("fix-width-select");
+    if (checkPage === 0) {
+        $("#dp-drop7").html(`<option value="2015-2020">2015-2020</option>`);
+    } else {
+        $("#dp-drop7").html(`<option value="2015">Năm 2015</option>
+                            <option value="2016">Năm 2016</option>
+                            <option value="2017">Năm 2017</option>
+                            <option value="2018">Năm 2018</option>
+                            <option value="2019">Năm 2019</option>`);
+    }
     $("#dp-drop5").select2( {
         placeholder: "--- Chọn chức năng đất ---",
         allowClear: true
@@ -50,6 +59,7 @@ function setSelectDonVi() {
         if (checkPage === 0 ) {
             viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
             option = 0;
+            setViewSelectYear();
         } else {
             setViewSelectYear();
         }
@@ -63,6 +73,7 @@ function setSelectDonVi() {
 //click search 
 function clickSearchTraCuu() {
     $("#searchTraCuu").click(function () {
+        viewLoadingGif();
         mkh = $("#dp-drop5").val();
         idHuyen = $("#dp-drop6").val();
         nam = $("#dp-drop7").val();
@@ -127,6 +138,7 @@ function setTableInfoSoildKh(dataTable, year) {
     //end tao khung thead cho cac bang
 
     $("#tableInfoSoild .table-HTQH").html(viewTable);
+    hideLoadingGif();
     //end create khung cac bang
 
 }
@@ -167,6 +179,7 @@ function setTableInfoSoildQHHuyen(mkh, dataTable, idHuyen) {
             // console.log(viewTable);
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
+        hideLoadingGif();
     }).catch(err => {
         console.log(err);
     })
@@ -209,7 +222,7 @@ function setTableInfoSoildQHTinh(dataTable, mkh){
             </div>`;
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
-
+        hideLoadingGif();
     }).catch(err => {
         console.log(err);
     })
