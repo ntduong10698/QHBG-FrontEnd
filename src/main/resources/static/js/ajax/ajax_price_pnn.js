@@ -86,10 +86,12 @@ function setViewSelectXa(idHuyen) {
         changeViewLoaiXa(arrTable, idHuyen); //set default full arrTable
         $("#dp-drop11").change(function () {
             viewLoadingGif();
+            $("#dp-drop12").val("0");
+            $("#dp-drop12").select2().trigger('change');
             let idXa = $("#dp-drop11").val();
             if (idXa != 0) {
                 let xa = arrXa.filter(data => data.idXa == idXa);
-                let idLoaiXa = xa[0].loaiXas[0] == null ? 0 : xa[0].loaiXas[0].idDmLoaiXa; //1 xa co mot loai xa
+                let idLoaiXa = xa[0].loaiXa == null ? 0 : xa[0].loaiXa.idDmLoaiXa; //1 xa co mot loai xa
                 let viewTable = '';
                 let arrFindXa = '';
                 if (idLoaiXa != 0) {
@@ -99,9 +101,12 @@ function setViewSelectXa(idHuyen) {
                 }
                 viewTable = setTableGiaDatNongThon(arrFindXa,idHuyen);
                 $(".block-table-price2").html(viewTable);
-                clickChiTietDatPNN();
                 changeViewLoaiXa(arrFindXa, idHuyen);
+            } else {
+                $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
+                changeViewLoaiXa(arrTable, idHuyen);
             }
+            clickChiTietDatPNN();
         })
     }).catch(err => {
         console.log(err);
@@ -234,18 +239,49 @@ function changeViewLoaiXa(arrFindXa, idHuyen) {
     $("#dp-drop12").change(function () {
         let val = $("#dp-drop12").val();
         if (val != 0) {
+            let valXa = $("#dp-drop11").val();
+            let xa = arrXa.filter(data1 => data1.idXa == valXa);
             viewLoadingGif();
-            let arrRs = arrFindXa.filter(data => {
-                if (data.loaiXa.parent != null) {
-                    return  (data.loaiXa.idDmLoaiXa == val || data.loaiXa.parent.idDmLoaiXa == val);
-                } else {
-                    return data.loaiXa.idDmLoaiXa == val;
-                }
-            });
+            let arrRs = [];
+            if (valXa != 0 && xa[0].loaiXa != null) {
+                arrRs = arrFindXa.filter(data => {
+                    if (data.loaiXa.parent != null) {
+                        return  ((data.loaiXa.idDmLoaiXa == val && xa[0].loaiXa.idDmLoaiXa == val)|| (data.loaiXa.parent.idDmLoaiXa == val && xa[0].loaiXa.parent.idDmLoaiXa == val));
+                    } else {
+                        return data.loaiXa.idDmLoaiXa == val && xa[0].loaiXa.idDmLoaiXa == val;
+                    }
+                });
+            } else {
+                arrRs = arrFindXa.filter(data => {
+                    if (data.loaiXa.parent != null) {
+                        return  (data.loaiXa.idDmLoaiXa == val || data.loaiXa.parent.idDmLoaiXa == val);
+                    } else {
+                        return data.loaiXa.idDmLoaiXa == val;
+                    }
+                });
+            }
             $(".block-table-price2").html(setTableGiaDatNongThon(arrRs,idHuyen));
             clickChiTietDatPNN();
         } else {
-            $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
+            viewLoadingGif();
+            let idXa = $("#dp-drop11").val();
+            if (idXa != 0) {
+                let xa = arrXa.filter(data => data.idXa == idXa);
+                let idLoaiXa = xa[0].loaiXa == null ? 0 : xa[0].loaiXa.idDmLoaiXa; //1 xa co mot loai xa
+                let viewTable = '';
+                let arrFindXa = '';
+                if (idLoaiXa != 0) {
+                    arrFindXa = arrTable.filter(item => item.loaiXa.idDmLoaiXa == idLoaiXa);
+                } else {
+                    arrFindXa = arrTable;
+                }
+                viewTable = setTableGiaDatNongThon(arrFindXa,idHuyen);
+                $(".block-table-price2").html(viewTable);
+                changeViewLoaiXa(arrFindXa, idHuyen);
+            } else {
+                $(".block-table-price2").html(setTableGiaDatNongThon(arrTable,idHuyen));
+                changeViewLoaiXa(arrTable, idHuyen);
+            }
             clickChiTietDatPNN();
         }
     })

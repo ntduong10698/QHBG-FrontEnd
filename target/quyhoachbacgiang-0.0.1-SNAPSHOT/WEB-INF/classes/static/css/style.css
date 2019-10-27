@@ -1125,3 +1125,18 @@ span.it-cap{
     margin-bottom: 12px;
 }
 /*END_DISPLAY_COUNTER_NUMBER*/
+
+.select2-selection__clear {
+    display: none;
+}
+
+/*ALTER_BOOTSTRAP*/
+.alert {
+    position: fixed;
+    z-index: 1006;
+    top: 37px;
+    font-size: 14px;
+    right: 2px;
+    transition: 0.6s all;
+}
+/*END_ALTER_BOOTSTRAP*/
