@@ -101,14 +101,16 @@ function postInfoUserDangNhap() {
         contentType: "application/json",
         success: function (result) {
             if (result == "") {
-                alert("Vui lòng kiểm  email để kích hoạt tài khoản")
+                // alert("Vui lòng kiểm  email để kích hoạt tài khoản");
+                viewAlter(2,"Vui lòng kiểm  email để kích hoạt tài khoản");
             } else {
                 getInfoUserDangNhap(result);
                 window.location.href = "home";
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert("Tên tài khoản hoặc mật khẩu không chính xác")
+            // alert("Tên tài khoản hoặc mật khẩu không chính xác");
+            viewAlter(2,"Tên tài khoản hoặc mật khẩu không chính xác");
             console.log(errorThrown);
         }
     })
@@ -166,12 +168,14 @@ function checkResign() {
         contentType: "application/json",
         success: function (result) {
             sendEmailXacThucTaiKhoan(result.id, result.email)
-            alert("Vui lòng kiểm tra email để xác thực tài khoản")
+            // alert("Vui lòng kiểm tra email để xác thực tài khoản");
+            viewAlter(2,"Vui lòng kiểm tra email để xác thực tài khoản");
             // localStorage.setItem("infoUserResigter", JSON.stringify(result));
             window.location.href = "home";
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert("Email đã được sử dụng ")
+            // alert("Email đã được sử dụng ");
+            viewAlter(3,"Email đã được sử dụng");
             console.log(errorThrown);
         }
     })
