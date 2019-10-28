@@ -180,13 +180,12 @@ function checkResign() {
         }
     })
 }
-
 // gửi email xác thực tài khoản
 function sendEmailXacThucTaiKhoan(id, email) {
     ajaxCallGet("v1/public/email?email=" + email + "&header=Xác thực tài khoản" + `&content= Nhấn vào liên kết để kích hoạt tài khoản của bạn: ${getUrlEmailActive()}/xac-thuc?id=` + id).then(data => {
-    })
-}
 
+    });
+}
 // check xem đã đăng nhập hay chưa để add tên đăng nhập
 function checkStatusLogin() {
     let tmp = "";

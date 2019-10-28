@@ -5,7 +5,6 @@ function callFullTableDecision() {
     callCoQuanBanHanh();
     callLoaiQuyetDinh();
     searchTextQuyetDinh();
-
     //them cho phan gia dat
     if (href.indexOf("nhomQuyetDinh") == -1) {
         callTableDecision();
@@ -15,13 +14,13 @@ function callFullTableDecision() {
         return false;
     })
 }
-
+// sắp xếp quyết định theo ngày
 function sortDecision(arr) {
     arr.sort((a, b) => {
         return ('' + b.ngayBanHanh).localeCompare(a.ngayBanHanh);
     });
 }
-
+// gọi ra dữ liệu all quyết định
 function callTableDecision() {
     viewLoadingGif();
     let arr = null;
@@ -50,11 +49,10 @@ function callTableDecision() {
 }
 
 
-// .reverse()c
+// call cơ quan ban hành
 function callCoQuanBanHanh() {
-    let tmp = "";
+    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
     ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {
-
         data.map(function (response, index) {
             tmp += `
              <option value="${response.id}"  >${response.tenCoQUan}
@@ -62,22 +60,21 @@ function callCoQuanBanHanh() {
             `;
 
         })
-        $("#dp-drop1").append(tmp);
+        $("#dp-drop1").html(tmp);
     });
     searchCoQuanBanHanh();
 }
-
+// call loại quyết định
 function callLoaiQuyetDinh() {
-    let tmp = "";
+    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
     ajaxCallGet("v1/public/quyet-dinh/nhom-quyet-dinh/all").then(data => {
-
         data.map(function (response, index) {
             tmp += `
             <option value="${response.id}">${response.tenNhom}
                             </option>
             `;
         })
-        $("#dp-drop2").append(tmp);
+        $("#dp-drop2").html(tmp);
 
         //them cho phan quyet dinhs
         let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
@@ -89,13 +86,15 @@ function callLoaiQuyetDinh() {
 
 function searchCoQuanBanHanh() {
     $("#dp-drop1").change(function () {
-        ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
-            addDataAfterGet(data)
-        });
+        $("#dp-drop2").html("");
+        callLoaiQuyetDinh();
+        viewLoadingGif();
         $('#pagination').pagination({
+
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
-                    done(data)
+                    done(data);
+                    hideLoadingGif();
                 });
             },
             pageSize: 10,
@@ -110,6 +109,8 @@ function searchCoQuanBanHanh() {
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
+        $("#dp-drop1").html("");
+        callCoQuanBanHanh();
         viewLoadingGif();
         $('#pagination').pagination({
             dataSource: function (done) {
@@ -129,12 +130,9 @@ function searchLoaiQuyetDinh() {
 }
 
 function addDataAfterGet(data) {
-
-    console.log(data)
     if (data.length > 0) {
         let tmp = "";
         data.map(function (response, index) {
-            console.log(tmp)
             tmp += `
                 <tr>
                             <td><a href="thong-tin-quyet-dinh?id=${response.id}" target="_blank">${response.soQuyetDinh} </a></td>
