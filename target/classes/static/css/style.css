@@ -1142,3 +1142,27 @@ span.it-cap{
     transition: 0.6s all;
 }
 /*END_ALTER_BOOTSTRAP*/
+
+.site {
+    float: left;
+    margin-top: 9px;
+    margin-left: 5px;
+    font-size: 13px;
+    color: #a59f9f;
+}
+
+.site a.site-home {
+    color: #a59f9f;
+}
+
+.site a.site-home:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.site i {}
+
+.site span.site-sub {
+    font-weight: bold;
+    color: #4c4747;
+}

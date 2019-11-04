@@ -254,7 +254,28 @@ $(document).ready(function () {
         }
     });
     $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
+
+    let path = window.location.pathname;
+    testSite(path, '/ban-do-gia-da', 'Bản đồ giá đất');
+    testSite(path, '/gia-dat-nong-nghiep', 'Giá đất nông nghiệp');
+    testSite(path, '/gia-dat-phi-nong-nghiep', 'Giá đất phi nông nghiệp');
+    testSite(path, '/quyet-dinh', 'Quyết định');
+    testSite(path, '/he-so-dieu-chinh', 'Hệ số điều chỉnh');
+    testSite(path, '/quy-hoach', 'Quy hoạch');
+    testSite(path, '/tra-cuu-quy-hoach', 'Tra cứu quy hoạch');
+    testSite(path, '/tra-cuu-dieu-chinh-quy-hoach', 'Tra cứu điều chỉnh quy hoạch');
+    testSite(path, '/ke-hoach', 'Kế hoạch');
+    testSite(path, '/tra-cuu-ke-hoach', 'Tra cứu kế hoạch');
+    testSite(path, '/du-an', 'Công trình dự án');
+    testSite(path, '/huong-dan', 'Hướng dẫn');
+    testSite(path, '/gop-y', 'Góp ý');
 });
+
+function testSite(path,site, siteView) {
+    if (path.indexOf(site) > -1) {
+        $(".site .site-sub").text(siteView);
+    }
+}
 
 function formatNumber(nStr, decSeperate, groupSeperate) {
     nStr += '';
@@ -377,4 +398,8 @@ function viewAlter(type, mess) {
         $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
         $(".alert").removeClass(typeAlter);
     }, 2000)
+}
+
+function formatDienTich(dienTich) {
+    return formatNumber(dienTich, '.', ',');
 }

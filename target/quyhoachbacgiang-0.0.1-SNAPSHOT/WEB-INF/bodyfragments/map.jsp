@@ -115,11 +115,13 @@
 <main>
     <!-- LỚP 1 -->
     <div class="block-main-qh">
-        <i class="far fa-caret-square-right" id="openThongKeMap" style="display: none"></i>
+<%--        <i class="far fa-caret-square-right" id="openThongKeMap" style="display: none"></i>--%>
+        <img src="resources/img/view-thongke.png" alt="" id="openThongKeMap"  style="display: none">
         <div class="block-left-qh">
             <div class="hea-tit-qh">
                 <span id="nameMap"><i class="fas fa-sitemap"></i></span>
-                <i class="fa fa-times-circle" aria-hidden="true" id="closeThongKeMap"></i>
+                <img src="resources/img/hidden-thongke.png" alt="" id="closeThongKeMap">
+<%--                <i class="fa fa-times-circle" aria-hidden="true" id="closeThongKeMap"></i>--%>
             </div>
             <div class="view-qh view-qh-v1">
                 <div class="title-qh">
@@ -131,6 +133,10 @@
             <div class="view-qh view-qh-v2">
                 <div class="title-qh">
                     <span><i class="fa fa-calendar" aria-hidden="true"></i> Mục đích sử dụng đất</span>
+                    <span id="inputCheckMutil">
+                        <input type="checkbox">
+                        <span>Hiện Trạng</span>
+                    </span>
                 </div>
                 <ul id="viewTimKiemDat">
                 </ul>

@@ -49,10 +49,11 @@
                 <table class="table table-bordered" id="tableExport">
                     <thead>
                     <tr>
-                        <th>Vị trí, địa điểm</th>
+                        <th style="width: 80px;">Thứ tự ưu tiên</th>
+                        <th style="width: 100px;">Vị trí, địa điểm</th>
                         <th>Huyện/Thành phố</th>
-                        <th>Nội dung điều chỉnh, bổ sung</th>
-                        <th>Lý do điều chỉnh</th>
+                        <th style="width: 280px;">Nội dung điều chỉnh, bổ sung</th>
+                        <th style="width: 280px;">Lý do điều chỉnh</th>
                         <th style="width: 90px;">Diện tích điều chỉnh</th>
                         <th>Thông tin quyết định</th>
                         <th style="width: 90px;">Ngày ban hành</th>
