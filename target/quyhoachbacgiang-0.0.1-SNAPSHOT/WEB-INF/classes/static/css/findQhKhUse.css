@@ -65,3 +65,15 @@ main{
 table th:first-child {
     min-width: 150px;
 }
+
+#quyetDinhTraCuu {
+    font-size: 13px;
+    text-align: end;
+    margin-bottom: 10px;
+}
+
+#quyetDinhTraCuu strong {
+    font-style: italic;
+}
+
+#quyetDinhTraCuu a {}

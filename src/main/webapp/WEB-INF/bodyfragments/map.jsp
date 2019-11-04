@@ -133,6 +133,10 @@
             <div class="view-qh view-qh-v2">
                 <div class="title-qh">
                     <span><i class="fa fa-calendar" aria-hidden="true"></i> Mục đích sử dụng đất</span>
+                    <span id="inputCheckMutil">
+                        <input type="checkbox">
+                        <span>Hiện Trạng</span>
+                    </span>
                 </div>
                 <ul id="viewTimKiemDat">
                 </ul>

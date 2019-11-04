@@ -148,7 +148,7 @@ function setViewSelectXaHsDc(idHuyen) {
             let idXa = $("#dp-drop16").val();
             if (idXa != 0) {
                 let xa = arrXa.filter(data => data.idXa == idXa);
-                let idLoaiXa = xa[0].loaiXas[0] == null ? 0 : xa[0].loaiXas[0].idDmLoaiXa; //1 xa co mot loai xa
+                let idLoaiXa = xa[0].loaiXa == null ? 0 : xa[0].loaiXa.idDmLoaiXa; //1 xa co mot loai xa
                 let viewTable = '';
                 let arrFindXa = '';
                 if (idLoaiXa != 0) {

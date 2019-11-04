@@ -211,6 +211,11 @@
 </section>
 <!-- NAV -->
 <nav>
+    <div class="site">
+        <a href="home" class="site-home">Trang Chủ</a>
+        <i class="fas fa-chevron-right"></i>
+        <span class="site-sub"></span>
+    </div>
     <div class="container">
         <div class="row">
             <div class="navigation">
@@ -343,6 +348,12 @@
                             <span>Kế hoạch</span>
                         </a>
                         <ul class="submenu-lv1 sml1v2">
+                            <li>
+                                <a href="ke-hoach?map=0">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <span>Kế hoạch sử dụng đất tỉnh Bắc Giang</span>
+                                </a>
+                            </li>
                             <li>
                                 <a href="ke-hoach?map=1&nam=2015">
                                     <i class="fas fa-angle-double-right"></i>

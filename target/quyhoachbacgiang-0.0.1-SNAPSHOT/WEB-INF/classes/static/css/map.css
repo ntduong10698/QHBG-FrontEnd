@@ -67,7 +67,7 @@ html, body {
 .block-left-qh {
     width: 20%;
     background: #cde0c9;
-    min-width: 270px;
+    min-width: 320px;
 }
 
 .hea-tit-qh {
@@ -76,6 +76,7 @@ html, body {
     text-align: center;
     height: 40px;
     padding-top: 10px;
+    position: relative;
 }
 
 .hea-tit-qh span {
@@ -99,6 +100,8 @@ html, body {
     background: #329d9c;
     color: black;
     height: 34px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .view-qh>ul {
@@ -790,13 +793,13 @@ html, body {
     color: red;
     position: absolute;
     top: 4px;
-    left: calc(20% - 18px);
-    font-size: 17px;
+    width: 30px;
     cursor: pointer;
+    right: 0;
 }
 
 #openThongKeMap {
-    font-size: 30px;
+    width: 30px;
     color: green;
     position: absolute;
     top: 10px;
@@ -841,4 +844,25 @@ main {
 }
 /*END_MAIN*/
 
+.activeHuyenXa {
+    font-weight: bold;
+    background: #d9eed5;
+}
+
+#inputCheckMutil {
+    font-size: 14px;
+    color: white;
+    font-weight: 100;
+    position: relative;
+}
+
+#inputCheckMutil input {
+    position: absolute;
+    top: 4px;
+}
+
+#inputCheckMutil span{
+    margin-left: 16px;
+    margin-right: 5px;
+}
 /*END Map Arcgis*/

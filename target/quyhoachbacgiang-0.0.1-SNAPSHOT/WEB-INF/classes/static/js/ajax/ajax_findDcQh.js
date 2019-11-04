@@ -21,16 +21,18 @@ function callDieuChinhQuyHoach(page) {
   return ajaxCallGet(url);
 }
 
-function getDataTableDieuChinhQuyHoach(data) {
+function getDataTableDieuChinhQuyHoach(data, pageNumber) {
     let dataTable = ``;
+    let stt = (pageNumber-1)*10 + 1;
     if (data.length > 0) {
-        data.map(item => {
+        data.map((item, index) => {
             dataTable += `<tr>
+                <td>${item.thuTuUuTien}</td>
                 <td>${item.viTri}</td>
                 <td>${item.huyen == null ? "Huyện ..." : item.huyen.tenHuyen}</td>
                 <td>${item.noiDung}</td>
                 <td>${item.lyDo}</td>
-                <td>${formatNumber(item.dienTich/100000,',',',').replace('.',',')} (ha)</td>
+                <td>${item.dienTich/10000 > 1 ? formatNumber(item.dienTich/10000,',',',') : item.dienTich/10000} (ha)</td>
                 <td>${item.quyetDinh !== null ? `<a target="_blank" href="${item.quyetDinh.duongDanTep}">${item.quyetDinh.soQuyetDinh}</a>`: ''}</td>
                 <td style="text-align: center;">${item.quyetDinh !== null ? reverseStringNam(item.quyetDinh.ngayBanHanh) : ''}</td>
             </tr>`
@@ -46,7 +48,7 @@ function getDataTableDieuChinhQuyHoach(data) {
 
 function setTableDieuChinhQuyHoach(page) {
     callDieuChinhQuyHoach(page).then(rs => {
-        $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(rs));
+        $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(rs,page));
     }).catch(err => {
         console.log(err);
     })
@@ -119,7 +121,7 @@ function searchDcQuyHoach() {
                         showFirstOnEllipsisShow: true,
                         showLastOnEllipsisShow: true,
                         callback: function (response, pagination) {
-                            $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(response));
+                            $(".table-bordered tbody").html(getDataTableDieuChinhQuyHoach(response, pagination.pageNumber));
                         }
                     })
                 })();

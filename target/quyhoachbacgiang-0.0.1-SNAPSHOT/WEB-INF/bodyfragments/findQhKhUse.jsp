@@ -71,6 +71,9 @@
     </section>
     <section class="dp-table lu-landuseplan " >
         <div class="container">
+            <div id="quyetDinhTraCuu">
+<%--                <strong>Các số liệu được lấy tại quyết định: </strong><a href="">177/QĐ-UBND</a>--%>
+            </div>
             <div class="row" id="tableInfoSoild">
                 <div class="table-HTQH">
                     <%--                    <div class="table-wp">--%>

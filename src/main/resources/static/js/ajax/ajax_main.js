@@ -516,3 +516,7 @@ function getUrlEmailActive() {
         return "https://www."+window.location.hostname;
     }
 }
+
+function getGioiThieu(id) {
+    return ajaxCallGet(`v1/public/gioi-thieu/find-by-id?id=${id}`);
+}
