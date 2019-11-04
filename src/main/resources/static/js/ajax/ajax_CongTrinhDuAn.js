@@ -7,8 +7,9 @@ $(document).ready(function () {
         exportExcel("tableCongTrinhDuAn", "DuAn");
         return false;
     });
-});
 
+});
+var a=0;
 function getHuyen() {
     let tmp = "";
     ajaxCallGet("v1/public/huyen/all").then(data => {
@@ -43,8 +44,6 @@ function checkCacTruong(result) {
     result.diaDiem = (result.diaDiem !== null ? result.diaDiem : "");
     result.loaiCongTrinhDuAn = (result.loaiCongTrinhDuAn !== null ? result.loaiCongTrinhDuAn : "");
     result.tongDienTich = (result.tongDienTich !== null ? result.tongDienTich : "");
-
-
     result.canCuThuHoi = (result.canCuThuHoi !== null ? result.canCuThuHoi : "");
     result.tongDienTich = (result.tongDienTich > 0 ? result.tongDienTich : "")
 }
@@ -64,28 +63,7 @@ function findCongTrinhDuAn() {
             callback: function (data, pagination) {
                 hideLoadingGif();
                 if (data.length > 0) {
-                    checkCacTruong(data)
-                    let tmp = "";
-                    data.map(function (result, index) {
-                        let tenHuyen = "";
-                        if (result.huyen !== null) {
-                            tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
-                        }
-                        checkCacTruong(result);
-                        tmp += `
-             <tr>
-                        <td>${index + 1}</td>
-                        <td>${result.tenCongTrinhDuAn}</td>
-                        <td>${result.loaiCongTrinhDuAn.ten}</td>
-                        <td>${result.tongDienTich}</td>
-                        <td>${result.diaDiem}</td>
-                        <td>${tenHuyen}</td>
-                        <td>${result.canCuThuHoi}</td>
-                        <td><span><span class="dataCongtrinh" onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})" ><i class="fas fa-plus"></i></span></span></td>
-                    </tr>
-            `;
-                    })
-                    $("#tableCongTrinhDuAn tbody").html(tmp);
+                    addData(data, pagination.pageNumber);
                 } else {
                     $("#tableCongTrinhDuAn tbody").html("<tr> <td colspan='13'>Không có kết quả</td></tr>");
                 }
@@ -200,20 +178,33 @@ function pagination_CongTrinhDuAn() {
                     url: URL_API + 'v1/public/cong-trinh-du-an/page?page=' + pagination.pageNumber,
                     timeout: 2000,
                     success: function (response) {
+                        addData(response, pagination.pageNumber);
+                    }
+                });
+            }
+        });
+    });
+}
 
-                        console.log(response)
-                        pagination.pageNumber = (pagination.pageNumber - 1) * 10;
-                        response.map(function (result, index) {
+function addData(response, number) {
+    let tmp = "";
+    number = (number - 1) * 10;
 
+    response.map(function (result, index) {
+        // if (result.tenCongTrinhDuAn.equals(result.tenCongTrinhDuAn.toUpperCase())){
+        //         //     console
+        //         // }
+        let tenHuyen = "";
+        if (result.huyen !== null) {
+            tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
+        }
+        checkCacTruong(result);
 
-                            checkCacTruong(result);
-                            let tenHuyen = "";
-                            if (result.huyen !== null) {
-                                tenHuyen = (result.huyen.tenHuyen !== null ? result.huyen.tenHuyen : "");
-                            }
-                            tmp += `
-             <tr>
-                        <td>${pagination.pageNumber + index + 1}</td>
+        if (result.tenCongTrinhDuAn.localeCompare(result.tenCongTrinhDuAn.toUpperCase()) === 0) {
+           
+            tmp += `
+             <tr style="font-weight:600;">
+                        <td>${number+index+1}</td>
                         <td>${result.tenCongTrinhDuAn}</td>
                         <td>${result.loaiCongTrinhDuAn.ten}</td>
                         <td>${result.tongDienTich}</td>
@@ -223,13 +214,46 @@ function pagination_CongTrinhDuAn() {
                         <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
                     </tr>
             `;
-                        });
-                        $("#tableCongTrinhDuAn tbody").html(tmp);
-                    }
-                });
-            }
-        });
-
+        } else {
+            tmp += `
+             <tr>
+                        <td>${number + index + 1}</td>
+                        <td>${result.tenCongTrinhDuAn}</td>
+                        <td>${result.loaiCongTrinhDuAn.ten}</td>
+                        <td>${result.tongDienTich}</td>
+                        <td>${result.diaDiem}</td>
+                        <td>${tenHuyen}</td>
+                        <td>${result.canCuThuHoi}</td>
+                        <td><span><span class="dataCongtrinh"    onclick="findIdCongTrinhDuAn(${result.idCongTrinhDuAn})"><i class="fas fa-plus"></i></span></span></td>
+                    </tr>
+            `;
+        }
     });
+    $("#tableCongTrinhDuAn tbody").html(tmp);
+}
+function convertToRoman(num) {
+    var roman = {
+        M: 1000,
+        CM: 900,
+        D: 500,
+        CD: 400,
+        C: 100,
+        XC: 90,
+        L: 50,
+        XL: 40,
+        X: 10,
+        IX: 9,
+        V: 5,
+        IV: 4,
+        I: 1
+    };
+    var str = '';
 
+    for (var i of Object.keys(roman)) {
+        var q = Math.floor(num / roman[i]);
+        num -= q * roman[i];
+        str += i.repeat(q);
+    }
+
+    return str;
 }

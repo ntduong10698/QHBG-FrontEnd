@@ -71,6 +71,7 @@
                 <table class="table table-hover table-bordered" id="tableDecision">
                     <thead>
                     <tr>
+                        <th>Thứ tự ưu tiên</th>
                         <th>Số, Ký hiệu</th>
                         <th>Trích yếu</th>
                         <th>Cơ quan ban hành</th>

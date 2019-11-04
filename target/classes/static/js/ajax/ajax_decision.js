@@ -10,16 +10,18 @@ function callFullTableDecision() {
         callTableDecision();
     }
     $("#exportExel a").click(function () {
-        exportExcel("tableDecision","QuyetDinh");
+        exportExcel("tableDecision", "QuyetDinh");
         return false;
     })
 }
+
 // sắp xếp quyết định theo ngày
 function sortDecision(arr) {
     arr.sort((a, b) => {
         return ('' + b.ngayBanHanh).localeCompare(a.ngayBanHanh);
     });
 }
+
 // gọi ra dữ liệu all quyết định
 function callTableDecision() {
     viewLoadingGif();
@@ -39,7 +41,7 @@ function callTableDecision() {
         callback: function (result, pagination) {
 
             if (result.length > 0) {
-                let tmp = addDataAfterGet(result);
+                let tmp = addDataAfterGet(result, pagination.pageNumber);
                 $("#tableDecision tbody").html(tmp);
             } else {
                 $("#tableDecision").html("<span>Không có dữ liệu</span>");
@@ -58,12 +60,12 @@ function callCoQuanBanHanh() {
              <option value="${response.id}"  >${response.tenCoQUan}
                             </option>
             `;
-
         })
         $("#dp-drop1").html(tmp);
     });
     searchCoQuanBanHanh();
 }
+
 // call loại quyết định
 function callLoaiQuyetDinh() {
     let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
@@ -89,11 +91,14 @@ function searchCoQuanBanHanh() {
         $("#dp-drop2").html("");
         callLoaiQuyetDinh();
         viewLoadingGif();
+        let arr = null;
         $('#pagination').pagination({
 
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
-                    done(data);
+                    arr = data;
+                    sortDecision(arr)
+                    done(arr);
                     hideLoadingGif();
                 });
             },
@@ -101,7 +106,7 @@ function searchCoQuanBanHanh() {
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {
-                addDataAfterGet(result)
+                addDataAfterGet(result, pagination.pageNumber)
             }
         })
     })
@@ -112,33 +117,41 @@ function searchLoaiQuyetDinh() {
         $("#dp-drop1").html("");
         callCoQuanBanHanh();
         viewLoadingGif();
+        let arr = null;
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
+                    arr = data;
+                    sortDecision(arr)
                     hideLoadingGif();
-                    done(data);
+                    done(arr);
                 });
             },
             pageSize: 10,
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {
-                addDataAfterGet(result)
+                addDataAfterGet(result, pagination.pageNumber)
             }
         })
     });
 }
 
-function addDataAfterGet(data) {
+function addDataAfterGet(data, number) {
+    console.log(number)
     if (data.length > 0) {
+            number = (number - 1) * 10;
         let tmp = "";
+        console.log(data)
         data.map(function (response, index) {
+
             tmp += `
                 <tr>
+                <td style="text-align: center">${response.thuTuUuTien}</td>
                             <td><a href="thong-tin-quyet-dinh?id=${response.id}" target="_blank">${response.soQuyetDinh} </a></td>
                             <td>${response.trichYeu} </td>
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
-                            <td><span>${response.chucVu} ${response.nguoiKy}</span>
+                            <td><span>${response.chucVu}: ${response.nguoiKy}</span>
                                 <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
                             <td> <a href="${response.duongDanTep}" target="_blank"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
@@ -161,11 +174,14 @@ function searchTextQuyetDinh() {
                 break;
             }
         }
+        let arr = null;
         $('#pagination').pagination({
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
+                    arr = data;
+                    sortDecision(arr)
                     hideLoadingGif();
-                    done(data);
+                    done(arr);
                 });
             },
             pageSize: 10,
@@ -173,7 +189,7 @@ function searchTextQuyetDinh() {
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {
-                addDataAfterGet(result)
+                addDataAfterGet(result, pagination.pageNumber)
             }
         })
 
