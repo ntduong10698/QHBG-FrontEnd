@@ -662,6 +662,8 @@ require([
                             arrPopUpMap.push(feature.attributes); // them tung khoi duoc click
                             let layerName = result.layerName;
                             feature.attributes.layerName = layerName;
+                            feature.attributes.DienTich = feature.attributes.DienTich < 0 ? 0 - feature.attributes.DienTich : feature.attributes.DienTich - 0;
+                            feature.attributes.DienTich = formatNumber(feature.attributes.DienTich.toFixed(2), ',', ',');
                             if (layerName.search(/(QH_|KH_)(QuyHoach|KeHoach)/) > -1) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin quy hoạch",
