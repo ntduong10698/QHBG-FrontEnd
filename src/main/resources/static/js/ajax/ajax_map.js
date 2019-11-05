@@ -588,12 +588,14 @@ require([
                 layerNotices.map(data => {
                     timKiemDatView += `<li><input type="checkbox" value=${data.label}><div class='muc-dich-dat'><img src='data:image/png;base64,${data.imageData}'/>  ${mucDich(data.label)}</div></li>`
                 })
-                $("#viewTimKiemDat").html(timKiemDatView);
-                $("#viewTimKiemDat input").change(function () {
-                    searchMapCheckBox();
+                $(".viewTimKiemDat").html(timKiemDatView);
+                $(".viewTimKiemDat input").change(function () {
+                    roleCheckBox();
                 }) //set change in checkbox search
                 //end set view notice
-
+                $("#btnSearchMutil").click(function () {
+                    searchMapCheckBox();
+                })
                 //set huyen so do viewDanhSachXaHuyen
                 let viewDanhSachXaHuyen = '';
                 // let viewDanhSachXaHuyen = `<li data-uid="-1" class="activeHuyenXa"><input type="checkbox" value="-1">Tất Cả</li>`;
@@ -1064,11 +1066,41 @@ require([
         //end zoom in search
         //end search map
 
+
+        //role checkbox
+        function roleCheckBox() {
+            let lenHienTrang = $("#viewHienTrang input:checked").length ;
+            let lenQuyHoach = $("#viewQuyHoach input:checked").length ;
+            if (lenHienTrang > 1 && lenQuyHoach === 1) {
+                $("#viewQuyHoach input").attr("disabled","disabled");
+                $("#viewQuyHoach input:checked").prop("disabled", false);
+            }
+            if (lenQuyHoach > 1 && lenHienTrang === 1) {
+                $("#viewHienTrang input").attr("disabled","disabled");
+                $("#viewHienTrang input:checked").prop("disabled", false);
+            }
+            if(lenHienTrang > 1 && lenQuyHoach === 0) {
+                $("#viewQuyHoach input").prop("disabled", false);
+            }
+            if (lenQuyHoach > 1 && lenHienTrang === 0) {
+                $("#viewHienTrang input").prop("disabled", false);
+            }
+        }
+
         //search checkbox
         function searchMapCheckBox() {
-            // let tieuChi = dom.byId("tieuChiSearchMap").value; //get tieuChi search
             let queryRs;
-            if (!$("#inputCheckMutil input").is(":checked")) {
+            let lenHienTrang = $("#viewHienTrang input:checked").length ;
+            let lenQuyHoach = $("#viewQuyHoach input:checked").length ;
+            if (lenQuyHoach === 0 ) {
+                queryRs = getInputSearchCheckBox(false);
+                // neu '' tuc la ko co checkbox click khong query va tat bang find
+                if (queryRs !== '') {
+                    searchMapHienTrang(queryRs);
+                } else {
+                    $(".form-search-toado").css("display","none");
+                }
+            }else if (lenHienTrang === 0) {
                 queryRs = getInputSearchCheckBox(true);
                 // neu '' tuc la ko co checkbox click khong query va tat bang find
                 if (queryRs !== '') {
@@ -1077,10 +1109,10 @@ require([
                     $(".form-search-toado").css("display","none");
                 }
             } else {
-                queryRs = getInputSearchCheckBox(false);
-                // neu '' tuc la ko co checkbox click khong query va tat bang find
+                queryRs = getInputSearchCheckBox(true);
+                queryRs += "and (MaHienTrang = "+getInputSearchCheckBox(false)+")";
                 if (queryRs !== '') {
-                    searchMapHienTrang(queryRs);
+                    searchMapQuyHoach(queryRs);
                 } else {
                     $(".form-search-toado").css("display","none");
                 }
@@ -1090,7 +1122,7 @@ require([
         //create query add
         function getInputSearchCheckBox(test) {
             let rs = '';
-            $("#viewTimKiemDat input").map((index, data) => {
+            $(`#${test ? 'viewQuyHoach' : 'viewHienTrang'} input`).map((index, data) => {
                 let check = $(data).is(":checked");
                 if (check) {
                     let arrSplit = mucDich($(data).val()).split(":");

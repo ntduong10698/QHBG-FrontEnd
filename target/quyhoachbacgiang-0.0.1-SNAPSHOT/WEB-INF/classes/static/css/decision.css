@@ -191,14 +191,14 @@
     color: #666666;
     white-space: nowrap;
 }
-.dp-table table tbody tr td:nth-child(3),.dp-table table tbody tr td:nth-child(1){
+.dp-table table tbody tr td:nth-child(4),.dp-table table tbody tr td:nth-child(2),.dp-table table tbody tr td:nth-child(1){
     white-space: nowrap;
 }
-.dp-table table tbody tr td:nth-child(5){
+.dp-table table tbody tr td:nth-child(6){
     padding: 0;
     vertical-align: middle;
 }
-.dp-table table tbody tr td:nth-child(5)>a{
+.dp-table table tbody tr td:nth-child(6)>a{
     display: flex;
     justify-content: center;
     align-items: center;
