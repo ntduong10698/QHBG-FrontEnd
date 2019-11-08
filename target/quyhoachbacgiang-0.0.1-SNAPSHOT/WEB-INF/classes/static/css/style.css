@@ -1166,3 +1166,11 @@ span.it-cap{
     font-weight: bold;
     color: #4c4747;
 }
+
+.view-number-table {
+    text-align: right !important;
+}
+
+.view-text-table {
+    text-align: left !important;
+}
