@@ -133,12 +133,20 @@
             <div class="view-qh view-qh-v2">
                 <div class="title-qh">
                     <span><i class="fa fa-calendar" aria-hidden="true"></i> Mục đích sử dụng đất</span>
-                    <span id="inputCheckMutil">
-                        <input type="checkbox">
-                        <span>Hiện Trạng</span>
-                    </span>
+<%--                    <span id="inputCheckMutil">--%>
+<%--                        <input type="checkbox">--%>
+<%--                        <span>Hiện Trạng</span>--%>
+<%--                    </span>--%>
+                    <button class="btn btn-info text-uppercase" id="btnSearchMutil"><i class="fa fa-search" aria-hidden="true"></i>Tìm
+                        kiếm</button>
                 </div>
-                <ul id="viewTimKiemDat">
+                <nav class="nav nav-pills nav-justified justify-content-end" id="nav-tab">
+                    <a class="nav-item nav-link active" id="nav-hientrang-tab" data-toggle="tab" href="" role="tab" aria-selected="true">Hiện Trạng</a>
+                <a class="nav-item nav-link" id="nav-quyhoach-tab" data-toggle="tab" href="" role="tab" aria-selected="false">Quy Hoạch/ Kế Hoạch</a>
+                </nav>
+                <ul class="viewTimKiemDat" id="viewHienTrang">
+                </ul>
+                <ul class="viewTimKiemDat" id="viewQuyHoach" style="display: none">
                 </ul>
             </div>
         </div>

@@ -242,10 +242,7 @@ require([
         //sublayersCall[0] is QuyHoach and sublayersCall[1] is HienTrang or NenDiaLy
         let layer = new MapImageLayer({
             url: urlApiMap,
-            sublayers: [{
-                    id: layersCall[4].id,
-                    visible: true
-                },
+            sublayers: [
                 {
                     id: layersCall[3].id,
                     visible: true
