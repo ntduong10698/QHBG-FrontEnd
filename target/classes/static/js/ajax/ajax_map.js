@@ -30,10 +30,15 @@ function viewInfoSoild(data) {
     console.log(data.MaQuyetDinh);
     $("#infoSoild ul li:nth-child(1)").html(`<span>${ data.MaQuyHoach === undefined ? data.MaHienTrang : data.MaHienTrang+'/'+data.MaQuyHoach }</span>`);
     $("#infoSoild ul li:nth-child(2)").html(`<span>${ data.MucDichSuDung }</span>`);
-    $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '...' : data.MucDichQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(2)").attr("title",data.MucDichSuDung);
+    $("#infoSoild ul li:nth-child(3)").html(`<span>${ data.MucDichQuyHoach === undefined ? '<br/>' : data.MucDichQuyHoach }</span>`);
+    $("#infoSoild ul li:nth-child(3)").attr("title",data.MucDichQuyHoach);
     $("#infoSoild ul li:nth-child(4)").html(`<span><a href="" data-type="tinh" class="reviewLocation">${ data.Tinh }</a></span>`);
+    $("#infoSoild ul li:nth-child(4)").attr("title",data.Tinh);
     $("#infoSoild ul li:nth-child(5)").html(`<span><a href="" data-type="huyen" class="reviewLocation">${ data.Huyen }</a></span>`);
+    $("#infoSoild ul li:nth-child(5)").attr("title",data.Huyen);
     $("#infoSoild ul li:nth-child(6)").html(`<span><a href="" data-type="xa" class="reviewLocation">${ data.Xa }</a></span>`);
+    $("#infoSoild ul li:nth-child(6)").attr("title",data.Xa);
     setInfoKhUse(data);
 }
 
@@ -71,21 +76,24 @@ function clickReview() {
 function viewInforQuyetDinh() {
     let maQuyetDinh = quyetDinhMap;
     console.log(maQuyetDinh);
-    let view = `<li>${maQuyetDinh === null ? '...' : maQuyetDinh}</li>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>
-                <li>...</li>`;
+    let view = `<li>${maQuyetDinh === null ? '<br/>' : maQuyetDinh}</li>
+                <li><br/></li>
+                <li><br/></li>
+                <li><br/></li>
+                <li><br/></li>
+                <li><br/></li>`;
     $("#chiTietQuyetDinhMap ul").html(view);
     if (maQuyetDinh != null) {
         callQuyetDinhMap(maQuyetDinh.toUpperCase(),year).then(data => {
             console.log(data);
             if (data.length > 0) {
                 $("#chiTietQuyetDinhMap ul li:nth-child(2)").html(data[0].trichYeu);
-                $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : "...");
+                $("#chiTietQuyetDinhMap ul li:nth-child(2)").attr("title",data[0].trichYeu);
+                $("#chiTietQuyetDinhMap ul li:nth-child(3)").html(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : "<br/>");
+                $("#chiTietQuyetDinhMap ul li:nth-child(3)").attr("title",(data[0].coQuanBanHanh != null ? data[0].coQuanBanHanh.tenCoQUan : ""));
                 $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data[0].nguoiKy);
-                $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "...");
+                $("#chiTietQuyetDinhMap ul li:nth-child(4)").attr("title",data[0].nguoiKy);
+                $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "<br/>");
                 $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}" target="_blank">${maQuyetDinh}</a>` : ''}`);
             }
         }).catch(err => {
@@ -114,9 +122,9 @@ function setInfoKhUse(data) {
                 setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
 
                 if (rs.length > 0) {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
                 } else {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span></span></li>`;
                 }
                 $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
             }).catch(err => {
@@ -131,9 +139,9 @@ function setInfoKhUse(data) {
                 setTableInfoSoildQHTinh(rs);
 
                 if (rs.length > 0) {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich.toFixed(2)+" "+rs[0].unit}</span></li>`;
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich.toFixed(2)+" "+rs[0].unit}</span></li>`;
                 } else {
-                    textViewRight = `<li><span>${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>...  </span></li>`;
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span></span></li>`;
                 }
                 $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
             })
@@ -148,14 +156,14 @@ function setInfoKhUse(data) {
                         <li><span>Năm 2018</span></li>
                         <li><span>Năm 2019</span></li>`;
         $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
-        textViewRight += `<li><span>${chiTieu}</span></li>
+        textViewRight += `<li><span title="${chiTieu}">${chiTieu}</span></li>
                                <li><span>${mkh}</span></li>
-                               <li><span>...</span></li>
-                               <li><span>...</span></li>
-                               <li><span>...</span></li>
-                               <li><span>...</span></li>
-                               <li><span>...</span></li>
-                               <li><span>...</span></li>`;
+                               <li><span><br/></span></li>
+                               <li><span><br/></span></li>
+                               <li><span><br/></span></li>
+                               <li><span><br/></span></li>
+                               <li><span><br/></span></li>
+                               <li><span><br/></span></li>`;
         // dung year loc tu arr bản ghi
         $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);// set tat ca trong hop sang khong co, neu co dung jquery set lai
         if (checkMap != 0) {
