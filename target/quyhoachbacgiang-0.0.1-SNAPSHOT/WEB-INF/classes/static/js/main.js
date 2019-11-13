@@ -1,6 +1,6 @@
 const URL_API = "http://123.31.45.240:8480/admin/api/";
 const tokenHeader_value = "";
-const QUYET_DINH_QH = ['19/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
+const QUYET_DINH_QH = ['40/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
 const QUYET_DINH_KH_2015 = [null,'59/QĐ-UBND','58/QĐ-UBND','70/QĐ-UBND','69/QĐ-UBND','67/QĐ-UBND','57/QĐ-UBND','72/QĐ-UBND','66/QĐ-UBND','68/QĐ-UBND','71/QĐ-UBND'];
 const QUYET_DINH_KH_2016 = [null,'69/QĐ-UBND','94/QĐ-UBND','93/QĐ-UBND','65/QĐ-UBND','68/QĐ-UBND','100/QĐ-UBND','92/QĐ-UBND','67/QĐ-UBND','66/QĐ-UBND','101/QĐ-UBND'];
 const QUYET_DINH_KH_2017 = [null,'53/QĐ-UBND','55/QĐ-UBND','52/QĐ-UBND','54/QĐ-UBND','72/QĐ-UBND','57/QĐ-UBND','71/QĐ-UBND','51/QĐ-UBND','56/QĐ-UBND','80/QĐ-UBND'];

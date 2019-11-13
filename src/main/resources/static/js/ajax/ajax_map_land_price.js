@@ -469,6 +469,11 @@ require([
                 });
             }).catch(err => {
                 console.log(err);
+                $(".form-search-toado").css("display","none");
+                viewAlter(2,"Xảy ra lỗi. Vui lòng thử tìm kiếm khác");
+                $(document.body).css({
+                    'cursor': 'default'
+                });
             });
 
             queryTask.executeForCount(query).then(function (searchResults) {

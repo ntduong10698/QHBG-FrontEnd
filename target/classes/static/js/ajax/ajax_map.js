@@ -118,7 +118,6 @@ function setInfoKhUse(data) {
             // quy haoch huyen
             setBieuMauKhacQH(mkh, checkMap); //set datain bieu mau khac ke hoach
             callThongKeQuyHoach(mkh, checkMap).then(rs => {
-
                 setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
 
                 if (rs.length > 0) {

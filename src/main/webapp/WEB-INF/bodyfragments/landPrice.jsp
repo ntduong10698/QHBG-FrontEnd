@@ -97,8 +97,8 @@
                 <div class="dpfc-item dpcf-fitem">
                     <span>Giá đất x1.000 (VNĐ/m<sup>2</sup>):</span>
                     <div class="ippwp">
-                        <input type="number" value="0" placeholder="Giá nhỏ nhất" id="priceDatMin">
-                        <input type="number" placeholder="Giá lớn nhất" id="priceDatMax">
+                        <input type="number" value="0" placeholder="Giá nhỏ nhất" id="priceDatMin" min="0">
+                        <input type="number" placeholder="Giá lớn nhất" id="priceDatMax" min="0">
                     </div>
                 </div>
                 <div class="dpfc-item dpcf-bt" id="searchGiaDat">

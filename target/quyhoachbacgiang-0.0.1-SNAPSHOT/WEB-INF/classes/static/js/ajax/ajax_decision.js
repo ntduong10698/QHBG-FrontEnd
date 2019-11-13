@@ -16,11 +16,11 @@ function callFullTableDecision() {
 }
 
 // sắp xếp quyết định theo ngày
-function sortDecision(arr) {
-    arr.sort((a, b) => {
-        return ('' + b.ngayBanHanh).localeCompare(a.ngayBanHanh);
-    });
-}
+// function sortDecision(arr) {
+//     arr.sort((a, b) => {
+//         return a.thuTuUuTien - b.thuTuUuTien;
+//     });
+// }
 
 // gọi ra dữ liệu all quyết định
 function callTableDecision() {
@@ -28,10 +28,9 @@ function callTableDecision() {
     let arr = null;
     $('#pagination').pagination({
         dataSource: function (done) {
-            ajaxCallGet("v1/public/quyet-dinh/all").then(result => {
+            ajaxCallGet("v1/public/quyet-dinh/available").then(result => {
                 hideLoadingGif();
                 arr = result;
-                sortDecision(arr)
                 done(arr);
             });
         },
@@ -97,7 +96,6 @@ function searchCoQuanBanHanh() {
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-co-quan-ban-hanh?id=" + $("#dp-drop1").val()).then(data => {
                     arr = data;
-                    sortDecision(arr)
                     done(arr);
                     hideLoadingGif();
                 });
@@ -122,7 +120,6 @@ function searchLoaiQuyetDinh() {
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/find-by-nhom-quyet-dinh?id=" + $("#dp-drop2").val()).then(data => {
                     arr = data;
-                    sortDecision(arr)
                     hideLoadingGif();
                     done(arr);
                 });
@@ -179,7 +176,6 @@ function searchTextQuyetDinh() {
             dataSource: function (done) {
                 ajaxCallGet("v1/public/quyet-dinh/search?option=" + valuee + "&text=" + $('#searchTextQD').val()).then(data => {
                     arr = data;
-                    sortDecision(arr)
                     hideLoadingGif();
                     done(arr);
                 });
