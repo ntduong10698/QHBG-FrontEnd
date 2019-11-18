@@ -469,6 +469,11 @@ require([
                 });
             }).catch(err => {
                 console.log(err);
+                $(".form-search-toado").css("display","none");
+                viewAlter(2,"Xảy ra lỗi. Vui lòng thử tìm kiếm khác");
+                $(document.body).css({
+                    'cursor': 'default'
+                });
             });
 
             queryTask.executeForCount(query).then(function (searchResults) {
@@ -540,8 +545,8 @@ require([
         //end search check box
     }).catch(err => {
         console.log(err);
-        // alert("Chưa có dữ liệu bản đồ");
-        viewAlter(2,"Chưa có dữ liệu bản đồ");
+        // alert("Không có dữ liệu bản đồ");
+        viewAlter(2,"Không có dữ liệu bản đồ");
     });
 
     //end render map and handling map

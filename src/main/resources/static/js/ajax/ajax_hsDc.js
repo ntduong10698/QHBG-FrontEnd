@@ -72,7 +72,7 @@ function setViewQuyetDinh() {
         })
         $("#dp-drop13").html(optionSelect);
         // set truong hop default
-        $("#dp-drop13").val(rs[0].id);
+        $("#dp-drop13").val(rs[1].id);
         $("#dp-drop13").select2().trigger('change');
         $("#dp-drop13").change(function () {
             callSelectBangGiaDatPNNHsDc();
