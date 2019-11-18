@@ -1,11 +1,11 @@
 const URL_API = "http://123.31.45.240:8480/admin/api/";
 const tokenHeader_value = "";
-const QUYET_DINH_QH = ['40/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
+const QUYET_DINH_QH = ['19/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
 const QUYET_DINH_KH_2015 = [null,'59/QĐ-UBND','58/QĐ-UBND','70/QĐ-UBND','69/QĐ-UBND','67/QĐ-UBND','57/QĐ-UBND','72/QĐ-UBND','66/QĐ-UBND','68/QĐ-UBND','71/QĐ-UBND'];
 const QUYET_DINH_KH_2016 = [null,'69/QĐ-UBND','94/QĐ-UBND','93/QĐ-UBND','65/QĐ-UBND','68/QĐ-UBND','100/QĐ-UBND','92/QĐ-UBND','67/QĐ-UBND','66/QĐ-UBND','101/QĐ-UBND'];
 const QUYET_DINH_KH_2017 = [null,'53/QĐ-UBND','55/QĐ-UBND','52/QĐ-UBND','54/QĐ-UBND','72/QĐ-UBND','57/QĐ-UBND','71/QĐ-UBND','51/QĐ-UBND','56/QĐ-UBND','80/QĐ-UBND'];
 const QUYET_DINH_KH_2018 = [null,'102/QĐ-UBND','106/QĐ-UBND','103/QĐ-UBND','105/QĐ-UBND','100/QĐ-UBND','104/QĐ-UBND','112/QĐ-UBND','113/QĐ-UBND','101/QĐ-UBND','121/QĐ-UBND'];
-const QUYET_DINH_KH_2019 = [null,'76/QĐ-UBND','162/QĐ-UBND','77/QĐ-UBND','158/QĐ-UBND','99/QĐ-UBND','177/QĐ-UBND','107/QĐ-UBND','159/QĐ-UBND','82/QĐ-UBND','178/QĐ-UBND'];
+const QUYET_DINH_KH_2019 = ['40/NQ-CP','76/QĐ-UBND','162/QĐ-UBND','77/QĐ-UBND','158/QĐ-UBND','99/QĐ-UBND','177/QĐ-UBND','107/QĐ-UBND','159/QĐ-UBND','82/QĐ-UBND','178/QĐ-UBND'];
 const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
 const ARR_HUYEN_TEXT = ['TP Bắc Giang', 'Hiệp Hòa', 'Yên Dũng', 'Lục Nam', 'Sơn Động', 'Lạng Giang', 'Việt Yên', 'Tân Yên', 'Lục Ngạn', 'Yên Thế'];
 const MA_DAT = ['NPP: Đất nông nghiệp','SXN: Đất sản xuất nông nghiệp','CHN: Đất trồng cây hằng năm','LUA: Đất trồng lúa','LUC: Đất chuyên trồng lúa nước'

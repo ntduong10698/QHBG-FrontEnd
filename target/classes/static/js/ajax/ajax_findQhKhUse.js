@@ -104,7 +104,7 @@ function clickSearchTraCuu() {
                 })
             }
         } else {
-            setBieuMauKhacKH(mkh, idHuyen, nam);
+            // setBieuMauKhacKH(mkh, idHuyen, nam);
             callThongKeKeHoach(mkh, idHuyen).then(rs => {
                 setTableInfoSoildKh(rs, nam, idHuyen);
             }).catch(err => {
@@ -121,7 +121,7 @@ function setTableInfoSoildKh(dataTable, year, idHuyen) {
     let dataKh = dataTable.filter(data => data.quyHoachKeHoach === "KH"&& data.year == year);
     let viewThead = '';
     dataKh.sort(function (a, b) {
-        return a.year - b.year;
+        return a.bieuMau.idBieuMau - b.bieuMau.idBieuMau;
     })
     let dataHt = dataTable.filter(data => (data.quyHoachKeHoach == "KH-HT" && data.year == year));
     console.log(year);
