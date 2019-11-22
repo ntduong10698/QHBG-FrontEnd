@@ -85,9 +85,13 @@ function clickSearchTraCuu() {
         mkh = $("#dp-drop5").val();
         idHuyen = $("#dp-drop6").val();
         nam = $("#dp-drop7").val();
+        //reset view
+        $("#quyetDinhTraCuu").html("");
+        $("#tableInfoSoild .table-HTQH").html('');
+        $("#tableInfoSoild .table-QHK").html('');
         if (checkPage === 0) {
             //0 la quy hoach 1 la ke hoach
-            setBieuMauKhacQH(mkh, idHuyen);
+            setBieuMauKhacQH(mkh, idHuyen, "QH");
             if(idHuyen != 0) {
                 callThongKeQuyHoach(mkh, idHuyen).then(rs => {
                     setTableInfoSoildQHHuyen(mkh, rs, idHuyen);
@@ -97,21 +101,24 @@ function clickSearchTraCuu() {
             } else {
                 // 0 la tinh
                 callThongKeQuyHoachTinh(mkh).then(rs => {
-                    rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
-                    setTableInfoSoildQHTinh(rs, mkh);
+                    setTableInfoSoildQHTinh(rs, mkh, "QH");
                 }).catch(err => {
                     console.log(err);
                 })
             }
         } else {
             // setBieuMauKhacKH(mkh, idHuyen, nam);
-            callThongKeKeHoach(mkh, idHuyen).then(rs => {
-                setTableInfoSoildKh(rs, nam, idHuyen);
-            }).catch(err => {
-                console.log(err);
-            })
+            if (idHuyen != 0) {
+                callThongKeKeHoach(mkh, idHuyen).then(rs => {
+                    setTableInfoSoildKh(rs, nam, idHuyen);
+                }).catch(err => {
+                    console.log(err);
+                })
+            } else  {
+                // 0 là Tỉnh
+            }
         }
-        return false;
+         return false;
     })
 }
 
@@ -165,17 +172,16 @@ function setTableInfoSoildQHHuyen(mkh, dataTable, idHuyen) {
                     ${getTableBieu_CH03(dataTable[0])}
                 </div>
             </div>`;
-        setQuyetDinh(idHuyen,"2015");
+        setQuyetDinh(idHuyen,"2015"); //???
         $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
     //set HienTrangQuyHoachHuyen cung api voi kh-huyen
-    callThongKeKeHoach(mkh, idHuyen).then(data => {
+    callThongKeKeHoachQh_Kh(mkh, idHuyen, "QH-HT").then(data => {
         //reset value
         viewTable = '';
-        let arrRs = data.filter(data1 => data1.year == "2020" && data1.quyHoachKeHoach === "QH-HT");
+        let arrRs = data.filter(data1 => data1.year == "2020");
         if(arrRs.length > 0) {
-
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${arrRs[0].name}</span>
@@ -197,9 +203,9 @@ function setTableInfoSoildQHHuyen(mkh, dataTable, idHuyen) {
 //End set data tableInfoSoild-Qh-Huyen
 
 //set data tableInfoSoild-Qh-Tinh
-function setTableInfoSoildQHTinh(dataTable, mkh){
+function setTableInfoSoildQHTinh(dataTable, mkh, qh_kh){
     let viewTable = '';
-
+    dataTable = dataTable.filter(value => value.quyHoachKeHoach === qh_kh);
     //set data infoSoild QH Tinh
     if(dataTable.length > 0) {
         //set data infoSoild QH Tinh
@@ -219,7 +225,7 @@ function setTableInfoSoildQHTinh(dataTable, mkh){
     callThongKeQuyHoachHienTrangTinh(mkh).then(data => {
         //reset value
         viewTable = '';
-        let arrRs = data.filter(data1 => data1.nam == "2020" && data1.quyHoachKeHoach === "QH-HT"); //check
+        let arrRs = data.filter(data1 => data1.quyHoachKeHoach === `${qh_kh}-HT`); //check
         if(arrRs.length > 0) {
             viewTable = `<div class="table-wp">
                 <div class="tablep-cap">

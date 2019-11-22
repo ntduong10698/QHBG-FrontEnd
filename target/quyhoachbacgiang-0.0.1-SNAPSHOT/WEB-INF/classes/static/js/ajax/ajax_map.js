@@ -113,13 +113,16 @@ function setInfoKhUse(data) {
     textViewLeft = `<li><span>Chỉ tiêu</span></li><li><span>Mã Đất</span></li><li><span>Tổng diện tích</span></li>`;
     $("#infoKhUse .chitiet-qh-left:nth-child(1) ul").html(textViewLeft);
     clickReview();
+    //reset view
+    $("#tableInfoSoild .table-HTQH").html('');
+    $("#tableInfoSoild .table-QHK").html('');
+
     if (pathName.indexOf("quy-hoach") > -1) {
         if (checkMap !== 0) {
-            // quy haoch huyen
-            setBieuMauKhacQH(mkh, checkMap); //set datain bieu mau khac ke hoach
+            // quy hoach huyen
+            setBieuMauKhacQH(mkh, checkMap, "QH"); //set datain bieu mau khac ke hoach
             callThongKeQuyHoach(mkh, checkMap).then(rs => {
                 setTableInfoSoildQHHuyen(rs); //call set data tableInfoSoildQh
-
                 if (rs.length > 0) {
                     textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
                 } else {
@@ -130,8 +133,18 @@ function setInfoKhUse(data) {
                 console.log(err);
             });
         } else {
-            $("#tableInfoSoild .table-HTQH").html('');
-            $("#tableInfoSoild .table-QHK").html('');
+            setBieuMauKhacQH(mkh, checkMap, "QH");
+            callThongKeQuyHoachTinh(mkh).then(rs => {
+                setTableInfoSoildQHTinh(rs, "QH"); //call set data tableInfoSoildQh
+                if (rs.length > 0) {
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich+" "+rs[0].unit}</span></li>`;
+                } else {
+                    textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span></span></li>`;
+                }
+                $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);
+            }).catch(err => {
+                console.log(err);
+            });
             //to do quy hoach tinh;
         }
     } else if (pathName.indexOf("ke-hoach") > -1) {
@@ -200,7 +213,7 @@ function setInfoKhUse(data) {
             $("#infoKhUse .chitiet-qh-left:nth-child(2) ul").html(textViewRight);// set tat ca trong hop sang khong co, neu co dung jquery set lai
 
             // quy hoach tinh
-            setBieuMauKhacQH(mkh, 0); //set datain bieu mau khac ke hoach
+            setBieuMauKhacQH(mkh, 0, "KH"); //set datain bieu mau khac ke hoach
             callThongKeQuyHoachTinh(mkh).then(rs => {
                 rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
                 setTableInfoSoildQHTinh(rs);
@@ -260,7 +273,6 @@ function setTableInfoSoildQHHuyen(dataTable) {
     //set Bang Quy Hoach Huyen
     if (dataTable.length > 0) {
         mkhCall = dataTable[0].loaiDat.maKyHieu;
-
         viewTable = `<div class="table-wp">
                 <div class="tablep-cap">
                     <span>${dataTable[0].name}</span>
@@ -274,10 +286,10 @@ function setTableInfoSoildQHHuyen(dataTable) {
     }
 
     //set HienTrangQuyHoachHuyen cung api voi kh-huyen
-    callThongKeKeHoach(mkhCall, checkMap).then(data => {
+    callThongKeKeHoachQh_Kh(mkhCall, checkMap, "QH-HT").then(data => {
         //reset value
         viewTable = '';
-        let arrRs = data.filter(data1 => data1.year == "2020" && data1.quyHoachKeHoach === "QH-HT");
+        let arrRs = data.filter(data1 => data1.year == "2020");
         if(arrRs.length > 0) {
 
             viewTable += `<div class="table-wp">
@@ -300,10 +312,10 @@ function setTableInfoSoildQHHuyen(dataTable) {
 //End set data tableInfoSoild-Qh-Huyen
 
 //set data tableInfoSoild-Qh-Tinh
-function setTableInfoSoildQHTinh(dataTable){
+function setTableInfoSoildQHTinh(dataTable, qh_kh){
     let viewTable = '';
     let mkhCall = '';
-
+    dataTable = dataTable.filter(value => value.quyHoachKeHoach === qh_kh);
     //set data infoSoild QH Tinh
     if(dataTable.length > 0) {
         //set data infoSoild QH Tinh
@@ -324,7 +336,7 @@ function setTableInfoSoildQHTinh(dataTable){
     callThongKeQuyHoachHienTrangTinh(mkhCall).then(data => {
         //reset value
         viewTable = '';
-        let arrRs = data.filter(data1 => data1.nam == "2020" && data1.quyHoachKeHoach === "QH-HT"); //check
+        let arrRs = data.filter(data1 => data1.quyHoachKeHoach === `${qh_kh}-HT`); //check
         if(arrRs.length > 0) {
             viewTable = `<div class="table-wp">
                 <div class="tablep-cap">
@@ -632,6 +644,9 @@ require([
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
                     searchViewXaPhuong = results;
                     arrXaHuyen = results.features;
+                    if (arrXaHuyen.length === 0) {
+                        window.location.reload();
+                    }
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
@@ -649,6 +664,7 @@ require([
                         zoomToXaHuyen($(this).attr("data-uid"));
                     })
                 }).catch(err => {
+                    window.location.reload();
                     console.log(err);
                 })
                 //end set huyen so do
@@ -1155,7 +1171,8 @@ require([
     }).catch(err => {
         console.log(err);
         // alert("Không có dữ liệu bản đồ");
-        viewAlter(2,"Vui lòng tải lại trang!");
+        // viewAlter(2,"Vui lòng tải lại trang!");
+        window.location.reload();
     });
 
     //end render map and handling map

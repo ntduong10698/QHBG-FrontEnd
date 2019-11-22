@@ -11,6 +11,11 @@ function callThongKeKeHoach(mkh, idTinhHuyen) {
     return ajaxCallGet(url);
 }
 
+function callThongKeKeHoachQh_Kh(mkh, idTinhHuyen, qh_kh) {
+    let url = `v1/public/read-excel/bieu_CH01_CH04_CH05_Ch06_Ch07_CH08_CH09/find-by-mkh-type?mkh=${mkh}&id=${idTinhHuyen}&type=${qh_kh}`;
+    return ajaxCallGet(url);
+}
+
 //api cho bieu mau tinh qh
 function callThongKeQuyHoachTinh(mkh) {
     // bac giang id la 1;
@@ -307,7 +312,6 @@ function getTableBieu_CT0308(data) {
                     <th rowspan="2">Cấp quốc gia phân bổ (ha)</th>
                     <th rowspan="2">Cấp tỉnh xác định (ha)</th>
                     <th rowspan="2">Tổng số (ha)</th>
-                    <th rowspan="2">Cơ Cấu (%)</th>
                     <th colspan=${data.dienTichTheoHuyens === null ? 0 : data.dienTichTheoHuyens.length}>Phân theo đơn vị hành chính (ha)</th>
                  </tr><tr>`;
     data.dienTichTheoHuyens.map(data => {
@@ -319,8 +323,7 @@ function getTableBieu_CT0308(data) {
                         <td class="view-text-table">${data.loaiDat.maKyHieu}</td>
                         <td class="view-number-table">${data.dienTichCapQGPhanBo == 0 ? '' : formatDienTich(data.dienTichCapQGPhanBo.toFixed(2))}</td>
                         <td class="view-number-table">${data.dienTichCapTinhXD == 0 ? '' : formatDienTich(data.dienTichCapTinhXD.toFixed(2))}</td>
-                        <td class="view-number-table">${data.tongDienTich ==0 ? '' : formatDienTich(data.tongDienTich.toFixed(2))}</td>
-                        <td class="view-number-table">${data.coCau === undefined ? "" : data.coCau === null ? "" : data.coCau.toFixed(2)}</td>`;
+                        <td class="view-number-table">${data.tongDienTich ==0 ? '' : formatDienTich(data.tongDienTich.toFixed(2))}</td>`;
     data.dienTichTheoHuyens.map(data => {
         dataViewTable += `<td class="view-number-table">${data.dienTich == 0 ? '' : formatDienTich(data.dienTich.toFixed(2))}</td>`
     })

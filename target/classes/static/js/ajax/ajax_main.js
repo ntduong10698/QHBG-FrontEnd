@@ -28,7 +28,7 @@ async function ajaxCall(url) {
         url: url,
         timeout: 30000,
         success: function (result) {
-            rs = result
+            rs = result;
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(errorThrown);

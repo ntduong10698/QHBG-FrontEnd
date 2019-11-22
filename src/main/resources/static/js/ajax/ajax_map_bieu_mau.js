@@ -34,14 +34,14 @@ async function callGetTableBieuMauKhacKh(mkh, idMap, year) {
 // End Bieu Mau Khac Ke Hoach
 
 // Bieu Mau Khac Quy Hoach
-function setBieuMauKhacQH(mkh, idMap) {
+function setBieuMauKhacQH(mkh, idMap, qh_kh) {
     $("#tableInfoSoild .table-QHK").html(''); //resetView
     let arrCallAjax = [];
-    arrCallAjax.push(callGetTableBieu_QG02_CT02_CH02_QP02(mkh, idMap));
-    arrCallAjax.push(callGetTableBieu_QG04_CT04_QP04(mkh, idMap));
-    arrCallAjax.push(callGetTableBieu_QG08_CT07_QP06(mkh, idMap));
-    arrCallAjax.push(callGetTableBieu_QG0911_CT0911_QP08(mkh, idMap));
-    arrCallAjax.push(callGetTableBieu_QG0506_CT0506_QP05(mkh, idMap));
+    // arrCallAjax.push(callGetTableBieu_QG02_CT02_CH02_QP02(mkh, idMap));
+    arrCallAjax.push(callGetTableBieu_QG04_CT04_QP04(mkh, idMap, qh_kh));
+    arrCallAjax.push(callGetTableBieu_QG08_CT07_QP06(mkh, idMap, qh_kh));
+    arrCallAjax.push(callGetTableBieu_QG0911_CT0911_QP08(mkh, idMap, qh_kh));
+    arrCallAjax.push(callGetTableBieu_QG0506_CT0506_QP05(mkh, idMap, qh_kh));
     Promise.all(arrCallAjax).then(rs => {
         console.log(rs);
         let viewTable = '';
@@ -74,12 +74,12 @@ async function callGetTableBieu_QG02_CT02_CH02_QP02(mkh, idMap) {
     return viewTable;
 }
 
-async function callGetTableBieu_QG04_CT04_QP04(mkh, idMap) {
+async function callGetTableBieu_QG04_CT04_QP04(mkh, idMap, qh_kh)  {
     let viewTable = '';
     await callBieu_QG04_CT04_QP04(mkh, idMap).then(rs => {
         // let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'QH-K');
         let arrBMKhac = []; // sua tam thoi
-        arrBMKhac = idMap == 0 ?  rs.filter(item => item.quyHoachKeHoach === 'KH') : rs.filter(item => item.quyHoachKeHoach === 'QH-K');
+        arrBMKhac = qh_kh == 'KH' ?  rs.filter(item => item.quyHoachKeHoach === 'KH') : rs.filter(item => item.quyHoachKeHoach === 'QH');
         arrBMKhac.map(data => {
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
@@ -96,12 +96,12 @@ async function callGetTableBieu_QG04_CT04_QP04(mkh, idMap) {
     return viewTable;
 }
 
-async function callGetTableBieu_QG08_CT07_QP06(mkh, idMap) {
+async function callGetTableBieu_QG08_CT07_QP06(mkh, idMap, qh_kh) {
     let viewTable = '';
     await callBieu_QG08_CT07_QP06(mkh, idMap).then(rs => {
         // let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'QH-K');
         let  arrBMKhac = [];
-        arrBMKhac = idMap == 0 ? rs.filter(item => item.quyHoachKeHoach === 'KH-K') : rs.filter(item => item.quyHoachKeHoach === 'QH-K');
+        arrBMKhac = qh_kh == 'KH' ?  rs.filter(item => item.quyHoachKeHoach === 'KH') : rs.filter(item => item.quyHoachKeHoach === 'QH');
         arrBMKhac.map(data => {
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
@@ -118,12 +118,13 @@ async function callGetTableBieu_QG08_CT07_QP06(mkh, idMap) {
     return viewTable;
 }
 
-async function callGetTableBieu_QG0911_CT0911_QP08(mkh, idMap) {
+async function callGetTableBieu_QG0911_CT0911_QP08(mkh, idMap, qh_kh) {
     let viewTable = '';
     await callBieu_QG0911_CT0911_QP08(mkh, idMap).then(rs => {
         // let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'QH-K');
         let arrBMKhac = [];
-        arrBMKhac = idMap == 0 ? rs.filter(item => item.quyHoachKeHoach === 'KH-K') : rs.filter(item => item.quyHoachKeHoach === 'QH-K');
+        console.log(rs);
+        arrBMKhac = rs.filter(item => item.quyHoachKeHoach === qh_kh);
         arrBMKhac.map(data => {
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
@@ -140,10 +141,10 @@ async function callGetTableBieu_QG0911_CT0911_QP08(mkh, idMap) {
     return viewTable;
 }
 
-async function callGetTableBieu_QG0506_CT0506_QP05(mkh, idMap) {
+async function callGetTableBieu_QG0506_CT0506_QP05(mkh, idMap, qh_kh) {
     let viewTable = '';
     await callBieu_QG0506_CT0506_QP05(mkh, idMap).then(rs => {
-        let arrBMKhac = rs.filter(item => item.quyHoachKeHoach === 'QH-K');
+        let arrBMKhac = qh_kh == 'KH' ?  rs.filter(item => item.quyHoachKeHoach === 'KH') : rs.filter(item => item.quyHoachKeHoach === 'QH');
         arrBMKhac.map(data => {
             viewTable += `<div class="table-wp">
                 <div class="tablep-cap">
