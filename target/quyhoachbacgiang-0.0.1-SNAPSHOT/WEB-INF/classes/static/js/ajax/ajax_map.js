@@ -215,8 +215,8 @@ function setInfoKhUse(data) {
             // quy hoach tinh
             setBieuMauKhacQH(mkh, 0, "KH"); //set datain bieu mau khac ke hoach
             callThongKeQuyHoachTinh(mkh).then(rs => {
-                rs = rs.filter(data1 => (data1.quyHoachKeHoach === "QH" && data1.nam == "2020")); //check
-                setTableInfoSoildQHTinh(rs);
+                rs = rs.filter(data1 => data1.quyHoachKeHoach === "KH"); //check
+                setTableInfoSoildQHTinh(rs, "KH");
                 if (rs.length > 0) {
                     textViewRight = `<li><span title="${chiTieu}">${chiTieu}</span></li><li><span>${mkh}</span></li><li><span>${rs[0].tongDienTich.toFixed(2)+" "+rs[0].unit}</span></li>`;
                 } else {
@@ -256,7 +256,8 @@ function setTableInfoSoildKh(dataTable) {
             </div>`;
         })
     } else {
-        viewTable = "<strong>Không có dữ liệu</strong>";
+        // viewTable = "<strong>Không có dữ liệu</strong>";
+        viewTable = "";
     }
     //end tao khung thead cho cac bang
 
@@ -303,7 +304,8 @@ function setTableInfoSoildQHHuyen(dataTable) {
             // console.log(viewTable);
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
-        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Không có dữ liệu</strong>"); //set Không có dữ liệu
+        // if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Không có dữ liệu</strong>"); //set Không có dữ liệu
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("");
     }).catch(err => {
         console.log(err);
     })
@@ -328,7 +330,6 @@ function setTableInfoSoildQHTinh(dataTable, qh_kh){
                     ${getTableBieu_CT0308(dataTable[0])}
                 </div>
             </div>`;
-
         $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
@@ -348,8 +349,8 @@ function setTableInfoSoildQHTinh(dataTable, qh_kh){
             </div>`;
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
-        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Không có dữ liệu</strong>"); //set Không có dữ liệu
-
+        // if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("<strong>Không có dữ liệu</strong>"); //set Không có dữ liệu
+        if(dataTable.length == 0 && arrRs.length == 0) $("#tableInfoSoild .table-HTQH").html("");
     }).catch(err => {
         console.log(err);
     })
@@ -387,32 +388,34 @@ require([
     function getUrlMap() {
         let rs = "http://103.9.86.47:6080/arcgis/rest/services/";
         let pathName = window.location.href;
+        let params = (new URL(window.location)).searchParams;
         let arrSplit = [];
         let indexHuyen;
         if (pathName.search("quy-hoach") > -1) {
-            arrSplit = pathName.split("map=");
-            if (arrSplit[1] !== "0") {
-                checkMap = arrSplit[1] - 0; // set truong phan biet huyen va tinh// convert ve so
+            arrSplit = params.get('map');
+            if (arrSplit !== "0") {
+                checkMap = arrSplit - 0; // set truong phan biet huyen va tinh// convert ve so
                 indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10, chuyen ve de truy cap index trong mang bat dau tu 0
-                rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_2015_2019`;
+                rs += `Quy_Hoach_${ARR_HUYEN[indexHuyen]}_${params.get('nam').replace("-","_")}`;
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]} 2015-2019`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-${ARR_HUYEN_TEXT[indexHuyen]} ${params.get('nam')}`);
                 quyetDinhMap = QUYET_DINH_QH[indexHuyen+1];
             } else {
-                rs += "Quy_Hoach_Bac_Giang_2015_2019";
+                rs += `Quy_Hoach_Bac_Giang_${params.get('nam').replace("-","_")}`;
                 //set name ban do
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang 2015-2019`);
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> QH-Bắc Giang ${params.get('nam')}`);
                 quyetDinhMap = QUYET_DINH_QH[0];
             }
-            year = '2015';
+            console.log(rs);
+            year = params.get('nam').split("-")[0];
             // change name infoKhUse
             $("#textInfoKhUser").html("Thông tin quy hoạch sử dụng đất");
         } else if (pathName.search("ke-hoach") > -1) {
-            arrSplit = pathName.split("map=");
-            if (arrSplit[1] !== "0") {
-                checkMap = arrSplit[1].split("&")[0] - 0; //convert ve so
+            arrSplit = params.get('map');
+            if (arrSplit !== "0") {
+                checkMap = arrSplit - 0; //convert ve so
                 indexHuyen = checkMap - 1; // url tinh map =0, cac huyen 1-10
-                year = pathName.split("nam=")[1];
+                year = params.get('nam');
                 rs += `Ke_Hoach_${ARR_HUYEN[indexHuyen]}_${year}`;
                 //set name ban do
                 $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-${ARR_HUYEN_TEXT[indexHuyen]}-${year}`);
@@ -436,14 +439,14 @@ require([
                         break;
                 }
             } else {
-                rs += "Ke_Hoach_Bac_Giang_2016_2020";
+                rs += `Ke_Hoach_Bac_Giang_${params.get('nam').replace("-","_")}`;
                 //set name ban do
-                year = '2015';
-                $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-Bắc Giang 2016-2020`);
+                year = params.get('nam').split("-")[0];
+                $("#nameMap").html(`<i class="fas fa-sitemap"></i> KH-Bắc Giang ${params.get('nam')}`);
                 quyetDinhMap = QUYET_DINH_KH_2019[0];
             }
         }
-        console.log(rs+"/MapServer")
+        console.log(rs+"/MapServer");
         return rs + "/MapServer";
     }
     //end get url web
@@ -644,9 +647,12 @@ require([
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
                     searchViewXaPhuong = results;
                     arrXaHuyen = results.features;
-                    if (arrXaHuyen.length === 0) {
-                        window.location.reload();
-                    }
+                    // if (arrXaHuyen.length === 0) {
+                    //     setTimeout(function () {
+                    //         window.location.reload();
+                    //     }, 500)
+                    // }
+                    console.log(`length : ${arrXaHuyen.length}`);
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         if (checkMap > 0) {
@@ -664,7 +670,6 @@ require([
                         zoomToXaHuyen($(this).attr("data-uid"));
                     })
                 }).catch(err => {
-                    window.location.reload();
                     console.log(err);
                 })
                 //end set huyen so do
@@ -697,6 +702,8 @@ require([
                             feature.attributes.DienTich = feature.attributes.DienTich < 0 ? 0 - feature.attributes.DienTich : feature.attributes.DienTich - 0;
                             feature.attributes.DienTich = formatNumber(feature.attributes.DienTich.toFixed(2), ',', ',');
                             if (layerName.search(/(QH_|KH_)(QuyHoach|KeHoach)/) > -1) {
+                                let quyetDinhBanDo = feature.attributes.SoQuyetDinh !== undefined ? feature.attributes.SoQuyetDinh: feature.attributes.MaQuyetDinh;
+                                quyetDinhMap = quyetDinhBanDo !== 'Null'? quyetDinhBanDo : quyetDinhMap;
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin quy hoạch",
                                     content: "<b>Mã sử dụng đất:</b> {MaHienTrang}/{MaQuyHoach} " +
@@ -1172,7 +1179,9 @@ require([
         console.log(err);
         // alert("Không có dữ liệu bản đồ");
         // viewAlter(2,"Vui lòng tải lại trang!");
-        window.location.reload();
+        setTimeout(function () {
+            window.location.reload();
+        }, 800)
     });
 
     //end render map and handling map

@@ -82,7 +82,7 @@
 
     <!-- FeedBack Page  -->
     <definition name="feedBack" extends="base.definition">
-        <put-attribute name="title" value="Góp Ý"/>
+        <put-attribute name="title" value="Góp ý"/>
         <put-attribute name="body" value="/WEB-INF/bodyfragments/feedBack.jsp"/>
     </definition>
 

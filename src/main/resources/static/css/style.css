@@ -402,11 +402,11 @@ ul.submenu-lv1 li a:hover i{
 }
 .submenu-lv2 .submenu-lv3 {
     position: absolute;
-    right: -100px;
+    right: -115px;
     top: -1px;
     background-color: white;
     list-style: none;
-    width: 100px;
+    width: 115px;
     z-index: 101;
     border: 1px solid rgba(0, 0, 0, 0.616);
     display: none;
