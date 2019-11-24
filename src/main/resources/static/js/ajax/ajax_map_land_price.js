@@ -317,6 +317,12 @@ require([
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
                     searchViewXaPhuong = results;
                     let arrXaHuyen = results.features;
+                    // if (arrXaHuyen.length === 0) {
+                    //     setTimeout(function () {
+                    //         window.location.reload();
+                    //     }, 500)
+                    // }
+                    console.log(`length : ${arrXaHuyen.length}`);
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
@@ -546,7 +552,10 @@ require([
     }).catch(err => {
         console.log(err);
         // alert("Không có dữ liệu bản đồ");
-        viewAlter(2,"Không có dữ liệu bản đồ");
+        // viewAlter(2,"Không có dữ liệu bản đồ");
+        setTimeout(function () {
+            window.location.reload();
+        }, 800)
     });
 
     //end render map and handling map

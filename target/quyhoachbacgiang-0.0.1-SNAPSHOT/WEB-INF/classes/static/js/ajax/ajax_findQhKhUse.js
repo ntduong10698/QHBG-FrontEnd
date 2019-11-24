@@ -64,13 +64,16 @@ function setSelectDonVi() {
         data1.map((data, index) => {
             viewSelect += `<option value="${data.idHuyen}">${data.tenHuyen}</option>`;
         })
-        if (checkPage === 0 ) {
-            viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
-            option = 0;
-            setViewSelectYear();
-        } else {
-            setViewSelectYear();
-        }
+        // if (checkPage === 0 ) {
+        //     viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
+        //     option = 0;
+        //     setViewSelectYear();
+        // } else {
+        //     setViewSelectYear();
+        // }
+        viewSelect = '<option value="0">Tỉnh Bắc Giang</option>' + viewSelect;
+        option = 0;
+        setViewSelectYear();
         $("#dp-drop6").html(viewSelect);
         $("#dp-drop6").val(option);
         $("#dp-drop6").select2().trigger('change');
@@ -95,6 +98,7 @@ function clickSearchTraCuu() {
             if(idHuyen != 0) {
                 callThongKeQuyHoach(mkh, idHuyen).then(rs => {
                     setTableInfoSoildQHHuyen(mkh, rs, idHuyen);
+                    setQuyetDinh(idHuyen, "2015");
                 }).catch(err => {
                     console.log(err);
                 })
@@ -102,6 +106,7 @@ function clickSearchTraCuu() {
                 // 0 la tinh
                 callThongKeQuyHoachTinh(mkh).then(rs => {
                     setTableInfoSoildQHTinh(rs, mkh, "QH");
+                    setQuyetDinh(idHuyen, "2015");
                 }).catch(err => {
                     console.log(err);
                 })
@@ -111,10 +116,19 @@ function clickSearchTraCuu() {
             if (idHuyen != 0) {
                 callThongKeKeHoach(mkh, idHuyen).then(rs => {
                     setTableInfoSoildKh(rs, nam, idHuyen);
+                    setQuyetDinh(idHuyen, nam);
                 }).catch(err => {
                     console.log(err);
                 })
             } else  {
+                setBieuMauKhacQH(mkh, 0, "KH");
+                callThongKeQuyHoachTinh(mkh).then(rs => {
+                    // rs = rs.filter(data1 => data1.quyHoachKeHoach === "KH"); //check
+                    setTableInfoSoildQHTinh(rs, mkh,"KH");
+                    setQuyetDinh(idHuyen, "2019");
+                }).catch(err => {
+                    console.log(err);
+                })
                 // 0 là Tỉnh
             }
         }
@@ -149,7 +163,6 @@ function setTableInfoSoildKh(dataTable, year, idHuyen) {
                 </div>
             </div>`;
         })
-        setQuyetDinh(idHuyen,year);
     }
     //end tao khung thead cho cac bang
     $("#tableInfoSoild .table-HTQH").html(viewTable);
@@ -172,7 +185,6 @@ function setTableInfoSoildQHHuyen(mkh, dataTable, idHuyen) {
                     ${getTableBieu_CH03(dataTable[0])}
                 </div>
             </div>`;
-        setQuyetDinh(idHuyen,"2015"); //???
         $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
@@ -191,7 +203,6 @@ function setTableInfoSoildQHHuyen(mkh, dataTable, idHuyen) {
                 </div>
             </div>`;
             // console.log(viewTable);
-            setQuyetDinh(idHuyen,"2015");
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
         }
         hideLoadingGif();
@@ -217,7 +228,6 @@ function setTableInfoSoildQHTinh(dataTable, mkh, qh_kh){
                     ${getTableBieu_CT0308(dataTable[0])}
                 </div>
             </div>`;
-        setQuyetDinh(0,"2015");
         $("#tableInfoSoild .table-HTQH").html(viewTable);
     }
 
@@ -236,7 +246,6 @@ function setTableInfoSoildQHTinh(dataTable, mkh, qh_kh){
                 </div>
             </div>`;
             $("#tableInfoSoild .table-HTQH").prepend(viewTable); //noi len dau hien trang hien thi truoc
-            setQuyetDinh(0,"2015");
         }
         hideLoadingGif();
     }).catch(err => {
@@ -270,9 +279,10 @@ function setQuyetDinh(idHuyen,year) {
                 break;
         }
     }
-    callQuyetDinhMap(arr[idHuyen].toUpperCase(),year).then(rs => {
+
+    callQuyetDinhMap(arr[idHuyen].toUpperCase(),idHuyen == 0 && year == "2019" ? "2015" : year).then(rs => {
         if (rs.length > 0) {
-            $("#quyetDinhTraCuu").html(`<strong>Các số liệu được lấy tại quyết định: </strong><a href="${rs[0].duongDanTep}">${arr[idHuyen]}</a>`);
+            $("#quyetDinhTraCuu").html(`<strong>Các số liệu được lấy tại quyết định: </strong><a href="${rs[0].duongDanTep}" target="_blank">${arr[idHuyen]}</a>`);
         }
     }).catch(err => {
         console.log(err);

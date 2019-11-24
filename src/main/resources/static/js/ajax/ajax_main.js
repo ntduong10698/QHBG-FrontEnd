@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    setMapQuyHoach();
     activeMenu();
     checkLogin();
     checkpass();
@@ -518,4 +519,42 @@ function getUrlEmailActive() {
 
 function getGioiThieu(id) {
     return ajaxCallGet(`v1/public/gioi-thieu/find-by-id?id=${id}`);
+}
+
+async function getMenuMap() {
+    return ajaxCallGet(`v1/public/menu-ban-do/all`);
+}
+
+function setMapQuyHoach() {
+    getMenuMap().then(listMenu => {
+        listMenu.map(menu => {
+            let viewHtml = '';
+            let {menuSmalls, thuTuUuTien, loaiBanDo} = menu;
+            let textUrl = loaiBanDo === "qh" ? 'quy-hoach': "ke-hoach";
+            if (menuSmalls !== null && menuSmalls.length > 0) {
+                $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] a`).append('<i class="fas fa-caret-right"></i>');
+                viewHtml = `<ul class=${thuTuUuTien == 0 ? "submenu-lv2": "submenu-lv3"}>`;
+                menuSmalls.map(item => {
+                    if (item.status != 0) {
+                        viewHtml += `<li><a href="${textUrl}?map=${thuTuUuTien}&nam=${item.name}">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <span>${item.name}</span>
+                                    </a>
+                                </li>`;
+                    }
+                })
+                viewHtml += "</ul>";
+                $(`li[data-name='${loaiBanDo}-${thuTuUuTien}']`).append(viewHtml);
+                $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] a`).attr("href",`${textUrl}?map=${thuTuUuTien}&nam=${menuSmalls[0].name}`);
+                //set Link parent
+            }
+            $(`li[data-link='QuyHoach'] > a`).attr("href",$(`li[data-link='QuyHoachTinh'] > a`).attr("href"));
+            $(`li[data-link='QuyHoachHuyen'] > a`).attr("href",$(`li[data-link='QuyHoachHuyen'] .submenu-lv2 li:nth-child(1) > a`).attr("href"));
+
+            $(`li[data-link='KeHoach'] > a`).attr("href",$(`li[data-link='KeHoachTinh'] a`).attr("href"));
+            $(`li[data-link='KeHoachHuyen'] > a`).attr("href",$(`li[data-link='KeHoachHuyen'] .submenu-lv2 li:nth-child(1) > a`).attr("href"));
+        })
+    }).catch(err => {
+        console.log(err);
+    })
 }
