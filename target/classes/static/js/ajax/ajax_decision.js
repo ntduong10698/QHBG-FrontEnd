@@ -6,7 +6,7 @@ function callFullTableDecision() {
     callLoaiQuyetDinh();
     searchTextQuyetDinh();
     //them cho phan gia dat
-    if (href.indexOf("nhomQuyetDinh") == -1) {
+    if (href.indexOf("nhomQuyetDinh") === -1) {
         callTableDecision();
     }
     $("#exportExel a").click(function () {
@@ -52,7 +52,7 @@ function callTableDecision() {
 
 // call cơ quan ban hành
 function callCoQuanBanHanh() {
-    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
+    let tmp = `<option value="">--- Gõ để tìm kiếm ---</option>`;
     ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {
         data.map(function (response, index) {
             tmp += `
@@ -67,8 +67,8 @@ function callCoQuanBanHanh() {
 
 // call loại quyết định
 function callLoaiQuyetDinh() {
-    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
-    ajaxCallGet("v1/public/quyet-dinh/nhom-quyet-dinh/all").then(data => {
+    let tmp = `<option value="">--- Gõ để tìm kiếm ---</option>`;
+    ajaxCallGet("v1/public/quyet-dinh/nhom-quyet-dinh/available").then(data => {
         data.map(function (response, index) {
             tmp += `
             <option value="${response.id}">${response.tenNhom}
@@ -78,17 +78,19 @@ function callLoaiQuyetDinh() {
         $("#dp-drop2").html(tmp);
 
         //them cho phan quyet dinhs
-        let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
-        $("#dp-drop2").val(idNhomQuyetDinh);
-        $("#dp-drop2").select2().trigger('change');
+        if (href.indexOf("nhomQuyetDinh") > -1) {
+            let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
+            $("#dp-drop2").val(idNhomQuyetDinh);
+            $("#dp-drop2").select2().trigger('change');
+        }
     })
     searchLoaiQuyetDinh();
 }
 
 function searchCoQuanBanHanh() {
     $("#dp-drop1").change(function () {
-        $("#dp-drop2").html("");
-        callLoaiQuyetDinh();
+        // $("#dp-drop2").html("");
+        // callLoaiQuyetDinh();
         viewLoadingGif();
         let arr = null;
         $('#pagination').pagination({
@@ -112,8 +114,8 @@ function searchCoQuanBanHanh() {
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
-        $("#dp-drop1").html("");
-        callCoQuanBanHanh();
+        // $("#dp-drop1").html("");
+        // callCoQuanBanHanh();
         viewLoadingGif();
         let arr = null;
         $('#pagination').pagination({
