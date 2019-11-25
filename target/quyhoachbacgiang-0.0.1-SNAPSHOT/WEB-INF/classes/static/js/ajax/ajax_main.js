@@ -530,22 +530,22 @@ function setMapQuyHoach() {
         listMenu.map(menu => {
             let viewHtml = '';
             let {menuSmalls, thuTuUuTien, loaiBanDo} = menu;
-            let textUrl = loaiBanDo === "qh" ? 'quy-hoach': "ke-hoach";
+            let textUrl = loaiBanDo === "qh" ? 'quy-hoach': loaiBanDo === "kh" ? "ke-hoach" : "ban-do-gia-dat";
             if (menuSmalls !== null && menuSmalls.length > 0) {
                 $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] a`).append('<i class="fas fa-caret-right"></i>');
-                viewHtml = `<ul class=${thuTuUuTien == 0 ? "submenu-lv2": "submenu-lv3"}>`;
+                viewHtml = `<ul class=${thuTuUuTien == 0 || thuTuUuTien == 11 ? "submenu-lv2": "submenu-lv3"}>`;
                 menuSmalls.map(item => {
                     if (item.status != 0) {
                         viewHtml += `<li><a href="${textUrl}?map=${thuTuUuTien}&nam=${item.name}">
-                                    <i class="fas fa-angle-double-right"></i>
-                                    <span>${item.name}</span>
-                                    </a>
-                                </li>`;
+                                <i class="fas fa-angle-double-right"></i>
+                                <span>${item.name}</span>
+                                </a>
+                            </li>`;
                     }
                 })
                 viewHtml += "</ul>";
                 $(`li[data-name='${loaiBanDo}-${thuTuUuTien}']`).append(viewHtml);
-                $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] a`).attr("href",`${textUrl}?map=${thuTuUuTien}&nam=${menuSmalls[0].name}`);
+                $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] > a`).attr("href",`${textUrl}?map=${thuTuUuTien}&nam=${menuSmalls[0].name}`);
                 //set Link parent
             }
             $(`li[data-link='QuyHoach'] > a`).attr("href",$(`li[data-link='QuyHoachTinh'] > a`).attr("href"));

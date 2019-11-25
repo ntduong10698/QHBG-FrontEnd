@@ -138,7 +138,15 @@ function fnView(indexPopUp) {
         viewLoadingGif();
         callFindChilDuong(data.TenDuong, 9, huyen[0].idHuyen).then(data1 => {
             $(".tbdetailf").addClass("show"); // view tableInfo
-            setTableGiaDatPhiNongNghiep(setViewTableDuong(data1),huyen[0].idHuyen);
+            if (data1.length > 0) {
+                setTableGiaDatPhiNongNghiep(setViewTableDuong(data1),huyen[0].idHuyen);
+            } else {
+                callFindChilDuong2(data.TenDuong, 9, huyen[0].idHuyen).then(data2 => {
+                    setTableGiaDatPhiNongNghiep(setViewTableDuong(data2),huyen[0].idHuyen);
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
             callAllGiaDatPnn(huyen[0].idHuyen).then(listData => {
                 listData.map((list, index) => {
                     setDataTableGiaDatPhiNongNghiep(`.tableBangGiaDat${9 + index}`, list);
@@ -176,6 +184,9 @@ function callFindChilDuong(duong, idBangGiaDat, idHuyen) {
     return ajaxCallGet(`v1/public/danh-muc-duong/find-child?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
 }
 
+function callFindChilDuong2(duong, idBangGiaDat, idHuyen) {
+    return ajaxCallGet(`v1/public/danh-muc-duong/find-child-2?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
+}
 //view map arcgis
 require([
     "esri/Map",
