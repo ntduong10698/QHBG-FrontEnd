@@ -4,15 +4,17 @@ function callFullTableDecision() {
     // callTableDecision();
     callCoQuanBanHanh();
     callLoaiQuyetDinh();
-    searchTextQuyetDinh();
+    searchDecision();
+    // searchTextQuyetDinh();
     //them cho phan gia dat
-    if (href.indexOf("nhomQuyetDinh") == -1) {
+    if (href.indexOf("nhomQuyetDinh") === -1) {
         callTableDecision();
     }
     $("#exportExel a").click(function () {
         exportExcel("tableDecision", "QuyetDinh");
         return false;
     })
+    $("#cb01").prop("checked", true);
 }
 
 // sắp xếp quyết định theo ngày
@@ -52,7 +54,7 @@ function callTableDecision() {
 
 // call cơ quan ban hành
 function callCoQuanBanHanh() {
-    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
+    let tmp = `<option value="0">Tất Cả</option>`;
     ajaxCallGet("v1/public/quyet-dinh/co-quan-ban-hanh/all").then(data => {
         data.map(function (response, index) {
             tmp += `
@@ -62,13 +64,13 @@ function callCoQuanBanHanh() {
         })
         $("#dp-drop1").html(tmp);
     });
-    searchCoQuanBanHanh();
+    // searchCoQuanBanHanh();
 }
 
 // call loại quyết định
 function callLoaiQuyetDinh() {
-    let tmp = "<option value=\"\">--- Gõ để tìm kiếm ---</option>";
-    ajaxCallGet("v1/public/quyet-dinh/nhom-quyet-dinh/all").then(data => {
+    let tmp = `<option value="0">Tất Cả</option>`;
+    ajaxCallGet("v1/public/quyet-dinh/nhom-quyet-dinh/available").then(data => {
         data.map(function (response, index) {
             tmp += `
             <option value="${response.id}">${response.tenNhom}
@@ -78,17 +80,19 @@ function callLoaiQuyetDinh() {
         $("#dp-drop2").html(tmp);
 
         //them cho phan quyet dinhs
-        let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
-        $("#dp-drop2").val(idNhomQuyetDinh);
-        $("#dp-drop2").select2().trigger('change');
+        if (href.indexOf("nhomQuyetDinh") > -1) {
+            let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
+            $("#dp-drop2").val(idNhomQuyetDinh);
+            $("#dp-drop2").select2().trigger('change');
+        }
     })
-    searchLoaiQuyetDinh();
+    // searchLoaiQuyetDinh();
 }
 
 function searchCoQuanBanHanh() {
     $("#dp-drop1").change(function () {
-        $("#dp-drop2").html("");
-        callLoaiQuyetDinh();
+        // $("#dp-drop2").html("");
+        // callLoaiQuyetDinh();
         viewLoadingGif();
         let arr = null;
         $('#pagination').pagination({
@@ -112,8 +116,8 @@ function searchCoQuanBanHanh() {
 
 function searchLoaiQuyetDinh() {
     $("#dp-drop2").change(function () {
-        $("#dp-drop1").html("");
-        callCoQuanBanHanh();
+        // $("#dp-drop1").html("");
+        // callCoQuanBanHanh();
         viewLoadingGif();
         let arr = null;
         $('#pagination').pagination({
@@ -139,7 +143,6 @@ function addDataAfterGet(data, number) {
     if (data.length > 0) {
             number = (number - 1) * 10;
         let tmp = "";
-        console.log(data)
         data.map(function (response, index) {
 
             tmp += `
@@ -156,7 +159,7 @@ function addDataAfterGet(data, number) {
         });
         $("#tableDecision tbody").html(tmp);
     } else {
-        $("#tableDecision tbody").html("<tr ><td colspan='5'>Không có kết quả phù hợp với tìm kiếm </td></tr>");
+        $("#tableDecision tbody").html("<tr ><td colspan='6'>Không có kết quả phù hợp với tìm kiếm </td></tr>");
     }
 }
 
@@ -181,14 +184,39 @@ function searchTextQuyetDinh() {
                 });
             },
             pageSize: 10,
-
             autoHidePrevious: true,
             autoHideNext: true,
             callback: function (result, pagination) {
                 addDataAfterGet(result, pagination.pageNumber)
             }
         })
-
-
     })
+}
+
+function searchDecision(){
+    $("#searchQuyetDinh").click(function () {
+        let option = $('input[name="r1"]:checked').val();
+        let text = $("#searchTextQD").val();
+        let coQuanId = $("#dp-drop1 option:selected").val();
+        let loaiId = $("#dp-drop2 option:selected").val();
+        viewLoadingGif();
+        callSearchDecision(option, text, coQuanId, loaiId).then(rs => {
+            $('#pagination').pagination({
+                dataSource: rs,
+                pageSize: 10,
+                autoHidePrevious: true,
+                autoHideNext: true,
+                callback: function (result, pagination) {
+                    addDataAfterGet(result, pagination.pageNumber);
+                    hideLoadingGif();
+                }
+            })
+        }).catch(err => {
+            console.log(err);
+        })
+    })
+}
+
+function callSearchDecision(option, text, coQuanId, loaiId) {
+    return ajaxCallGet(`v1/public/quyet-dinh/tim-kiem?option=${option}&text=${text}&co-quan-id=${coQuanId}&loai-id=${loaiId}`);
 }
