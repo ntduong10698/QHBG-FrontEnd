@@ -22,7 +22,7 @@
     color: black;
 }
 .dpcf-fitem{
-    width: 26%;
+    width: 316px;
     display: flex;
     flex-direction: column;
     padding: 10px 5px;
@@ -44,7 +44,7 @@
     font-style: italic;
 }
 .dpcf-select{
-    width: 24%;
+    width: 292px;
     height: 68px;
     padding: 10px 5px;
     border-radius: 2px;
@@ -114,7 +114,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 11%;
+    width: 135px;
     padding: 10px 5px;
     border-radius: 2px;
     box-shadow: 0px 0px 5px 0px rgba(255,255,255,1);

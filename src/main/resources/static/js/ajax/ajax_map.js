@@ -23,6 +23,7 @@ function fnView(indexPopUp) {
     $(".block-main-l2").toggle();
     viewInfoSoild(arrPopUpMap[indexPopUp]);
     viewInforQuyetDinh(arrPopUpMap[indexPopUp]);
+    $(".esri-icon-close").trigger("click"); //hiden fnView
 }
 
 // set view infoSoild chi tiet
@@ -714,6 +715,7 @@ require([
                                         "<br><b>Xã :</b> <span>{Xa}</span> " +
                                         "<b> Huyện :</b> <span>{Huyen}</span> " +
                                         "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        "<br> <b> Lưu ý :</b> <span>Diện tích chỉ có giá trị tham khảo trên bản đồ</span> " +
                                         `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             } else if (layerName.search(/(QH_|KH_)HienTrang/) > -1) {
@@ -725,6 +727,7 @@ require([
                                         "<br><b>Xã :</b> <span>{Xa}</span> " +
                                         "<b> Huyện :</b> <span>{Huyen}</span> " +
                                         "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        "<br> <b> Lưu ý :</b> <span>Diện tích chỉ có giá trị tham khảo trên bản đồ</span> " +
                                         `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             }
@@ -828,6 +831,7 @@ require([
                             let uid = data.uid;
                             $(`#idVitriXa${uid}`).click(() => {
                                 zoomTo(uid);
+
                             });
                         })
                         $(".form-search-toado").css("display","block");
@@ -948,6 +952,7 @@ require([
                         "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
                     // let ma = searchResults.features[0].attributes.MaQuyHoach;
                     let features = searchResults.features;
+                    features = features.filter(item => item.attributes.Huyen !== null);
                     features.sort(function (a,b) {
                         return a.attributes.Huyen.localeCompare(b.attributes.Huyen);
                     })
@@ -962,6 +967,7 @@ require([
                         let uid = data.uid;
                         $(`#idVitri${uid}`).click(() => {
                             zoomTo(uid);
+                            $(".content-form-search > .fa-times-circle").trigger("click");
                         });
                     })
                     $(".form-search-toado").css("display","block");
@@ -1021,6 +1027,7 @@ require([
                         let uid = data.uid;
                         $(`#idVitri${uid}`).click(() => {
                             zoomTo(uid);
+                            $(".content-form-search > .fa-times-circle").trigger("click");
                         });
                     })
                     $(".form-search-toado").css("display","block");

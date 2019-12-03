@@ -17,11 +17,11 @@ tbody td:nth-child(1) {
 }
 
 .fix-width-select {
-    width: 18% !important;
+    width: 220px !important;
 }
 
 .lanprift .dpfc-item.dpcf-select, .lanprift .dpfc-item.dpcf-fitem {
-    width: 23%;
+    width: 280px;
 }
 
 #searchGiaDat {

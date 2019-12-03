@@ -246,6 +246,12 @@
 <%--                                        <span>Giai đoạn 2015-2019</span></a></li>--%>
 <%--                                </ul>--%>
                             </li>
+                            <li data-name="gd-12">
+                                <a href="ban-do-gia-dat?giaidoan=2015-2019">
+                                    <i class="fas fa-angle-double-right"></i>
+                                    <span>Bản đồ giá đất khu vực</span>
+                                </a>
+                            </li>
                             <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
                                             nghiệp</span>
                                 <i class="fas fa-caret-right"></i>

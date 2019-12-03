@@ -26,22 +26,22 @@ $(document).ready(function () {
 
     //set high map
     var height = $(window).height();
-    let heightMap = height - $("footer").height() - 60 - 45; // 60 padding footer 45 header
-    if (heightMap > 300) {
+    // let heightMap = height - $("footer").height() - 60 - 45; // 60 padding footer 45 header
+    let heightMap = height - 205; //fix sau 16 height gra, 45 header
+    heightMap = heightMap > 300 ? heightMap : 300;
+    $(".block-main-qh").height(heightMap); //set height main map
+    heightMap = heightMap - 108; //108 = 40 + 34 x 2 40, tititle so do hien thi, 40 titile xa phuong
+    $("#viewDanhSachXaHuyen").css("max-height",heightMap*0.4);
+    $(".viewTimKiemDat").css("max-height",heightMap*0.6 - 35);
+    $(window).resize(function () {
+        height = $(window).height();
+        // let heightMap = height - $("footer").height() - 60 - 45; // 60 padding footer 45 header
+        let heightMap = height - 205; //fix sau 16 height gra, 45 header
+        heightMap = heightMap > 300 ? heightMap : 300;
         $(".block-main-qh").height(heightMap); //set height main map
         heightMap = heightMap - 108; //108 = 40 + 34 x 2 40, tititle so do hien thi, 40 titile xa phuong
         $("#viewDanhSachXaHuyen").css("max-height",heightMap*0.4);
         $(".viewTimKiemDat").css("max-height",heightMap*0.6 - 35);
-    }
-    $(window).resize(function () {
-        height = $(window).height();
-        heightMap = height - $("footer").height() - 60 - 45 - 35; // 60 padding footer 45 header
-        if (heightMap > 300) {
-            $(".block-main-qh").height(heightMap); //set height main map
-            heightMap = heightMap - 108; //108 = 40 + 34 x 2 40, tititle so do hien thi, 40 titile xa phuong
-            $("#viewDanhSachXaHuyen").css("max-height",heightMap*0.4);
-            $(".viewTimKiemDat").css("max-height",heightMap*0.6 - 35);
-        }
     })
     //end set high map
 
@@ -54,6 +54,7 @@ $(document).ready(function () {
     //click view tableInfoSoild
     $("a#clickViewTableInfoSoild").click(function () {
         $(".tbdetailf").addClass("show");
+        $(".block-main-l2").css("display", "none");
         return false;
     })
 

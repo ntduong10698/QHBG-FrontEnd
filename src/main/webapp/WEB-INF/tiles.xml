@@ -86,16 +86,22 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/feedBack.jsp"/>
     </definition>
 
-    <!-- FeedBack Page  -->
+    <!-- Active Page  -->
     <definition name="active" extends="base.definition">
         <put-attribute name="title" value="Xác Thực Đăng Ký"/>
         <put-attribute name="body" value="/WEB-INF/bodyfragments/active.jsp"/>
     </definition>
 
-    <!-- FeedBack Page  -->
+    <!-- LandPrice Page  -->
     <definition name="mapLandPrice" extends="base.definition">
         <put-attribute name="title" value="Bản đồ giá đất"/>
         <put-attribute name="body" value="/WEB-INF/bodyfragments/mapLandPrice.jsp"/>
+    </definition>
+
+    <!-- LandPriceArea Page  -->
+    <definition name="mapLandPriceArea" extends="base.definition">
+        <put-attribute name="title" value="Bản đồ giá đất khu vực"/>
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/mapLandPriceArea.jsp"/>
     </definition>
 
 </tiles-definitions>

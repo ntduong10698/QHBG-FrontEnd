@@ -77,4 +77,9 @@ public class MainController {
     public String mapLandPrice(Model model) {
         return "mapLandPrice";
     }
+
+    @RequestMapping(value = {"/ban-do-gia-dat-khu-vuc"}, method = RequestMethod.GET)
+    public String mapLandPriceArea(Model model) {
+        return "mapLandPriceArea";
+    }
 }

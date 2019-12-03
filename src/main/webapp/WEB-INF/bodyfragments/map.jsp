@@ -202,9 +202,9 @@
             </div>
             <!-- FORM SEARCH -->
             <div class="form-search-toado" style="display: none;">
-
                 <div class="content-form-search">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <span style="font-size: 13px;width: 100%;text-align: left;display: block;"><strong>Lưu ý: </strong><i>Diện tích chỉ có giá trị tham khảo trên bản đồ</i></span>
                     <table class="table table-hover" id="tableSearchMap">
                         <thead>
                         <tr>
@@ -215,7 +215,6 @@
                             <th>Diện Tích</th>
                             <th>Xã</th>
                             <th>Huyện</th>
-
                         </tr>
                         </thead>
                         <tbody>

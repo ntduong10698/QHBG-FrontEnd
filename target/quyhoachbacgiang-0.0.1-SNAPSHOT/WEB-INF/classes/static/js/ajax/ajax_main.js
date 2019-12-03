@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    setMapQuyHoach();
+    setMenuProject();
     activeMenu();
     checkLogin();
     checkpass();
@@ -525,15 +525,15 @@ async function getMenuMap() {
     return ajaxCallGet(`v1/public/menu-ban-do/all`);
 }
 
-function setMapQuyHoach() {
+function setMenuProject() {
     getMenuMap().then(listMenu => {
         listMenu.map(menu => {
             let viewHtml = '';
             let {menuSmalls, thuTuUuTien, loaiBanDo} = menu;
-            let textUrl = loaiBanDo === "qh" ? 'quy-hoach': loaiBanDo === "kh" ? "ke-hoach" : "ban-do-gia-dat";
+            let textUrl = loaiBanDo === "qh" ? 'quy-hoach': loaiBanDo === "kh" ? "ke-hoach" : thuTuUuTien == 11 ? "ban-do-gia-dat" : "ban-do-gia-dat-khu-vuc";
             if (menuSmalls !== null && menuSmalls.length > 0) {
                 $(`li[data-name='${loaiBanDo}-${thuTuUuTien}'] a`).append('<i class="fas fa-caret-right"></i>');
-                viewHtml = `<ul class=${thuTuUuTien == 0 || thuTuUuTien == 11 ? "submenu-lv2": "submenu-lv3"}>`;
+                viewHtml = `<ul class=${thuTuUuTien == 0 || thuTuUuTien == 11 || thuTuUuTien == 12? "submenu-lv2": "submenu-lv3"}>`;
                 menuSmalls.map(item => {
                     if (item.status != 0) {
                         viewHtml += `<li><a href="${textUrl}?map=${thuTuUuTien}&nam=${item.name}">
