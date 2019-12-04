@@ -43,6 +43,8 @@ header{
     color: var(--color-gray);
     background-color: var(--color-while);
     width: 100%;
+    position: fixed;
+    z-index: 1004;
 }
 header i{
     font-size: 14px;
@@ -260,6 +262,7 @@ header .hwapper>.container{
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
+    padding-top: 35px;
 }
 .logo-wp{
     display: flex;
@@ -1091,7 +1094,7 @@ span.it-cap{
 #loading-gif {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 34px);
     background: #0000002b;
     z-index: 1003;
     margin-top: 35px;

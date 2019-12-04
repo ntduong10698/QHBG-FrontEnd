@@ -280,7 +280,7 @@ function setQuyetDinh(idHuyen,year) {
         }
     }
 
-    callQuyetDinhMap(arr[idHuyen].toUpperCase(),idHuyen == 0 && year == "2019" ? "2015" : year).then(rs => {
+    callQuyetDinhMap(arr[idHuyen].toUpperCase(),idHuyen == 0 && year == "2019" ? "2016" : year).then(rs => {
         if (rs.length > 0) {
             $("#quyetDinhTraCuu").html(`<strong>Các số liệu được lấy tại quyết định: </strong><a href="${rs[0].duongDanTep}" target="_blank">${arr[idHuyen]}</a>`);
         }

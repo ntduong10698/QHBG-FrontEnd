@@ -23,6 +23,7 @@ function fnView(indexPopUp) {
     $(".block-main-l2").toggle();
     viewInfoSoild(arrPopUpMap[indexPopUp]);
     viewInforQuyetDinh(arrPopUpMap[indexPopUp]);
+    $(".esri-icon-close").trigger("click"); //hiden fnView
 }
 
 // set view infoSoild chi tiet
@@ -357,6 +358,243 @@ function setTableInfoSoildQHTinh(dataTable, qh_kh){
 }
 //end set data tableInfoSoild-QH-Tinh
 
+
+function setThongKe(mkh, ten, dienTich, dienTich1, qh_kh) {
+    let viewHtml = '';
+    dienTich === undefined  || dienTich == 0 ? viewHtml += '' : viewHtml += `<span><strong>Thống kê hiện trạng ${ten}: </strong><i>${mkh} - ${formatDienTich(dienTich.toFixed(2))} (ha).&nbsp;</i></span>`;
+    dienTich1 === undefined || dienTich1 == 0 ? viewHtml += '' : viewHtml += `<span><strong>Thống kê ${qh_kh === "kh" ? "kế hoạch": "quy hoạch"} ${ten}: </strong><i>${mkh} - ${formatDienTich(dienTich1.toFixed(2))} (ha)</i></span>`;
+    $(".thong-ke-ma-dat").html(viewHtml);
+}
+
+function getXaMuitlSelect(uid) {
+    let xa = $(`#viewDanhSachXaHuyen li[data-uid='${uid}']`).text();
+    xa = xa.replace("P.","Phường");
+    xa = xa.replace("Xã TT","TT.");
+    return xa;
+}
+
+function getHuyenMuitlSelect(uid) {
+    let huyen = $(`#viewDanhSachXaHuyen li[data-uid='${uid}']`).text();
+    let rs = {};
+    if(huyen.indexOf('TP.') >= 0) {
+        rs = {
+            huyen: 'TP. Bắc Giang',
+            idHuyen: 1
+        }
+    } else if (huyen.indexOf('Hiệp') >= 0) {
+        rs = {
+            huyen: 'huyện Hiệp Hòa',
+            idHuyen: 2
+        }
+    } else {
+        for (let i = 2; i < 10; i++) {
+            if(huyen.indexOf(ARR_HUYEN_TEXT[i]) >= 0) {
+                rs = {
+                    huyen: `huyện ${ARR_HUYEN_TEXT[i]}`,
+                    idHuyen: i + 1
+                }
+            }
+        }
+    }
+    return rs;
+}
+
+function thongKeTinh(mkh, yearFind, map, map1, qh_kh) {
+    console.log(yearFind);
+    let arrCall = [callThongKeQuyHoachHienTrangTinh(mkh), callThongKeQuyHoachTinh(mkh)];
+    Promise.all(arrCall).then(listRs => {
+        console.log(listRs);
+        if(map1 === undefined) {
+            $(".thong-ke-ma-dat").html("");
+            let dataQhHTTinh, dataQhTinh = undefined;
+            if(listRs[0] !== undefined) {
+                listRs[0].map(item => {
+                    if (item.nam == yearFind) {
+                        dataQhHTTinh = item;
+                    }
+                })
+            }
+
+            if(listRs[1] !== undefined) {
+                listRs[1].map(item => {
+                    if (item.nam == yearFind) {
+                        dataQhTinh = item;
+                    }
+                })
+            }
+            setThongKe(mkh, "tỉnh", dataQhHTTinh === undefined ? undefined : dataQhHTTinh.tongDienTich, dataQhHTTinh === undefined ? undefined : dataQhTinh.tongDienTich, qh_kh);
+        } else {
+            let {huyen, idHuyen} = getHuyenMuitlSelect(map1);
+            console.log(idHuyen);
+            let dienTich, dienTich1 = 0;
+            if(listRs[0] !== undefined) {
+                let dienTichHuyen = {};
+                let dataYear = {};
+                listRs[0].map(item => {
+                    if (item.nam == yearFind) {
+                        dataYear = item;
+                    }
+                })
+                console.log(dataYear);
+                if (dataYear.dienTichTheoHuyens !== undefined){
+                    dataYear.dienTichTheoHuyens.map(data => {
+                        if (data.huyen.idHuyen == idHuyen) {
+                            dienTichHuyen = data;
+                        }
+                    })
+                    dienTich = dienTichHuyen.dienTich == 0 ? undefined: dienTichHuyen.dienTich;
+                }else {
+                    dienTich = undefined;
+                }
+            } else {
+                dienTich = undefined;
+            }
+
+            if(listRs[1] !== undefined) {
+                let dienTichHuyen = {};
+                let dataYear = {};
+                listRs[1].map(item => {
+                    if (item.nam == yearFind) {
+                        dataYear = item;
+                    }
+                })
+                if (dataYear.dienTichTheoHuyens !== undefined){
+                    dataYear.dienTichTheoHuyens.map(data => {
+                        if (data.huyen.idHuyen == idHuyen) {
+                            dienTichHuyen = data;
+                        }
+                    })
+                    dienTich1 = dienTichHuyen.dienTich == 0 ? undefined: dienTichHuyen.dienTich;
+                }else {
+                    dienTich1 = undefined;
+                }
+            } else {
+                dienTich1 = undefined;
+            }
+            $(".thong-ke-ma-dat").html("");
+            setThongKe(mkh, huyen, dienTich, dienTich1, qh_kh);
+        }
+        hideLoadingGif();
+    }).catch(err => {
+        console.log(err);
+        hideLoadingGif();
+    })
+}
+
+function thongKeHuyen(arrCall, mkh, yearFind, map, map1, qh_kh) {
+    console.log(yearFind);
+    Promise.all(arrCall).then(listRs => {
+        console.log(listRs);
+        //chua co truong họp khac nam doi voi tinh va huyen
+        if (map1 === undefined) {
+            $(".thong-ke-ma-dat").html("");
+            let dataQhHTHuyen, dataQhHuyen = undefined;
+            if(listRs[0] !== undefined) {
+                listRs[0].map(item => {
+                    if (item.year == yearFind) {
+                        dataQhHTHuyen = item;
+                    }
+                })
+            }
+
+            if(listRs[1] !== undefined) {
+                listRs[1].map(item => {
+                    if (item.nam == yearFind || item.year == yearFind) {
+                        dataQhHuyen = item;
+                    }
+                })
+            }
+            setThongKe(mkh, ARR_HUYEN_TEXT[map-1], dataQhHTHuyen === undefined ? undefined : dataQhHTHuyen.tongDienTich, dataQhHuyen === undefined ? undefined : dataQhHuyen.tongDienTich, qh_kh);
+        } else {
+            let xa = getXaMuitlSelect(map1);
+            let dienTich, dienTich1 = 0;
+            if(listRs[0] !== undefined) {
+                let dienTichXa = {};
+                let dataYear = {};
+                listRs[0].map(item => {
+                    if (item.year == yearFind) {
+                        dataYear = item;
+                    }
+                })
+                console.log(dataYear);
+                if (dataYear.dienTichTheoXas !== undefined) {
+                    dataYear.dienTichTheoXas.map(data => {
+                        if (data.xa.tenXa === xa) {
+                            dienTichXa = data;
+                        }
+                    })
+                    dienTich = dienTichXa.dienTich == 0 ? undefined: dienTichXa.dienTich;
+                } else {
+                    dienTich = undefined;
+                }
+            } else {
+                dienTich = undefined;
+            }
+
+            if(listRs[1] !== undefined) {
+                let dienTichXa = {};
+                let dataYear = {};
+                listRs[1].map(item => {
+                    if (item.nam == yearFind || item.year == yearFind) {
+                        dataYear = item;
+                    }
+                })
+
+                if(dataYear.dienTichTheoXas !== undefined) {
+                    dataYear.dienTichTheoXas.map(data => {
+                        if (data.xa.tenXa === xa) {
+                            dienTichXa = data;
+                        }
+                    })
+                    dienTich1 = dienTichXa.dienTich == 0 ? undefined: dienTichXa.dienTich;
+                } else {
+                    dienTich1 = undefined;
+                }
+            } else {
+                dienTich1 = undefined;
+            }
+            $(".thong-ke-ma-dat").html("");
+            setThongKe(mkh, xa, dienTich, dienTich1, qh_kh);
+        }
+        hideLoadingGif();
+    }).catch(err => {
+        console.log(err);
+        hideLoadingGif();
+    })
+}
+
+function getThongKe(mkh) {
+    let href = window.location.href;
+    let qh_kh = href.indexOf("quy-hoach") >= 0 ? "qh" : "kh";
+    let params = (new URL(href)).searchParams;
+    let map =  params.get("map");
+    let map1 = $("#viewDanhSachXaHuyen input:checked").val();
+    let nam = params.get("nam");
+    if (qh_kh === "qh") {
+        //quy hoạch
+        if (map == 0) {
+            //tỉnh
+            let yearFind = nam.split("-")[1] - 0 + 1;
+            thongKeTinh(mkh, yearFind, map, map1, qh_kh);
+        } else {
+            //huyện
+            let arrCall = [callThongKeKeHoachQh_Kh(mkh, map, "QH-HT"), callThongKeQuyHoach(mkh, map)];
+            let yearFind = nam.split("-")[1] - 0 + 1;
+            thongKeHuyen(arrCall, mkh, yearFind, map, map1, qh_kh);
+        }
+    } else {
+        //kế hoạch
+        if (map == 0) {
+            //tỉnh
+            let yearFind = nam.split("-")[0] - 1;
+            thongKeTinh(mkh, yearFind, map, map1, qh_kh);
+        } else {
+            //huyện
+            let arrCall = [callThongKeKeHoachQh_Kh(mkh, map, "KH-HT"), callThongKeKeHoachQh_Kh(mkh, map, "KH")];
+            thongKeHuyen(arrCall, mkh, nam, map, map1, qh_kh);
+        }
+    }
+}
 
 //view map arcgis
 require([
@@ -714,6 +952,7 @@ require([
                                         "<br><b>Xã :</b> <span>{Xa}</span> " +
                                         "<b> Huyện :</b> <span>{Huyen}</span> " +
                                         "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        "<br> <b> Lưu ý :</b> <span>Diện tích chỉ có giá trị tham khảo trên bản đồ</span> " +
                                         `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             } else if (layerName.search(/(QH_|KH_)HienTrang/) > -1) {
@@ -725,6 +964,7 @@ require([
                                         "<br><b>Xã :</b> <span>{Xa}</span> " +
                                         "<b> Huyện :</b> <span>{Huyen}</span> " +
                                         "<b> Tỉnh :</b> <span>{Tinh}</span> " +
+                                        "<br> <b> Lưu ý :</b> <span>Diện tích chỉ có giá trị tham khảo trên bản đồ</span> " +
                                         `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Thống kê</div></b>`
                                 };
                             }
@@ -828,6 +1068,7 @@ require([
                             let uid = data.uid;
                             $(`#idVitriXa${uid}`).click(() => {
                                 zoomTo(uid);
+
                             });
                         })
                         $(".form-search-toado").css("display","block");
@@ -940,6 +1181,7 @@ require([
             $('body').css({
                 'cursor': 'wait'
             });
+            viewLoadingGif();
             queryTask.execute(query).then(function (results) {
                 searchResults = results;
                 if (searchResults.features.length > 0) {
@@ -948,6 +1190,7 @@ require([
                         "<th>Xã</th><th>Huyện</th><th>Thông tin</th></tr></thead>";
                     // let ma = searchResults.features[0].attributes.MaQuyHoach;
                     let features = searchResults.features;
+                    features = features.filter(item => item.attributes.Huyen !== null);
                     features.sort(function (a,b) {
                         return a.attributes.Huyen.localeCompare(b.attributes.Huyen);
                     })
@@ -962,8 +1205,10 @@ require([
                         let uid = data.uid;
                         $(`#idVitri${uid}`).click(() => {
                             zoomTo(uid);
+                            $(".content-form-search > .fa-times-circle").trigger("click");
                         });
                     })
+                    getThongKe(features[0].attributes.MaQuyHoach);
                     $(".form-search-toado").css("display","block");
                     $("#tableSearchMap a").click(function () {
                         return false;
@@ -972,6 +1217,7 @@ require([
                     $(".form-search-toado").css("display","none");
                     // alert("Không tìm thấy kết quả phù hợp");
                     viewAlter(2,"Không tìm thấy kết quả phù hợp");
+                    hideLoadingGif();
                 }
                 $(document.body).css({
                     'cursor': 'default'
@@ -1000,6 +1246,7 @@ require([
             $('body').css({
                 'cursor': 'wait'
             });
+            viewLoadingGif();
             queryTask.execute(query).then(function (results) {
                 searchResults = results;
                 if (searchResults.features.length > 0) {
@@ -1021,8 +1268,10 @@ require([
                         let uid = data.uid;
                         $(`#idVitri${uid}`).click(() => {
                             zoomTo(uid);
+                            $(".content-form-search > .fa-times-circle").trigger("click");
                         });
                     })
+                    getThongKe(features[0].attributes.MaHienTrang);
                     $(".form-search-toado").css("display","block");
                     $("#tableSearchMap a").click(function () {
                         return false;
@@ -1031,12 +1280,14 @@ require([
                     $(".form-search-toado").css("display","none");
                     // alert("Không tìm thấy kết quả phù hợp");
                     viewAlter(2,"Không tìm thấy kết quả phù hợp");
+                    hideLoadingGif();
                 }
                 $(document.body).css({
                     'cursor': 'default'
                 });
             }).catch(err => {
                 console.log(err);
+                hideLoadingGif();
             });
 
             queryTask.executeForCount(query).then(function (searchResults) {

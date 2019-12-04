@@ -1,6 +1,7 @@
 var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
 var arrChildDuong = [];
 var viewTableDuong = ''; // chua co gia
+var year = '';
 
 //set data table
 function setViewTableDuong(rs) {
@@ -137,8 +138,15 @@ function fnView(indexPopUp) {
         let huyen = arrHuyen.filter(item => item.tenHuyen.indexOf(data.Huyen.indexOf("TP.") > -1 ? "Bắc Giang" : data.Huyen) > -1);
         viewLoadingGif();
         callFindChilDuong(data.TenDuong, 9, huyen[0].idHuyen).then(data1 => {
-            $(".tbdetailf").addClass("show"); // view tableInfo
-            setTableGiaDatPhiNongNghiep(setViewTableDuong(data1),huyen[0].idHuyen);
+            if (data1.length > 0) {
+                setTableGiaDatPhiNongNghiep(setViewTableDuong(data1),huyen[0].idHuyen);
+            } else {
+                callFindChilDuong2(data.TenDuong, 9, huyen[0].idHuyen).then(data2 => {
+                    setTableGiaDatPhiNongNghiep(setViewTableDuong(data2),huyen[0].idHuyen);
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
             callAllGiaDatPnn(huyen[0].idHuyen).then(listData => {
                 listData.map((list, index) => {
                     setDataTableGiaDatPhiNongNghiep(`.tableBangGiaDat${9 + index}`, list);
@@ -147,6 +155,7 @@ function fnView(indexPopUp) {
             }).catch(err => {
                 console.log(err);
             })
+            $(".tbdetailf").addClass("show"); // view tableInfo
         }).catch(err => {
             console.log(err);
         })
@@ -154,6 +163,7 @@ function fnView(indexPopUp) {
         console.log(err);
     })
     // callAllBangGiaDat();
+    $(".esri-icon-close").trigger("click"); //hiden fnView
 }
 
 async function callAllGiaDatPnn(idHuyen) {
@@ -176,6 +186,16 @@ function callFindChilDuong(duong, idBangGiaDat, idHuyen) {
     return ajaxCallGet(`v1/public/danh-muc-duong/find-child?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
 }
 
+function callFindChilDuong2(duong, idBangGiaDat, idHuyen) {
+    return ajaxCallGet(`v1/public/danh-muc-duong/find-child-2?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
+}
+
+function getUrlGetMap() {
+    let params = (new URL(window.location)).searchParams;
+    year = params.get("nam");
+    let yearUrl = year === null ? "2015_2019" : year.replace("-","_");
+    return `http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_${yearUrl}/MapServer`;
+}
 //view map arcgis
 require([
     "esri/Map",
@@ -225,7 +245,7 @@ require([
     //end function handling
 
     //render map and handling map
-    let urlApiMap = "http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_2015_2019/MapServer";
+    let urlApiMap = getUrlGetMap();
     ajaxCall(urlApiMap+"?f=pjson").then(dataRs => {
 
         //pretreatment (tien xu ly)
@@ -362,7 +382,7 @@ require([
                             let layerName = result.layerName;
                             feature.attributes.layerName = layerName;
                             feature.popupTemplate = { // autocasts as new PopupTemplate()
-                                title: "Thông tin giá đất",
+                                title: "Thông tin đường",
                                 content: "<b>Tên Đường:</b> {TenDuong} " +
                                     "<br><b>Huyện: </b> {Huyen}" +
                                     "<br><b>Mục đích quy hoạch: </b> {MucDichQuyHoach}" +
@@ -459,6 +479,7 @@ require([
                         let uid = data.uid;
                         $(`#idVitri${uid}`).click(() => {
                             zoomTo(uid);
+                            $(".content-form-search > .fa-times-circle").trigger("click");
                         });
                     })
                     $(".form-search-toado").css("display","block");

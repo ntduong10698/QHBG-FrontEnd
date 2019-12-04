@@ -202,9 +202,13 @@
             </div>
             <!-- FORM SEARCH -->
             <div class="form-search-toado" style="display: none;">
-
                 <div class="content-form-search">
                     <i class="fa fa-times-circle" aria-hidden="true"></i>
+                    <div class="thong-ke-ma-dat">
+<%--                        <span><strong>Thống kê hiện trạng TP. Bắc Giang: </strong><i>ONT - 39 (ha)</i></span>--%>
+<%--                        <span><strong>Thống kê quy hoạch TP. Bắc Giang: </strong><i>ONT - 39 (ha)</i></span>--%>
+                    </div>
+                    <span style="font-size: 13px;width: 100%;text-align: left;display: block;"><strong>Lưu ý: </strong><i>Diện tích trong bảng chỉ có giá trị tham khảo trên bản đồ.</i></span>
                     <table class="table table-hover" id="tableSearchMap">
                         <thead>
                         <tr>
@@ -215,7 +219,6 @@
                             <th>Diện Tích</th>
                             <th>Xã</th>
                             <th>Huyện</th>
-
                         </tr>
                         </thead>
                         <tbody>

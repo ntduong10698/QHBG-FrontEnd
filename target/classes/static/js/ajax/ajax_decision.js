@@ -84,6 +84,7 @@ function callLoaiQuyetDinh() {
             let idNhomQuyetDinh = href.trim().split("nhomQuyetDinh=")[1];
             $("#dp-drop2").val(idNhomQuyetDinh);
             $("#dp-drop2").select2().trigger('change');
+            $("#searchQuyetDinh").trigger('click');
         }
     })
     // searchLoaiQuyetDinh();

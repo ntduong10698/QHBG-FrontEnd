@@ -7,7 +7,7 @@ const QUYET_DINH_KH_2017 = [null,'53/QĐ-UBND','55/QĐ-UBND','52/QĐ-UBND','54/Q
 const QUYET_DINH_KH_2018 = [null,'102/QĐ-UBND','106/QĐ-UBND','103/QĐ-UBND','105/QĐ-UBND','100/QĐ-UBND','104/QĐ-UBND','112/QĐ-UBND','113/QĐ-UBND','101/QĐ-UBND','121/QĐ-UBND'];
 const QUYET_DINH_KH_2019 = ['40/NQ-CP','76/QĐ-UBND','162/QĐ-UBND','77/QĐ-UBND','158/QĐ-UBND','99/QĐ-UBND','177/QĐ-UBND','107/QĐ-UBND','159/QĐ-UBND','82/QĐ-UBND','178/QĐ-UBND'];
 const ARR_HUYEN = ['TPBG', 'Hiep_Hoa', 'Yen_Dung', 'Luc_Nam', 'Son_Dong', 'Lang_Giang', 'Viet_Yen', 'Tan_Yen', 'Luc_Ngan', 'Yen_The'];
-const ARR_HUYEN_TEXT = ['TP Bắc Giang', 'Hiệp Hòa', 'Yên Dũng', 'Lục Nam', 'Sơn Động', 'Lạng Giang', 'Việt Yên', 'Tân Yên', 'Lục Ngạn', 'Yên Thế'];
+const ARR_HUYEN_TEXT = ['TP. Bắc Giang', 'Hiệp Hòa', 'Yên Dũng', 'Lục Nam', 'Sơn Động', 'Lạng Giang', 'Việt Yên', 'Tân Yên', 'Lục Ngạn', 'Yên Thế'];
 const MA_DAT = ['NPP: Đất nông nghiệp','SXN: Đất sản xuất nông nghiệp','CHN: Đất trồng cây hằng năm','LUA: Đất trồng lúa','LUC: Đất chuyên trồng lúa nước'
 ,'LUK: Đất trồng lúa nước còn lại','LUN: Đất trồng lúa nương','COC: Đất cỏ dùng vào chăn nuôi','HNK: Đất trồng cây hằng năm khác'
 ,'BHK: Đất trồng cây hằng năm khác','NHK: Đất nương rẫy trồng cây hằng năm khác','CLN: Đất trồng cây lâu năm','LNC: Đất trồng cây công nghiệp lâu năm'
@@ -236,23 +236,23 @@ $(document).ready(function () {
         $(".icon.iconacc").removeClass("hide");
     })
     // Scroll Fixtop header
-    $(window).scroll(function () {
-        var scroll = $(this).scrollTop();
-        if (scroll > 30) {
-            $("header").css({
-                'position': 'fixed',
-                'top': '0',
-                'left': '0',
-                'z-index': '1004',
-                'box-shadow': '0px 0px 5px 0px rgba(0,0,0,0.75)'
-            });
-        } else {
-            $("header").css({
-                'position': 'static',
-                'box-shadow': 'none'
-            });
-        }
-    });
+    // $(window).scroll(function () {
+    //     var scroll = $(this).scrollTop();
+    //     if (scroll > 30) {
+    //         $("header").css({
+    //             'position': 'fixed',
+    //             'top': '0',
+    //             'left': '0',
+    //             'z-index': '1004',
+    //             'box-shadow': '0px 0px 5px 0px rgba(0,0,0,0.75)'
+    //         });
+    //     } else {
+    //         $("header").css({
+    //             'position': 'static',
+    //             'box-shadow': 'none'
+    //         });
+    //     }
+    // });
     $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
 
     let path = window.location.pathname;

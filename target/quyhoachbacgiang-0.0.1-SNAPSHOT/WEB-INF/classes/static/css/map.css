@@ -56,7 +56,7 @@ html, body {
     /*max-height phai set lai*/
     /*max-height: 500px;*/
     /*tinh vua du voi 300px*/
-    min-height: 122px;
+    min-height: 80px;
     overflow: auto;
 }
 
@@ -799,7 +799,7 @@ html, body {
 }
 
 #openThongKeMap {
-    width: 30px;
+    font-size: 30px;
     color: green;
     position: absolute;
     top: 10px;
@@ -887,4 +887,24 @@ main {
     padding-top: 3px;
     text-transform: unset !important;
 }
+
+footer {
+    display: none;
+}
+
+main{
+    overflow-y: hidden;
+}
+
+.thong-ke-ma-dat {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.thong-ke-ma-dat span {
+    font-size: 13px;
+    display: block;
+}
 /*END Map Arcgis*/
+
