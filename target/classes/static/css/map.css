@@ -895,5 +895,16 @@ footer {
 main{
     overflow-y: hidden;
 }
+
+.thong-ke-ma-dat {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.thong-ke-ma-dat span {
+    font-size: 13px;
+    display: block;
+}
 /*END Map Arcgis*/
 
