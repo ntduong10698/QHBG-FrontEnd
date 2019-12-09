@@ -301,16 +301,31 @@ function setTableGiaDatNongThon(rs,idHuyen) {
        }
    });
    let viewTable = '';
-   let viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
-                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
-   arrTD.map((data1, index) => {
-       viewData += setDataTableGiaDatNongThon(data1, index);
-   })
-    viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
-                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
-    arrMN.map((data1, index) => {
-        viewData += setDataTableGiaDatNongThon(data1, index);
-    })
+   // let viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
+   //                  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+   // arrTD.map((data1, index) => {
+   //     viewData += setDataTableGiaDatNongThon(data1, index);
+   // })
+   //  viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
+   //                  <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+   //  arrMN.map((data1, index) => {
+   //      viewData += setDataTableGiaDatNongThon(data1, index);
+   //  })
+    let viewData = '';
+    if(arrTD.length > 0) {
+        viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+        arrTD.map((data1, index) => {
+            viewData += setDataTableGiaDatNongThon(data1, index);
+        })
+    }
+    if(arrMN.length > 0) {
+        viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+        arrMN.map((data1, index) => {
+            viewData += setDataTableGiaDatNongThon(data1, index);
+        })
+    }
     viewTable =`<div class="tablep-cap">
                     <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
                 </div>
