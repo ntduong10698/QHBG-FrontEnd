@@ -1,6 +1,7 @@
 var year = '';
 var arrLoaiXa = '';
 var arrPopUpMap = '';
+var arrLoaiXaView = '';
 getAllLoaiXa();
 
 $(function () {
@@ -14,6 +15,26 @@ $(function () {
         $(".block-left-qh").css("display","block");
         $(".block-right-qh").removeClass("hideThongKe");
         $("#openThongKeMap").css("display","none");
+    })
+
+    //set high map
+    var height = $(window).height();
+    // let heightMap = height - $("footer").height() - 60 - 45; // 60 padding footer 45 header
+    let heightMap = height - 205; //fix sau 16 height gra, 45 header
+    heightMap = heightMap > 300 ? heightMap : 300;
+    $(".block-main-qh").height(heightMap); //set height main map
+    heightMap = heightMap - 108; //108 = 40 + 34 x 2 40, tititle so do hien thi, 40 titile xa phuong
+    $("#viewDanhSachXaHuyenArea").css("max-height",heightMap*0.5);
+    $("#viewDanhSachLoaiXa").css("max-height",heightMap*0.5);
+    $(window).resize(function () {
+        height = $(window).height();
+        // let heightMap = height - $("footer").height() - 60 - 45; // 60 padding footer 45 header
+        let heightMap = height - 205; //fix sau 16 height gra, 45 header
+        heightMap = heightMap > 300 ? heightMap : 300;
+        $(".block-main-qh").height(heightMap); //set height main map
+        heightMap = heightMap - 108; //108 = 40 + 34 x 2 40, tititle so do hien thi, 40 titile xa phuong
+        $("#viewDanhSachXaHuyenArea").css("max-height",heightMap*0.5);
+        $("#viewDanhSachLoaiXa").css("max-height",heightMap*0.5);
     })
 })
 
@@ -116,16 +137,21 @@ function setTableGiaDatNongThon(rs,idHuyen) {
             }
         });
         let viewTable = '';
-        let viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
+        let viewData = '';
+        if(arrTD.length > 0) {
+            viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
-        arrTD.map((data1, index) => {
-            viewData += setDataTableGiaDatNongThon(data1, index);
-        })
-        viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
+            arrTD.map((data1, index) => {
+                viewData += setDataTableGiaDatNongThon(data1, index);
+            })
+        }
+        if(arrMN.length > 0) {
+            viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
                     <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
-        arrMN.map((data1, index) => {
-            viewData += setDataTableGiaDatNongThon(data1, index);
-        })
+            arrMN.map((data1, index) => {
+                viewData += setDataTableGiaDatNongThon(data1, index);
+            })
+        }
         viewTable =`<div class="tablep-cap">
                     <span>Bảng giá đất giai đoạn ${year} - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo ${rs[0].bangGiaDat.tenBang}</span>
                 </div>
@@ -323,6 +349,7 @@ require([
                 // handling set chu thich dat trong map
                 layerNotices.map(data => {
                     let chuThich = {
+                        id: data.label,
                         imageData : data.imageData,
                         label: getTextLoaiXa(getLoaiXaByLoaiXaId(data.label))
                     }
@@ -331,6 +358,7 @@ require([
                         chuThichDat.push(chuThich);
                     }
                 })
+                arrLoaiXaView = chuThichDat;
                 $("#hienthi-chuthich").html(content); //set chu thich in map
                 //set tim kiem chu thich dat //on input su kien thay doi gia tri trong input
                 $(".search-chuthich input").on('input',function (event) {
@@ -352,18 +380,13 @@ require([
                 queryTaskXaHuyen.execute(queryXaHuyen).then(function (results) {
                     searchViewXaPhuong = results;
                     let arrXaHuyen = results.features;
-                    // if (arrXaHuyen.length === 0) {
-                    //     setTimeout(function () {
-                    //         window.location.reload();
-                    //     }, 500)
-                    // }
                     console.log(`length : ${arrXaHuyen.length}`);
                     arrXaHuyen.map(data => {
                         let item = data.attributes;
                         viewDanhSachXaHuyen += `<li data-uid="${data.uid}"><i class="fas fa-map-marked-alt"></i>&nbsp; ${ (item.Huyen.indexOf(".") > -1) ? item.Huyen : "Huyện "+item.Huyen}</li>`;
                     })
-                    $('#viewDanhSachXaHuyen').html(viewDanhSachXaHuyen);
-                    $("#viewDanhSachXaHuyen li").click(function () {
+                    $('#viewDanhSachXaHuyenArea').html(viewDanhSachXaHuyen);
+                    $("#viewDanhSachXaHuyenArea li").click(function () {
                         zoomToXaHuyen($(this).attr("data-uid"));
                     })
                 }).catch(err => {
@@ -586,6 +609,7 @@ require([
                     break;
                 }
             }
+            findXaByHuyen(uid);
         }
         //end zoom in search
         //end search map
@@ -593,6 +617,111 @@ require([
         //create query add
 
         //end search check box
+
+        function findXaByHuyen(uid) {
+            viewLoadingGif();
+            let inputSearch = $(`#viewDanhSachXaHuyenArea li[data-uid='${uid}']`).text().trim();
+            inputSearch = inputSearch.indexOf("Huyện") > -1 ? inputSearch.split("Huyện")[1].trim() : inputSearch;
+            console.log(inputSearch);
+            let queryTask = new QueryTask({
+                url: urlApiMap+ "/" + sublayersClick[0].id
+            });
+            let query = new Query();
+            query.returnGeometry = true;
+            query.outFields = ["*"];
+            query.where = `Upper(Huyen) like N'%${inputSearch}%'`;
+            // When resolved, returns features and graphics that satisfy the query.
+            queryTask.execute(query).then(function (results) {
+                searchResults = results;
+                if (searchResults.features.length > 0) {
+                    let features = searchResults.features;
+                    let arrLoaiXaId = [];
+                    let arrLoaiXaA1 = [];
+                    let arrLoaiXaA2 = [];
+                    let arrLoaiXaA3 = [];
+                    let arrLoaiXaA4 = [];
+                    let arrLoaiXaA5 = [];
+                    let arrLoaiXaA6 = [];
+                    let arrLoaiXaA7 = [];
+                    let arrLoaiXaA8 = [];
+                    features.map(data => {
+                        let item = data.attributes;
+                        if(item.LoaiXaId !== null) {
+                            arrLoaiXaId = arrLoaiXaId.filter(id => {
+                                return id != item.LoaiXaId;
+                            })
+                            arrLoaiXaId.push(item.LoaiXaId);
+                            //phân loại xã
+                            switch (item.LoaiXaId) {
+                                case 3:
+                                    arrLoaiXaA1.push(item.Xa);
+                                    break;
+                                case 4:
+                                    arrLoaiXaA2.push(item.Xa);
+                                    break;
+                                case 5:
+                                    arrLoaiXaA3.push(item.Xa);
+                                    break;
+                                case 9:
+                                    arrLoaiXaA4.push(item.Xa);
+                                    break;
+                                case 6:
+                                    arrLoaiXaA5.push(item.Xa);
+                                    break;
+                                case 7:
+                                    arrLoaiXaA6.push(item.Xa);
+                                    break;
+                                case 8:
+                                    arrLoaiXaA7.push(item.Xa);
+                                    break;
+                                case 10:
+                                    arrLoaiXaA8.push(item.Xa);
+                                    break;
+                            }
+                        }
+                    })
+                    let viewHtml = '';
+                    arrLoaiXaId.sort(function (a,b) {
+                        return a - b;
+                    })
+                    arrLoaiXaId.map(item => {
+                        let chuThich = arrLoaiXaView.find(ct=> ct.id == item);
+                        viewHtml += chuThich === undefined ? "" : `<li><img src='data:image/png;base64,${chuThich.imageData}'/>&nbsp;${chuThich.label}</li>`;
+                    })
+                    $("#viewDanhSachLoaiXa").html(viewHtml);
+                    //chia nhóm xã
+                    $("#loaiXaTrungDu").html("");
+                    if (arrLoaiXaA1.length > 0 || arrLoaiXaA2.length > 0 || arrLoaiXaA3.length > 0 || arrLoaiXaA4.length > 0) {
+                        let viewHtmlLoaiXa = '<li class="loai-xa">Xã trung du</li>';
+                        viewHtmlLoaiXa += arrLoaiXaA1.length > 0 ? `<li><strong>- Xã nhóm A: </strong>${arrLoaiXaA1.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA2.length > 0 ? `<li><strong>- Xã nhóm B: </strong>${arrLoaiXaA2.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA3.length > 0 ? `<li><strong>- Xã nhóm C: </strong>${arrLoaiXaA3.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA4.length > 0 ? `<li><strong>- Xã nhóm D: </strong>${arrLoaiXaA4.join(", ")}</li>`: "";
+                        console.log(viewHtmlLoaiXa);
+                        $("#loaiXaTrungDu").html(viewHtmlLoaiXa);
+                    }
+                    $("#loaiXaMienNui").html("");
+                    if (arrLoaiXaA5.length > 0 || arrLoaiXaA6.length > 0 || arrLoaiXaA7.length > 0 || arrLoaiXaA8.length > 0) {
+                        let viewHtmlLoaiXa = '<li class="loai-xa">Xã miền núi</li>';
+                        viewHtmlLoaiXa += arrLoaiXaA5.length > 0 ? `<li><strong>- Xã nhóm A: </strong>${arrLoaiXaA5.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA6.length > 0 ? `<li><strong>- Xã nhóm B: </strong>${arrLoaiXaA6.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA7.length > 0 ? `<li><strong>- Xã nhóm C: </strong>${arrLoaiXaA7.join(", ")}</li>`: "";
+                        viewHtmlLoaiXa += arrLoaiXaA8.length > 0 ? `<li><strong>- Xã nhóm D: </strong>${arrLoaiXaA8.join(", ")}</li>`: "";
+                        console.log(viewHtmlLoaiXa);
+                        $("#loaiXaMienNui").html(viewHtmlLoaiXa);
+                    }
+                } else {
+                    viewAlter(2,"Không tìm thấy kết quả phù hợp");
+                }
+                hideLoadingGif();
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            }).catch(err => {
+                hideLoadingGif();
+                console.log(err);
+            });
+        }
     }).catch(err => {
         console.log(err);
         // alert("Không có dữ liệu bản đồ");

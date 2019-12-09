@@ -906,5 +906,32 @@ main{
     font-size: 13px;
     display: block;
 }
+
+#chiaLoaiXa {
+    position: absolute;
+    bottom: 10px;
+    font-size: 13px;
+    left: 30px;
+}
+
+#chiaLoaiXa ul {
+    list-style: none;
+}
+
+#chiaLoaiXa ul li {
+    margin-left: 10px;
+}
+
+#chiaLoaiXa ul li:nth-child(1) {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+#chiaLoaiXa ul li.loai-xa {
+    margin-left: unset !important;
+}
+
 /*END Map Arcgis*/
 

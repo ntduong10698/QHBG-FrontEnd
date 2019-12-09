@@ -122,7 +122,14 @@
                 <div class="title-qh">
                     <span><i class="fas fa-city"></i> Huyện/ Thành Phố</span>
                 </div>
-                <ul id="viewDanhSachXaHuyen">
+                <ul id="viewDanhSachXaHuyenArea" style="min-height: 78px">
+                </ul>
+            </div>
+            <div class="view-qh view-qh-v2">
+                <div class="title-qh">
+                    <span><i class="fas fa-city"></i> Loại Xã Huyện/Thành Phố</span>
+                </div>
+                <ul id="viewDanhSachLoaiXa" style="min-height: 78px">
                 </ul>
             </div>
         </div>
@@ -268,6 +275,12 @@
             </div>
             <!-- END FORM SEARCH -->
             <div id="mapView"></div>
+            <div id="chiaLoaiXa">
+                <ul id="loaiXaTrungDu">
+                </ul>
+                <ul id="loaiXaMienNui">
+                </ul>
+            </div>
         </div>
     </div>
     <!-- END LỚP 1 -->
