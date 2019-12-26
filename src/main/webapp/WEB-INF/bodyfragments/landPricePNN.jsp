@@ -28,7 +28,6 @@
                     <span>Năm/Giai đoạn</span>
                     <div class="dpcft-drop">
                         <select id="dp-drop9" class="dp-drop">
-                            <option value="">--- Tất Cả ---</option>
                             <option value="0">2015-2019</option>
                         </select>
                     </div>

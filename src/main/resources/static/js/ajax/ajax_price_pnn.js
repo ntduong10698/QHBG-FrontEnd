@@ -15,6 +15,32 @@ $(function () {
 
 //GENERAL
 
+function callGiaiDoan(idHuyen, bangGiaDatId) {
+    if(bangGiaDatId > 11) {
+        return ajaxCallGet(`v1/public/gia-dat/gia-dat-tai-nong-thon/find-all-giai-doan?huyen-id=${idHuyen}&bang-gia-dat-id=${bangGiaDatId}`);
+    }
+    return ajaxCallGet(`v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-all-giai-doan?huyen-id=${idHuyen}&bang-gia-dat-id=${bangGiaDatId}`);
+}
+
+function setGiaiDoan(idHuyen, bangGiaDatId) {
+    callGiaiDoan(idHuyen, bangGiaDatId).then(listRs => {
+        let viewHtml = '';
+        listRs.map(data => {
+            viewHtml += `<option value="${data.namDau}-${data.namCuoi}">${data.namDau}-${data.namCuoi}</option>`;
+        })
+        $("#dp-drop9").html(viewHtml);
+        $("#dp-drop9").val(listRs[0].namDau+"-"+listRs[0].namCuoi);
+        $("#dp-drop9").select2().trigger('change');
+
+        callSelectBangGiaDatPNN();
+        $("#dp-drop9").change(function () {
+            callSelectBangGiaDatPNN();
+        })
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
 function callBangGiaDatPNN() {
     //set option bang gia dat
     let arrCallAjax = [callBangGiaDat(2),callBangGiaDat(3)];
@@ -36,11 +62,13 @@ function callBangGiaDatPNN() {
 
         //set change select Bang gia dat;
         $("#dp-drop8").change(function () {
-            callSelectBangGiaDatPNN();
+            // callSelectBangGiaDatPNN();
+            setGiaiDoan($("#dp-drop10").val(),$("#dp-drop8").val());
         })
+        setGiaiDoan($("#dp-drop10").val(),$("#dp-drop8").val());
         //end set option
 
-        callSelectBangGiaDatPNN(); // call cho truong hop default
+        // callSelectBangGiaDatPNN(); // call cho truong hop default
     }).catch(err => {
         console.log(err);
     })
@@ -61,7 +89,8 @@ function setViewSelectHuyen() {
         // setViewSelectXa(1);
         $("#dp-drop10").change(function () {
             // setViewSelectXa($("#dp-drop10").val());
-            callSelectBangGiaDatPNN();
+            // callSelectBangGiaDatPNN();
+            setGiaiDoan($("#dp-drop10").val(),$("#dp-drop8").val());
         })
         callBangGiaDatPNN();
     }).catch(err => {
@@ -116,6 +145,7 @@ function setViewSelectXa(idHuyen) {
 function callSelectBangGiaDatPNN() {
     let idHuyen = $("#dp-drop10").val();
     let id = $("#dp-drop8").val();
+    let giaiDoan = $("#dp-drop9").val();
     // id > 11 la dat nong thon
     viewLoadingGif();
     if (id <= 11) {
@@ -123,9 +153,9 @@ function callSelectBangGiaDatPNN() {
         viewTableDuong = ''; //reset gia tri
         viewTableDuongData = '';
         arrAllDuongSort = [];
-        callGiaDatPhiNongNghiep(id, idHuyen).then(rs => {
+        callGiaDatPhiNongNghiep(id, idHuyen, giaiDoan).then(rs => {
             arrTable = rs;
-            setViewTenDuong(idHuyen);
+            setViewTenDuong(idHuyen, giaiDoan);
             // $(".block-table-price2").html(setTableGiaDatPhiNongNghiep(rs, idHuyen));
             //set default khi vao trang phi nong nghiep
         }).catch(err => {
@@ -134,12 +164,14 @@ function callSelectBangGiaDatPNN() {
     } else {
         viewSelectXa();
         callGiaDatNongThon(id, idHuyen).then(rs => {
-            arrTable = rs;
+            arrTable = rs.filter(item => {
+                return item.namDau+"-"+item.namCuoi === giaiDoan;
+            });
             setViewSelectXa(idHuyen);
             setViewLoaiXa();
-            $(".block-table-price2").html(setTableGiaDatNongThon(rs, idHuyen));
+            $(".block-table-price2").html(setTableGiaDatNongThon(arrTable, idHuyen));
             clickChiTietDatPNN();
-            arrTable = rs;
+            // arrTable = rs;
         }).catch(err => {
             console.log(err);
         })
@@ -162,8 +194,6 @@ function resetSelectView() {
         placeholder: "--- Gõ để tìm kiếm ---",
         allowClear: true
     });
-    $("#dp-drop9").val("0");
-    $("#dp-drop9").select2().trigger('change');
 
     $("#dp-drop10").select2({
         placeholder: "--- Gõ để tìm kiếm ---",
@@ -314,20 +344,20 @@ function setTableGiaDatNongThon(rs,idHuyen) {
     let viewData = '';
     if(arrTD.length > 0) {
         viewData = `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">I</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Trung Du</td><td></td><td></td>
-                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
         arrTD.map((data1, index) => {
             viewData += setDataTableGiaDatNongThon(data1, index);
         })
     }
     if(arrMN.length > 0) {
         viewData += `<tr><td><strong style="font-family: 'Times New Roman', Times, serif">II</strong></td><td style="text-transform: uppercase; font-weight: bold">Xã Miền Núi</td><td></td><td></td>
-                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
+                    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>`;
         arrMN.map((data1, index) => {
             viewData += setDataTableGiaDatNongThon(data1, index);
         })
     }
     viewTable =`<div class="tablep-cap">
-                    <span>Bảng giá đất giai đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
+                    <span>Bảng giá đất giai đoạn ${$("#dp-drop9").val()} - ${ARR_HUYEN_TEXT[idHuyen-1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
                 </div>
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
@@ -407,18 +437,18 @@ function resetSelectXa() {
 //End gia dat nong thon
 
 //Gia dat thanh thi
-function callGiaDatPhiNongNghiep(id, idHuyen) {
-    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-huyen-and-bang-gia-dat?bang-gia-dat-id=${id}&huyen-id=${idHuyen}`;
+function callGiaDatPhiNongNghiep(id, idHuyen, giaiDoan) {
+    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-huyen-and-bang-gia-dat-and-giai-doan?bang-gia-dat-id=${id}&huyen-id=${idHuyen}&giai-doan=${giaiDoan}`;
     return ajaxCallGet(url);
 }
 
-function callTenDuongByIdHuyen(idHuyen) {
-    let url = `v1/public/danh-muc-duong/find-by-huyen?huyen-id=${idHuyen}`;
+function callTenDuongByIdHuyen(idHuyen, giaiDoan) {
+    let url = `v1/public/danh-muc-duong/find-by-huyen-and-giai-doan?huyen-id=${idHuyen}&giai-doan=${giaiDoan}`;
     return ajaxCallGet(url);
 }
 
-function setViewTenDuong(idHuyen) {
-    callTenDuongByIdHuyen(idHuyen).then(rs => {
+function setViewTenDuong(idHuyen, giaiDoan) {
+    callTenDuongByIdHuyen(idHuyen, giaiDoan).then(rs => {
         let viewSelect = '<option value="0">--- Tất Cả ---</option>';
         arrAllDuong = rs;
         rs.map(data => {
@@ -534,9 +564,9 @@ function countPoint(text) {
 
 function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     let viewTable = `<div class="tablep-cap">
-                    <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
+                    <span>Bảng giá đất giai đoạn ${$("#dp-drop9").val()} - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br>Theo ${$('#dp-drop8 option:selected').text()}</span>
                 </div>
-                <table class="table-dat table table-hover table-bordered" id="tableExport">
+                <table class="table-dat table table-hover table-bordered table-dat1" id="tableExport">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -545,8 +575,8 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
                             <th>Vị trí 2</th>
                             <th>Vị trí 3</th>
                             <th>Vị trí 4</th>
-                            <th style="width: 150px !important;">Năm</th>
-                            <th>Chi Tiết</th>
+                            <th style="width: 150px !important;">Giai đoạn</th>
+                            <th style="width: 130px !important;">Quyết định</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -556,21 +586,66 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     $(".block-table-price2").html(viewTable);
 
     //setDataTable
-    setDataTableGiaDatPhiNongNghiep();
+    setDataTableGiaDatPhiNongNghiepQuyetDinh();
     viewTableDuongData = $(".block-table-price2 tbody").html();
     hideLoadingGif();
 }
 
-function setDataTableGiaDatPhiNongNghiep() {
-   arrTable.map(data => {
+function callAllGiaiDoanQuyetDinh(huyenId, bangGiaDatId, giaiDoan) {
+    return ajaxCallGet(`v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-all-quyet-dinh?huyen-id=${huyenId}&bang-id=${bangGiaDatId}&giai-doan=${giaiDoan}`);
+}
+
+function setDataTableGiaDatPhiNongNghiepQuyetDinh() {
+    callAllGiaiDoanQuyetDinh($("#dp-drop10").val(), $("#dp-drop8").val(), $("#dp-drop9").val()).then(list => {
+        list.sort((a,b) => a.ngayBanHanh.localeCompare(b.ngayBanHanh));
+        if(list.length <= 1) {
+            setDataTableGiaDatPhiNongNghiep(arrTable);
+        } else {
+            let arrDataQuyetDinh = [];
+            list.map(item => {
+                let quyetDinhCheck = item.id;
+                arrDataQuyetDinh.push(arrTable.filter(it => it.quyetDinh.id === quyetDinhCheck));
+            })
+            setDataTableGiaDatPhiNongNghiep(arrDataQuyetDinh[0]);
+            arrDataQuyetDinh.map((data,index) => {
+                if(index !== 0) setDataTableGiaDatPhiNongNghiepDieuChinh(arrDataQuyetDinh[index], index);
+            })
+            clickChiTietDatPNN();
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+function setDataTableGiaDatPhiNongNghiepDieuChinh(arrTableData,index) {
+    arrTableData.map(data => {
+        let item = $(`tr[data-cap='${data.danhMucDuong.cap}']`);
+        let quyetDinhView = item.children("td:nth-child(8)").text();
+        if(quyetDinhView.length > 0) {
+            item.addClass("text-line-through");
+            item.after(`<tr data-cap="${data.danhMucDuong.cap}" data-quyetdinh=${index}>${item.html()}</tr>`);
+            item = $(`tr[data-cap='${data.danhMucDuong.cap}'][data-quyetdinh='${index}']`);
+            $(`tr[data-quyetdinh='${index}']`).removeClass("text-line-through");
+        }
+        item.children("td:nth-child(3)").html(data.viTri1 == 0 ? '': formatNumber(data.viTri1,'.','.'));
+        item.children("td:nth-child(4)").html(data.viTri2 == 0 ? '': formatNumber(data.viTri2,'.','.'));
+        item.children("td:nth-child(5)").html(data.viTri3 == 0 ? '': formatNumber(data.viTri3,'.','.'));
+        item.children("td:nth-child(6)").html(data.viTri4 == 0 ? '': formatNumber(data.viTri4,'.','.'));
+        item.children("td:nth-child(7)").html(data.namDau != null && data.namCuoi != null ? data.namDau +" - "+data.namCuoi : "" );
+        item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}>${data.quyetDinh.soQuyetDinh}</span></span>`);
+    })
+}
+
+function setDataTableGiaDatPhiNongNghiep(arrTableData) {
+   arrTableData.map(data => {
        let item = $(`tr[data-cap='${data.danhMucDuong.cap}']`);
        item.children("td:nth-child(3)").html(data.viTri1 == 0 ? '': formatNumber(data.viTri1,'.','.'));
        item.children("td:nth-child(4)").html(data.viTri2 == 0 ? '': formatNumber(data.viTri2,'.','.'));
        item.children("td:nth-child(5)").html(data.viTri3 == 0 ? '': formatNumber(data.viTri3,'.','.'));
        item.children("td:nth-child(6)").html(data.viTri4 == 0 ? '': formatNumber(data.viTri4,'.','.'));
-       item.children("td:nth-child(7)").html(data.quyetDinh != null ? data.quyetDinh.namDau +" - "+data.quyetDinh.namCuoi : "-" );
-       item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span>`)
+       item.children("td:nth-child(7)").html(data.namDau != null && data.namCuoi != null ? data.namDau +" - "+data.namCuoi : "" );
+       item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}>${data.quyetDinh.soQuyetDinh}</span></span>`);
+       // item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span>`);
    })
-    clickChiTietDatPNN();
 }
 //Gia dat thanh thi

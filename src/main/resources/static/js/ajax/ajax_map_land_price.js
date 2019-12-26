@@ -2,7 +2,7 @@ var arrPopUpMap = []; //khai bien toan cuc luu cac khoi khi duoc click
 var arrChildDuong = [];
 var viewTableDuong = ''; // chua co gia
 var year = '';
-
+var arrDuongMap = [];
 //set data table
 function setViewTableDuong(rs) {
     viewTableDuong = '';
@@ -74,7 +74,7 @@ function countPoint(text) {
 
 function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
     let viewTable = `<div class="tablep-cap">
-                    <span>Bảng giá đất gia đoạn 2015-2019 - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br><span>Theo bảng giá đất ở tại đô thị, ven trục đường giao thông</span></span>
+                    <span>Bảng giá đất giai đoạn ${year} - ${ARR_HUYEN_TEXT[idHuyen - 1]}<br><span>Theo bảng giá đất ở tại đô thị, ven trục đường giao thông</span></span>
                 </div>
                 <table class="table-dat table table-hover table-bordered" id="tableExport">
                     <thead>
@@ -85,7 +85,7 @@ function setTableGiaDatPhiNongNghiep(viewData, idHuyen){
                             <th>Vị trí 2</th>
                             <th>Vị trí 3</th>
                             <th>Vị trí 4</th>
-                            <th style="width: 150px !important;">Năm</th>
+                            <th style="width: 150px !important;">Giai đoạn</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,8 +110,9 @@ function setDataTableGiaDatPhiNongNghiep(query, arrTable) {
         item.children("td:nth-child(4)").html(data.viTri2 == 0 ? '': formatNumber(data.viTri2,'.','.'));
         item.children("td:nth-child(5)").html(data.viTri3 == 0 ? '': formatNumber(data.viTri3,'.','.'));
         item.children("td:nth-child(6)").html(data.viTri4 == 0 ? '': formatNumber(data.viTri4,'.','.'));
-        item.children("td:nth-child(7)").html(data.quyetDinh != null ? data.quyetDinh.namDau +" - "+data.quyetDinh.namCuoi : "-" );
-        item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span>`)
+        // item.children("td:nth-child(7)").html((data.namDau != null && data.namCuoi != null ? data.namDau +" - "+data.namCuoi : ""));
+        item.children("td:nth-child(7)").html(data.quyetDinh.soQuyetDinh);
+        // item.children("td:nth-child(8)").html(`<span><span data-id=${data.id}><i class="fas fa-plus" aria-hidden="true"></i></span></span>`)
     })
 }
 //set data table
@@ -149,7 +150,8 @@ function fnView(indexPopUp) {
             }
             callAllGiaDatPnn(huyen[0].idHuyen).then(listData => {
                 listData.map((list, index) => {
-                    setDataTableGiaDatPhiNongNghiep(`.tableBangGiaDat${9 + index}`, list);
+                    // setDataTableGiaDatPhiNongNghiep(`.tableBangGiaDat${9 + index}`, list);
+                    setDataTableGiaDatPhiNongNghiepQuyetDinh(huyen[0].idHuyen,index, list);
                 })
                 hideLoadingGif();
             }).catch(err => {
@@ -178,22 +180,68 @@ async function callAllGiaDatPnn(idHuyen) {
 }
 
 function callGiaDatPhiNongNghiep(id, idHuyen) {
-    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-huyen-and-bang-gia-dat?bang-gia-dat-id=${id}&huyen-id=${idHuyen}`;
+    let url = `v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-by-huyen-and-bang-gia-dat-and-giai-doan?bang-gia-dat-id=${id}&huyen-id=${idHuyen}&giai-doan=${year}`;
     return ajaxCallGet(url);
 }
 
 function callFindChilDuong(duong, idBangGiaDat, idHuyen) {
-    return ajaxCallGet(`v1/public/danh-muc-duong/find-child?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
+    return ajaxCallGet(`v1/public/danh-muc-duong/find-child?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}&giai-doan=${year}`);
 }
 
 function callFindChilDuong2(duong, idBangGiaDat, idHuyen) {
-    return ajaxCallGet(`v1/public/danh-muc-duong/find-child-2?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}`);
+    return ajaxCallGet(`v1/public/danh-muc-duong/find-child-2?duong=${duong}&bang-gia-dat-id=${idBangGiaDat}&huyen-id=${idHuyen}&giai-doan=${year}`);
+}
+
+function callAllGiaiDoanQuyetDinh(huyenId, bangGiaDatId, giaiDoan) {
+    return ajaxCallGet(`v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-all-quyet-dinh?huyen-id=${huyenId}&bang-id=${bangGiaDatId}&giai-doan=${giaiDoan}`);
+}
+
+function setDataTableGiaDatPhiNongNghiepQuyetDinh(huyenId, i, arrTable) {
+    let query = `.tableBangGiaDat${9 + i}`;
+    callAllGiaiDoanQuyetDinh(huyenId, 9 + i, year).then(list => {
+        list.sort((a,b) => a.ngayBanHanh.localeCompare(b.ngayBanHanh));
+        if(list.length <= 1) {
+            setDataTableGiaDatPhiNongNghiep(query,arrTable);
+        } else {
+            let arrDataQuyetDinh = [];
+            list.map(item => {
+                let quyetDinhCheck = item.id;
+                arrDataQuyetDinh.push(arrTable.filter(it => it.quyetDinh.id === quyetDinhCheck));
+            })
+            setDataTableGiaDatPhiNongNghiep(query,arrDataQuyetDinh[0]);
+            arrDataQuyetDinh.map((data,index) => {
+                if(index !== 0) setDataTableGiaDatPhiNongNghiepDieuChinh(query, arrDataQuyetDinh[index], index);
+            })
+        }
+    }).catch(err => {
+        console.log(err);
+    })
+}
+
+function setDataTableGiaDatPhiNongNghiepDieuChinh(query ,arrTableData,index) {
+    arrTableData.map(data => {
+        let item = $(`${query} tr[data-cap='${data.danhMucDuong.cap}']`);
+        let quyetDinhView = item.children("td:nth-child(7)").text();
+        if(quyetDinhView != data.quyetDinh.soQuyetDinh && quyetDinhView != '') {
+            item.addClass("text-line-through");
+            item.after(`<tr data-cap="${data.danhMucDuong.cap}" data-quyetdinh=${index}>${item.html()}</tr>`);
+            item = $(`${query} tr[data-cap='${data.danhMucDuong.cap}'][data-quyetdinh='${index}']`);
+            $(`${query} tr[data-quyetdinh='${index}']`).removeClass("text-line-through");
+        }
+        item.children("td:nth-child(3)").html(data.viTri1 == 0 ? '': formatNumber(data.viTri1,'.','.'));
+        item.children("td:nth-child(4)").html(data.viTri2 == 0 ? '': formatNumber(data.viTri2,'.','.'));
+        item.children("td:nth-child(5)").html(data.viTri3 == 0 ? '': formatNumber(data.viTri3,'.','.'));
+        item.children("td:nth-child(6)").html(data.viTri4 == 0 ? '': formatNumber(data.viTri4,'.','.'));
+        // item.children("td:nth-child(7)").html(data.namDau != null && data.namCuoi != null ? data.namDau +" - "+data.namCuoi : "" );
+        item.children("td:nth-child(7)").html(`<span><span data-id=${data.id}>${data.quyetDinh.soQuyetDinh}</span></span>`);
+    })
 }
 
 function getUrlGetMap() {
     let params = (new URL(window.location)).searchParams;
     year = params.get("nam");
     let yearUrl = year === null ? "2015_2019" : year.replace("-","_");
+    yearUrl = yearUrl === "2020_2024" ? "2015_2019" : yearUrl;
     return `http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_${yearUrl}/MapServer`;
 }
 //view map arcgis
@@ -446,6 +494,64 @@ require([
             if (tieuChi === 'tenDuong') {
                 searchMapTenDuong(`${inputSearch}`); // query text can 'ma'
             }
+        }
+
+        getAllDuong();
+        function getAllDuong() {
+            let queryTask = new QueryTask({
+                url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
+            });
+            let query = new Query();
+            query.returnGeometry = true;
+            query.outFields = ["*"];
+            query.where = '1=1';
+            // When resolved, returns features and graphics that satisfy the query.
+            $(document.body).css({
+                'cursor': 'wait'
+            });
+            queryTask.execute(query).then(function (results) {
+                let features = results.features;
+                features.map(data => {
+                    let item = data.attributes;
+                    if(item.TenDuong != null) {
+                        arrDuongMap = arrDuongMap.filter(element => element.localeCompare(item.TenDuong.toUpperCase()));
+                        arrDuongMap.push(item.TenDuong.toUpperCase());
+                    }
+                })
+                setSearchDuong(arrDuongMap);
+                $("#inputSearchMap").on('input',function(){
+                    setTimeout(function () {
+                        let textSearch = $("#inputSearchMap").val().toUpperCase();
+                        let arrSearch = arrDuongMap.filter(function find(data) {
+                            return (data.search(textSearch) > -1);
+                        })
+                        if (arrSearch.length !== 0) {
+                            setSearchDuong(arrSearch);
+                        } else {
+                            $("#text-search-stress").html("Không có dữ liệu tương ứng.");
+                        }
+                    },100)
+                })
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            }).catch(err => {
+                console.log(err);
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            })
+        }
+
+        function setSearchDuong(arr) {
+            let viewHtml = '';
+            arr.map(data => {
+                viewHtml += `<li>${data}</li>`;
+            })
+            $("#text-search-stress").html(viewHtml);
+            $("#text-search-stress li").click(function () {
+                $("#inputSearchMap").val($(this).text());
+            })
         }
 
         function searchMapTenDuong(inputSearch) {

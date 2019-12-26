@@ -933,5 +933,47 @@ main{
     margin-left: unset !important;
 }
 
+#text-search-stress {
+    list-style: none;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 22px;
+    width: 300px;
+    border: 1px solid #a8a8a8;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 13px;
+    display: none;
+    background: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+#text-search-stress li {
+    padding: 5px;
+}
+
+#text-search-stress li:hover{
+    background: rgb(238, 238, 238);
+}
+
+#search-map-price input {
+    font-size: var(--font13);
+    margin-right: 3px;
+    width: 300px;
+    border: 1px solid #a8a8a8;
+    height: 33px;
+    outline: none;
+}
+
+#search-map-price input:focus ~ #text-search-stress {
+    display: block;
+}
+
+#search-map-price #text-search-stress:hover {
+    display: block;
+}
 /*END Map Arcgis*/
 
