@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<div class="alert alert-dismissible" role="alert"></div>
+<div class="view-alert"></div>
 <section id="loading-gif" style="display: none">
     <div class="img-loading-gif">
         <img src="resources/img/loading-gif.gif">
@@ -238,7 +238,7 @@
                             <li data-name="gd-11">
                                 <a href="ban-do-gia-dat?giaidoan=2015-2019">
                                     <i class="fas fa-angle-double-right"></i>
-                                    <span>Bản đồ giá đất</span>
+                                    <span>Bản đồ giá đất theo trục đường</span>
 <%--                                <i class="fas fa-caret-right"></i>--%>
                                 </a>
 <%--                                <ul class="submenu-lv2">--%>
@@ -249,26 +249,16 @@
                             <li data-name="gd-12">
                                 <a href="ban-do-gia-dat?giaidoan=2015-2019">
                                     <i class="fas fa-angle-double-right"></i>
-                                    <span>Bản đồ giá đất khu vực</span>
+                                    <span>Bản đồ giá đất theo khu vực</span>
                                 </a>
                             </li>
                             <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất nông
                                             nghiệp</span>
-                                <i class="fas fa-caret-right"></i>
                             </a>
-                                <ul class="submenu-lv2">
-                                    <li><a href="gia-dat-nong-nghiep"><i class="fas fa-angle-double-right"></i>
-                                        <span>Giai đoạn 2015-2019</span></a></li>
-                                </ul>
                             </li>
                             <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i> <span>Bảng giá đất phi nông
                                             nghiệp</span>
-                                <i class="fas fa-caret-right"></i>
                             </a>
-                                <ul class="submenu-lv2">
-                                    <li><a href="gia-dat-phi-nong-nghiep"><i class="fas fa-angle-double-right"></i>
-                                        <span>Giai đoạn 2015-2019</span></a></li>
-                                </ul>
                             </li>
                             <li><a href="quyet-dinh?nhomQuyetDinh=3"><i class="fas fa-angle-double-right"></i> <span>Quyết định giá đất cụ
                                             thể</span></a></li>

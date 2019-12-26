@@ -390,14 +390,11 @@ function viewAlter(type, mess) {
             note = 'Thông báo';
             break;
     }
-    $(".alert").addClass(typeAlter);
-    $(".alert").html(`<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <strong>${note + '!'}</strong> ${mess}.`);
-    $('.alert').css({'opacity': '1', 'visibility': 'visible'});
+    $(".view-alert").html(`<div class="alert alert-dismissible ${typeAlter}" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong class="view-animation">${note + '!'}</strong> ${mess}.</div>`);
     setTimeout(function () {
-        $('.alert').css({'opacity': '0', 'visibility': 'hidden'});
-        $(".alert").removeClass(typeAlter);
-    }, 2000)
+        $(".view-alert").html("");
+    }, 5000)
 }
 
 function formatDienTich(dienTich) {

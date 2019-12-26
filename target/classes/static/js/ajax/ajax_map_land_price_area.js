@@ -2,6 +2,7 @@ var year = '';
 var arrLoaiXa = '';
 var arrPopUpMap = '';
 var arrLoaiXaView = '';
+var arrXaMap = [];
 getAllLoaiXa();
 
 $(function () {
@@ -57,7 +58,7 @@ function fnView(indexPopUp) {
         let viewHtml = '';
         listRs.map(rs => {
             rs = rs.filter(data1 => {
-                return data1.loaiXa.idDmLoaiXa == data.LoaiXaId;
+                return data1.loaiXa.idDmLoaiXa == data.LoaiXaId && data1.namDau+"-"+data1.namCuoi === year;
             })
             viewHtml += setTableGiaDatNongThon(rs,huyenId);
             $(".tableBangGiaDat12-13-14").html(viewHtml);
@@ -73,6 +74,7 @@ function getUrlGetMap() {
     let params = (new URL(window.location)).searchParams;
     year = params.get("nam");
     let yearUrl = year === null ? "2015_2019" : year.replace("-","_");
+    yearUrl = yearUrl === "2020_2024" ? "2015_2019" : yearUrl;
     return `http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_Khu_Vuc_${yearUrl}/MapServer`;
 }
 
@@ -613,6 +615,64 @@ require([
         }
         //end zoom in search
         //end search map
+
+        getAllXa();
+        function getAllXa() {
+            let queryTask = new QueryTask({
+                url: urlApiMap + "/"+sublayersClick[0].id  // index 0 is KhoiQuyHoach, KhoiKeHoach
+            });
+            let query = new Query();
+            query.returnGeometry = true;
+            query.outFields = ["*"];
+            query.where = '1=1';
+            // When resolved, returns features and graphics that satisfy the query.
+            $(document.body).css({
+                'cursor': 'wait'
+            });
+            queryTask.execute(query).then(function (results) {
+                let features = results.features;
+                features.map(data => {
+                    let item = data.attributes;
+                    if(item.Xa != null) {
+                        arrXaMap = arrXaMap.filter(element => element.localeCompare(item.Xa.toUpperCase()));
+                        arrXaMap.push(item.Xa.toUpperCase());
+                    }
+                })
+                setSearchXa(arrXaMap);
+                $("#inputSearchMap").on('input',function(){
+                    setTimeout(function () {
+                        let textSearch = $("#inputSearchMap").val().toUpperCase();
+                        let arrSearch = arrXaMap.filter(function find(data) {
+                            return (data.search(textSearch) > -1);
+                        })
+                        if (arrSearch.length !== 0) {
+                            setSearchXa(arrSearch);
+                        } else {
+                            $("#text-search-stress").html("Không có dữ liệu tương ứng.");
+                        }
+                    },100)
+                })
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            }).catch(err => {
+                console.log(err);
+                $(document.body).css({
+                    'cursor': 'default'
+                });
+            })
+        }
+
+        function setSearchXa(arr) {
+            let viewHtml = '';
+            arr.map(data => {
+                viewHtml += `<li>${data}</li>`;
+            })
+            $("#text-search-stress").html(viewHtml);
+            $("#text-search-stress li").click(function () {
+                $("#inputSearchMap").val($(this).text());
+            })
+        }
 
         //create query add
 

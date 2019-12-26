@@ -1136,13 +1136,19 @@ span.it-cap{
 }
 
 /*ALTER_BOOTSTRAP*/
-.alert {
+.view-alert {
     position: fixed;
     z-index: 1006;
-    top: 37px;
+    top: 40px;
     font-size: 14px;
-    right: 2px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.alert {
     transition: 0.6s all;
+    display: inline-block;
 }
 /*END_ALTER_BOOTSTRAP*/
 
@@ -1176,4 +1182,21 @@ span.it-cap{
 
 .view-text-table {
     text-align: left !important;
+}
+
+.view-animation {
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.text-line-through {
+    text-decoration: line-through;
 }

@@ -135,7 +135,12 @@
         </div>
         <div class="block-right-qh">
             <div class="block-search-qh-bd">
-                <input type="text" id="inputSearchMap">
+                <div id="search-map-price">
+                    <input type="text" id="inputSearchMap">
+                    <ul id="text-search-stress">
+                        <%--                    <li>Đường Lê Lợi</li>--%>
+                    </ul>
+                </div>
                 <select name="" id="tieuChiSearchMap">
                     <option value="tenXa">Tên Xã/ Phường/ Thị Trấn</option>
                     <%--                    <option value="xa">Xã</option>--%>

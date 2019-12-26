@@ -321,6 +321,21 @@ p {
 .table-dat  tbody tr td:hover span>span i{
     color: white;
 }
+
+.table-dat1 tbody tr td span>span {
+    border: unset !important;
+    height: 20px;
+    border-radius: unset !important;
+    background: unset !important;
+    width: 100%;
+    color: #007bff;
+}
+
+.table-dat1  tbody tr td:hover span>span{
+    background-color: unset !important;
+    color: #0f57b6;
+}
+
 .table-dat{
     background-color: white;
 }
