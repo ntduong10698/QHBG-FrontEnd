@@ -426,7 +426,7 @@ footer{
     background-color: var(--color-while);
     color: var(--color-blue);
     font-size: 14px;
-    padding: 30px 0;
+    padding: 20px 0;
 }
 .ftimg{
     position: relative;
@@ -441,7 +441,7 @@ footer{
 }
 .ftimg-wp img{
     width: 100%;
-    height: 64%;
+    height: 58%;
 }
 .ftimg-text{
     position: absolute;
@@ -483,7 +483,7 @@ span.ftifo-cap{
     display: flex;
     font-weight: 500;
     color: var(--color-blue) !important;
-    padding-bottom: 10px;
+    padding-bottom: 7px;
 }
 .ftinfo a:hover{
     color: var(--color-blue) !important;
@@ -542,6 +542,7 @@ span.rt-cap{
 }
 .rtct-wp{
 
+    margin-top: 20px;
 }
 span.rt-contet{
     display: flex;

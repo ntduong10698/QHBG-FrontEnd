@@ -25,6 +25,8 @@
                         banbientap_stmt@bacgiang.gov.vn</a>
                     <a href="https://stnmt.bacgiang.gov.vn/" target="_blank"><span><i class="fas fa-globe"></i></span>
                         https://stnmt.bacgiang.gov.vn/</a>
+                    <a href="http://tamviet.com.vn/" target="_blank"href="" style="font-weight: bold; font-size: 13px;">Được phát triển bởi Cty TNHH Tư vấn đầu tư và phát triển Tâm Việt</a>
+                    <div style="display: flex;font-weight: bold;font-size: 13px;">Hotline: <a href="tel:024 66 74 74 68" style="font-weight: bold;">&nbsp; 024 66 74 74 68</a>/ &nbsp;<a style="font-weight: bold;" href="tel:0988 770 911">0988.770.911</a></div>
                 </div>
             </div>
 <%--            <div class="col-3">--%>

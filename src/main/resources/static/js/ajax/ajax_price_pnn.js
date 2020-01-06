@@ -595,11 +595,12 @@ function callAllGiaiDoanQuyetDinh(huyenId, bangGiaDatId, giaiDoan) {
     return ajaxCallGet(`v1/public/gia-dat/gia-dat-phi-nong-nghiep/find-all-quyet-dinh?huyen-id=${huyenId}&bang-id=${bangGiaDatId}&giai-doan=${giaiDoan}`);
 }
 
-function setDataTableGiaDatPhiNongNghiepQuyetDinh() {
-    callAllGiaiDoanQuyetDinh($("#dp-drop10").val(), $("#dp-drop8").val(), $("#dp-drop9").val()).then(list => {
-        list.sort((a,b) => a.ngayBanHanh.localeCompare(b.ngayBanHanh));
-        if(list.length <= 1) {
-            setDataTableGiaDatPhiNongNghiep(arrTable);
+    function setDataTableGiaDatPhiNongNghiepQuyetDinh() {
+        callAllGiaiDoanQuyetDinh($("#dp-drop10").val(), $("#dp-drop8").val(), $("#dp-drop9").val()).then(list => {
+            list.sort((a,b) => a.ngayBanHanh.localeCompare(b.ngayBanHanh));
+            if(list.length <= 1) {
+                setDataTableGiaDatPhiNongNghiep(arrTable);
+                clickChiTietDatPNN();
         } else {
             let arrDataQuyetDinh = [];
             list.map(item => {
