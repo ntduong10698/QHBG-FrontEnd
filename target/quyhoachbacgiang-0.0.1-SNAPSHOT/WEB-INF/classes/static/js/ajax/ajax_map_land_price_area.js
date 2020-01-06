@@ -73,6 +73,8 @@ function fnView(indexPopUp) {
 function getUrlGetMap() {
     let params = (new URL(window.location)).searchParams;
     year = params.get("nam");
+    //set name map
+    $("#nameMap").html(`<i class="fas fa-sitemap"></i>Bản đồ giá đất ${year}`);
     let yearUrl = year === null ? "2015_2019" : year.replace("-","_");
     yearUrl = yearUrl === "2020_2024" ? "2015_2019" : yearUrl;
     return `http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_Khu_Vuc_${yearUrl}/MapServer`;
@@ -423,14 +425,17 @@ require([
                             feature.attributes.layerName = layerName;
                             let loaiXaId = feature.attributes.LoaiXaId;
                             let loaiXa = getLoaiXaByLoaiXaId(loaiXaId);
+                            let quyetDinh = year === "2015-2019" ? "861/QĐ-UBND" : year === "2020-2024" ? "35/NQ- HĐND": "";
+                            let linkQuyetDinh = year === "2015-2019" ? "http://123.31.45.240:8480/media/img/467000000861bacgiang1.pdf" : year === "2020-2024" ? "http://123.31.45.240:8480/media/img/547000000NQ%20thong%20qua%20Bang%20gia%20dat%20%202020-2024-%C4%91%C3%A3%20chuy%E1%BB%83n%20%C4%91%E1%BB%95i.pdf": "";
                             console.log(loaiXa);
+                            console.log("******"+year);
                             if (loaiXa !== undefined) {
                                 feature.popupTemplate = { // autocasts as new PopupTemplate()
                                     title: "Thông tin xã",
                                     content: "<b>Xã:</b> {Xa} " +
                                         "<br><b>Loại Xã: </b>"+`${loaiXa.parent !== null ? loaiXa.tenLoaiXa + " - " + loaiXa.parent.tenLoaiXa : loaiXa.tenLoaiXa}`+
                                         "<br><b>Huyện: </b> {Huyen}" +
-                                        "<br><b>Số Quyết Định: </b> <a style='color: blue; cursor: pointer;' href='http://123.31.45.240:8480/media/img/467000000861bacgiang1.pdf' target='_blank'>861/QĐ-UBND</a>" +
+                                        "<br><b>Số Quyết Định: </b> <a style='color: blue; cursor: pointer;' href='"+linkQuyetDinh+"' target='_blank'>"+quyetDinh+"</a>" +
                                         "<br><b>Giai Đoạn :</b> <span>"+year+"</span> " +
                                         `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Xem Chi Tiết</div></b>`
                                 };

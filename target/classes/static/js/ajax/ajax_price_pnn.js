@@ -600,6 +600,7 @@ function setDataTableGiaDatPhiNongNghiepQuyetDinh() {
         list.sort((a,b) => a.ngayBanHanh.localeCompare(b.ngayBanHanh));
         if(list.length <= 1) {
             setDataTableGiaDatPhiNongNghiep(arrTable);
+            clickChiTietDatPNN();
         } else {
             let arrDataQuyetDinh = [];
             list.map(item => {

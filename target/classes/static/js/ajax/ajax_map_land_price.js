@@ -240,6 +240,8 @@ function setDataTableGiaDatPhiNongNghiepDieuChinh(query ,arrTableData,index) {
 function getUrlGetMap() {
     let params = (new URL(window.location)).searchParams;
     year = params.get("nam");
+    //set name map
+    $("#nameMap").html(`<i class="fas fa-sitemap"></i>Bản đồ giá đất ${year}`);
     let yearUrl = year === null ? "2015_2019" : year.replace("-","_");
     yearUrl = yearUrl === "2020_2024" ? "2015_2019" : yearUrl;
     return `http://103.9.86.47:6080/arcgis/rest/services/Gia_Dat_${yearUrl}/MapServer`;
@@ -429,13 +431,15 @@ require([
                             arrPopUpMap.push(feature.attributes); // them tung khoi duoc click
                             let layerName = result.layerName;
                             feature.attributes.layerName = layerName;
+                            feature.attributes.SoQuyetDinh = year === "2015-2019" ? "861/QĐ-UBND" : year === "2020-2024" ? "35/NQ- HĐND": "";
+                            let linkQuyetDinh = year === "2015-2019" ? "http://123.31.45.240:8480/media/img/467000000861bacgiang1.pdf" : year === "2020-2024" ? "http://123.31.45.240:8480/media/img/547000000NQ%20thong%20qua%20Bang%20gia%20dat%20%202020-2024-%C4%91%C3%A3%20chuy%E1%BB%83n%20%C4%91%E1%BB%95i.pdf": "";
                             feature.popupTemplate = { // autocasts as new PopupTemplate()
                                 title: "Thông tin đường",
                                 content: "<b>Tên Đường:</b> {TenDuong} " +
                                     "<br><b>Huyện: </b> {Huyen}" +
                                     "<br><b>Mục đích quy hoạch: </b> {MucDichQuyHoach}" +
-                                    "<br><b>Số Quyết Định: </b> <a style='color: blue; cursor: pointer;' href='http://123.31.45.240:8480/media/img/467000000861bacgiang1.pdf' target='_blank'>{SoQuyetDinh}</a>" +
-                                    "<br><b>Giai Đoạn :</b> <span>{GiaiDoan}</span> " +
+                                    "<br><b>Số Quyết Định: </b> <a style='color: blue; cursor: pointer;' href='"+linkQuyetDinh+"' target='_blank'>{SoQuyetDinh}</a>" +
+                                    "<br><b>Giai Đoạn :</b> <span>"+year+"</span> " +
                                     `<br><b><div class='xem-chi-tiet' onclick='fnView(${indexPopUp})'>Xem Chi Tiết</div></b>`
                             };
                             return feature;
