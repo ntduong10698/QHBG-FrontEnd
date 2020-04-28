@@ -1,4 +1,5 @@
-const URL_API = "http://123.31.45.240:8480/admin/api/";
+// const URL_API = "http://123.31.45.240:8480/admin/api/";
+const URL_API = "http://localhost:8080/admin_qhsdd/api/";
 const tokenHeader_value = "";
 const QUYET_DINH_QH = ['19/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
 const QUYET_DINH_KH_2015 = [null,'59/QĐ-UBND','58/QĐ-UBND','70/QĐ-UBND','69/QĐ-UBND','67/QĐ-UBND','57/QĐ-UBND','72/QĐ-UBND','66/QĐ-UBND','68/QĐ-UBND','71/QĐ-UBND'];
