@@ -33,7 +33,7 @@ function getDataTableDieuChinhQuyHoach(data, pageNumber) {
                 <td>${item.noiDung}</td>
                 <td>${item.lyDo}</td>
                 <td>${item.dienTich/10000 > 1 ? formatNumber(item.dienTich/10000,',',',') : item.dienTich/10000} (ha)</td>
-                <td>${item.quyetDinh !== null ? `<a target="_blank" href="${item.quyetDinh.duongDanTep}">${item.quyetDinh.soQuyetDinh}</a>`: ''}</td>
+                <td>${item.quyetDinh !== null ? `<a target="_blank" href="${viewSrcFile(item.quyetDinh.duongDanTep)}">${item.quyetDinh.soQuyetDinh}</a>`: ''}</td>
                 <td style="text-align: center;">${item.quyetDinh !== null ? reverseStringNam(item.quyetDinh.ngayBanHanh) : ''}</td>
             </tr>`
         })

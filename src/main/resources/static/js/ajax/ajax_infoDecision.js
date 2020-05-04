@@ -43,7 +43,7 @@ function getDataInfoQuyetDinh() {
                             <tr>
                                 <td class="dttd-title">Tài liệu kèm theo</td>
                                 <td colspan="3" class="">
-                                    <div><a href="${data.duongDanTep}" target="_blank"><i class="fa fa-paperclip"></i> Tải xuống  </a>
+                                    <div><a href="${viewSrcFile(data.duongDanTep)}" target="_blank"><i class="fa fa-paperclip"></i> Tải xuống  </a>
                                     </div>
                                 </td>
                             </tr>
