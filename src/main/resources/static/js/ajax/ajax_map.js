@@ -95,7 +95,7 @@ function viewInforQuyetDinh() {
                 $("#chiTietQuyetDinhMap ul li:nth-child(4)").html(data[0].nguoiKy);
                 $("#chiTietQuyetDinhMap ul li:nth-child(4)").attr("title",data[0].nguoiKy);
                 $("#chiTietQuyetDinhMap ul li:nth-child(5)").html(data[0].ngayBanHanh != null ? `${reverseStringNam(data[0].ngayBanHanh)}` : "<br/>");
-                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${data[0].duongDanTep}" target="_blank">${maQuyetDinh}</a>` : ''}`);
+                $("#chiTietQuyetDinhMap ul li:nth-child(6)").html(`${data[0].duongDanTep != null ? `<a href="${viewSrcFile(data[0].duongDanTep)}" target="_blank">${maQuyetDinh}</a>` : ''}`);
             }
         }).catch(err => {
             console.log(err);

@@ -154,7 +154,7 @@ function addDataAfterGet(data, number) {
                             <td>${response.coQuanBanHanh.tenCoQUan} </td>
                             <td><span>${response.chucVu}: ${response.nguoiKy}</span>
                                 <span>Ngày ban hành: ${response.ngayBanHanh.split("-").reverse().join("/")}</span></td>
-                            <td> <a href="${response.duongDanTep}" target="_blank"><i class="fas fa-paperclip"></i></a></td>
+                            <td> <a href="${viewSrcFile(response.duongDanTep)}" target="_blank"><i class="fas fa-paperclip"></i></a></td>
                         </tr>
                 `;
         });

@@ -1,5 +1,9 @@
 // const URL_API = "http://123.31.45.240:8480/admin/api/";
-const URL_API = "http://localhost:8080/admin_qhsdd/api/";
+var url_href = window.location.origin+"/admin_qhsdd/";
+// var url_href = "http://localhost:9987/";
+const URL_API = url_href + "api/";
+// const URL_API = url_href + "api/";
+const URL_FILE = url_href + "resources/file/media/img/";
 const tokenHeader_value = "";
 const QUYET_DINH_QH = ['19/NQ-CP','130/QĐ-UBND','152/QĐ-UBND','131/QĐ-UBND','155/QĐ-UBND','154/QĐ-UBND','132/QĐ-UBND','147/QĐ-UBND','129/QĐ-UBND','146/QĐ-UBND','153/QĐ-UBND'];
 const QUYET_DINH_KH_2015 = [null,'59/QĐ-UBND','58/QĐ-UBND','70/QĐ-UBND','69/QĐ-UBND','67/QĐ-UBND','57/QĐ-UBND','72/QĐ-UBND','66/QĐ-UBND','68/QĐ-UBND','71/QĐ-UBND'];
@@ -33,6 +37,10 @@ const MA_DAT = ['NPP: Đất nông nghiệp','SXN: Đất sản xuất nông ngh
 ,'MVR: Đất mặt nước ven biển có rừng ngập mặn','MVK: Đất mặt nước ven biển có mục đích khác'];
 var passUser=null;
 var emailUserr=null;
+function viewSrcFile(src) {
+    if(src.indexOf("http") === 0) return src;
+    return URL_FILE + src;
+}
 function mucDich(color) {
     var int = parseInt(color, 10);
     switch (int) {
